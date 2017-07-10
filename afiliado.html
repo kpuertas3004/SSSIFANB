@@ -1,0 +1,682 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Documento sin t&iacute;tulo</title>
+</head>
+
+<body>
+<table width="1031" border="0">
+  <tr>
+    <td colspan="6"><strong>Datos Basicos </strong></td>
+  </tr>
+  <tr>
+    <td width="154">C&eacute;dula</td>
+    <td width="152"><input name="txtcedula" type="text" id="txtcedula" size="11" maxlength="10" /></td>
+    <td width="144">&nbsp;</td>
+    <td width="169">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>NIT</td>
+    <td><select name="cbonit" id="cbonit">
+        <option value="MIL">MILITAR</option>
+        <option value="PER">PERSONAL</option>
+    </select></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Apellidos</td>
+    <td><input name="txtapellidoprimero" type="text" id="txtxtapellidoprimero" /></td>
+    <td><input name="txtapellidosegundo" type="text" id="txtxtapellidosegundo" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Nombres</td>
+    <td><input name="txtnombreprimero" type="text" id="txtxtnombreprimero" /></td>
+    <td><input name="txtnombresegundo" type="text" id="txtxtnombresegundo" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Apellido de Casada </td>
+    <td><input name="txtapellidocasada" type="text" id="txtxtapellidocasada" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Prefijo</td>
+    <td><input name="txtprefijo" type="text" id="txtprefijo" /></td>
+    <td>Sufijo</td>
+    <td><input name="txtsufijo" type="text" id="txtsufijo" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Apodo</td>
+    <td><form id="form1" name="form1" method="post" action="">
+        <input name="txtapodo" type="text" id="txtapodo" />
+    </form></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Sexo</td>
+    <td><form id="form1" name="form1" method="post" action="">
+        <select name="cbosexo" id="cbosexo">
+          <option></option>
+          <option value="F">FEMENINO</option>
+          <option value="M">MASCULINO</option>
+        </select>
+    </form></td>
+    <td>Estado Civil </td>
+    <td><select name="cboestadoc" id="cboestadoc">
+        <option></option>
+        <option value="C">CASADO (A)</option>
+        <option value="D">DIVORCIADO (A)</option>
+        <option value="S">SOLTERO (A)</option>
+        <option value="V">VIUDO (A)</option>
+    </select></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Idioma</td>
+    <td><select name="cboidiomas" id="cboidiomas">
+        <option></option>
+        <option value="CHI">CHINO</option>
+        <option value="ESP">ESPA&Ntilde;OL</option>
+        <option value="FRA">FRANC&Eacute;S</option>
+        <option value="HUN">HUNGARO</option>
+        <option value="ING">INGL&Eacute;S</option>
+        <option value="ITA">ITALIANO</option>
+        <option value="JAP">JAPON&Eacute;S</option>
+        <option value="PAK">PAKISTAN&Iacute;</option>
+        <option value="RUS">PORTUGU&Eacute;S</option>
+        <option value="RUS">RUSO</option>
+        <option value="ARA">&Aacute;RABE</option>
+    </select></td>
+    <td>Ocup./Act.:</td>
+    <td><select name="cboocupacion" id="cboocupacion">
+        <option></option>
+        <option value="ARQUI">ARQUITECTO</option>
+        <option value="ING">INGENIERO</option>
+        <option value="ABG">ABOGADO</option>
+    </select></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Nacionalidad</td>
+    <td><select name="cbonacionalidad" id="cbonacionalidad">
+    </select></td>
+    <td>Lugar de Nacimiento </td>
+    <td><select name="cbolugarn" id="cbolugarn">
+    </select></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Fecha Nac.: </td>
+    <td><input name="txtfechan" type="text" id="txtfechan" /></td>
+    <td>Fecha Defuncion: </td>
+    <td><input name="txtfechad" type="text" id="txtfechad" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Tratamiento</td>
+    <td><select name="cbotratamiento" id="cbotratamiento">
+    </select></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>E-mail</td>
+    <td colspan="3"><input name="txtemail" type="text" id="txtemail" size="60" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Lugar de Nacimiento : </td>
+    <td colspan="3"><input name="txtlugarn" type="text" id="txtlugarn" size="60" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="6">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="6"><strong>Datos de Afiliaci&oacute;n </strong></td>
+  </tr>
+  <tr>
+    <td>Tipo de Afiliaci&oacute;n </td>
+    <td><select name="cbotipoafiliacion" id="cbotipoafiliacion">
+    </select></td>
+    <td>Fch. Inic.Afiliaci&oacute;n </td>
+    <td><input name="txtfechaiafiliacion" type="text" id="txtfechaiafiliacion" />    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Titular Afiliaci&oacute;n </td>
+    <td><input type="text" name="txtextfield" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Fecha Vencimiento </td>
+    <td><input name="txtfechavencimientoafiliacion" type="text" id="txtfechavencimientoafiliacion" /></td>
+    <td>Relacion con Titular    </td>
+    <td><select name="cborelacionesafiliacion" id="cborelacionesafiliacion">
+	    <option></option>
+        <option value="CAR">CARGA FAMILIAR</option>
+        <option value="CON">CONCUBINO</option>
+        <option value="EA">ESPOSO (A)</option>
+		<option value="HO">HERMANO (A)</option>
+        <option value="PD">PADRE/MADRE</option>
+        <option value="TIT">TITULAR (A)</option>
+		<option value="VI">VIUDO (A)</option>
+            </select></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Fecha Cambio    </td>
+    <td><input name="txtfechacambioafiliacion" type="text" id="txtfechacambioafiliacion" /></td>
+    <td>Estatus</td>
+    <td><select name="cboestatusafiliacion" id="cboestatusafiliacion">
+	
+	    <option></option>
+        <option value="SUS">SUSPENDIDO</option>
+        <option value="INA">INACTIVO</option>
+        <option value="ACT">ACTIVO</option>
+	
+        </select></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Observacion</td>
+    <td colspan="2"><input name="txtobservacion" type="text" id="txtobservacion" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>N&deg; Carnet </td>
+    <td><input name="txtnrocarnetafiliacion" type="text" id="txtnrocarnetafiliacion" /></td>
+    <td>Fecha Emision Carnet </td>
+    <td><input name="txtfechaemisioncarnet" type="text" id="txtfechaemisioncarnet" /></td>
+    <td>Fecha Vencimiento Carnet </td>
+    <td><input name="txtfechavencimientocarnet" type="text" id="txtfechavencimientocarnet" /></td>
+  </tr>
+  <tr>
+    <td>Fecha Creaci&oacute;n </td>
+    <td><input name="txtfechacreacioncarnet" type="text" id="txtfechacreacioncarnet" /></td>
+    <td>Fecha Cambio </td>
+    <td><input name="txtfechacambiocarnet" type="text" id="txtfechacambiocarnet" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="6">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="6"><strong>Historia Militar </strong></td>
+  </tr>
+  <tr>
+    <td width="154">Componente</td>
+    <td width="152">
+      <select name="cbocomponente">
+    </select>	</td>
+    <td width="144">&nbsp;</td>
+    <td width="169">&nbsp;</td>
+    <td width="173">Grado</td>
+    <td width="213"><select name="cbogrado" id="cbogrado">
+        </select></td>
+  </tr>
+  <tr>
+    <td>Categoria</td>
+    <td><select name="cbocategoria">
+    </select></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Situaci&ograve;n</td>
+    <td><input name="txtsituacion" type="text" id="txtsituacion" /></td>
+  </tr>
+  <tr>
+    <td>Clase</td>
+    <td><select name="cboclase">
+    </select></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Fecha Promocion </td>
+    <td><input name="txtsituacion2" type="text" id="txtsituacion2" /></td>
+  </tr>
+  <tr>
+    <td>Fecha Resuelto </td>
+    <td><input name="txtfresuelto" type="text" id="txtfresuelto" /></td>
+    <td>N&ordm; de Resuelto </td>
+    <td><input name="txtnresuelto" type="text" id="txtnresuelto" /></td>
+    <td>Posicion</td>
+    <td><input name="txtposicion" type="text" id="txtposicion" /></td>
+  </tr>
+  <tr>
+    <td>Fecha Cambio </td>
+    <td><input name="txtfcambio" type="text" id="txtfcambio" /></td>
+    <td>Razon de Cambio </td>
+    <td><input name="txtrazonc" type="text" id="txtrazonc" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="6"><strong>Datos Militares </strong></td>
+  </tr>
+  <tr>
+    <td>Componente</td>
+    <td><select name="cbocomponente">
+      </select>    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Grado</td>
+    <td><select name="cbogrado" id="cbogrado">
+    </select></td>
+  </tr>
+  <tr>
+    <td>Categoria</td>
+    <td><select name="cbocategoria">
+    </select></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Situaci&ograve;n</td>
+    <td><input name="txtsituacion" type="text" id="txtsituacion" /></td>
+  </tr>
+  <tr>
+    <td>Clase</td>
+    <td><select name="cboclase">
+    </select></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Fecha Promocion </td>
+    <td><input name="txtfechapromocion" type="text" id="txtfechapromocion" /></td>
+  </tr>
+  <tr>
+    <td>Fecha Ing. Comp</td>
+    <td><input name="txtfechaingcomponente" type="text" id="txtfechaingcomponente" /></td>
+    <td>Fecha Ultimo Ascenso </td>
+    <td><input name="txtfechaultimoascenso" type="text" id="txtfechaultimoascenso" /></td>
+    <td>Fecha Egreso </td>
+    <td><input name="txtfechaegreso" type="text" id="txtfechaegreso" /></td>
+  </tr>
+  <tr>
+    <td>Ajustes a&ntilde;os de servicio </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>A&ntilde;os</td>
+    <td><input name="txtanoservicio" type="text" id="txtanoservicio" size="3" /></td>
+    <td>Mes</td>
+    <td>
+      <input name="txtmesservicio" type="text" id="txtmesservicio" size="3" />    </td>
+    <td>Dias</td>
+    <td><input name="txtdiasservicio" type="text" id="txtdiasservicio" size="3" /></td>
+  </tr>
+  <tr>
+    <td>Fecha Resuelto </td>
+    <td><input name="txtfecharesuelto" type="text" id="txtfecharesuelto" /></td>
+    <td>Nro. Resuelto </td>
+    <td><input name="txtnroresueltos" type="text" id="txtnroresueltos" size="10" maxlength="10" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Notas</td>
+    <td colspan="4"><input name="txtnotasservicio" type="text" id="txtnotasservicio" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="6">Tiempo de Servicio </td>
+  </tr>
+  <tr>
+    <td>A&ntilde;os
+    <input name="txtanotiemposervicio" type="text" id="txtanotiemposervicio" size="3" /></td>
+    <td>Mes
+    <input name="txtmestiemposervicio" type="text" id="txtmestiemposervicio" size="3" /></td>
+    <td>Dias
+    <input name="txtdiastiemposervicio" type="text" id="txtdiastiemposervicio" size="3" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="6">Total Tiempo Servicio</td>
+  </tr>
+  <tr>
+    <td>A&ntilde;os
+    <input name="txtanototaltservicio" type="text" id="txtanototaltservicio" size="3" /></td>
+    <td>Mes
+    <input name="txtmestotaltservicio" type="text" id="txtmestotaltservicio" size="3" /></td>
+    <td>Dias
+    <input name="txtdiastotaltservicio" type="text" id="txtdiastotaltservicio" size="3" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="6"><strong>Cuentas Bancarias </strong></td>
+  </tr>
+  <tr>
+    <td>Uso</td>
+    <td><select name="cbousocta" id="cbousocta">
+        </select></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Inst. Financiera </td>
+    <td><select name="cboinstitucionfinanciera" id="cboinstitucionfinanciera">
+        </select></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Tipo de cuenta </td>
+    <td><select name="cbotipoc" id="cbotipoc">
+            </select></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>N&ordm; de Cuenta </td>
+    <td colspan="2"><input name="txtnumerocuenta" type="text" id="txtnumerocuenta" size="21" maxlength="20" /></td>
+    <td>Fecha de Vencimiento </td>
+    <td><input name="txtfechavencimiento" type="text" id="txtfechavencimiento" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Descripcion    </td>
+    <td colspan="2"><input name="txtdescripcion" type="text" id="txtdescripcion" size="51" maxlength="50" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="6">&nbsp;</td>
+  </tr>
+  <tr>
+    <td><strong>Telefonos</strong></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Tipo de Tel&egrave;fono </td>
+    <td><select name="cbotipotelefono" id="cbotipotelefono">
+        </select></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Cod. Pais </td>
+    <td><input name="txtcodigopais" type="text" id="txtcodigopais" size="21" maxlength="20" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Cod.Area</td>
+    <td><input name="txtcodigoarea" type="text" id="txtcodigoarea" size="21" maxlength="20" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Nro. Telefono </td>
+    <td><input name="txtnrotelefono" type="text" id="txtnrotelefono" size="21" maxlength="20" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3"><strong>Anotaciones</strong></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Usuario</td>
+    <td>&nbsp;</td>
+    <td>Fecha</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Titulo</td>
+    <td><input name="txttituloanotacion" type="text" id="txttituloanotacion" size="21" maxlength="20" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Nota</td>
+    <td><input name="txtnotaanotacion" type="text" id="txtnotaanotacion" size="21" maxlength="20" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><strong>Datos Variables </strong></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Grupo</td>
+    <td><select name="cbogrupovariable" id="cbogrupovariable">
+        </select></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Otro</td>
+    <td><input name="txtotrovariable" type="text" id="txtotrovariable" size="21" maxlength="20" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&iquest;Que deporte practica? </td>
+    <td><select name="cbodeportevariable" id="cbodeportevariable">
+        </select></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Indique otro deporte </td>
+    <td><select name="cbodeporteotrovariable" id="cbodeporteotrovariable">
+        </select></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="6"><strong>Datos Actualizacion de Tarjetas </strong></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2"><strong>Documentos Digitales </strong></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+Agregar: 
+- Estado, Municipio, Parroquia
+- Descripcion Sector Donde vive
+- Historia Clinica     : numero
+- Colocar color cabello: negro,  marron, castallo claro, castallo oscuro, rojo ,amarillo , calvo
+- Grupo sanguineo      : todos los grupos
+- Estatura             : 
+- Ojos color           : marron, azul, verde, negro, gris
+- Piel Color Test      : blanco, moreno, negro, amarillo, trigueño, albino
+
+
+Mujer: (caso de familiar) 
+- Historia Clinica     : numero
+- Grupo sanguineo      : todos los grupos
+- Donante              : SI o NO
+- Observaciones
+
+
+
+</body>
+</html>
