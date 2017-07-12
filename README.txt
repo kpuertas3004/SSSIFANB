@@ -1,4 +1,7 @@
 #Bienvenido a SSSIFANB
-Luis Azuaje Nombre Completo
 
-#Bienenvenido Tte flores
+#Tte flores
+#Edda Gonzalez
+
+#Tte montero
+#Jesuline Teran
