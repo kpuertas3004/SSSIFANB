@@ -38,7 +38,7 @@ function Buscar(){
             let parentesco = v.parentesco;
             mil = nombre;
             if (v.esmilitar == true){
-              mil = '<font color="#0E6626"><i class="fa fa-fw fa-male"></i></font>&nbsp;'  + nombre;
+              mil = nombre + '<font color="#0E6626"><i class="fa fa-fw fa-male"></i></font>&nbsp;'  ;
             }
             ok = '<font color="#blue"><i class="fa fa-fw fa-close"></i></font>';
             if (v.beneficio == true){
