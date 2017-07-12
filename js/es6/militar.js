@@ -5,7 +5,7 @@
  Correo persona mod:  
  Fecha Creacion    :  11-07-2017  
  Fecha Modificacion:  11-07-2017  
- Descripcion       :  Datos Basicos del Afiliado
+ Descripcion       :  Clases, metodos y funciones de Militares
 */
 class DatoBasico{
 	constructor(){
@@ -70,15 +70,7 @@ class DatoBasico{
 	}
 }
 
-/**
- Desarrollado por  :  Maria Elena Nuñez 
- Correo            :  marielen936@gmail.com
- Modifcado    por  :  
- Correo persona mod:  
- Fecha Creacion    :  11-07-2017  
- Fecha Modificacion:  11-07-2017  
- Descripcion       :  Datos Fisicos del Afiliado
-*/
+
 class  DatoFisico{
 	constructor(){
 		this.peso = 0.0;
@@ -86,15 +78,6 @@ class  DatoFisico{
 	}
 }
 
-/**
- Desarrollado por  :  Maria Elena Nuñez 
- Correo            :  marielen936@gmail.com
- Modifcado    por  :  
- Correo persona mod:  
- Fecha Creacion    :  11-07-2017  
- Fecha Modificacion:  11-07-2017  
- Descripcion       :  Datos Fisionomicos del Afiliado
-*/
 class DatoFisionomico{
 	constructor(){
 		this.coloropiel = "";
@@ -105,15 +88,7 @@ class DatoFisionomico{
 	}
 }
 
-/**
- Desarrollado por  :  Maria Elena Nuñez 
- Correo            :  marielen936@gmail.com
- Modifcado    por  :  
- Correo persona mod:  
- Fecha Creacion    :  11-07-2017  
- Fecha Modificacion:  11-07-2017  
- Descripcion       :  Datos del Correl Electrónico del Afiliado
-*/
+
 class Correo{
 	constructor(){
 		this.correoprincipal = "";
@@ -122,15 +97,7 @@ class Correo{
 	}
 }
 
-/**
- Desarrollado por  :  Maria Elena Nuñez 
- Correo            :  marielen936@gmail.com
- Modifcado    por  :  
- Correo persona mod:  
- Fecha Creacion    :  11-07-2017  
- Fecha Modificacion:  11-07-2017  
- Descripcion       :  Redes Sociales del Afiliado
- */
+
 class RedSocial{
 	constructor(){
 		this.twitter = "";
@@ -140,15 +107,6 @@ class RedSocial{
 	}
 }
 
-/**
- Desarrollado por  :  Maria Elena Nuñez 
- Correo            :  marielen936@gmail.com
- Modifcado    por  :  
- Correo persona mod:  
- Fecha Creacion    :  11-07-2017  
- Fecha Modificacion:  11-07-2017  
- Descripcion       :  Telefonos de Contacto del Afiliado
-*/
 class Telefono{
 	constructor(){
 		this.telefonomovil = "";
@@ -157,15 +115,7 @@ class Telefono{
 	}
 }
 
-/**
- Desarrollado por  :  Karina Puertas
- Correo            :  kpuertas30@gmail.com
- Modifcado    por  :  
- Correo persona mod:  
- Fecha Creacion    :  11-07-2017  
- Fecha Modificacion:  11-07-2017  
- Descripcion       :  Direccion Primaria del Afiliado
-*/
+
 class Direccion{
 	constructor(){
 		this.tipo = "";
@@ -180,15 +130,6 @@ class Direccion{
 	}
 }
 
-/**
- Desarrollado por  :  Karina Puertas
- Correo            :  kpuertas30@gmail.com
- Modifcado    por  :  
- Correo persona mod:  
- Fecha Creacion    :  11-07-2017  
- Fecha Modificacion:  11-07-2017  
- Descripcion       :  Datos del Carnet del Afiliado
-*/
 class Carnet{
 	constructor(){
 		this.idcarnet = "";
@@ -204,15 +145,7 @@ class Carnet{
 	}	
 }
 
-/**
- Desarrollado por  :  Karina Puertas
- Correo            :  kpuertas30@gmail.com
- Modifcado    por  :  
- Correo persona mod:  
- Fecha Creacion    :  11-07-2017  
- Fecha Modificacion:  11-07-2017  
- Descripcion       :  Datos del Familiar
-*/
+
 class Familiar{
 	constructor(){
 		this.Persona = new Persona();
@@ -246,15 +179,7 @@ class Familiar{
 
 }
 
-/**
- Desarrollado por  :  Karina Puertas
- Correo            :  kpuertas30@gmail.com
- Modifcado    por  :  
- Correo persona mod:  
- Fecha Creacion    :  11-07-2017  
- Fecha Modificacion:  11-07-2017  
- Descripcion       :  Datos del TIM del Afiliado
-*/
+
 class Tim{
 	constructor(){
 		this.fechacreacion = "";
@@ -264,15 +189,7 @@ class Tim{
 	}
 }
 
-/**
- Desarrollado por  :  Karina Puertas
- Correo            :  kpuertas30@gmail.com
- Modifcado    por  :  
- Correo persona mod:  
- Fecha Creacion    :  11-07-2017  
- Fecha Modificacion:  11-07-2017  
- Descripcion       :  Descripcion del Componente
-*/
+
 class Componente{
 	constructor(){
 		this.nombre = "";
@@ -281,15 +198,7 @@ class Componente{
 	}
 }
 
-/**
- Desarrollado por  :  Karina Puertas
- Correo            :  kpuertas30@gmail.com
- Modifcado    por  :  
- Correo persona mod:  
- Fecha Creacion    :  11-07-2017  
- Fecha Modificacion:  11-07-2017  
- Descripcion       :  Descripcion del Grado
-*/
+
 class Grado{
 	constructor(){
 
@@ -299,15 +208,7 @@ class Grado{
 	}
 }
 
-/**
- Desarrollado por  :  Karina Puertas
- Correo            :  kpuertas30@gmail.com
- Modifcado    por  :  
- Correo persona mod:  
- Fecha Creacion    :  11-07-2017  
- Fecha Modificacion:  11-07-2017  
- Descripcion       :  Datos Basicos de Persona 
-*/
+
 class Persona{
 	constructor(){
 		this.DatoBasico = new DatoBasico();
@@ -319,15 +220,7 @@ class Persona{
 	}
 }
 
-/**
- Desarrollado por  :  Karina Puertas
- Correo            :  kpuertas30@gmail.com
- Modifcado    por  :  
- Correo persona mod:  
- Fecha Creacion    :  11-07-2017  
- Fecha Modificacion:  11-07-2017  
- Descripcion       :  Datos Basicos del Militar
-*/
+
 class Militar{
 	constructor(){		
 		this.tipodato = "";
@@ -357,30 +250,9 @@ class Militar{
 }
 
 
-/**
- Desarrollado por  :  Maria Elena Nuñez 
- Correo            :  marielen936@gmail.com
- Modifcado    por  :  
- Correo persona mod:  
- Fecha Creacion    :  11-07-2017  
- Fecha Modificacion:  11-07-2017  
- Descripcion       :  Funcion de Prueba
-*/
+
 function Obtener(){
 	let militar = new Militar(); 
 	console.log(JSON.stringify(militar.ObtenerFecha()));
-	//let familiar = new Familiar();
-	//familiar.Persona.DatoBasico.sexo="F";
-	//familiar.parentesco="PD";
-	//console.log(JSON.stringify(familiar.GenerarParentesco()));
-
+	
 }
-
-
-/*
-// @param string (string) : Fecha en formato YYYY-MM-DD
-// @return (string)       : Fecha en formato DD/MM/YYYY
-function convertDateFormat(string) {
-  var info = string.split('-');
-  return info[2] + '/' + info[1] + '/' + info[0];
-}*/
