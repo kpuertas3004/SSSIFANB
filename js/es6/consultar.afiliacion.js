@@ -1,4 +1,7 @@
-function Buscar(){
+function Buscar( id ){
+  if (id != undefined) {
+    $("#_cedula").val(id);
+  }
   $("#_cargando").show()
   $("#_imgfamiliar").attr("src", "images/ndisponible.jpg");
   var xhttp = new XMLHttpRequest();
@@ -38,7 +41,7 @@ function Buscar(){
             let parentesco = v.parentesco;
             mil = nombre;
             if (v.esmilitar == true){
-              mil = '<font color="#0E6626"><i class="fa fa-fw fa-male"></i></font>&nbsp;'  + nombre;
+              mil = nombre + '<font color="#0E6626"><i class="fa fa-fw fa-male"></i></font>&nbsp;'  ;
             }
             ok = '<font color="#blue"><i class="fa fa-fw fa-close"></i></font>';
             if (v.beneficio == true){
@@ -51,19 +54,23 @@ function Buscar(){
               mil,
               parentesco,
               ok,
-              DBF.fechanacimiento
+              DBF.fechanacimiento,
+              v.esmilitar
             ]).draw(false);
 
 
           });
 
-          t.column(5).visible(false);
+          t.column(5).visible(false);t.column(6).visible(false);
           $('#tblresultados tbody').on('click', 'tr', function () {
               var data = t.row(this).data();
               urlf = "http://192.168.12.198/imagenes/imagenes/" +  data[1] + ".jpg";
               $("#_imgfamiliar").attr("src", urlf);
               $("#_ffnacimiento").html(ConvertirFechaHumana(data[5]));
-              $("#_fcedula").html("C.I: V- " + data[1]);
+              $("#_fcedula").html('C.I: V- ' + data[1]);
+              if (data[6] == true){
+                $("#_fcedula").html('<a href="#" onClick="Buscar(\'' + data[1] +  '\')">C.I: V- ' + data[1] + '</a>');
+              }
 
           });
 
@@ -81,5 +88,8 @@ function ConvertirFechaHumana(f){
   fe = f.substr(0,10);
   fa = fe.split("-");
   return fa[2] + "/" + fa[1] + "/" + fa[0];
+}
 
+function CalcularEdad(){
+  
 }
