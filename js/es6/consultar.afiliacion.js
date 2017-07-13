@@ -77,10 +77,14 @@ function Buscar( id ){
         }
 
         $("#_cargando").hide();
-      }else{
-        $.notify("Error de Conexión " + this.status, "error");
+      }
+
+  };
+
+  xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 0) {
+        $.notify("No se puede conectar al servidor");
         $("#_cargando").hide();
-        $("#_ficha").show();
       }
 
   };
