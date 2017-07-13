@@ -76,7 +76,11 @@ function Buscar( id ){
 
         }
 
-        $("#_cargando").hide()
+        $("#_cargando").hide();
+      }else{
+        $.notify("Error de Conexión " + this.status, "error");
+        $("#_cargando").hide();
+        $("#_ficha").show();
       }
 
   };
