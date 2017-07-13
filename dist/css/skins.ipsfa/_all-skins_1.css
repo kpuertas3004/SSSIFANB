@@ -1304,7 +1304,7 @@
 /* Color de SOMBREADO, Letra, Rayita izquierda (Minima) del menú Izquierdo*/
 .skin-yellow .sidebar-menu > li:hover > a,
 .skin-yellow .sidebar-menu > li.active > a {
-  color: #000000; /*Letra Sombreado*/
+  color: #FFFFFF; /*Letra Sombreado*/
   background: #771414; /*Sombreado*/
   border-left-color: #CCCCCC; /*Borde de Raya*/
 }
@@ -1317,7 +1317,7 @@
 
 /*Color de Letra menu izquierdo*/
 .skin-yellow .sidebar a {
-  color: #000000; /*Color de Letra menu izquierdo*/
+  color: #FFFEFE; /*Color de Letra menu izquierdo*/
 }
 .skin-yellow .sidebar a:hover {
   text-decoration: none;
