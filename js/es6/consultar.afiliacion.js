@@ -76,7 +76,11 @@ function Buscar( id ){
 
         }
 
-        $("#_cargando").hide()
+        $("#_cargando").hide();
+      }else{
+        $.notify("Error de Conexión " + this.status, "error");
+        $("#_cargando").hide();
+        $("#_ficha").show();
       }
 
   };
@@ -90,6 +94,6 @@ function ConvertirFechaHumana(f){
   return fa[2] + "/" + fa[1] + "/" + fa[0];
 }
 
-function CalcularEdad(){
-  
+function IncluirFamiliar(){
+  $("#modFamiliar").modal('show');
 }
