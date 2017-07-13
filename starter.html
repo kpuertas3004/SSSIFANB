@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="dist/css/skins.ipsfa/_all-skins_1.css">
   <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
 
+
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <style type="text/css">
@@ -30,7 +31,7 @@
     }
 
   </style>
-
+  <link rel="stylesheet" href="css/carnet.css">
   <script type="text/javascript" src="js/es6/consultar.afiliacion.js"></script>
 </head>
 <body class="hold-transition skin-yellow">
@@ -274,6 +275,7 @@
 
       </div>
   </div>
+
 
   <div class="box  box-solid" id="_ficha" style="display:none">
   <div class="box-header with-border">
@@ -707,7 +709,7 @@
                   <div class="modal-footer" id="_botonesmilitar">
                     <button type="button" class="btn btn-success" data-dismiss="modal" onclick="activarSalvar()">
                       <i class="fa fa-print"></i>&nbsp;&nbsp;Constancia de Afiliación</button>
-                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="activarSalvar()">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="VisualizarCarnet()">
                       <i class="fa fa-credit-card"></i>&nbsp;&nbsp;Tarjeta de Identificación</button>
                       <button type="button" class="btn btn-warning" data-dismiss="modal" onclick="activarSalvar()">
                         <i class="fa fa-pencil"></i>&nbsp;&nbsp;Modificar Datos</button>
@@ -853,6 +855,131 @@
   </footer>
 
 
+
+
+
+<!-- Carnet Dentro del Box -->
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modCarnet">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modelo de Carnet</h4>
+      </div>
+      <div class="modal-body">
+
+          <div clas="row">
+
+              <div class="marco-carnet" style="border-style: solid;border-width: 0.1px;">
+
+                <div class="css-foto">
+                  <img src="images/ndisponible.jpg" style="width:73px; height:91px;" id="_imgcarnetmilitar"/>
+                </div>
+                <!---imagen del grado -->
+                <div class="css-insignia">
+                  <img src="images/grados/cnel.png" style="width:102px; height:50px;"/>
+                </div>
+                <!---imagen del grado -->
+                <div class="fecha-vencimiento" id="fechavencimiento">
+
+                </div>
+
+                <div class="labels-dat-person-resl">
+                  <label class="letra-8" id="lblgrado"></label>
+                  <br />
+                  <label id="lblnombre"></label>
+                  <br />
+                  <label id="lblapellidos"></label>
+                  <br />
+                  <label id="lblcedulanombre"></label>
+                  <br />
+                </div>
+
+
+
+                <div class="nota-pie-i-anverso">A QUIEN SE RECOMIENDA LE SEAN GUARDADAS</div>
+                <div class="nota-pie-ii-anverso">LAS CONSIDERACIONES DEBIDAS A SU GRADO</div>
+
+              </div>
+
+            <div class="marco-carnet" style="border-style: solid;border-width: 0.1px;">
+
+                  <div class="serial-numero" id="serialnumero">
+                  </div>
+
+                  <div class="serial" id="serial">
+                  </div>
+
+              <div class="css-huella">
+              <img src="images/ndisponible.jpg" style="height:70px;width:70px;" />
+              </div>
+                <div class="categoria" id="categoria">
+
+                </div>
+
+                <div class="siglas-componente" id="componente">
+                </div>
+
+                <div class="labels-dat-medicos">
+                    <label>CODIGO</label>
+                    <br />
+                    <label>HISTORIA CLINICA</label>
+                    <br />
+                    <label>CABELLOS</label>
+                    <br />
+                    <label>GRUPO SANGUINEO</label>
+                    <br />
+                    <label>ESTATURA</label>
+                    <br />
+                    <label>OJOS</label>
+                    <br />
+                    <label>COLOR</label>
+                    <br />
+                </div>
+
+                <div class="labels-dat-medicos-resl">
+                  <label id="lblserial"></label>
+                     <br />
+                     <label id="lblcodhistoria"></label>
+                     <br />
+                     <label id="lblcolorcabellos"></label>
+                     <br />
+                     <label id="lblgruposanquinea"></label>
+                     <br />
+                     <label id="lblestatura"></label>
+                     <br />
+                     <label id="lblcolorojos"></label>
+                     <br />
+                     <label id="colorpiel"></label>
+                     <br />
+                </div>
+
+                    <div class="firma-ministro">
+                <img src="images/firma.png" style="height:24px;width:70px; text-align:center;" id="_imgcarnet"/>
+                  </div>
+
+                  <div class="nota-pie-i-reverso">
+                    MINISTERIO DEL PODER POPULAR PARA LA DEFENSA
+                    </div>
+
+                    <div class="nota-pie-ii-reverso">
+                    AUTORIZADO PARA PORTAR ARMAS DE FUEGO ASIGNADAS POR LA FANB
+                </div>
+
+            </div>
+
+          </div>
+      </div>
+      <div class="modal-footer" id="_botones">
+        <button type="button" class="btn btn-default" data-dismiss="modal" >Imprimir Carnet</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Fin modal Carnet -->
 
 
   <!-- Small modal -->

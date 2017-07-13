@@ -32,6 +32,7 @@ function Buscar( id ){
           $("#txtcedula").val(DB.cedula);
           url = "http://192.168.12.198/imagenes/imagenes/" +  $("#txtcedula").val() + ".jpg";
           $("#_img").attr("src", url);
+          $("#_imgcarnetmilitar").attr("src", url);
           $("#txtnombre").val(DB.nombreprimero + ' ' + DB.nombresegundo);
           $("#txtapellido").val(DB.apellidoprimero + ' ' + DB.apellidosegundo);
           $("#txtnacimiento").val(ConvertirFechaHumana(DB.fechanacimiento));
@@ -101,7 +102,7 @@ function Buscar( id ){
   xhttp.send();
 }
 function IrCedula(){
-  
+
   $("#_cedula").focus();
 }
 
@@ -119,4 +120,8 @@ function ActivarBuscar(){
   $("#_ficha").hide();
   $("#_consultarbox").show();
   $("#_search").hide();
+}
+
+function VisualizarCarnet(){
+  $("#modCarnet").modal("show");
 }
