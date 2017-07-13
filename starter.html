@@ -55,6 +55,11 @@
       <div class="navbar-custom-menu">
 
         <ul class="nav navbar-nav">
+          <li class="dropdown messages-menu" style="display:none" id="_search" onclick="ActivarBuscar()">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-search"></i>
+            </a>
+          </li>
           <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
@@ -92,6 +97,7 @@
           <!-- Notifications Menu -->
           <li class="dropdown notifications-menu">
             <!-- Menu toggle button -->
+
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
               <span class="label label-warning">10</span>
@@ -192,21 +198,18 @@
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Menú</li>
-        <!-- Optionally, you can add icons to the links -->
-        <!--li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li-->
-        <!--li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li-->
-        <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Afiliación</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
+        <li>
+          <a href="#"><i class="fa fa-users"></i> <span>Datos</span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="#">Datos</a></li>
-            <li><a href="#">Gestión de Usuario</a></li>
-            <li><a href="#">Auditoria</a></li>
-            <li><a href="#">Estadísticas</a></li>
-          </ul>
+        </li>
+        <li >
+          <a href="#"><i class="fa fa-gears"></i> <span>Gestionar Usuario</span></a>
+        </li>
+        <li >
+          <a href="#"><i class="fa fa-pie-chart"></i> <span>Estadisticas</span></a>
+        </li>
+        <li >
+          <a href="#"><i class="fa fa-user-secret"></i> <span>Auditoria</span></a>
         </li>
       </ul>
       <!-- /.sidebar-menu -->
@@ -232,7 +235,7 @@
 
   <div class="row ">
   <div class="col-md-12 col-lg-12">
-  <div class="box">
+  <div class="box" id="_consultarbox">
 
         <div class="box-body">
         <div class="row row-centered">
@@ -298,7 +301,9 @@
 
     	               <h3 class="box-title">Datos Basicos</h3>
                      <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" onclick="Editar()" ><i class="fa fa-pencil"></i>
+                        <button type="button" class="btn btn-box-tool" onclick="Editar()" style="display:none" ><i class="fa fa-pencil"></i>
+                        <button type="button" class="btn btn-box-tool" onclick="ActivarBuscar()"><i class="fa fa-search"></i>
+
                         </button>
                       </div>
 
@@ -699,7 +704,7 @@
     	                </div>
     	              </form>
     	            </div><!-- /.box-body -->
-                  <div class="modal-footer" id="_botones">
+                  <div class="modal-footer" id="_botonesmilitar">
                     <button type="button" class="btn btn-success" data-dismiss="modal" onclick="activarSalvar()">
                       <i class="fa fa-print"></i>&nbsp;&nbsp;Constancia de Afiliación</button>
                     <button type="button" class="btn btn-success" data-dismiss="modal" onclick="activarSalvar()">
@@ -853,15 +858,15 @@
   <!-- Small modal -->
 
 
-  <div class="modal fade " tabindex="-1" role="dialog" id="modMsj">
-    <div class="modal-dialog " role="document">
+  <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="modMsj">
+    <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title">Mensaje</h4>
         </div>
         <div class="modal-body">
-
+          <p id="_contenido"></p>
 
 
 
@@ -1226,7 +1231,7 @@
 
 
         </div>
-        <div class="modal-footer" id="_botones">
+        <div class="modal-footer" id="_botonesfamiliar">
           <button type="button" class="btn btn-default" data-dismiss="modal" onclick="activarSalvar()">Aceptar</button>
           <button type="button" class="btn btn-primary" onclick="desactivarSalvar()">Cancelar</button>
         </div>
@@ -1270,6 +1275,16 @@
     //$('select').select2();
   })
 
+  $('#_cedula').keyup(function(e){
+    if(e.keyCode == 13) {
+        Buscar();
+    }
+  });
+
+  $('#modMsj').on('shown.bs.modal', function () {
+    $('#_aceptar').focus();
+
+  });
 
   function Editar(){
     $('#modMsj').modal('show');

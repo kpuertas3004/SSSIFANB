@@ -1,6 +1,13 @@
 function Buscar( id ){
+
   if (id != undefined) {
     $("#_cedula").val(id);
+  }
+  if($("#_cedula").val() == ""){
+    $("#_contenido").html("Debe introducir una cédula");
+    $("#_botones").html('<button type="button" class="btn btn-default" data-dismiss="modal" id="_aceptar" onClick="IrCedula()">Aceptar</button>')
+    $("#modMsj").modal("show");
+    return false;
   }
   $("#_cargando").show()
   $("#_imgfamiliar").attr("src", "images/ndisponible.jpg");
@@ -14,14 +21,14 @@ function Buscar( id ){
         if(militar.tipo != undefined){
           $("#_cedula").val("");
           $("#_contenido").html("El usuario no existe");
-          $("#_botones").html('<button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>')
+          $("#_botones").html('<button type="button" class="btn btn-default" data-dismiss="modal" id="_aceptar">Aceptar</button>')
           $("#modMsj").modal("show");
+          $("#_aceptar").focus();
 
         }else{
           t = $('#tblresultados').DataTable();
           t.clear();
           var DB = militar.Persona.DatoBasico;
-          $("#_ficha").show();
           $("#txtcedula").val(DB.cedula);
           url = "http://192.168.12.198/imagenes/imagenes/" +  $("#txtcedula").val() + ".jpg";
           $("#_img").attr("src", url);
@@ -74,14 +81,17 @@ function Buscar( id ){
 
           });
 
+          $("#_cedula").val("");
+          $("#_ficha").show();
+          $("#_consultarbox").hide();
+          $("#_search").show();
         }
-
         $("#_cargando").hide();
       }
 
   };
 
-  xhttp.onreadystatechange = function() {
+  xhttp.onerror = function() {
       if (this.readyState == 4 && this.status == 0) {
         $.notify("No se puede conectar al servidor");
         $("#_cargando").hide();
@@ -90,7 +100,10 @@ function Buscar( id ){
   };
   xhttp.send();
 }
-
+function IrCedula(){
+  
+  $("#_cedula").focus();
+}
 
 function ConvertirFechaHumana(f){
   fe = f.substr(0,10);
@@ -100,4 +113,10 @@ function ConvertirFechaHumana(f){
 
 function IncluirFamiliar(){
   $("#modFamiliar").modal('show');
+}
+
+function ActivarBuscar(){
+  $("#_ficha").hide();
+  $("#_consultarbox").show();
+  $("#_search").hide();
 }
