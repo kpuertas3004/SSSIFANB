@@ -588,7 +588,7 @@
 }
 .skin-black-light .treeview-menu > li.active > a,
 .skin-black-light .treeview-menu > li > a:hover {
-  color: #000000;
+  color: #00FF00;
 }
 .skin-black-light .treeview-menu > li.active > a {
   font-weight: 600;
@@ -849,7 +849,7 @@
 }
 .skin-green-light .sidebar-menu > li:hover > a,
 .skin-green-light .sidebar-menu > li.active > a {
-  color: #000000;
+  color: #00FF00;
   background: #f4f4f5;
 }
 .skin-green-light .sidebar-menu > li.active {
@@ -1184,6 +1184,7 @@
 .skin-red-light .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
   background-color: #fff;
   color: #666;
+
 }
 .skin-red-light .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
   border-left-color: #fff;
@@ -1201,14 +1202,22 @@
   }
 }
 /*
- * Skin: Yellow
+ * Skin: Franja Delgada
  * ------------
  */
 .skin-yellow .main-header .navbar {
-  background-color: #f39c12;
+  background-color: #367fa9;
 }
+
+
+/*
+ * Skin: Color de Letra del Usuario Franja Delgada
+ * ------------
+ */
 .skin-yellow .main-header .navbar .nav > li > a {
-  color: #ffffff;
+  color: #FFFFFF;
+  
+  /* Color de Letra Sombreado del Usuario Franja Delgada */
 }
 .skin-yellow .main-header .navbar .nav > li > a:hover,
 .skin-yellow .main-header .navbar .nav > li > a:active,
@@ -1223,15 +1232,21 @@
 .skin-yellow .main-header .navbar .sidebar-toggle {
   color: #ffffff;
 }
+
+ /* Color de SOMBREADO de las tres rayitas del cuadrito que reduce la pantalla Franja Delgada (Corta) */
 .skin-yellow .main-header .navbar .sidebar-toggle:hover {
   color: #f6f6f6;
   background: rgba(0, 0, 0, 0.1);
 }
+
+ /* Color de tres rayitas del cuadrito que reduce la pantalla Franja Delgada (Corta) */
 .skin-yellow .main-header .navbar .sidebar-toggle {
   color: #fff;
 }
+
+ /* Color Fondo SOMBREADO del cuadrito que reduce la pantalla Franja Delgada (Corta) */
 .skin-yellow .main-header .navbar .sidebar-toggle:hover {
-  background-color: #e08e0b;
+  background-color: #800000;
 }
 @media (max-width: 767px) {
   .skin-yellow .main-header .navbar .dropdown-menu li.divider {
@@ -1241,61 +1256,78 @@
     color: #fff;
   }
   .skin-yellow .main-header .navbar .dropdown-menu li a:hover {
-    background: #e08e0b;
+    background: #0079F2;
   }
 }
+
+/* Color de Fondo Y letra Fijo de la franja izquierda (Parte Corta)*/
 .skin-yellow .main-header .logo {
-  background-color: #e08e0b;
-  color: #ffffff;
+  background-color: #367fa9; /*Fondo franja Corta*/
+  color: #FFFFFF;
   border-bottom: 0 solid transparent;
 }
+
+/* Color de Fondo del pulsor de franja izquierda (Corta)*/
+
 .skin-yellow .main-header .logo:hover {
-  background-color: #db8b0b;
+  background-color: #367fa9;
 }
 .skin-yellow .main-header li.user-header {
-  background-color: #f39c12;
+  background-color: #880000;
 }
+
+/* Color de Fondo del Menú izquierda*/
 .skin-yellow .content-header {
   background: transparent;
 }
 .skin-yellow .wrapper,
 .skin-yellow .main-sidebar,
 .skin-yellow .left-side {
-  background-color: #222d32;
+  background-color: #840000; /*Fondo*/
 }
 .skin-yellow .user-panel > .info,
 .skin-yellow .user-panel > .info > a {
   color: #fff;
 }
+
+/* Color De Fondo del Cuadro (MENÚ)*/
 .skin-yellow .sidebar-menu > li.header {
-  color: #4b646f;
-  background: #1a2226;
+  color: #4b646f; /*Letra*/
+  background: #ecf0f5; /*Fondo*/
 }
 .skin-yellow .sidebar-menu > li > a {
   border-left: 3px solid transparent;
 }
+
+/* Color de SOMBREADO, Letra, Rayita izquierda (Minima) del menú Izquierdo*/
 .skin-yellow .sidebar-menu > li:hover > a,
 .skin-yellow .sidebar-menu > li.active > a {
-  color: #ffffff;
-  background: #1e282c;
-  border-left-color: #f39c12;
+  color: #FFFFFF; /*Letra Sombreado*/
+  background: #367fa9; /*Sombreado*/
+  border-left-color: #CCCCCC; /*Borde de Raya*/
 }
+
+/* Color de FONDO Sub-Menú del menú Izquierdo*/
 .skin-yellow .sidebar-menu > li > .treeview-menu {
   margin: 0 1px;
-  background: #2c3b41;
+  background: #367fa9;
 }
+
+/*Color de Letra menu izquierdo*/
 .skin-yellow .sidebar a {
-  color: #b8c7ce;
+  color: #FFFFFF; /*Color de Letra menu izquierdo*/
 }
 .skin-yellow .sidebar a:hover {
   text-decoration: none;
 }
+
+/*Color de Letra, Color de Letra Sombreada Sub-menu izquierdo*/
 .skin-yellow .treeview-menu > li > a {
-  color: #8aa4af;
+  color: #FFFFFF; /*Color de Letra Sub-menu izquierdo*/
 }
 .skin-yellow .treeview-menu > li.active > a,
 .skin-yellow .treeview-menu > li > a:hover {
-  color: #ffffff;
+  color: #FFFFFF; /*Color de Letra Sombreada Sub-menu izquierdo*/
 }
 .skin-yellow .sidebar-form {
   border-radius: 3px;
@@ -1481,7 +1513,7 @@
 }
 @media (min-width: 768px) {
   .skin-yellow-light.sidebar-mini.sidebar-collapse .sidebar-menu > li > .treeview-menu {
-    border-left: 1px solid #d2d6de;
+    border-left: 1px solid #00FF00;
   }
 }
 /*
