@@ -26,10 +26,14 @@ function Buscar( id ){
           $("#_aceptar").focus();
 
         }else{
+
           t = $('#tblresultados').DataTable();
           t.clear();
           var DB = militar.Persona.DatoBasico;
           $("#txtcedula").val(DB.cedula);
+          url = "images/grados/" + militar.Grado.abreviatura + ".png";
+          url = url.toLowerCase();
+          $("#_imggrado").attr("src", url);
           url = "http://192.168.12.198/imagenes/imagenes/" +  $("#txtcedula").val() + ".jpg";
           $("#_img").attr("src", url);
           $("#_imgcarnetmilitar").attr("src", url);
