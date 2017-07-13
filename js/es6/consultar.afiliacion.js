@@ -90,6 +90,6 @@ function ConvertirFechaHumana(f){
   return fa[2] + "/" + fa[1] + "/" + fa[0];
 }
 
-function CalcularEdad(){
-  
+function IncluirFamiliar(){
+  $("#modFamiliar").modal('show');
 }
