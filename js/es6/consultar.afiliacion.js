@@ -37,6 +37,8 @@ function Buscar( id ){
           url = "http://192.168.12.198/imagenes/imagenes/" +  $("#txtcedula").val() + ".jpg";
           $("#_img").attr("src", url);
           $("#_imgcarnetmilitar").attr("src", url);
+          $("#_objectPDF").html("<center><iframe src='tarjeta-afiliacion/militar.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
+
           $("#txtnombre").val(DB.nombreprimero + ' ' + DB.nombresegundo);
           $("#txtapellido").val(DB.apellidoprimero + ' ' + DB.apellidosegundo);
           $("#txtnacimiento").val(ConvertirFechaHumana(DB.fechanacimiento));
@@ -54,8 +56,6 @@ function Buscar( id ){
             let parentesco = v.parentesco;
             familiar.Persona.DatoBasico.sexo = v.Persona.DatoBasico.sexo;
             familiar.parentesco = parentesco;
-           // let fechanacimiento = val(ConvertirFechaHumana(DBF.fechanacimiento));
-             let sexo  = v.sexo;
 
             mil = nombre;
             if (v.esmilitar == true){
@@ -81,7 +81,7 @@ function Buscar( id ){
 
           });
 
-         // t.column(5).visible(false);
+          t.column(5).visible(false);
           t.column(6).visible(false);
           $('#tblresultados tbody').on('click', 'tr', function () {
               var data = t.row(this).data();

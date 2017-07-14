@@ -1,3 +1,0 @@
-[0319/174911.282:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\temp: Acceso denegado. (0x5)
-[0319/174911.285:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: Ha terminado la canalización. (0x6D)
-[0319/174911.286:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\temp: Acceso denegado. (0x5)
