@@ -49,17 +49,19 @@ function Buscar( id ){
           $.each(militar.Familiar, function (c, v){
             let familiar = new Familiar();
             let DBF = v.Persona.DatoBasico;
-
             let cedula  = DBF.cedula;
             let nombre = DBF.apellidoprimero + ' ' + DBF.apellidosegundo + ' ' + DBF.nombreprimero + ' ' + DBF.nombresegundo;
             let parentesco = v.parentesco;
             familiar.Persona.DatoBasico.sexo = v.Persona.DatoBasico.sexo;
             familiar.parentesco = parentesco;
+           // let fechanacimiento = val(ConvertirFechaHumana(DBF.fechanacimiento));
+             let sexo  = v.sexo;
 
             mil = nombre;
             if (v.esmilitar == true){
               mil = nombre + '<font color="#0E6626"><i class="fa fa-fw fa-male"></i></font>&nbsp;'  ;
             }
+
             ok = '<font color="#blue"><i class="fa fa-fw fa-close"></i></font>';
             if (v.beneficio == true){
               ok = '<font color="#green"><i class="fa fa-fw fa-check"></i></font>';
@@ -72,13 +74,15 @@ function Buscar( id ){
               familiar.GenerarParentesco(),
               ok,
               DBF.fechanacimiento,
-              v.esmilitar
+              v.esmilitar,
+              DBF.sexo
             ]).draw(false);
 
 
           });
 
-          t.column(5).visible(false);t.column(6).visible(false);
+         // t.column(5).visible(false);
+          t.column(6).visible(false);
           $('#tblresultados tbody').on('click', 'tr', function () {
               var data = t.row(this).data();
               urlf = "http://192.168.12.198/imagenes/imagenes/" +  data[1] + ".jpg";
