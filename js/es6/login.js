@@ -19,6 +19,8 @@ $(function (){
 });
 
 
+
+
 function Ingresar(){
   let login = new Login($("#usuario").val(), $("#clave").val());
   var xhttp = new XMLHttpRequest();

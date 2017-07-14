@@ -38,6 +38,7 @@ function Buscar( id ){
           $("#_img").attr("src", url);
           $("#_imgcarnetmilitar").attr("src", url);
           $("#_objectPDF").html("<center><iframe src='tarjeta-afiliacion/militar.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
+            $("#_objectFamiliar").html("<center><iframe src='tarjeta-afiliacion/afiliado.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
 
           $("#txtnombre").val(DB.nombreprimero + ' ' + DB.nombresegundo);
           $("#txtapellido").val(DB.apellidoprimero + ' ' + DB.apellidosegundo);
@@ -137,4 +138,8 @@ function ActivarBuscar(){
 
 function VisualizarCarnet(){
   $("#modCarnet").modal("show");
+}
+
+function VisualizarCarnetFamiliar(){
+  $("#modCarnetFamiliar").modal("show");
 }

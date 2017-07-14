@@ -1,4 +1,9 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+date_default_timezone_set('America/Caracas');
+//CentOS setsebool -P httpd_can_network_connect 1
+
 $cSession = curl_init();
 curl_setopt($cSession,CURLOPT_URL,"http://192.168.6.45:8080/ipsfa/api/militar/crud/".$_GET['id']);
 curl_setopt($cSession,CURLOPT_RETURNTRANSFER,true);
@@ -7,6 +12,16 @@ $result=curl_exec($cSession);
 curl_close($cSession);
 $militar = (object)json_decode($result, true);
 $Persona = (object)$militar->Persona;
+
+
+// if(curl_exec($curl) === false)
+// {
+//     echo 'Curl error: ' . curl_error($curl);
+// }
+// else
+// {
+//     echo 'Operación completada sin errores';
+// }
 ?>
 <style type="text/css">
 <!--
@@ -68,7 +83,7 @@ body {margin: 0px;}
       <br />
       <label>16/11/2000</label>
       <br />
-      <label>123456789</label>
+      <label>1564654</label>
       <br />
       <label class="letra-8">MADRE</label>
       <br />
