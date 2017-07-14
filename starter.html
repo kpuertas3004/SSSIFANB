@@ -388,10 +388,11 @@
                               <div class="nav-tabs-custom">
                                              <!-- Nav tabs -->
                                              <ul class="nav nav-tabs " role="tablist">
-                                               <li role="presentation" class="active"><a href="#mdmilitar" aria-controls="home" role="tab" data-toggle="tab">Dato Militar</a></li>
+                                               <li role="presentation" class="active"><a href="#mdmilitar" aria-controls="home" role="tab" data-toggle="tab">Datos <br> Militares</a></li>
+                                               <li role="presentation"><a href="#mfinanciero" aria-controls="home" role="tab" data-toggle="tab">Cta. Bancaria</a></li>
                                                <li role="presentation"><a href="#mdireccion" aria-controls="home" role="tab" data-toggle="tab">Dirección</a></li>
                                                <li role="presentation"><a href="#mpartida" aria-controls="profile" role="tab" data-toggle="tab">Partida Nacimiento</a></li>
-                                               <li role="presentation"><a href="#mdfisico" aria-controls="messages" role="tab" data-toggle="tab">Datos Fisicos / Fisionomico</a></li>
+                                               <li role="presentation"><a href="#mdfisico" aria-controls="messages" role="tab" data-toggle="tab">Datos Fisicos /<br>  Fisionomico</a></li>
                                                <li role="presentation"><a href="#mdredes" aria-controls="messages" role="tab" data-toggle="tab">Redes Sociales</a></li>
                                                <li role="presentation"><a href="#mdcarnet" aria-controls="messages" role="tab" data-toggle="tab">TIM</a></li>
 
@@ -448,6 +449,52 @@
                                                 </div>
 
                                                 </div><!-- Tab panes Datos Militares-->
+
+                                                <!-- Tab Datos Financieros-->
+
+                                                 <div role="tabpanel" class="tab-pane" id="mfinanciero"  style="padding:15px">
+                                                 <div class="row">
+                                                   <div class="form-group">
+                                                    <label class="col-md-3 ">Institución Financiera</label>
+                                                     
+                                                   <div class="col-md-9">
+                                                     <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbinstfinanciera" >
+                                                       <option selected="selected">BANFANB</option>
+                                                       <option selected="selected">BCO. DE VENEZUELA</option>
+                                                       <option selected="selected">BICENTENARIO</option>
+                                                       <option selected="selected">BANESCO</option>
+                                                     </select>
+                                                   </div>
+
+                                                   
+
+                                                  </div> <!-- Grupo nombres-->
+                                                  </div>
+                                                  <div class="row">
+                                                    <div class="form-group">
+                                                     <label class="col-md-6 ">Tipo de Cuenta:</label>
+                                                      <label class="col-md-6">Nro. de Cuenta:</label>
+                                                     <div class="col-md-6">
+                                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbinstfinanciera" >
+                                                       <option selected="selected">AHORRO</option>
+                                                       <option selected="selected">CORRIENTE</option>
+                                                        </select>
+                                                     </div>
+
+                                                     <div class="col-md-6">
+                                                       <input  id="txtnrocuenta" class="form-control"  type="text" >
+                                                     </div>
+
+                                                   </div> <!-- Grupo nombres-->
+
+                                                 </div>
+
+                                               </div><!-- Tab Datos Financieros-->
+
+
+
+
+
                                                <div role="tabpanel" class="tab-pane" id="mdireccion" style="padding:15px">
 
 
@@ -666,40 +713,7 @@
                                              </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                      </div> <!-- Fila para el Tabs Militar -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                    </div>
@@ -730,11 +744,24 @@
                       <img width="35%" src="images/grados/cnel.png" alt="Grado del Milita" id="_imggrado">
                     </p>
     	              <ul class="list-group list-group-unbordered">
-                      <li class="list-group-item">
-    	                  <b>Fecha Ingreso</b> <a class="pull-right" id="_fingreso"></a>
+                     	 <li class="list-group-item">
+    	                  <b>Fecha Ingreso Componente</b> <a class="pull-right" id="_fingreso"></a>
     	                </li>
     	                <li class="list-group-item">
+    	                  <b>Categoria</b> <a class="pull-right" id="_categoria"></a>
+    	                </li>
+    	                <li class="list-group-item">
+    	                  <b>Clasificación</b> <a class="pull-right" id="_clasificacion"></a>
+    	                </li>
+    	                 <li class="list-group-item">
+    	                  <b>Situación</b> <a class="pull-right" id="_situacion"></a>
+    	                </li>
+    	                
+    	                <li class="list-group-item">
     	                  <b>Ultimo Ascenso</b> <a class="pull-right" id="_fascenso"></a>
+    	                </li>
+    	                <li class="list-group-item">
+    	                  <b>Fecha de Promoción</b> <a class="pull-right" id="_fpromocion"></a>
     	                </li>
     	                <li class="list-group-item">
     	                  <b>Tiempo de Servicio</b> <a class="pull-right"  id="_tiemposervicio"> </a>
@@ -772,11 +799,12 @@
               								<tr>
                                 <th >#</th>
                                 <th >CÉDULA</th>
-                								<th>APELLIDOS Y NOMBRES</th>
-                								<th>PARENTESCO</th>
+                				<th>APELLIDOS Y NOMBRES</th>
+                				<th>PARENTESCO</th>
                                 <th>BENEFICIO</th>
                                 <th>FECHA</th>
                                 <th>TIPO</th>
+                                 <th>SEXO</th-->
                               </tr>
               							</thead>
               							<tbody>
@@ -1397,7 +1425,8 @@
       'searching'   : false,
       'ordering'    : false,
       'info'        : false,
-      'autoWidth'   : false
+      //'autoWidth'   : false
+       'autoWidth'   : false
     });
     $("#salvar").hide();
     //$('select').select2();
