@@ -1,5 +1,5 @@
 <?php
-
+ //yum install gd gd-devel php-gd
     // get the HTML
 Class MotorGeneralPrint {
 
@@ -30,8 +30,8 @@ Class MotorGeneralPrint {
 
 
 			//$html2pdf->Output('"'.$numero_carnet.'".pdf','D');
-			$html2pdf->Output('carnet.pdf');
 			//$html2pdf->Output($output_file, 'F');
+			$html2pdf->Output('carnet.pdf');
 			$enlace = $html2pdf->Output('carnet.pdf'); //id a trav�s de GET
 			header ("Content-Disposition: attachment; filename='exemple01.pdf'\n\n");
 			header ("Content-Type: application/octet-stream");

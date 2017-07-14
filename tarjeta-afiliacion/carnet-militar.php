@@ -1,4 +1,9 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+date_default_timezone_set('America/Caracas');
+//CentOS setsebool -P httpd_can_network_connect 1
+
 $cSession = curl_init();
 curl_setopt($cSession,CURLOPT_URL,"http://192.168.6.45:8080/ipsfa/api/militar/crud/".$_GET['id']);
 curl_setopt($cSession,CURLOPT_RETURNTRANSFER,true);
@@ -7,6 +12,15 @@ $result=curl_exec($cSession);
 curl_close($cSession);
 $militar = (object)json_decode($result, true);
 $Persona = (object)$militar->Persona;
+
+// if(curl_exec($curl) === false)
+// {
+//     echo 'Curl error: ' . curl_error($curl);
+// }
+// else
+// {
+//     echo 'Operación completada sin errores';
+// }
 ?>
 
 <style>
@@ -134,12 +148,12 @@ body {margin: 0px;}
 
     <div class="css-foto">
 
-      <img src="../images/ndisponible.jpg" style="width:73px; height:91px;"/>
+      <img src="images/ndisponible.jpg" style="width:73px; height:91px;"/>
 
       </div>
     <!---imagen del grado -->
     <div class="css-insignia">
-      <img src="../images/grados/<?php echo strtolower($militar->Grado['abreviatura']) ?>.png" style="width:102px; height:50px;"/>
+      <img src="images/grados/ptte.png" style="width:102px; height:50px;"/>
       </div>
     <!---imagen del grado -->
     <div class="fecha-vencimiento">
