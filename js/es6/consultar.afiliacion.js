@@ -47,10 +47,15 @@ function Buscar( id ){
           $("#_fascenso").html(ConvertirFechaHumana(militar.fascenso));
           let i = 1;
           $.each(militar.Familiar, function (c, v){
+            let familiar = new Familiar();
             let DBF = v.Persona.DatoBasico;
+
             let cedula  = DBF.cedula;
             let nombre = DBF.apellidoprimero + ' ' + DBF.apellidosegundo + ' ' + DBF.nombreprimero + ' ' + DBF.nombresegundo;
             let parentesco = v.parentesco;
+            familiar.Persona.DatoBasico.sexo = v.Persona.DatoBasico.sexo;
+            familiar.parentesco = parentesco;
+
             mil = nombre;
             if (v.esmilitar == true){
               mil = nombre + '<font color="#0E6626"><i class="fa fa-fw fa-male"></i></font>&nbsp;'  ;
@@ -64,7 +69,7 @@ function Buscar( id ){
               i++,
               cedula,
               mil,
-              parentesco,
+              familiar.GenerarParentesco(),
               ok,
               DBF.fechanacimiento,
               v.esmilitar

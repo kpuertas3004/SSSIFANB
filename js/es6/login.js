@@ -10,6 +10,15 @@ class Login {
 }
 
 
+$(function (){
+  $('#_cedula').keyup(function(e){
+    if(e.keyCode == 13) {
+        Buscar();
+    }
+  });
+});
+
+
 function Ingresar(){
   let login = new Login($("#usuario").val(), $("#clave").val());
   var xhttp = new XMLHttpRequest();
