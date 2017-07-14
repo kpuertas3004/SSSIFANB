@@ -18,9 +18,6 @@ $(function (){
   });
 });
 
-
-
-
 function Ingresar(){
   let login = new Login($("#usuario").val(), $("#clave").val());
   var xhttp = new XMLHttpRequest();
@@ -36,5 +33,5 @@ function Ingresar(){
    };
 
   xhttp.send(JSON.stringify(login.Login()));
-  
+
 }
