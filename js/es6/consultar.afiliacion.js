@@ -34,7 +34,7 @@ function Buscar( id ){
           url = "images/grados/" + militar.Grado.abreviatura + ".png";
           url = url.toLowerCase();
           $("#_imggrado").attr("src", url);
-          url = "http://192.168.12.198/imagenes/imagenes/" +  $("#txtcedula").val() + ".jpg";
+          url = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
           $("#_img").attr("src", url);
           $("#_imgcarnetmilitar").attr("src", url);
           $("#_objectPDF").html("<center><iframe src='tarjeta-afiliacion/militar.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
@@ -86,7 +86,7 @@ function Buscar( id ){
           t.column(6).visible(false);
           $('#tblresultados tbody').on('click', 'tr', function () {
               var data = t.row(this).data();
-              urlf = "http://192.168.12.198/imagenes/imagenes/" +  data[1] + ".jpg";
+              urlf = "http://192.168.12.161/imagenes/" +  data[1] + ".jpg";
               $("#_imgfamiliar").attr("src", urlf);
               $("#_ffnacimiento").html(ConvertirFechaHumana(data[5]));
               $("#_fcedula").html('C.I: V- ' + data[1]);
@@ -121,6 +121,7 @@ function IrCedula(){
 }
 
 function ConvertirFechaHumana(f){
+  console.log(f);
   fe = f.substr(0,10);
   fa = fe.split("-");
   return fa[2] + "/" + fa[1] + "/" + fa[0];

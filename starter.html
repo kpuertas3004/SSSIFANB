@@ -31,6 +31,14 @@
     }
   </style>
   <link rel="stylesheet" href="css/carnet.css">
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="dist/js/adminlte.min.js"></script>
+  <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+  <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
+  <script src="bower_components/notify/notify.min.js"></script>
+
   <script type="text/javascript" src="js/es6/militar.js"></script>
   <script type="text/javascript" src="js/es6/consultar.afiliacion.js"></script>
 
@@ -41,7 +49,6 @@
       //$('#_cuerpo').html('<iframe data="inc/usuario.html" type="text/html" width="100%" > </iframe>');
       //document.getElementById( "title_section" ).innerHTML = "Afiliaci&oacute;n Intregral";
       //$('#_cuerpo').html('<iframe src="inc/usuario.html" width="100%" > </iframe>');
-      alert(2);
      var xhttp = new XMLHttpRequest();
      xhttp.open('GET', 'inc/usuario.html');
      xhttp.onreadystatechange = function() {
@@ -49,7 +56,7 @@
              // Typical action to be performed when the document is ready:
              $('#_cuerpo').html(xhttp.responseText);
           }
-          
+
       };
       xhttp.send();
   }
@@ -57,7 +64,7 @@
 
 
 </head>
-<body class="hold-transition skin-yellow">
+<body class="hold-transition skin-yellow" style="display:none" id="_body">
 <div style='width:100%;height: 70px;'>
       <div style='width:20%;height: 70px;float:left;text-align:right; background-color:#980000;' ><img src='images/1-1.png'></div>
       <div style='width:65%;height: 70px;float:left;text-align:center;background-color:#980000;' ><img src='images/1-2.png'></div>
@@ -66,7 +73,7 @@
 <div class="wrapper">
 
   <header class="main-header">
-    <a href="index2.html" class="logo">
+    <a href="starter.html" class="logo">
       <span class="logo-mini"><b>S</b>FANB</span>
 
       <span class="logo-lg"><b>SSSI</b>FANB</span>
@@ -202,7 +209,7 @@
                   <a href="#" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Cerrar Sesión</a>
+                  <a href="#" class="btn btn-default btn-flat" onclick="CerrarSession()">Cerrar Sesión</a>
                 </div>
               </li>
             </ul>
@@ -319,7 +326,53 @@
 
     <section class="content">
     	<div class="row">
-    	        <div class="col-md-8" >
+
+    			     <div class="col-md-4 col-md-push-8">
+    	          <!-- Profile Image -->
+    	          <div class="box box-primary">
+    	            <div class="box-body box-profile">
+    	              <img class="profile-user-img img-responsive" style="width:180px" src="images/ndisponible.jpg"
+                                onerror="this.src='images/ndisponible.jpg'" alt="Foto del Militar" id="_img">
+    	              <h3 class="profile-username text-center"></h3>
+    	              <p class="text-muted text-center">
+                      <img width="35%" src="images/grados/cnel.png" alt="Grado del Milita" id="_imggrado">
+                    </p>
+    	              <ul class="list-group list-group-unbordered">
+                     	 <li class="list-group-item">
+    	                  <b>Fecha Ingreso Componente</b> <a class="pull-right" id="_fingreso"></a>
+    	                </li>
+    	                <li class="list-group-item">
+    	                  <b>Categoria</b> <a class="pull-right" id="_categoria"></a>
+    	                </li>
+    	                <li class="list-group-item">
+    	                  <b>Clasificación</b> <a class="pull-right" id="_clasificacion"></a>
+    	                </li>
+    	                 <li class="list-group-item">
+    	                  <b>Situación</b> <a class="pull-right" id="_situacion"></a>
+    	                </li>
+
+    	                <li class="list-group-item">
+    	                  <b>Ultimo Ascenso</b> <a class="pull-right" id="_fascenso"></a>
+    	                </li>
+    	                <li class="list-group-item">
+    	                  <b>Fecha de Promoción</b> <a class="pull-right" id="_fpromocion"></a>
+    	                </li>
+    	                <li class="list-group-item">
+    	                  <b>Tiempo de Servicio</b> <a class="pull-right"  id="_tiemposervicio"> </a>
+    	                </li>
+                      <li class="list-group-item">
+                       <b>Historico Militar</b> <a class="pull-right" href="#"  onClick="HistoricoMilitar()"> Ver Más</a>
+                     </li>
+                     <li class="list-group-item">
+                      <b>Historia Clinica</b> <a class="pull-right" href="#"  onClick="HistoriaClinica()"> Ver Más</a>
+                    </li>
+    	              </ul>
+    	            </div>
+    	            <!-- /.box-body -->
+    	          </div>
+    	          <!-- /.box -->
+    	        </div>
+              <div class="col-md-8 col-md-pull-4" >
     	          <!-- Default box -->
     	          <div class="box box-primary box-solid " >
     	            <div class="box-header with-border">
@@ -336,70 +389,54 @@
     	            <div class="box-body">
     	              <form class="form-horizontal">
     	                <div class="box-body">
-    	                  <div class="row">
                           <div class="form-group">
-                            <label class="col-md-12">Cédula:</label>
-                            <div class="col-md-4">
+                            <div class="col-md-4 col-sm-12">
+                            <label>Cédula:</label>
                               <div class="input-group">
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">V&nbsp;&nbsp;
                                       <span class="fa fa-caret-down"></span></button>
                                 </span>
                                 <input class="form-control" placeholder="Cédula de Identidad" id="txtcedula" onblur="consultar()" type="text" disabled="disabled">
-
                               </div>
+                          </div> <!-- Cedula -->
+                        </div>
 
-                            </div>
-                            <div class="col-md-6 pull-rigth"></div>
-                            <div class="col-md-2 pull-rigth">
-                              <button class="btn btn-block btn-success" type="button" id="salvar"> <i class="fa fa-save"></i> &nbsp;Salvar</button>
-                            </div>
+                        <div class="form-group">
+                          <div class="col-md-6 col-sm-12">
+                            <label>Nombres:</label>
+                            <input placeholder="Nombre Completo" id="txtnombre" class="form-control"  type="text" disabled="disabled">
+                          </div>
+                          <div class="col-md-6 col-sm-12">
+                            <label>Apellidos:</label>
+                           <input placeholder="Apellido Completo" id="txtapellido" class="form-control"  type="text" disabled="disabled">
+                          </div>
+                       </div> <!-- Grupo nombres-->
 
-                          </div> <!-- Fecha Nacimiento -->
 
-
-                        </div><!-- /.Row -->
-                        <div class="row">
-                          <div class="form-group">
-                           <label class="col-md-6 ">Nombres:</label>
-                            <label class="col-md-6">Apellidos:</label>
-                           <div class="col-md-6">
-                             <input placeholder="Nombre Completo" id="txtnombre" class="form-control"  type="text" disabled="disabled">
-                           </div>
-
-                           <div class="col-md-6">
-                             <input placeholder="Apellido Completo" id="txtapellido" class="form-control"  type="text" disabled="disabled">
-                           </div>
-
-                         </div> <!-- Grupo nombres-->
-                       </div>
-
-                       <div class="row">
                          <div class="form-group">
-                           <label class="col-md-4">Fecha de Nacimiento:</label>
-                           <label class="col-md-4">Sexo:</label>
-                           <label class="col-md-4">Estado Civil:</label>
-                           <div class="col-md-4">
+                           <div class="col-md-4 col-sm-12">
+                             <label>Fecha de Nacimiento:</label>
                              <input placeholder="Nacimiento" id="txtnacimiento" class="form-control"  type="text" disabled="disabled">
                            </div>
-     	                    <div class="col-md-4">
-                            <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbsexo" disabled="disabled">
-                              <option selected="selected" value="F">FEMENINO</option>
-                              <option value="M">MASCULINO</option>
-
-                            </select>
-     	                    </div>
-
-     	                    <div class="col-md-4">
-                            <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbedocivil" disabled="disabled">
-                              <option value="S" selected="selected">SOLTERO</option>
-                              <option value="C">CASADO</option>
-                              <option value="D">DIVORCIADO</option>
-                              <option value="V">VIUDO</option>
-                            </select>
-     	                    </div>
+                           <div class="col-md-4 col-sm-6">
+                             <label >Sexo:</label>
+                             <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbsexo" disabled="disabled">
+                               <option selected="selected" value="F">FEMENINO</option>
+                               <option value="M">MASCULINO</option>
+                             </select>
+                           </div>
+                           <div class="col-md-4 col-sm-6">
+                              <label>Estado Civil:</label>
+                              <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbedocivil" disabled="disabled">
+                                <option value="S" selected="selected">SOLTERO</option>
+                                <option value="C">CASADO</option>
+                                <option value="D">DIVORCIADO</option>
+                                <option value="V">VIUDO</option>
+                              </select>
+     	                     </div>
                         </div> <!-- Grupo nombres-->
-                      </div>
+
 
 
                       <br>
@@ -755,51 +792,6 @@
                 </div><!-- /.box -->
 
     	         </div>
-    			     <div class="col-md-4">
-    	          <!-- Profile Image -->
-    	          <div class="box box-primary">
-    	            <div class="box-body box-profile">
-    	              <img class="profile-user-img img-responsive" style="width:180px" src="images/ndisponible.jpg"
-                                onerror="this.src='images/ndisponible.jpg'" alt="Foto del Militar" id="_img">
-    	              <h3 class="profile-username text-center"></h3>
-    	              <p class="text-muted text-center">
-                      <img width="35%" src="images/grados/cnel.png" alt="Grado del Milita" id="_imggrado">
-                    </p>
-    	              <ul class="list-group list-group-unbordered">
-                     	 <li class="list-group-item">
-    	                  <b>Fecha Ingreso Componente</b> <a class="pull-right" id="_fingreso"></a>
-    	                </li>
-    	                <li class="list-group-item">
-    	                  <b>Categoria</b> <a class="pull-right" id="_categoria"></a>
-    	                </li>
-    	                <li class="list-group-item">
-    	                  <b>Clasificación</b> <a class="pull-right" id="_clasificacion"></a>
-    	                </li>
-    	                 <li class="list-group-item">
-    	                  <b>Situación</b> <a class="pull-right" id="_situacion"></a>
-    	                </li>
-
-    	                <li class="list-group-item">
-    	                  <b>Ultimo Ascenso</b> <a class="pull-right" id="_fascenso"></a>
-    	                </li>
-    	                <li class="list-group-item">
-    	                  <b>Fecha de Promoción</b> <a class="pull-right" id="_fpromocion"></a>
-    	                </li>
-    	                <li class="list-group-item">
-    	                  <b>Tiempo de Servicio</b> <a class="pull-right"  id="_tiemposervicio"> </a>
-    	                </li>
-                      <li class="list-group-item">
-                       <b>Historico Militar</b> <a class="pull-right" href="#"  onClick="HistoricoMilitar()"> Ver Más</a>
-                     </li>
-                     <li class="list-group-item">
-                      <b>Historia Clinica</b> <a class="pull-right" href="#"  onClick="HistoriaClinica()"> Ver Más</a>
-                    </li>
-    	              </ul>
-    	            </div>
-    	            <!-- /.box-body -->
-    	          </div>
-    	          <!-- /.box -->
-    	        </div>
     	     </div>
 
     	      <div class="row">
@@ -1355,21 +1347,6 @@
 
 
 </div>
-<!-- ./wrapper -->
-
-<!-- REQUIRED JS SCRIPTS -->
-
-<!-- jQuery 3 -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
-<!-- DataTables -->
-<script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script src="bower_components/select2/dist/js/select2.full.min.js"></script>
-<script src="bower_components/notify/notify.min.js"></script>
 
 
 

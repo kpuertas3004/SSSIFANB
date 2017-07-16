@@ -153,7 +153,7 @@ body {margin: 0px;}
       </div>
     <!---imagen del grado -->
     <div class="css-insignia">
-      <img src="images/grados/<?php echo $militar->Grado['abreviatura'] ?>.png" style="width:102px; height:50px;"/>
+      <img src="images/grados/<?php echo strtolower($militar->Grado['abreviatura']) ?>.png" style="width:102px; height:50px;"/>
       </div>
     <!---imagen del grado -->
     <div class="fecha-vencimiento">

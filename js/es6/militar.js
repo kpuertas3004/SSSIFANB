@@ -1,10 +1,10 @@
 /**
- Desarrollado por  :  Maria Elena Nuñez 
+ Desarrollado por  :  Maria Elena Nuñez
  Correo            :  marielen936@gmail.com
- Modifcado    por  :  
- Correo persona mod:  
- Fecha Creacion    :  11-07-2017  
- Fecha Modificacion:  11-07-2017  
+ Modifcado    por  :
+ Correo persona mod:
+ Fecha Creacion    :  11-07-2017
+ Fecha Modificacion:  11-07-2017
  Descripcion       :  Clases, metodos y funciones de Militares
 */
 class DatoBasico{
@@ -36,7 +36,7 @@ class DatoBasico{
 	}
 
 	Sexo(){
-		return (this.sexo == "F")?"FEMENINO":"MASCULINO";		
+		return (this.sexo == "F")?"FEMENINO":"MASCULINO";
 	}
 
 	Nacionalidad(){
@@ -53,13 +53,13 @@ class DatoBasico{
 		    case "C":
 		     	estadocivil =(this.Persona.DatoBasico.sexo=="F")?"CASADA":"CASADO";
 		        break;
-		    case "D": 
+		    case "D":
 		    	estadocivil = (this.Persona.DatoBasico.sexo=="F")?"DIVORCIADA":"DIVORCIADO";
 		        break;
-		    case "S": 
+		    case "S":
 		    	estadocivil = (this.Persona.DatoBasico.sexo=="F")?"SOLTERA":"SOLTERO";
 		        break;
-		    case "V": 
+		    case "V":
 		    	estadocivil = (this.Persona.DatoBasico.sexo=="F")?"VIUDA":"VIUDO";
 		        break;
 		    default:
@@ -142,7 +142,7 @@ class Carnet{
 		this.responsable = "";
 		this.Componente = new Componente();
 		this.Grado = new Grado();
-	}	
+	}
 }
 
 
@@ -164,10 +164,10 @@ class Familiar{
 		    case "PD":
 		     	parentesco =(this.Persona.DatoBasico.sexo=="F")?"MADRE":"PADRE";
 		        break;
-		    case "HJ": 
+		    case "HJ":
 		    	parentesco = (this.Persona.DatoBasico.sexo=="F")?"HIJA":"HIJO";
 		        break;
-		    case "EA": 
+		    case "EA":
 		    	parentesco = (this.Persona.DatoBasico.sexo=="F")?"ESPOSA":"ESPOSO";
 		        break;
 		    default:
@@ -222,7 +222,7 @@ class Persona{
 
 
 class Militar{
-	constructor(){		
+	constructor(){
 		this.tipodato = "";
 		this.Persona = new Persona();
 		this.categoria = "";
@@ -252,7 +252,21 @@ class Militar{
 
 
 function Obtener(){
-	let militar = new Militar(); 
+	let militar = new Militar();
 	console.log(JSON.stringify(militar.ObtenerFecha()));
-	
+
+}
+
+$(function (){
+	console.log(sessionStorage.getItem('ipsfaToken'));
+  if (sessionStorage.getItem('ipsfaToken') == undefined ){
+		$(location).attr("href","index.html");
+	}else{
+		$("#_body").show();
+	}
+});
+
+function CerrarSession(){
+	sessionStorage.removeItem('ipsfaToken');
+	$(location).attr("href","index.html");
 }

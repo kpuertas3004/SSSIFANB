@@ -11,9 +11,9 @@ class Login {
 
 
 $(function (){
-  $('#_cedula').keyup(function(e){
+  $('#clave').keyup(function(e){
     if(e.keyCode == 13) {
-        Buscar();
+        Ingresar();
     }
   });
 });
