@@ -121,7 +121,6 @@ function IrCedula(){
 }
 
 function ConvertirFechaHumana(f){
-  console.log(f);
   fe = f.substr(0,10);
   fa = fe.split("-");
   return fa[2] + "/" + fa[1] + "/" + fa[0];

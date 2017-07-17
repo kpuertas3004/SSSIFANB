@@ -41,26 +41,7 @@
 
   <script type="text/javascript" src="js/es6/militar.js"></script>
   <script type="text/javascript" src="js/es6/consultar.afiliacion.js"></script>
-
-
-  <script type="text/javascript">
-  function GestionarUsuario()
-  {
-      //$('#_cuerpo').html('<iframe data="inc/usuario.html" type="text/html" width="100%" > </iframe>');
-      //document.getElementById( "title_section" ).innerHTML = "Afiliaci&oacute;n Intregral";
-      //$('#_cuerpo').html('<iframe src="inc/usuario.html" width="100%" > </iframe>');
-     var xhttp = new XMLHttpRequest();
-     xhttp.open('GET', 'inc/usuario.html');
-     xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-             // Typical action to be performed when the document is ready:
-             $('#_cuerpo').html(xhttp.responseText);
-          }
-
-      };
-      xhttp.send();
-  }
-  </script>
+  <script type="text/javascript" src="js/es6/controlador.js"></script>
 
 
 </head>
@@ -196,7 +177,6 @@
               <!-- The user image in the menu -->
               <li class="user-header">
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
                 <p>
                   Cnel. Paredes - Gerente Informática
                   <small>Fecha: 13/06/2017</small>
@@ -276,10 +256,7 @@
                 <div class="input-group-btn">
                   <button type="button" class="btn btn-lg btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">V&nbsp;&nbsp;
                     <span class="fa fa-caret-down"></span></button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">V</a></li>
-                    <li><a href="#">E</a></li>
-                  </ul>
+
                 </div>
                 <input type="text" class="form-control" placeholder="Cedula de Identidad" id="_cedula">
                     <span class="input-group-btn">
