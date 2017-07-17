@@ -13,21 +13,12 @@ $(function () {
   CargarUrl("_bxBuscar", "afi/buscar");
   CargarUrl("_bxTarjeta", "afi/tarjeta");
   CargarUrl("_bxDatoBasico", "afi/datobasico");
+  CargarUrl("_bxDatosFamiliar", "afi/familiar");
+  CargarUrl("_bxTarjetaFamiliar", "afi/tarjetafamiliar");
   CargarUrl("_contenidorpt", "rpt/constancia");
-  $('#tblresultados').DataTable({
-    'paging'      : false,
-    'lengthChange': false,
-    'searching'   : false,
-    'ordering'    : false,
-    'info'        : false,
-    //'autoWidth'   : false
-     'autoWidth'   : false
-  });
+
+
   $("#salvar").hide();
-
-
-
-
   $('#modMsj').on('shown.bs.modal', function () {
     $('#_aceptar').focus();
   });

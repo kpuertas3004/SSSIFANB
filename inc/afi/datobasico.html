@@ -84,52 +84,65 @@
                              <!-- Tab panes -->
                              <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="mdmilitar" style="padding:15px">
-                                  <div class="row">
+
                                     <div class="form-group">
-                                      <label class="col-md-6">Componente:</label>
-                                      <label class="col-md-6">Grado:</label>
-                                      <div class="col-md-6">
+                                      <div class="col-md-6 col-sm-12">
+                                        <label>Componente:</label>
                                         <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbcomponente" disabled="disabled">
-                                          <option selected="selected" val="EJB">EJERCITO</option>
+                                          <option selected="selected" value="EJ">EJERCITO</option>
                                           <option value="AR">ARMADA</option>
                                           <option value="AV">AVIACION</option>
                                           <option value="GN">GUARDA NACIONAL</option>
                                         </select>
                                       </div>
-
-                                     <div class="col-md-6">
-                                       <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbgrado" disabled="disabled">
-                                         <option selected="selected">CORONEL</option>
-                                       </select>
+                                      <div class="col-md-6 col-sm-12">
+                                        <label >Grado:</label>
+                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbgrado" disabled="disabled">
+                                           <option selected="selected">CORONEL</option>
+                                         </select>
                                      </div>
+                                 </div><!-- Grupo Grado-->
 
-                                   </div> <!-- Grupo nombres-->
-                                 </div>
-                                  <div class="row">
                                     <div class="form-group">
-                                      <label class="col-md-4">Situación:</label>
-                                      <label class="col-md-4 ">Clase:</label>
-                                     <label class="col-md-4 ">Categoria:</label>
-
-
-                                     <div class="col-md-4">
-                                       <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbcomponente" disabled="disabled">
-                                         <option selected="selected">ACTIVO</option>
-                                       </select>
-                                     </div>
-                                    <div class="col-md-4">
-                                      <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbgrado" disabled="disabled">
-                                        <option selected="selected">OFICIAL</option>
-                                      </select>
-                                    </div>
-                                   <div class="col-md-4">
-                                     <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbgrado" disabled="disabled">
-                                       <option selected="selected">EFECTIVO</option>
-                                     </select>
-                                   </div>
+                                      <div class="col-md-4 col-sm-12">
+                                        <label>Situación:</label>
+                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbsituacion" disabled="disabled">
+                                          <option value="ACT" selected="selected">ACTIVO</option>
+                                          <option value="D">DISPONIBLE</option>
+                                          <option value="FCP">FALLECIDO CON PENSION</option>
+                                          <option value="FSP">FALLECIDO SIN PENSION</option>
+                                          <option value="I">INVALIDO</option>
+                                          <option value="RCP">RETIRADO CON PENSION</option>
+                                          <option value="RSP">RETIRADO SIN PENSION</option>
+                                        </select>
+                                      </div>
+                                      <div class="col-md-4 col-sm-12">
+                                        <label>Clase:</label>
+                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbclase" disabled="disabled">
+                                          <option value="ALU" selected="selected">ALUMNO</option>
+                                          <option value="CAD">CADETE</option>
+                                          <option value="OFI">OFICIAL</option>
+                                          <option value="OFIT">OFICIAL TECNICO</option>
+                                          <option value="OFITR">OFICIAL DE TROPA</option>
+                                          <option value="SUBOFI">SUB OFICIAL</option>
+                                          <option value="TALIS">TROPA ALISTADA</option>
+                                          <option value="TPROF">TROPA PROFESIONAL</option>
+                                        </select>
+                                      </div>
+                                      <div class="col-md-4 col-sm-12">
+                                        <label>Categoria:</label>
+                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbcategoria" disabled="disabled">
+                                          <option value="ASI" selected="selected">ASIMILADO</option>
+                                          <option value="EFE">EFECTIVO</option>
+                                          <option value="INV">INVALIDEZ</option>
+                                          <option value="RES">RESERVA</option>
+                                          <option value="TRP">TROPA</option>
+                                          <option value="X">CONVERSION</option>
+                                        </select>
+                                      </div>
 
                                   </div> <!-- Grupo nombres-->
-                                </div>
+
 
                                 </div><!-- Tab panes Datos Militares-->
 

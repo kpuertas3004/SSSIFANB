@@ -26,8 +26,15 @@ function Buscar( id ){
           $("#_aceptar").focus();
 
         }else{
-
-          t = $('#tblresultados').DataTable();
+          t =  $('#tblresultados').DataTable({
+            'paging'      : false,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : false,
+            'info'        : false,
+            //'autoWidth'   : false
+             'autoWidth'   : false
+          });
           t.clear();
           var DB = militar.Persona.DatoBasico;
           $("#txtcedula").val(DB.cedula);
@@ -37,7 +44,6 @@ function Buscar( id ){
           url = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
           $("#_img").attr("src", url);
           $("#_imgcarnetmilitar").attr("src", url);
-          console.log(militar.Persona);
           $("#_objectPDF").html("<center><iframe src='tarjeta-afiliacion/militar.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
           $("#_objectFamiliar").html("<center><iframe src='tarjeta-afiliacion/afiliado.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
 
@@ -49,6 +55,13 @@ function Buscar( id ){
           $("#cmbcomponente").val(militar.Componente.abreviatura);
           $("#_fingreso").html(ConvertirFechaHumana(militar.fingreso));
           $("#_fascenso").html(ConvertirFechaHumana(militar.fascenso));
+          $("#cmbcategoria").val(militar.categoria);
+          $("#cmbsituacion").val(militar.situacion);
+          $("#cmbclase").val(militar.clase)
+          $("#_categoria").html($("#cmbcategoria option:selected").text());
+          $("#_situacion").html($("#cmbsituacion option:selected").text());
+          $("#_clasificacion").html($("#cmbclase option:selected").text());
+          $("#_tiemposervicio").html(militar.tiemposervicio);
           var DF = militar.Persona.DatoFinanciero;
           $("#txtnrocuenta").val(DF.cuenta);
           $("#cmbinstfinanciera").val(DF.institucion);

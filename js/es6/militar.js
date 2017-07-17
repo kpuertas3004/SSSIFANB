@@ -257,8 +257,7 @@ function Obtener(){
 
 }
 
-$(function (){
-	console.log(sessionStorage.getItem('ipsfaToken'));
+$(function (){	
   if (sessionStorage.getItem('ipsfaToken') == undefined ){
 		$(location).attr("href","index.html");
 	}else{

@@ -246,7 +246,7 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" id='' >
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -261,139 +261,43 @@
     <!-- Main content -->
     <section class="content container-fluid" id='_cuerpo' >
 
-  <div class="row " id="_bxBuscar">
-
-  </div>
+      <div class="row " id="_bxBuscar"></div>
 
 
-  <div class="box  box-solid" id="_ficha" style="display:none">
-  <div class="box-header with-border">
-    <h3 class="box-title">Ficha Militar</h3>
-    <div class="box-tools pull-right">
+      <div class="box  box-solid" id="_ficha" style="display:none">
+      <div class="box-header with-border">
+        <h3 class="box-title">Ficha Militar</h3>
+        <div class="box-tools pull-right">
 
-    </div>
-    <!-- /.box-tools -->
-  </div>
-  <!-- /.box-header -->
-  <div class="box-body">
+        </div>
+        <!-- /.box-tools -->
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
 
-
-
-
-
-
-
-    <section class="content">
-    	<div class="row">
-
-    			     <div class="col-md-4 col-md-push-8" id="_bxTarjeta">
-    	          <!-- Profile Image -->
-
-    	          <!-- /.box -->
-    	        </div>
-              <div class="col-md-8 col-md-pull-4" id="_bxDatoBasico">
-    	          <!-- Default box -->
-
-
-    	         </div>
+        	<div class="row">
+    			    <div class="col-md-4 col-md-push-8" id="_bxTarjeta"></div>
+              <div class="col-md-8 col-md-pull-4" id="_bxDatoBasico"></div>
     	     </div>
-
-    	      <div class="row">
-    	        <div class="col-md-8" >
-    	          <!-- Default box -->
-    	          <div class="box box-primary box-solid">
-    	            <div class="box-header with-border">
-    	              <h3 class="box-title">Datos Basicos del Familiar</h3>
-
-    	            </div>
-    	            <div class="box-body">
-    	              <form class="form-horizontal">
-    	                <div class="box-body">
-
-      	              <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-              					<div class="row"><div class="col-sm-12">
-              						<table id="tblresultados" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
-              							<thead>
-              								<tr>
-                                <th >#</th>
-                                <th >CÉDULA</th>
-                				<th>APELLIDOS Y NOMBRES</th>
-                				<th>PARENTESCO</th>
-                                <th>BENEFICIO</th>
-                                <th>FECHA</th>
-                                <th>TIPO</th>
-                                 <th>SEXO</th-->
-                              </tr>
-              							</thead>
-              							<tbody>
-
-              							</tbody>
-              						</table>
-              					</div>
-              				</div>
-
-
-            				</div>
-
-            	 	 </div>
-    	            <!-- /.box-body -->
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="IncluirFamiliar()">Incluir</button>
-                  </div>
-    	          </div>
-    	          <!-- /.box -->
-    	        </div>
-            </div>
-            <div class="col-md-4">
-             <!-- Profile Image -->
-             <div class="box box-primary">
-               <div class="box-body box-profile">
-                 <img class="profile-user-img img-responsive" style="width:180px" src="images/ndisponible.jpg"  onerror="this.src='images/ndisponible.jpg'"  alt="Foto del Militar" id="_imgfamiliar">
-                 <h3 class="profile-username text-center"></h3>
-                 <p class="text-muted text-center" id ="_fcedula">
-
-                 </p>
-                 <ul class="list-group list-group-unbordered">
-                   <li class="list-group-item">
-                     <b>Fecha Nacimiento</b> <a class="pull-right" id="_ffnacimiento"></a>
-                   </li>
-                   <li class="list-group-item">
-                     <b>Edad</b> <a class="pull-right" id="_fedad"></a>
-                   </li>
-                   <li class="list-group-item">
-                     <b>Tarjeta Identificación Militar</b> <a class="pull-right" ><a data-dismiss="modal"  onclick="VisualizarCarnetFamiliar()" id ="_fcedula" class="pull-right fa fa-print"></a></a>
-                   </li>
-                 </ul>
-               </div>
-               <!-- /.box-body -->
-             </div>
-             <!-- /.box -->
-           </div>
+        	 <div class="row">
+      	      <div class="col-md-8" id="_bxDatosFamiliar"></div>
+              <div class="col-md-4" id="_bxTarjetaFamiliar"></div>
           </div> <!-- /.row -->
-
-
-        </div>
-        <!-- /.box-body -->
-        <div class="box-footer">
-          Acciones
-        </div>
-        <!-- box-footer -->
-        </div>
+          <div class="row">
+             <div class="col-md-12" id="_bxHMilitar"></div>
+         </div> <!-- /.row -->
+      </div>
+            <!-- /.box-body -->
+      <div class="box-footer">
+        Acciones
+      </div>
+            <!-- box-footer -->
+    </div>
 <!-- /.box -->
 
-  </div>
+  </section>
 
 
-
-
-
-
-
-
-
-
-    </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -871,8 +775,5 @@
 </div>
 
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
 </body>
 </html>
