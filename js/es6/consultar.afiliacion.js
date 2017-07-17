@@ -1,5 +1,5 @@
 function Buscar( id ){
-
+  var conn = new Conexion();
   if (id != undefined) {
     $("#_cedula").val(id);
   }
@@ -12,7 +12,7 @@ function Buscar( id ){
   $("#_cargando").show()
   $("#_imgfamiliar").attr("src", "images/ndisponible.jpg");
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "http://192.168.6.45:8080/ipsfa/api/militar/crud/" + $("#_cedula").val());
+  xhttp.open("GET", conn.URL + "/ipsfa/api/militar/crud/" + $("#_cedula").val());
   xhttp.onreadystatechange = function() {
 
       if (this.readyState == 4 && this.status == 200) {
@@ -37,8 +37,9 @@ function Buscar( id ){
           url = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
           $("#_img").attr("src", url);
           $("#_imgcarnetmilitar").attr("src", url);
+          console.log(militar.Persona);
           $("#_objectPDF").html("<center><iframe src='tarjeta-afiliacion/militar.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
-            $("#_objectFamiliar").html("<center><iframe src='tarjeta-afiliacion/afiliado.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
+          $("#_objectFamiliar").html("<center><iframe src='tarjeta-afiliacion/afiliado.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
 
           $("#txtnombre").val(DB.nombreprimero + ' ' + DB.nombresegundo);
           $("#txtapellido").val(DB.apellidoprimero + ' ' + DB.apellidosegundo);
@@ -48,6 +49,10 @@ function Buscar( id ){
           $("#cmbcomponente").val(militar.Componente.abreviatura);
           $("#_fingreso").html(ConvertirFechaHumana(militar.fingreso));
           $("#_fascenso").html(ConvertirFechaHumana(militar.fascenso));
+          var DF = militar.Persona.DatoFinanciero;
+          $("#txtnrocuenta").val(DF.cuenta);
+          $("#cmbinstfinanciera").val(DF.institucion);
+          $("#cmbtipofinanciera").val(DF.tipocuenta);
           let i = 1;
           $.each(militar.Familiar, function (c, v){
             let familiar = new Familiar();
