@@ -91,7 +91,11 @@
                                 <div role="tabpanel" class="tab-pane active" id="mdmilitar" style="padding:15px">
 
                                     <div class="form-group">
-                                      <div class="col-md-6 col-sm-12">
+                                    <div class="col-md-4 col-sm-12">
+                                        <label >Fecha Graduación:</label>
+                                        <input id="txtfechagraduacion" class="form-control"  type="text" >
+                                     </div>
+                                      <div class="col-md-4 col-sm-12">
                                         <label>Componente:</label>
                                         <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbcomponente" disabled="disabled">
                                           <option selected="selected" value="EJ">EJERCITO</option>
@@ -100,13 +104,13 @@
                                           <option value="GN">GUARDA NACIONAL</option>
                                         </select>
                                       </div>
-                                      <div class="col-md-6 col-sm-12">
+                                      <div class="col-md-4 col-sm-12">
                                         <label >Grado:</label>
                                         <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbgrado" disabled="disabled">
                                            <option selected="selected">CORONEL</option>
                                          </select>
                                      </div>
-                                 </div><!-- Grupo Grado-->
+                                  </div><!-- Grupo Grado-->
 
                                     <div class="form-group">
                                       <div class="col-md-4 col-sm-12">
@@ -207,17 +211,17 @@
                                     <label class="col-md-4">Parroquia:</label>
 
                                     <div class="col-md-4">
-                                      <select class="js-states form-control" style="width: 100%"  id="cmbfestado" >
+                                      <select class="js-states form-control" style="width: 100%"  id="cmbmestado" >
                                         <option value="S" selected="selected"></option>
                                       </select>
                                     </div>
                                     <div class="col-md-4">
-                                      <select class="js-states form-control" style="width: 100%"  id="cmbfmunicipio" >
+                                      <select class="js-states form-control" style="width: 100%"  id="cmbmmunicipio" >
                                         <option value="S" selected="selected"></option>
                                       </select>
                                     </div>
                                     <div class="col-md-4">
-                                      <select class="js-states form-control" style="width: 100%" id="cmbfparroquia" >
+                                      <select class="js-states form-control" style="width: 100%" id="cmbmparroquia" >
                                         <option value="S" selected="selected"></option>
                                       </select>
                                     </div>
@@ -233,16 +237,16 @@
 
 
                                     <div class="col-md-4">
-                                      <input id="txtfciudad" class="form-control"  type="text" >
+                                      <input id="txtmciudad" class="form-control"  type="text" >
                                     </div>
                                     <div class="col-md-4">
-                                      <input id="txtfcalle" class="form-control"  type="text" >
+                                      <input id="txtmcalle" class="form-control"  type="text" >
                                     </div>
                                     <div class="col-md-2">
-                                      <input id="txtfcasa" class="form-control"  type="text" >
+                                      <input id="txtmcasa" class="form-control"  type="text" >
                                     </div>
                                     <div class="col-md-2">
-                                      <input id="txtfapto" class="form-control"  type="text" >
+                                      <input id="txtmapto" class="form-control"  type="text" >
                                     </div>
                                   </div> <!-- Grupo nombres-->
                                  </div>
@@ -253,13 +257,13 @@
                                      <label class="col-md-4">Celular:</label>
                                      <label class="col-md-4">Correo Electronico:</label>
                                      <div class="col-md-4">
-                                       <input id="txtftelefono" class="form-control"  type="text" >
+                                       <input id="txtmtelefono" class="form-control"  type="text" >
                                      </div>
                                      <div class="col-md-4">
-                                       <input id="txtfcelular" class="form-control"  type="text" >
+                                       <input id="txtmcelular" class="form-control"  type="text" >
                                      </div>
                                      <div class="col-md-4">
-                                       <input  id="txtfcorreo" class="form-control"  type="text" >
+                                       <input  id="txtmcorreo" class="form-control"  type="text" >
                                      </div>
                                    </div>
                                  </div>
@@ -317,16 +321,16 @@
                                     <label class="col-md-3">Grupo Sanguineo:</label>
 
                                     <div class="col-md-3">
-                                      <input  id="txtfestatura" class="form-control"  type="text" >
+                                      <input  id="txtmestatura" class="form-control"  type="text" >
                                     </div>
                                     <div class="col-md-3">
-                                      <input  id="txtfpeso" class="form-control"  type="text" >
+                                      <input  id="txtmpeso" class="form-control"  type="text" >
                                     </div>
                                     <div class="col-md-3">
-                                     <input  id="txtftalla" class="form-control"  type="text" >
+                                     <input  id="txtmtalla" class="form-control"  type="text" >
                                     </div>
                                     <div class="col-md-3">
-                                     <input  id="txtftalla" class="form-control"  type="text" >
+                                     <input  id="txtmgruposanguineo" class="form-control"  type="text" >
                                     </div>
                                   </div> <!-- Grupo nombres-->
                                  </div>
@@ -340,22 +344,22 @@
                                     <label class="col-md-3">Seña Particular:</label>
 
                                     <div class="col-md-3">
-                                      <select class="js-states form-control" style="width: 100%"  id="cmbfpiel" >
+                                      <select class="js-states form-control" style="width: 100%"  id="cmbmpiel" >
                                         <option value="S" selected="selected"></option>
                                       </select>
                                     </div>
                                     <div class="col-md-3">
-                                      <select class="js-states form-control" style="width: 100%"  id="cmbfojos" >
+                                      <select class="js-states form-control" style="width: 100%"  id="cmbmojos" >
                                         <option value="S" selected="selected"></option>
                                       </select>
                                     </div>
                                     <div class="col-md-3">
-                                      <select class="js-states form-control" style="width: 100%"  id="cmbfcolorcabello" >
+                                      <select class="js-states form-control" style="width: 100%"  id="cmbmcolorcabello" >
                                         <option value="S" selected="selected"></option>
                                       </select>
                                     </div>
                                     <div class="col-md-3">
-                                      <input  id="txtfsenaparticular" class="form-control"  type="text" >
+                                      <input  id="txtmsenaparticular" class="form-control"  type="text" >
                                     </div>
                                   </div> <!-- Grupo nombres-->
                                  </div>

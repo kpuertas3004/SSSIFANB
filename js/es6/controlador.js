@@ -18,6 +18,7 @@ $(function () {
   CargarUrl("_bxDatosFamiliar", "afi/familiar");
   CargarUrl("_bxTarjetaFamiliar", "afi/tarjetafamiliar");
   CargarUrl("_contenidoh", "afi/historicomilitar");
+   CargarUrl("_contenidohc", "afi/historiaclinica");
   CargarUrl("_contenidorpt", "rpt/constancia");
   $("#salvar").hide();
   $('#modMsj').on('shown.bs.modal', function () {
@@ -70,3 +71,8 @@ function Editar(){
 function HistoricoMilitar(){
   $('#modHistoricoMilitar').modal('show');
 }
+
+function HistoriaClinica(){
+  $('#modHistoriaClinica').modal('show');
+}
+

@@ -86,6 +86,7 @@ class DatoFisionomico{
 		this.colorcabello = "";
 		this.estatura = "";
 		this.senaParticular = "";
+		this.gruposanguineo = "";
 	}
 }
 
@@ -128,6 +129,10 @@ class Direccion{
 		this.casa = "";
 		this.apartamento = "";
 		this.numero = "";
+		this.telefonofijo = "";
+		this.telefonomovil = "";
+		this.correo = "";
+
 	}
 }
 
@@ -216,14 +221,27 @@ class Grado{
 class Persona{
 	constructor(){
 		this.DatoBasico = new DatoBasico();
+		this.CuentaBancaria = new CuentaBancaria();
+		this.DatoFisico = new DatoFisico();
 		this.DatoFisionomico = new DatoFisionomico();
+		this.Direccion = new Direccion();
 		this.Telefono = new Telefono();
+		this.PartidaNacimiento = new PartidaNacimiento();
 		this.urlFoto = "1";
 		this.urlHuella = "2";
 		this.urlFirma = "3";
 	}
 }
 
+class PartidaNacimiento{
+	constructor(){
+		this.registrocivil = "";
+		this.ano = "";
+		this.acta = "";
+		this.folio = "";
+		this.libro = "";
+	}
+}
 
 class Militar{
 	constructor(){
@@ -232,7 +250,8 @@ class Militar{
 		this.categoria = "";
 		this.situacion = "";
 		this.clase = "";
-		this.fechaingresocomponente = "2017-01-10";
+		this.fechagraduacion = "";
+		this.fechaingresocomponente = "";
 		this.fechaascenso = "";
 		this.anoreconocimiento = "";
 		this.mesreconocido = "";
@@ -256,15 +275,59 @@ class Militar{
 	}
 }
 
+class CuentaBancaria{
+	constructor(){
+		this.banco = "";
+		this.tipocuenta = "";
+		this.numerocuenta = "";
+	}
+}
 
 
 function ObtenerMilitar(){
 	
 	let militar = new Militar();
+	militar.Persona.DatoBasico.cedula = $("#txtcedula").val();
 	militar.Persona.DatoBasico.nombreprimero = $("#txtnombre").val();
-	militar.Grado.abreviatura = $("#cmbgrado option:selected").val();
-	
-	
+	militar.Persona.DatoBasico.apellidoprimero = $("#txtapellido").val();
+	militar.Persona.DatoBasico.fechanacimiento = $("#txtnacimiento").val();
+	militar.Persona.DatoBasico.sexo = $("#cmbsexo").val();
+	militar.Persona.DatoBasico.estadocivil = $("#cmbedocivil").val();
+	militar.fechagraduacion = $("#txtfechagraduacion").val();
+	militar.situacion = $("#cmbsituacion").val();
+	militar.categoria = $("#cmbcategoria").val();
+	militar.clase = $("#cmbclase").val();
+	militar.Componente.descripcion = $("#cmbcomponente").text();
+	militar.Componente.abreviatura = $("#cmbcomponente").val();
+	militar.Grado.descripcion = $("#cmbgrado").text();
+	militar.Grado.abreviatura = $("#cmbgrado").val();
+	militar.Persona.CuentaBancaria.banco = $("#cmbinstfinanciera").val();
+	militar.Persona.CuentaBancaria.tipocuenta = $("#cmbtipofinanciera").val();
+	militar.Persona.CuentaBancaria.numerocuenta = $("#txtnrocuenta").val();
+	militar.Persona.Direccion.estado = $("#cmbmestado").val();
+	militar.Persona.Direccion.municipio = $("#cmbmmunicipio").val();
+	militar.Persona.Direccion.parroquia = $("#cmbmparroquia").val();
+	militar.Persona.Direccion.sector = $("#txtmciudad").val();
+	militar.Persona.Direccion.calleavenida = $("#txtmcalle").val();
+	militar.Persona.Direccion.casa = $("#txtmcasa").val();
+	militar.Persona.Direccion.apartamento = $("#txtmapto").val();
+	militar.Persona.Direccion.telefonofijo = $("#txtmtelefono").val();
+	militar.Persona.Direccion.telefonomovil = $("#txtmcelular").val();
+	militar.Persona.Direccion.correo = $("#txtmcorreo").val();
+	militar.Persona.PartidaNacimiento.registrocivil= $("#txtpregistrocivil").val();
+	militar.Persona.PartidaNacimiento.ano = $("#txtpano").val();
+	militar.Persona.PartidaNacimiento.acta = $("#txtpacta").val();
+	militar.Persona.PartidaNacimiento.folio = $("#txtpfolio").val();
+	militar.Persona.PartidaNacimiento.libro = $("#txtplibro").val();
+	militar.Persona.DatoFisico.peso = $("#txtmpeso").val();
+	militar.Persona.DatoFisico.talla = $("#txtmtalla").val();
+	militar.Persona.DatoFisionomico.coloropiel = $("#cmbmpiel").val();
+	militar.Persona.DatoFisionomico.colorojos = $("#cmbmojos").val();
+	militar.Persona.DatoFisionomico.colorcabello = $("#cmbmcolorcabello").val();
+	militar.Persona.DatoFisionomico.estatura = $("#txtmestatura").val();
+	militar.Persona.DatoFisionomico.senaParticular = $("#txtmsenaparticular").val();
+	militar.Persona.DatoFisionomico.gruposanguineo = $("#txtmgruposanguineo").val();
+	//militar.Grado.abreviatura = $("#cmbgrado option:selected").val();
 	console.log(militar);
 
 
