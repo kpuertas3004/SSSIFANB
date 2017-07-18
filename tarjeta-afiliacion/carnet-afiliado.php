@@ -14,6 +14,7 @@ $militar = (object)json_decode($result, true);
 $Persona = (object)$militar->Persona;
 
 
+
 // if(curl_exec($curl) === false)
 // {
 //     echo 'Curl error: ' . curl_error($curl);
@@ -50,7 +51,7 @@ body {margin: 0px;}
 <div class="marco-carnet">
 
 	<div class="css-foto">
-	<img src="assets/foto/usuarioblanco.jpg" style="width:68px; height:90px;"/>	</div>
+	<img src="http://192.168.12.161/imagenes/<?php echo $Persona->DatoBasico['cedula']; ?>.jpg" style="width:68px; height:90px;"/>	</div>
 	<div class="fecha-vencimiento">
 		VENCE 05/07/2025
 	</div>

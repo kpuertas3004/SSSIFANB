@@ -1,11 +1,11 @@
 class Conexion{
   constructor(){
-      this.IP = "localhost";
+      this.IP = "192.168.6.45";
       this.Puerto = ":8080";
       this.PuertoSSL = ":2608";
       this.URL = "http://" + this.IP + this.Puerto;
       this.URLS = "http://" + this.IP + this.PuertoSSL;
-      this.CDN = "http://192.168.12.161/imagenes"; 
+      this.CDN = "http://192.168.12.161/imagenes";
   }
 }
 

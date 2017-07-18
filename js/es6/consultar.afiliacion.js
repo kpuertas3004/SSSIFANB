@@ -186,3 +186,17 @@ function FrmDatosBasicos(valor){
   $("#cmbsexo").attr('disabled', valor);
   $("#cmbedocivil").attr('disabled', valor);
 }
+
+function seleccionarActas(){
+  edo = $("#cmbedocivil option:selected").val();
+  switch (edo) {
+    case "D":
+      $("#_titulo").html("Cargar Acta de Divorcio");
+      CargarUrl("_contenido", "afi/actadivorcio");
+      $('#modMsj').modal('show');
+      break;
+    default:
+
+  }
+
+}
