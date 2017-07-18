@@ -113,6 +113,31 @@ function Buscar( id ){
               }
 
           });
+          var th= $('#tblhistoricomilitar').DataTable({
+            'paging'      : false,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : false,
+            'info'        : false,
+            //'autoWidth'   : false
+             'autoWidth'   : false
+          });
+
+          th.clear();
+          i = 0;
+          $.each(militar.HistorialMilitar,function(c,v){
+             th.row.add ([
+              i++,
+              v.categoria,
+              v.clase,
+              v.situacion,
+              v.grado,
+              v.fresuelto
+            ]).draw(false);
+
+
+          });
+
 
           $("#_cedula").val("");
           $("#_ficha").show();
