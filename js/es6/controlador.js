@@ -17,6 +17,7 @@ $(function () {
   CargarUrl("_bxDatoBasico", "afi/datobasico");
   CargarUrl("_bxDatosFamiliar", "afi/familiar");
   CargarUrl("_bxTarjetaFamiliar", "afi/tarjetafamiliar");
+  CargarUrl("_contenidoh", "afi/historicomilitar");
   CargarUrl("_contenidorpt", "rpt/constancia");
   $("#salvar").hide();
   $('#modMsj').on('shown.bs.modal', function () {
@@ -64,4 +65,8 @@ function CConstanciaAfiliacion(){
 
 function Editar(){
   $('#modMsj').modal('show');
+}
+
+function HistoricoMilitar(){
+  $('#modHistoricoMilitar').modal('show');
 }
