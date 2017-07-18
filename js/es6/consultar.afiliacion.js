@@ -133,6 +133,7 @@ function Buscar( id ){
   };
   xhttp.send();
 }
+
 function activarSalvar(){
   $("#_contenido").html("¿Está seguro que desea editar?");
   $('#modMsj').modal('show');
@@ -178,8 +179,16 @@ function VisualizarCarnetFamiliar(){
   $("#modCarnetFamiliar").modal("show");
 }
 
+function incluirAfiliado(){
+  $("#_cedula").val("");
+  $("#_ficha").show();
+  $("#_consultarbox").hide();
+  $("#_search").show();
+  FrmDatosBasicos(false);
+}
 
 function FrmDatosBasicos(valor){
+  $("#txtcedula").attr('disabled',valor);
   $("#txtnombre").attr('disabled', valor);
   $("#txtapellido").attr('disabled', valor);
   $("#txtnacimiento").attr('disabled', valor);
@@ -190,13 +199,29 @@ function FrmDatosBasicos(valor){
 function seleccionarActas(){
   edo = $("#cmbedocivil option:selected").val();
   switch (edo) {
+    case "C":
+      $("#_titulod").html("Cargar Acta de Matrimonio");
+      CargarUrl("_contenidod", "afi/actamatrimonio");
+      $('#modDocument').modal('show');
+      break;
     case "D":
-      $("#_titulo").html("Cargar Acta de Divorcio");
-      CargarUrl("_contenido", "afi/actadivorcio");
-      $('#modMsj').modal('show');
+      $("#_titulod").html("Cargar Acta de Divorcio");
+      CargarUrl("_contenidod", "afi/actadivorcio");
+      $('#modDocument').modal('show');
+      break;
+    case "V":
+      $("#_titulod").html("Cargar Constancia de Viudez");
+      CargarUrl("_contenidod", "afi/constanciaviudez");
+      $('#modDocument').modal('show');
+      break;
+    case "S":
+      $("#_titulod").html("Cargar Carta de Solteria");
+      CargarUrl("_contenidod", "afi/cartasolteria");
+      $('#modDocument').modal('show');
       break;
     default:
 
   }
 
 }
+

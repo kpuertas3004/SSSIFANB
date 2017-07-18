@@ -68,6 +68,7 @@ class DatoBasico{
 		}
 		return estadocivil;
 	}
+
 }
 
 
@@ -206,6 +207,9 @@ class Grado{
 		this.descripcion = "";
 		this.abreviatura = "";
 	}
+	Obtener(){
+		return this;
+	}
 }
 
 
@@ -247,13 +251,22 @@ class Militar{
 		this.urlfirma = "";
 		this.urlcedula = "";
 	}
+	Obtener(){
+		return this;
+	}
 }
 
 
 
-function Obtener(){
+function ObtenerMilitar(){
+	
 	let militar = new Militar();
-	console.log(JSON.stringify(militar.ObtenerFecha()));
+	militar.Persona.DatoBasico.nombreprimero = $("#txtnombre").val();
+	militar.Grado.abreviatura = $("#cmbgrado option:selected").val();
+	
+	
+	console.log(militar);
+
 
 }
 
