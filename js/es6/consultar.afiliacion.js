@@ -220,6 +220,11 @@ function incluirAfiliado(){
   $("#_consultarbox").hide();
   $("#_search").show();
   FrmDatosBasicos(false);
+  FrmDatosMilitar(false);
+  FrmCuentaBancaria(false);
+  FrmDireccion(false);
+  FrmPartidaNacimiento(false);
+  FrmFisicoFisionomico(false);
 }
 
 function FrmDatosBasicos(valor){
@@ -229,6 +234,53 @@ function FrmDatosBasicos(valor){
   $("#txtnacimiento").attr('disabled', valor);
   $("#cmbsexo").attr('disabled', valor);
   $("#cmbedocivil").attr('disabled', valor);
+}
+
+function FrmDatosMilitar(valor){
+  $("#txtfechagraduacion").attr('disabled',valor);
+  $("#cmbcomponente").attr('disabled',valor);
+  $("#cmbgrado").attr('disabled',valor);
+  $("#cmbsituacion").attr('disabled',valor);
+  $("#cmbclase").attr('disabled',valor);
+  $("#cmbcategoria").attr('disabled',valor);
+}
+
+function FrmCuentaBancaria(valor){
+  $("#cmbinstfinanciera").attr('disabled',valor);
+  $("#cmbtipofinanciera").attr('disabled',valor);
+  $("#txtnrocuenta").attr('disabled',valor);
+}
+
+function FrmDireccion(valor){
+  $("#cmbmestado").attr('disabled',valor);
+  $("#cmbmmunicipio").attr('disabled',valor);
+  $("#cmbmparroquia").attr('disabled',valor);
+  $("#txtmciudad").attr('disabled',valor);
+  $("#txtmcalle").attr('disabled',valor);
+  $("#txtmcasa").attr('disabled',valor);
+  $("#txtmapto").attr('disabled',valor);
+  $("#txtmtelefono").attr('disabled',valor);
+  $("#txtmcelular").attr('disabled',valor);
+  $("#txtmcorreo").attr('disabled',valor);
+}
+
+function FrmPartidaNacimiento(valor){
+  $("#txtpregistrocivil").attr('disabled',valor);
+  $("#txtpano").attr('disabled',valor);
+  $("#txtpacta").attr('disabled',valor);
+  $("#txtpfolio").attr('disabled',valor);
+  $("#txtplibro").attr('disabled',valor);
+}
+
+function FrmFisicoFisionomico(valor){
+  $("#txtmestatura").attr('disabled',valor);
+  $("#txtmpeso").attr('disabled',valor);
+  $("#txtmtalla").attr('disabled',valor);
+  $("#txtmgruposanguineo").attr('disabled',valor);
+  $("#cmbmpiel").attr('disabled',valor);
+  $("#cmbmojos").attr('disabled',valor);
+  $("#cmbmcolorcabello").attr('disabled',valor);
+  $("#txtmsenaparticular").attr('disabled',valor);
 }
 
 function seleccionarActas(){
