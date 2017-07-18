@@ -40,8 +40,13 @@ function Buscar( id ){
           url = "images/grados/" + militar.Grado.abreviatura + ".png";
           url = url.toLowerCase();
           $("#_imggrado").attr("src", url);
-          url = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
+          //url = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
+          url = "http://192.168.6.45/temp/" +  $("#txtcedula").val() + "/foto.jpg";
           $("#_img").attr("src", url);
+          url = "http://192.168.6.45/temp/" +  $("#txtcedula").val() + "/huella.bmp";
+          $("#_imghuella").attr("src", url);
+          url = "http://192.168.6.45/temp/" +  $("#txtcedula").val() + "/firma.jpg";
+          $("#_imgfirma").attr("src", url);
           $("#_imgcarnetmilitar").attr("src", url);
           $("#_objectPDF").html("<center><iframe src='tarjeta-afiliacion/militar.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
           $("#_objectFamiliar").html("<center><iframe src='tarjeta-afiliacion/afiliado.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
@@ -311,4 +316,3 @@ function seleccionarActas(){
   }
 
 }
-
