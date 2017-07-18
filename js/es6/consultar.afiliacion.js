@@ -85,7 +85,7 @@ function Buscar( id ){
             if (v.beneficio == true){
               ok = '<font color="#green"><i class="fa fa-fw fa-check"></i></font>';
             }
-
+               mod = '<font color="#red"><i class="fa fa-fw fa-pencil"></i></font>';
             t.row.add ([
               i++,
               cedula,
@@ -94,7 +94,8 @@ function Buscar( id ){
               ok,
               DBF.fechanacimiento,
               v.esmilitar,
-              DBF.sexo
+             // DBF.sexo
+              mod
             ]).draw(false);
 
 
@@ -113,6 +114,15 @@ function Buscar( id ){
               }
 
           });
+
+           $('#tblresultados tbody').on('dblclick', 'tr', function () {
+              var data = t.row(this).data();
+              urlf = "http://192.168.12.161/imagenes/" +  data[1] + ".jpg";
+              $("#modFamiliar").modal('show');
+              $('#txtcedulaf').val(data[1]);
+
+          });
+
           var th= $('#tblhistoricomilitar').DataTable({
             'paging'      : false,
             'lengthChange': false,
