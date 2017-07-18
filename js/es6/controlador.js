@@ -1,6 +1,6 @@
 class Conexion{
   constructor(){
-      this.IP = "192.168.6.45";
+      this.IP = "localhost";
       this.Puerto = ":8080";
       this.PuertoSSL = ":2608";
       this.URL = "http://" + this.IP + this.Puerto;
@@ -9,6 +9,8 @@ class Conexion{
 }
 
 
+var Conn = new Conexion();
+
 $(function () {
   CargarUrl("_bxBuscar", "afi/buscar");
   CargarUrl("_bxTarjeta", "afi/tarjeta");
@@ -16,8 +18,6 @@ $(function () {
   CargarUrl("_bxDatosFamiliar", "afi/familiar");
   CargarUrl("_bxTarjetaFamiliar", "afi/tarjetafamiliar");
   CargarUrl("_contenidorpt", "rpt/constancia");
-
-
   $("#salvar").hide();
   $('#modMsj').on('shown.bs.modal', function () {
     $('#_aceptar').focus();
@@ -65,12 +65,5 @@ function CConstanciaAfiliacion(){
 function Editar(){
   $('#modMsj').modal('show');
 }
-function activarSalvar(){
-  $('#modMsj').modal('hide');
-  $("#salvar").show();
-}
 
-function desactivarSalvar(){
-  $('#modMsj').modal('hide');
-  $("#salvar").hide();
-}
+

@@ -1,5 +1,4 @@
 function Buscar( id ){
-  var conn = new Conexion();
   if (id != undefined) {
     $("#_cedula").val(id);
   }
@@ -12,7 +11,7 @@ function Buscar( id ){
   $("#_cargando").show()
   $("#_imgfamiliar").attr("src", "images/ndisponible.jpg");
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", conn.URL + "/ipsfa/api/militar/crud/" + $("#_cedula").val());
+  xhttp.open("GET", Conn.URL + "/ipsfa/api/militar/crud/" + $("#_cedula").val());
   xhttp.onreadystatechange = function() {
 
       if (this.readyState == 4 && this.status == 200) {
@@ -53,6 +52,7 @@ function Buscar( id ){
           $("#cmbsexo").val(DB.sexo);
           $("#cmbedocivil").val(DB.estadocivil);
           $("#cmbcomponente").val(militar.Componente.abreviatura);
+          $("#cmbgrado").html('<option value="' + militar.Grado.abreviatura + '">' + militar.Grado.descripcion + '</option>');
           $("#_fingreso").html(ConvertirFechaHumana(militar.fingreso));
           $("#_fascenso").html(ConvertirFechaHumana(militar.fascenso));
           $("#cmbcategoria").val(militar.categoria);
@@ -133,6 +133,22 @@ function Buscar( id ){
   };
   xhttp.send();
 }
+function activarSalvar(){
+  $("#_contenido").html("¿Está seguro que desea editar?");
+  $('#modMsj').modal('show');
+}
+function editarDB(){
+  FrmDatosBasicos(false);
+  $('#modMsj').modal('hide');
+  $("#salvar").show();
+}
+
+function desactivarSalvar(){
+  $('#modMsj').modal('hide');
+  $("#salvar").hide();
+  FrmDatosBasicos(true);
+}
+
 function IrCedula(){
 
   $("#_cedula").focus();
@@ -160,4 +176,13 @@ function VisualizarCarnet(){
 
 function VisualizarCarnetFamiliar(){
   $("#modCarnetFamiliar").modal("show");
+}
+
+
+function FrmDatosBasicos(valor){
+  $("#txtnombre").attr('disabled', valor);
+  $("#txtapellido").attr('disabled', valor);
+  $("#txtnacimiento").attr('disabled', valor);
+  $("#cmbsexo").attr('disabled', valor);
+  $("#cmbedocivil").attr('disabled', valor);
 }
