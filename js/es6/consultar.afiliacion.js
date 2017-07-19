@@ -282,6 +282,8 @@ function FrmDatosBasicos(valor){
   $("#cmbsexo").attr('disabled', valor);
   $("#cmbedocivil").attr('disabled', valor);
   $("#txtdefuncion").attr('disabled', valor);
+  $("#btnnacimiento").attr('disabled', valor);
+  $("#btndefuncion").attr('disabled', valor);
 }
 
 function FrmDatosMilitar(valor){
@@ -372,8 +374,6 @@ function ModDocumentoCivil(valor){
       break;
     default:
   }
-  $("#txtdefuncion").attr('disabled',valor);
-
 }
 
 function seleccionarActas(){
@@ -401,10 +401,20 @@ function seleccionarActas(){
       break;
     default:
   }
+}
+
+function seleccionarPartida(){
+  nac = $("#txtnacimiento").val();
+  $("#_titulod").html("Cargar Partida de Nacimiento");
+  CargarUrl("_contenidod", "afi/partidanacimiento");
+  $('#modDocument').modal('show');   
+}
+
+function seleccionarDefuncion(){
   def = $("#txtdefuncion").val();
   $("#_titulod").html("Cargar Acta de Defunción");
-      CargarUrl("_contenidod", "afi/actamatrimonio");
-      $('#modDocument').modal('show');
+  CargarUrl("_contenidod", "afi/defuncion");
+  $('#modDocument').modal('show');  
 }
 
 function cambiarGrado(){

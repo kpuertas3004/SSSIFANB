@@ -45,7 +45,12 @@
          <div class="form-group">
            <div class="col-md-3 col-sm-12">
              <label>Fecha de Nacimiento:</label>
-             <input placeholder="Nacimiento" id="txtnacimiento" class="form-control"  type="text" disabled="disabled">
+             <div class="input-group input-group-sm">
+             <input type="text" class="form-control" placeholder="Nacimiento" id="txtnacimiento" disabled="disabled" onClick="seleccionarPartida()">
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-success btn-flat btn-md" id="btnnacimiento" onClick="seleccionarPartida()" disabled="disabled"><i class="fa fa-file-text"></i></button>
+                  </span>
+              </div>
            </div>
            <div class="col-md-3 col-sm-6">
              <label >Sexo:</label>
@@ -68,7 +73,12 @@
            </div>
            <div class="col-md-3 col-sm-12">
              <label>Fecha de Defunción:</label>
-             <input placeholder="Defuncion" id="txtdefuncion" class="form-control"  type="text" disabled="disabled" onClick="seleccionarActas()">
+             <div class="input-group input-group-sm">
+             <input type="text" class="form-control" placeholder="Defuncion" id="txtdefuncion" disabled="disabled" onClick="seleccionarDefuncion()">
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-success btn-flat btn-md" id="btndefuncion" onClick="seleccionarDefuncion()" disabled="disabled"><i class="fa fa-file-text"></i></button>
+                  </span>
+              </div>
            </div>
         </div> <!-- Grupo nombres-->
 
