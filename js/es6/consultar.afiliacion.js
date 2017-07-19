@@ -90,17 +90,21 @@ function Buscar( id ){
               mil = nombre + '<font color="#0E6626"><i class="fa fa-fw fa-male"></i></font>&nbsp;'  ;
             }
 
-            ok = '<font color="#blue"><i class="fa fa-fw fa-close"></i></font>';
+            //ok = '<font color="#blue"><i class="fa fa-fw fa-close"></i></font>';
+
             if (v.beneficio == true){
-              ok = '<font color="#green"><i class="fa fa-fw fa-check"></i></font>';
+              situacion = "ACTIVO";
             }
+                else {
+                   situacion = "INACTIVO"
+                }
                mod = '<font color="#red"><i class="fa fa-fw fa-pencil"></i></font>';
             t.row.add ([
               i++, //0
               cedula, //1
               mil, //2
               familiar.GenerarParentesco(), //3
-              ok, //4
+              situacion, //4
               DBF.fechanacimiento, //5
               v.esmilitar, //6
               mod, //7
@@ -135,6 +139,7 @@ function Buscar( id ){
               $("#_fcedula").html('C.I: V- ' + data[1]);
               if (data[6] == true){
               $("#_fcedula").html('<a href="#" onClick="Buscar(\'' + data[1] +  '\')">C.I: V- ' + data[1] + '</a>');
+              $("#_ffnacimiento").html(ConvertirFechaHumana(data[5]));
               }
 
           });
@@ -242,7 +247,49 @@ function ConvertirFechaHumana(f){
 
 function IncluirFamiliar(){
   $("#modFamiliar").modal('show');
+  BlanquearFamiliar();
 }
+
+function BlanquearFamiliar(){
+  $("#txtcedulaf").val("");
+  $("#txtnombref").val("");
+  $("#txtapellidof").val("");
+  $("#txtnacimientof").val("");
+  $("#cmbsexof").val("");
+  $("#cmbedocivilf").val("");
+  $("#cmbparentescof").val("");
+  $("#cmbcondicionf").val("");
+  $("#cmbestudiaf").val("");
+  $("#cmbestadof").val("");
+  $("#cmbmunicipiof").val("");
+  $("#cmbparroquiaf").val("");
+  $("#txtciudadf").val("");
+  $("#txtcallef").val("");;
+  $("#txtcasaf").val("");
+  $("#txtaptof").val("");
+  $("#txttelefonof").val("");
+  $("#txtcelularf").val("");
+  $("#txtcorreof").val("");
+  $("#txtpregistrocivilf").val("");
+  $("#txtpanof").val("");
+  $("#txtpactaf").val("");
+  $("#txtpfoliof").val("");
+  $("#txtplibrof").val("");
+  $("#txtestaturaf").val("");
+  $("#txtpesof").val("");
+  $("#txttallaf").val("");
+  $("#txtgruposanguineof").val("");
+  $("#cmbpielf").val("");
+  $("#cmbojosf").val("");
+  $("#cmbcolorcabellof").val("");
+  $("#txtsenaparticularf").val("");
+  $("#txttwitterf").val("");
+  $("#txtfacebookf").val("");
+  $("#txtinstagranf").val("");
+  $("#txtlinkedinf").val("");
+
+}
+
 
 function ActivarBuscar(){
   $("#_ficha").hide();
@@ -281,7 +328,6 @@ function FrmDatosBasicos(valor){
   $("#txtnacimiento").attr('disabled', valor);
   $("#cmbsexo").attr('disabled', valor);
   $("#cmbedocivil").attr('disabled', valor);
-  $("#txtdefuncion").attr('disabled', valor);
 }
 
 function FrmDatosMilitar(valor){
@@ -347,7 +393,6 @@ function ModDocumentoCivil(valor){
   doc = $("#cmbedocivil option:selected").val();
   switch (doc) {
     case "C":
-      $("#_imgmatrimonio").attr('disabled',valor);
       $("#txtRegistroCivilM").attr('disabled',valor);
       $("#txtAnoM").attr('disabled',valor);
       $("#txtNumeroActaM").attr('disabled',valor);
@@ -355,24 +400,20 @@ function ModDocumentoCivil(valor){
       $("#txtLibroM").attr('disabled',valor);
       break;
     case "D":
-      $("#_imgdivorcio").attr('disabled',valor);
       $("#txttribunalD").attr('disabled',valor);
       $("#txtnumerosentenciaD").attr('disabled',valor);
       $("#txtfechasentenciaD").attr('disabled',valor);
       break;
     case "V":
-      $("#_imgviudez").attr('disabled',valor);
       $("#txtRegistroCivilV").attr('disabled',valor);
       $("#txtFechaV").attr('disabled',valor);
       break;
     case "S":
-      $("#_imgsolteria").attr('disabled',valor);
       $("#txtRegistroCivilS").attr('disabled',valor);
       $("#txtFechaS").attr('disabled',valor);
       break;
     default:
   }
-  $("#txtdefuncion").attr('disabled',valor);
 
 }
 
@@ -401,10 +442,6 @@ function seleccionarActas(){
       break;
     default:
   }
-  def = $("#txtdefuncion").val();
-  $("#_titulod").html("Cargar Acta de Defunción");
-      CargarUrl("_contenidod", "afi/actamatrimonio");
-      $('#modDocument').modal('show');
 }
 
 function cambiarGrado(){
