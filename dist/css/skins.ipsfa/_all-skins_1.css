@@ -1206,7 +1206,7 @@
  * ------------
  */
 .skin-yellow .main-header .navbar {
-  background-color: #771414;
+  background-color: #aeb6bf ;
 }
 
 
@@ -1241,12 +1241,12 @@
 
  /* Color de tres rayitas del cuadrito que reduce la pantalla Franja Delgada (Corta) */
 .skin-yellow .main-header .navbar .sidebar-toggle {
-  color: #fff;
+  color: #006B9F;
 }
 
  /* Color Fondo SOMBREADO del cuadrito que reduce la pantalla Franja Delgada (Corta) */
 .skin-yellow .main-header .navbar .sidebar-toggle:hover {
-  background-color: #980000;
+  background-color: #cacfd2;
 }
 @media (max-width: 767px) {
   .skin-yellow .main-header .navbar .dropdown-menu li.divider {
@@ -1262,7 +1262,7 @@
 
 /* Color de Fondo Y letra Fijo de la franja izquierda (Parte Corta)*/
 .skin-yellow .main-header .logo {
-  background-color: #771414; /*Fondo franja Corta*/
+  background-color: #aeb6bf ; /*Fondo franja Corta*/
   color: #FFFFFF;
   border-bottom: 0 solid transparent;
 }
@@ -1270,12 +1270,12 @@
 /* Color de Fondo del pulsor de franja izquierda (Corta)*/
 
 .skin-yellow .main-header .logo:hover {
-  background-color: #771414;
+  background-color: #aeb6bf;
 }
 
 /* Color de Fondo del Cuadro de Usuario*/
 .skin-yellow .main-header li.user-header {
-  background-color: #771414;
+  background-color: #3c8dbc ;
 }
 
 /* Color de Fondo del Menú izquierda*/
@@ -1285,7 +1285,7 @@
 .skin-yellow .wrapper,
 .skin-yellow .main-sidebar,
 .skin-yellow .left-side {
-  background-color: #980000; /*Fondo*/
+  background-color:  #bdc3c7  ; /*Fondo*/
 }
 .skin-yellow .user-panel > .info,
 .skin-yellow .user-panel > .info > a {
@@ -1304,8 +1304,8 @@
 /* Color de SOMBREADO, Letra, Rayita izquierda (Minima) del menú Izquierdo*/
 .skin-yellow .sidebar-menu > li:hover > a,
 .skin-yellow .sidebar-menu > li.active > a {
-  color: #FFFFFF; /*Letra Sombreado*/
-  background: #771414; /*Sombreado*/
+  color: #17202a; /*Letra Sombreado*/
+  background: #cacfd2; /*Sombreado*/
   border-left-color: #CCCCCC; /*Borde de Raya*/
 }
 
@@ -1317,7 +1317,7 @@
 
 /*Color de Letra menu izquierdo*/
 .skin-yellow .sidebar a {
-  color: #FFFEFE; /*Color de Letra menu izquierdo*/
+  color:  #17202a; /*Color de Letra menu izquierdo*/
 }
 .skin-yellow .sidebar a:hover {
   text-decoration: none;
@@ -1802,3 +1802,14 @@
     border-left: 1px solid #d2d6de;
   }
 }
+
+
+
+/* Estilo para letras del Menú*/
+  a > span {
+    font-family:  Arial, "Arial",
+          Times, serif;
+    color: black;
+    font-size: 12pt
+
+  }
