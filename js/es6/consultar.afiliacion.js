@@ -309,6 +309,13 @@ function incluirAfiliado(){
   $("#_ficha").show();
   $("#_consultarbox").hide();
   $("#_search").show();
+  $("#_bxFamiliar").hide();
+  $("#_bxFamiliarTarjeta").hide();
+  $("#_btnConstancia").hide();
+  $("#_btnTIM").hide();
+  $("#_btnModificar").hide();
+  $("#_btnSavlvar").show();
+
   FrmDatosBasicos(false);
   FrmDatosMilitar(false);
   FrmCuentaBancaria(false);
@@ -318,6 +325,14 @@ function incluirAfiliado(){
   FrmRedSocial(false);
   FrmTim(false);
   ModDocumentoCivil(false);
+}
+function Salvar(){
+  $("#_bxFamiliar").show();
+  $("#_bxFamiliarTarjeta").show();
+  $("#_btnConstancia").show();
+  $("#_btnTIM").show();
+  $("#_btnModificar").show();
+  $("#_btnSavlvar").hide();
 }
 
 function FrmDatosBasicos(valor){
