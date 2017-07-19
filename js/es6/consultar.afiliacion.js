@@ -82,6 +82,7 @@ function Buscar( id ){
             familiar.parentesco = parentesco;
             let nombres = DBF.nombreprimero + ' ' + DBF.nombresegundo;
             let apellidos = DBF.apellidoprimero + ' ' + DBF.apellidosegundo;
+            estadocivil= DBF.estadocivil;
             
 
             mil = nombre;
@@ -95,17 +96,19 @@ function Buscar( id ){
             }
                mod = '<font color="#red"><i class="fa fa-fw fa-pencil"></i></font>';
             t.row.add ([
-              i++,
-              cedula,
-              mil,
-              familiar.GenerarParentesco(),
-              ok,
-              DBF.fechanacimiento,
-              v.esmilitar,
-              mod,
-              nombres,
-              DBF.sexo,
-              apellidos
+              i++, //0
+              cedula, //1
+              mil, //2
+              familiar.GenerarParentesco(), //3
+              ok, //4
+              DBF.fechanacimiento, //5
+              v.esmilitar, //6
+              mod, //7
+              nombres, //8
+              DBF.sexo, //9
+              apellidos, //10
+              v.condicion, //11
+              v.estudia //12
              
 
             ]).draw(false);
@@ -118,6 +121,9 @@ function Buscar( id ){
           t.column(8).visible(false);
           t.column(9).visible(false);
           t.column(10).visible(false);
+          t.column(11).visible(false);
+          t.column(12).visible(false);
+         
           
 
 
@@ -128,7 +134,7 @@ function Buscar( id ){
               $("#_ffnacimiento").html(ConvertirFechaHumana(data[5]));
               $("#_fcedula").html('C.I: V- ' + data[1]);
               if (data[6] == true){
-                $("#_fcedula").html('<a href="#" onClick="Buscar(\'' + data[1] +  '\')">C.I: V- ' + data[1] + '</a>');
+              $("#_fcedula").html('<a href="#" onClick="Buscar(\'' + data[1] +  '\')">C.I: V- ' + data[1] + '</a>');
               }
 
           });
@@ -142,7 +148,21 @@ function Buscar( id ){
               $('#txtnombref').val(data[8]);
               $('#cmbsexof').val(data[9]);
               $('#txtapellidof').val(data[10]);
-              $('#cmbparentescof').val(data[4]);
+            
+             
+              if (data[11]==0){
+                $("#cmbcondicionf").html('<option selected="selected" value=0>NO</option>\
+                              <option value=1>SI</option> ');
+              }
+              $('#cmbcondicionf').val(data[11]);
+
+              if (data[12]==0){
+                $("#cmbestudiaf").html('<option selected="selected" value=0>NO</option>\
+                              <option value=1>SI</option> ');
+              }
+              $('#cmbestudiaf').val(data[12]);
+             
+            
              
 
           });
