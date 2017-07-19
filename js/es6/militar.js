@@ -21,6 +21,7 @@ class DatoBasico{
 		this.nropasaporte = "";
 		this.sexo = "";
 		this.estadocivil = "";
+		this.fechadefuncion = "";
 	}
 
 	NombreCompleto(){
@@ -73,13 +74,48 @@ class DatoBasico{
 
 class DocumentoCivil{
 	constructor(){
+		this.archivo = "";
+	}
+
+	ActaMatrimonio(){
 		this.registrocivil = "";
 		this.ano = "";
 		this.acta = "";
 		this.folio = "";
 		this.libro = "";
+		this.archivo = "";	
+		return this;	
 	}
-	
+
+	ActaDivorcio(){
+		this.tribunal = "";
+		this.numerosentencia = "";
+		this.fechasentencia = "";
+		this.archivo = "";
+		return this;	
+	}
+
+	CartaSolteria(){
+		this.registrocivil = "";
+		this.fecha = "";
+		this.archivo = "";
+		return this;	
+	}
+
+	ConstanciaViudez(){
+		this.registrocivil = "";
+		this.fecha = "";
+		this.archivo = "";
+		return this;	
+	}
+
+	ActaDefuncion(){
+		this.registrocivil = "";
+		this.fecha = "";
+		this.archivo = "";
+		return this;	
+	}
+
 }
 
 class  DatoFisico{
@@ -316,10 +352,6 @@ class Militar{
 	Obtener(){
 		return this;
 	}
-
-
-	
-
 }
 
 class CuentaBancaria{
@@ -381,15 +413,24 @@ function ObtenerMilitar(){
 	militar.Persona.RedSocial.linkedin = $("#txtmlinkedin").val();
 	militar.Tim.huella = $('#_imghuella').val();
 	militar.Tim.firma = $('#_imgfirma').val();
-	militar.Persona.DocumentoCivil.registrocivil = $('#txtRegistroCivilM').val();
-	militar.Persona.DocumentoCivil.ano = $('#txtAnoM').val();
-	militar.Persona.DocumentoCivil.acta = $('#txtNumeroActaM').val();
-	militar.Persona.DocumentoCivil.folio = $('#txtNumeroFolioM').val();
-	militar.Persona.DocumentoCivil.libro = $('#txtLibroM').val();
-	militar.Persona.DocumentoCivil.libro = $('#txtRegistroCivilD').val();
-
+	militar.Persona.DocumentoCivil.ActaMatrimonio.archivo = $('#_imgmatrimonio').val();
+	militar.Persona.DocumentoCivil.ActaMatrimonio.registrocivil = $('#txtRegistroCivilM').val();
+	militar.Persona.DocumentoCivil.ActaMatrimonio.ano = $('#txtAnoM').val();
+	militar.Persona.DocumentoCivil.ActaMatrimonio.acta = $('#txtNumeroActaM').val();
+	militar.Persona.DocumentoCivil.ActaMatrimonio.folio = $('#txtNumeroFolioM').val();
+	militar.Persona.DocumentoCivil.ActaMatrimonio.libro = $('#txtLibroM').val();
+	//militar.Persona.DocumentoCivil.libro = $('#txtRegistroCivilD').val();
+	militar.Persona.DocumentoCivil.ActaDivorcio.archivo = $('#_imgdivorcio').val();
+	militar.Persona.DocumentoCivil.ActaDivorcio.tribunal = $('#txttribunalD').val();
+	militar.Persona.DocumentoCivil.ActaDivorcio.numerosentencia = $('#txtnumerosentenciaD').val();
+	militar.Persona.DocumentoCivil.ActaDivorcio.fechasentencia = $('#txtfechasentenciaD').val();
+	militar.Persona.DocumentoCivil.CartaSolteria.archivo = $('#_imgsolteria').val();
+	militar.Persona.DocumentoCivil.CartaSolteria.registrocivil = $('#txtRegistroCivilS').val();
+	militar.Persona.DocumentoCivil.CartaSolteria.fecha = $('#txtFechaS').val();
+	militar.Persona.DocumentoCivil.ConstanciaViudez.archivo = $('#_imgviudez').val();
+	militar.Persona.DocumentoCivil.ConstanciaViudez.registrocivil = $('#txtRegistroCivilV').val();
+	militar.Persona.DocumentoCivil.ConstanciaViudez.fecha = $('#txtFechaV').val();
 	console.log(militar);
-
 
 }
 

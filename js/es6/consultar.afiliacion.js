@@ -253,6 +253,7 @@ function FrmDatosBasicos(valor){
   $("#txtnacimiento").attr('disabled', valor);
   $("#cmbsexo").attr('disabled', valor);
   $("#cmbedocivil").attr('disabled', valor);
+  $("#txtdefuncion").attr('disabled', valor);
 }
 
 function FrmDatosMilitar(valor){
@@ -318,6 +319,7 @@ function ModDocumentoCivil(valor){
   doc = $("#cmbedocivil option:selected").val();
   switch (doc) {
     case "C":
+      $("#_imgmatrimonio").attr('disabled',valor);
       $("#txtRegistroCivilM").attr('disabled',valor);
       $("#txtAnoM").attr('disabled',valor);
       $("#txtNumeroActaM").attr('disabled',valor);
@@ -325,20 +327,24 @@ function ModDocumentoCivil(valor){
       $("#txtLibroM").attr('disabled',valor);
       break;
     case "D":
+      $("#_imgdivorcio").attr('disabled',valor);
       $("#txttribunalD").attr('disabled',valor);
       $("#txtnumerosentenciaD").attr('disabled',valor);
       $("#txtfechasentenciaD").attr('disabled',valor);
       break;
     case "V":
+      $("#_imgviudez").attr('disabled',valor);
       $("#txtRegistroCivilV").attr('disabled',valor);
       $("#txtFechaV").attr('disabled',valor);
       break;
     case "S":
+      $("#_imgsolteria").attr('disabled',valor);
       $("#txtRegistroCivilS").attr('disabled',valor);
       $("#txtFechaS").attr('disabled',valor);
       break;
     default:
   }
+  $("#txtdefuncion").attr('disabled',valor);
 
 }
 
@@ -367,6 +373,10 @@ function seleccionarActas(){
       break;
     default:
   }
+  def = $("#txtdefuncion").val();
+  $("#_titulod").html("Cargar Acta de Defunción");
+      CargarUrl("_contenidod", "afi/actamatrimonio");
+      $('#modDocument').modal('show');
 }
 
 function cambiarGrado(){

@@ -43,26 +43,32 @@
 
 
          <div class="form-group">
-           <div class="col-md-4 col-sm-12">
+           <div class="col-md-3 col-sm-12">
              <label>Fecha de Nacimiento:</label>
              <input placeholder="Nacimiento" id="txtnacimiento" class="form-control"  type="text" disabled="disabled">
            </div>
-           <div class="col-md-4 col-sm-6">
+           <div class="col-md-3 col-sm-6">
              <label >Sexo:</label>
              <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbsexo" disabled="disabled">
-               <option selected="selected" value="F">FEMENINO</option>
+               <option selected="selected" value="S">--- SELECCIONE ---</option>
+               <option value="F">FEMENINO</option>
                <option value="M">MASCULINO</option>
              </select>
            </div>
-           <div class="col-md-4 col-sm-6">
+           <div class="col-md-3 col-sm-6">
               <label>Estado Civil:</label>
               <select class="js-states form-control" style="width: 100%" tabindex="-1"
                   aria-hidden="true" id="cmbedocivil" disabled="disabled" onchange="seleccionarActas()">
-                <option value="S" selected="selected">SOLTERO</option>
+                <option selected="selected" value="S">--- SELECCIONE ---</option>
+                <option value="S">SOLTERO</option>
                 <option value="C">CASADO</option>
                 <option value="D">DIVORCIADO</option>
                 <option value="V">VIUDO</option>
               </select>
+           </div>
+           <div class="col-md-3 col-sm-12">
+             <label>Fecha de Defunción:</label>
+             <input placeholder="Defuncion" id="txtdefuncion" class="form-control"  type="text" disabled="disabled" onClick="seleccionarActas()">
            </div>
         </div> <!-- Grupo nombres-->
 
@@ -117,7 +123,8 @@
                                       <div class="col-md-4 col-sm-12">
                                         <label>Situación:</label>
                                         <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbsituacion" disabled="disabled">
-                                          <option value="ACT" selected="selected">ACTIVO</option>
+                                          <option selected="selected" value="S">--- SELECCIONE ---</option>
+                                          <option value="ACT">ACTIVO</option>
                                           <option value="D">DISPONIBLE</option>
                                           <option value="FCP">FALLECIDO CON PENSION</option>
                                           <option value="FSP">FALLECIDO SIN PENSION</option>
@@ -129,7 +136,8 @@
                                       <div class="col-md-4 col-sm-12">
                                         <label>Clase:</label>
                                         <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbclase" disabled="disabled">
-                                          <option value="ALU" selected="selected">ALUMNO</option>
+                                          <option selected="selected" value="S">--- SELECCIONE ---</option>
+                                          <option value="ALU">ALUMNO</option>
                                           <option value="CAD">CADETE</option>
                                           <option value="OFI">OFICIAL</option>
                                           <option value="OFIT">OFICIAL TECNICO</option>
@@ -142,7 +150,8 @@
                                       <div class="col-md-4 col-sm-12">
                                         <label>Categoria:</label>
                                         <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbcategoria" disabled="disabled">
-                                          <option value="ASI" selected="selected">ASIMILADO</option>
+                                          <option selected="selected" value="S">--- SELECCIONE ---</option>
+                                          <option value="ASI">ASIMILADO</option>
                                           <option value="EFE">EFECTIVO</option>
                                           <option value="INV">INVALIDEZ</option>
                                           <option value="RES">RESERVA</option>
@@ -208,22 +217,22 @@
                                  <div class="row">
                                    <div class="form-group">
                                     <label class="col-md-4">Estado:</label>
+                                    <label class="col-md-4">Ciudad:</label>
                                     <label class="col-md-4">Municipio:</label>
-                                    <label class="col-md-4">Parroquia:</label>
 
                                     <div class="col-md-4">
                                       <select class="js-states form-control" style="width: 100%"  id="cmbmestado" >
-                                        <option value="S" selected="selected"></option>
+                                        <option value="S" selected="selected">--- SELECCIONE ---</option>
                                       </select>
                                     </div>
                                     <div class="col-md-4">
-                                      <select class="js-states form-control" style="width: 100%"  id="cmbmmunicipio" >
-                                        <option value="S" selected="selected"></option>
+                                      <select class="js-states form-control" style="width: 100%"  id="cmbmciudad" >
+                                        <option value="S" selected="selected">--- SELECCIONE ---</option>
                                       </select>
                                     </div>
                                     <div class="col-md-4">
-                                      <select class="js-states form-control" style="width: 100%" id="cmbmparroquia" >
-                                        <option value="S" selected="selected"></option>
+                                      <select class="js-states form-control" style="width: 100%" id="cmbmmunicipio" >
+                                        <option value="S" selected="selected">--- SELECCIONE ---</option>
                                       </select>
                                     </div>
                                   </div> <!-- Grupo nombres-->
@@ -231,14 +240,16 @@
 
                                  <div class="row">
                                    <div class="form-group">
-                                    <label class="col-md-4">Ciudad:</label>
+                                    <label class="col-md-4">Parroquia:</label>
                                     <label class="col-md-4">Calle / Edificio:</label>
                                     <label class="col-md-2"># Casa:</label>
                                     <label class="col-md-2"># Apto.:</label>
 
 
                                     <div class="col-md-4">
-                                      <input id="txtmciudad" class="form-control"  type="text" >
+                                       <select class="js-states form-control" style="width: 100%"  id="cmbparroquia" >
+                                        <option value="S" selected="selected">--- SELECCIONE ---</option>
+                                      </select>
                                     </div>
                                     <div class="col-md-4">
                                       <input id="txtmcalle" class="form-control"  type="text" >
