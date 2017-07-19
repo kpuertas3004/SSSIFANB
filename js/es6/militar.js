@@ -202,6 +202,35 @@ class Componente{
 		this.descripcion = "";
 		this.abreviatura = "";
 	}
+
+GenerarComponente(){
+		let abreviatura= "";
+		 switch(this.abreviatura) {
+		    case "EJ":
+		     	descripcion ="EJÉRCITO BOLIVARIANO";
+		     	nombre ="EJÉRCITO";
+		        break;
+		    case "AV":
+		    	descripcion ="AVIACION MILITAR BOLIVARIANA";
+		    	nombre ="AVIACION";
+		        break;
+		    case "GN":
+		    	descripcion ="GUARDIA NACIONAL BOLIVARIANA";
+		    	nombre ="GUARDIA NACIONAL";
+		        break;
+		    case "AR":
+		    	descripcion ="ARMADA BOLIVARIANA";
+		    	nombre ="ARMADA";
+		        break;
+		    default:
+		        descripcion = "";
+		        break;
+		}
+		return abreviatura;
+	}
+
+
+
 }
 
 
@@ -273,6 +302,10 @@ class Militar{
 	Obtener(){
 		return this;
 	}
+
+
+	
+
 }
 
 class CuentaBancaria{

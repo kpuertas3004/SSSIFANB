@@ -80,6 +80,7 @@ function Buscar( id ){
             let parentesco = v.parentesco;
             familiar.Persona.DatoBasico.sexo = v.Persona.DatoBasico.sexo;
             familiar.parentesco = parentesco;
+            let nombres = DBF.nombreprimero + ' ' + DBF.nombresegundo;
 
             mil = nombre;
             if (v.esmilitar == true){
@@ -99,8 +100,10 @@ function Buscar( id ){
               ok,
               DBF.fechanacimiento,
               v.esmilitar,
-             // DBF.sexo
-              mod
+              mod,
+              nombres,
+              DBF.sexo
+
             ]).draw(false);
 
 
@@ -108,6 +111,11 @@ function Buscar( id ){
 
           t.column(5).visible(false);
           t.column(6).visible(false);
+          t.column(8).visible(false);
+          t.column(9).visible(false);
+
+
+
           $('#tblresultados tbody').on('click', 'tr', function () {
               var data = t.row(this).data();
               urlf = "http://192.168.12.161/imagenes/" +  data[1] + ".jpg";
@@ -125,6 +133,9 @@ function Buscar( id ){
               urlf = "http://192.168.12.161/imagenes/" +  data[1] + ".jpg";
               $("#modFamiliar").modal('show');
               $('#txtcedulaf').val(data[1]);
+              $('#txtnacimientof').val(ConvertirFechaHumana(data[5]));
+              $('#txtnombref').val(data[8]);
+              $('#cmbsexof').val(data[9]);
 
           });
 
