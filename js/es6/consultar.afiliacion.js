@@ -249,6 +249,9 @@ function incluirAfiliado(){
   FrmDireccion(false);
   FrmPartidaNacimiento(false);
   FrmFisicoFisionomico(false);
+  FrmRedSocial(false);
+  FrmTim(false);
+  ModDocumentoCivil(false);
 }
 
 function FrmDatosBasicos(valor){
@@ -307,6 +310,46 @@ function FrmFisicoFisionomico(valor){
   $("#txtmsenaparticular").attr('disabled',valor);
 }
 
+function FrmRedSocial(valor){
+  $("#txtmtwitter").attr('disabled',valor); 
+  $("#txtmfacebook").attr('disabled',valor); 
+  $("#txtminstagran").attr('disabled',valor); 
+  $("#txtmlinkedin").attr('disabled',valor); 
+}
+
+function FrmTim(valor){
+  $("#_imghuella").attr('disabled',valor); 
+  $("#_imgfirma").attr('disabled',valor); 
+}
+
+function ModDocumentoCivil(valor){
+  doc = $("#cmbedocivil option:selected").val();
+  switch (doc) {
+    case "C":
+      $("#txtRegistroCivilM").attr('disabled',valor);
+      $("#txtAnoM").attr('disabled',valor);
+      $("#txtNumeroActaM").attr('disabled',valor);
+      $("#txtNumeroFolioM").attr('disabled',valor);
+      $("#txtLibroM").attr('disabled',valor);
+      break;
+    case "D":
+      $("#txttribunalD").attr('disabled',valor);
+      $("#txtnumerosentenciaD").attr('disabled',valor);
+      $("#txtfechasentenciaD").attr('disabled',valor);
+      break;
+    case "V":
+      $("#txtRegistroCivilV").attr('disabled',valor);
+      $("#txtFechaV").attr('disabled',valor);
+      break;
+    case "S":
+      $("#txtRegistroCivilS").attr('disabled',valor);
+      $("#txtFechaS").attr('disabled',valor);
+      break;
+    default:
+  }
+
+}
+
 function seleccionarActas(){
   edo = $("#cmbedocivil option:selected").val();
   switch (edo) {
@@ -331,7 +374,29 @@ function seleccionarActas(){
       $('#modDocument').modal('show');
       break;
     default:
-
   }
+}
 
+function cambiarGrado(){
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", Conn.URL + "/ipsfa/api/componente/" + $("#cmbcomponente option:selected").val());
+  xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        componente = JSON.parse(xhttp.responseText);
+        console.log(componente);
+        $("#cmbgrado").html('<option selected="selected" value="S">--- SELECCIONE ---</option>');
+        $.each(componente.Grado,function(c,v){
+          $("#cmbgrado").append('<option selected="selected" value="'+v.codigo+'">'+v.descripcion+'</option>')
+        });
+        $("#cmbgrado").val('S');
+      }
+  }
+  xhttp.onerror = function() {
+      if (this.readyState == 4 && this.status == 0) {
+        $.notify("No se puede conectar al servidor");
+        $("#_cargando").hide();
+      }
+
+  };
+  xhttp.send();
 }
