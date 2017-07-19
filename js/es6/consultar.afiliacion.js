@@ -112,7 +112,8 @@ function Buscar( id ){
               DBF.sexo, //9
               apellidos, //10
               v.condicion, //11
-              v.estudia //12
+              v.estudia, //12
+              v.fechavencimiento //13
              
 
             ]).draw(false);
@@ -122,6 +123,7 @@ function Buscar( id ){
 
           t.column(5).visible(false);
           t.column(6).visible(false);
+          t.column(7).visible(false);
           t.column(8).visible(false);
           t.column(9).visible(false);
           t.column(10).visible(false);
