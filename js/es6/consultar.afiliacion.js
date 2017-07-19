@@ -81,6 +81,8 @@ function Buscar( id ){
             familiar.Persona.DatoBasico.sexo = v.Persona.DatoBasico.sexo;
             familiar.parentesco = parentesco;
             let nombres = DBF.nombreprimero + ' ' + DBF.nombresegundo;
+            let apellidos = DBF.apellidoprimero + ' ' + DBF.apellidosegundo;
+            
 
             mil = nombre;
             if (v.esmilitar == true){
@@ -102,7 +104,9 @@ function Buscar( id ){
               v.esmilitar,
               mod,
               nombres,
-              DBF.sexo
+              DBF.sexo,
+              apellidos
+             
 
             ]).draw(false);
 
@@ -113,7 +117,8 @@ function Buscar( id ){
           t.column(6).visible(false);
           t.column(8).visible(false);
           t.column(9).visible(false);
-
+          t.column(10).visible(false);
+          
 
 
           $('#tblresultados tbody').on('click', 'tr', function () {
@@ -136,6 +141,9 @@ function Buscar( id ){
               $('#txtnacimientof').val(ConvertirFechaHumana(data[5]));
               $('#txtnombref').val(data[8]);
               $('#cmbsexof').val(data[9]);
+              $('#txtapellidof').val(data[10]);
+              $('#cmbparentescof').val(data[4]);
+             
 
           });
 
