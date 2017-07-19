@@ -71,6 +71,16 @@ class DatoBasico{
 
 }
 
+class DocumentoCivil{
+	constructor(){
+		this.registrocivil = "";
+		this.ano = "";
+		this.acta = "";
+		this.folio = "";
+		this.libro = "";
+	}
+	
+}
 
 class  DatoFisico{
 	constructor(){
@@ -192,6 +202,8 @@ class Tim{
 		this.fechavencimiento = "";
 		this.Componente = new Componente();
 		this.Grado = new Grado();
+		this.firma = "";
+		this.huella = "";
 	}
 }
 
@@ -227,6 +239,8 @@ class Persona{
 		this.Direccion = new Direccion();
 		this.Telefono = new Telefono();
 		this.PartidaNacimiento = new PartidaNacimiento();
+		this.DocumentoCivil = new DocumentoCivil();
+		this.RedSocial = new RedSocial();
 		this.urlFoto = "1";
 		this.urlHuella = "2";
 		this.urlFirma = "3";
@@ -328,6 +342,19 @@ function ObtenerMilitar(){
 	militar.Persona.DatoFisionomico.senaParticular = $("#txtmsenaparticular").val();
 	militar.Persona.DatoFisionomico.gruposanguineo = $("#txtmgruposanguineo").val();
 	//militar.Grado.abreviatura = $("#cmbgrado option:selected").val();
+	militar.Persona.RedSocial.twitter = $("#txtmtwitter").val();
+	militar.Persona.RedSocial.facebook = $("#txtmfacebook").val();
+	militar.Persona.RedSocial.instagram = $("#txtminstagran").val();
+	militar.Persona.RedSocial.linkedin = $("#txtmlinkedin").val();
+	militar.Tim.huella = $('#_imghuella').val();
+	militar.Tim.firma = $('#_imgfirma').val();
+	militar.Persona.DocumentoCivil.registrocivil = $('#txtRegistroCivilM').val();
+	militar.Persona.DocumentoCivil.ano = $('#txtAnoM').val();
+	militar.Persona.DocumentoCivil.acta = $('#txtNumeroActaM').val();
+	militar.Persona.DocumentoCivil.folio = $('#txtNumeroFolioM').val();
+	militar.Persona.DocumentoCivil.libro = $('#txtLibroM').val();
+	militar.Persona.DocumentoCivil.libro = $('#txtRegistroCivilD').val();
+
 	console.log(militar);
 
 

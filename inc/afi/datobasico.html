@@ -97,8 +97,9 @@
                                      </div>
                                       <div class="col-md-4 col-sm-12">
                                         <label>Componente:</label>
-                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbcomponente" disabled="disabled">
-                                          <option selected="selected" value="EJ">EJERCITO</option>
+                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbcomponente" disabled="disabled" onChange="cambiarGrado()">
+                                          <option selected="selected" value="S">--- SELECCIONE ---</option>
+                                          <option value="EJ">EJERCITO</option>
                                           <option value="AR">ARMADA</option>
                                           <option value="AV">AVIACION</option>
                                           <option value="GN">GUARDA NACIONAL</option>
@@ -107,7 +108,7 @@
                                       <div class="col-md-4 col-sm-12">
                                         <label >Grado:</label>
                                         <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbgrado" disabled="disabled">
-                                           <option selected="selected">CORONEL</option>
+                                          <option selected="selected" value="S">--- SELECCIONE ---</option>
                                          </select>
                                      </div>
                                   </div><!-- Grupo Grado-->
@@ -372,11 +373,11 @@
                                     <label class="col-md-6 ">Twitter:</label>
                                      <label class="col-md-6">FaceBook:</label>
                                     <div class="col-md-6">
-                                      <input id="txtftwitter" class="form-control"  type="text" >
+                                      <input id="txtmtwitter" class="form-control"  type="text" >
                                     </div>
 
                                     <div class="col-md-6">
-                                      <input id="txtffacebook" class="form-control"  type="text" >
+                                      <input id="txtmfacebook" class="form-control"  type="text" >
                                     </div>
 
                                   </div> <!-- Grupo nombres-->
@@ -386,11 +387,11 @@
                                      <label class="col-md-6 ">InstaGrant:</label>
                                       <label class="col-md-6">Linkedin:</label>
                                      <div class="col-md-6">
-                                       <input  id="txtfinstagran" class="form-control"  type="text" >
+                                       <input  id="txtminstagran" class="form-control"  type="text" >
                                      </div>
 
                                      <div class="col-md-6">
-                                       <input  id="txtflinkedin" class="form-control"  type="text" >
+                                       <input  id="txtmlinkedin" class="form-control"  type="text" >
                                      </div>
 
                                    </div> <!-- Grupo nombres-->
