@@ -58,6 +58,7 @@ function Buscar( id ){
           $("#cmbedocivil").val(DB.estadocivil);
           $("#cmbcomponente").val(militar.Componente.abreviatura);
           $("#cmbgrado").html('<option value="' + militar.Grado.abreviatura + '">' + militar.Grado.descripcion + '</option>');
+          $("#txtfechagraduacion").val(ConvertirFechaHumana(militar.fingreso));
           $("#_fingreso").html(ConvertirFechaHumana(militar.fingreso));
           $("#_fascenso").html(ConvertirFechaHumana(militar.fascenso));
           $("#cmbcategoria").val(militar.categoria);
@@ -83,7 +84,7 @@ function Buscar( id ){
             let nombres = DBF.nombreprimero + ' ' + DBF.nombresegundo;
             let apellidos = DBF.apellidoprimero + ' ' + DBF.apellidosegundo;
             estadocivil= DBF.estadocivil;
-            
+
 
             mil = nombre;
             if (v.esmilitar == true){
@@ -94,11 +95,10 @@ function Buscar( id ){
 
             if (v.beneficio == true){
               situacion = "ACTIVO";
+            }else {
+               situacion = "INACTIVO"
             }
-                else {
-                   situacion = "INACTIVO"
-                }
-               mod = '<font color="#red"><i class="fa fa-fw fa-pencil"></i></font>';
+            mod = '<font color="#red"><i class="fa fa-fw fa-pencil"></i></font>';
             t.row.add ([
               i++, //0
               cedula, //1
@@ -114,7 +114,7 @@ function Buscar( id ){
               v.condicion, //11
               v.estudia, //12
               v.fechavencimiento //13
-             
+
 
             ]).draw(false);
 
@@ -129,8 +129,8 @@ function Buscar( id ){
           t.column(10).visible(false);
           t.column(11).visible(false);
           t.column(12).visible(false);
-         
-          
+
+
 
 
           $('#tblresultados tbody').on('click', 'tr', function () {
@@ -146,31 +146,28 @@ function Buscar( id ){
 
           });
 
-           $('#tblresultados tbody').on('dblclick', 'tr', function () {
-              var data = t.row(this).data();
-              urlf = "http://192.168.12.161/imagenes/" +  data[1] + ".jpg";
-              $("#modFamiliar").modal('show');
-              $('#txtcedulaf').val(data[1]);
-              $('#txtnacimientof').val(ConvertirFechaHumana(data[5]));
-              $('#txtnombref').val(data[8]);
-              $('#cmbsexof').val(data[9]);
-              $('#txtapellidof').val(data[10]);
-            
-             
-              if (data[11]==0){
-                $("#cmbcondicionf").html('<option selected="selected" value=0>NO</option>\
-                              <option value=1>SI</option> ');
-              }
-              $('#cmbcondicionf').val(data[11]);
+          $('#tblresultados tbody').on('dblclick', 'tr', function () {
+            var data = t.row(this).data();
+            urlf = "http://192.168.12.161/imagenes/" +  data[1] + ".jpg";
+            $("#modFamiliar").modal('show');
+            $('#txtcedulaf').val(data[1]);
+            $('#txtnacimientof').val(ConvertirFechaHumana(data[5]));
+            $('#txtnombref').val(data[8]);
+            $('#cmbsexof').val(data[9]);
+            $('#txtapellidof').val(data[10]);
 
-              if (data[12]==0){
-                $("#cmbestudiaf").html('<option selected="selected" value=0>NO</option>\
-                              <option value=1>SI</option> ');
-              }
-              $('#cmbestudiaf').val(data[12]);
-             
-            
-             
+
+            if (data[11]==0){
+              $("#cmbcondicionf").html('<option selected="selected" value=0>NO</option>\
+                            <option value=1>SI</option> ');
+            }
+            $('#cmbcondicionf').val(data[11]);
+
+            if (data[12]==0){
+              $("#cmbestudiaf").html('<option selected="selected" value=0>NO</option>\
+                            <option value=1>SI</option> ');
+            }
+            $('#cmbestudiaf').val(data[12]);
 
           });
 
@@ -383,15 +380,15 @@ function FrmFisicoFisionomico(valor){
 }
 
 function FrmRedSocial(valor){
-  $("#txtmtwitter").attr('disabled',valor); 
-  $("#txtmfacebook").attr('disabled',valor); 
-  $("#txtminstagran").attr('disabled',valor); 
-  $("#txtmlinkedin").attr('disabled',valor); 
+  $("#txtmtwitter").attr('disabled',valor);
+  $("#txtmfacebook").attr('disabled',valor);
+  $("#txtminstagran").attr('disabled',valor);
+  $("#txtmlinkedin").attr('disabled',valor);
 }
 
 function FrmTim(valor){
-  $("#_imghuella").attr('disabled',valor); 
-  $("#_imgfirma").attr('disabled',valor); 
+  $("#_imghuella").attr('disabled',valor);
+  $("#_imgfirma").attr('disabled',valor);
 }
 
 function ModDocumentoCivil(valor){
@@ -453,14 +450,14 @@ function seleccionarPartida(){
   nac = $("#txtnacimiento").val();
   $("#_titulod").html("Cargar Partida de Nacimiento");
   CargarUrl("_contenidod", "afi/partidanacimiento");
-  $('#modDocument').modal('show');   
+  $('#modDocument').modal('show');
 }
 
 function seleccionarDefuncion(){
   def = $("#txtdefuncion").val();
   $("#_titulod").html("Cargar Acta de Defunción");
   CargarUrl("_contenidod", "afi/defuncion");
-  $('#modDocument').modal('show');  
+  $('#modDocument').modal('show');
 }
 
 function cambiarGrado(){
@@ -470,7 +467,7 @@ function cambiarGrado(){
       if (this.readyState == 4 && this.status == 200) {
         componente = JSON.parse(xhttp.responseText);
         console.log(componente);
-        $("#cmbgrado").html('<option selected="selected" value="S">--- SELECCIONE ---</option>');
+        $("#cmbgrado").html('<option selected="selected" value="S"></option>');
         $.each(componente.Grado,function(c,v){
           $("#cmbgrado").append('<option selected="selected" value="'+v.codigo+'">'+v.descripcion+'</option>')
         });

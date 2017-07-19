@@ -1,7 +1,7 @@
 <div class="box box-primary box-solid " >
   <div class="box-header with-border">
 
-     <h3 class="box-title">Datos Basicos</h3>
+     <h3 class="box-title">Datos Basicos del Militar</h3>
      <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" onclick="ActivarBuscar()"><i class="fa fa-search"></i>
         <button type="button" class="btn btn-box-tool" onclick="CConstanciaAfiliacion()"><i class="fa fa-print"></i>
@@ -25,7 +25,7 @@
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">V&nbsp;&nbsp;
                       <span class="fa fa-caret-down"></span></button>
                 </span>
-                <input class="form-control" placeholder="Cédula de Identidad" id="txtcedula"  type="text" disabled="disabled">
+                <input class="form-control" id="txtcedula"  type="text" disabled="disabled">
               </div>
           </div> <!-- Cedula -->
         </div>
@@ -33,11 +33,11 @@
         <div class="form-group">
           <div class="col-md-6 col-sm-12">
             <label>Nombres:</label>
-            <input placeholder="Nombre Completo" id="txtnombre" class="form-control"  type="text" disabled="disabled">
+            <input  id="txtnombre" class="form-control"  type="text" disabled="disabled">
           </div>
           <div class="col-md-6 col-sm-12">
             <label>Apellidos:</label>
-           <input placeholder="Apellido Completo" id="txtapellido" class="form-control"  type="text" disabled="disabled">
+           <input  id="txtapellido" class="form-control"  type="text" disabled="disabled">
           </div>
        </div> <!-- Grupo nombres-->
 
@@ -46,7 +46,7 @@
            <div class="col-md-3 col-sm-12">
              <label>Fecha de Nacimiento:</label>
              <div class="input-group input-group-sm">
-             <input type="text" class="form-control" placeholder="Nacimiento" id="txtnacimiento" disabled="disabled" onClick="seleccionarPartida()">
+             <input type="text" class="form-control"  id="txtnacimiento" disabled="disabled" onClick="seleccionarPartida()">
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-success btn-flat btn-md" id="btnnacimiento" onClick="seleccionarPartida()" disabled="disabled"><i class="fa fa-file-text"></i></button>
                   </span>
@@ -55,7 +55,7 @@
            <div class="col-md-3 col-sm-6">
              <label >Sexo:</label>
              <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbsexo" disabled="disabled">
-               <option selected="selected" value="S">--- SELECCIONE ---</option>
+               <option selected="selected" value="S"></option>
                <option value="F">FEMENINO</option>
                <option value="M">MASCULINO</option>
              </select>
@@ -64,7 +64,7 @@
               <label>Estado Civil:</label>
               <select class="js-states form-control" style="width: 100%" tabindex="-1"
                   aria-hidden="true" id="cmbedocivil" disabled="disabled" onchange="seleccionarActas()">
-                <option selected="selected" value="S">--- SELECCIONE ---</option>
+                <option selected="selected" value="S"></option>
                 <option value="S">SOLTERO</option>
                 <option value="C">CASADO</option>
                 <option value="D">DIVORCIADO</option>
@@ -74,7 +74,7 @@
            <div class="col-md-3 col-sm-12">
              <label>Fecha de Defunción:</label>
              <div class="input-group input-group-sm">
-             <input type="text" class="form-control" placeholder="Defuncion" id="txtdefuncion" disabled="disabled" onClick="seleccionarDefuncion()">
+             <input type="text" class="form-control" id="txtdefuncion" disabled="disabled" onClick="seleccionarDefuncion()">
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-success btn-flat btn-md" id="btndefuncion" onClick="seleccionarDefuncion()" disabled="disabled"><i class="fa fa-file-text"></i></button>
                   </span>
@@ -91,12 +91,12 @@
 
               <div class="nav-tabs-custom">
                              <!-- Nav tabs -->
-                             <ul class="nav nav-tabs " role="tablist">
-                               <li role="presentation" class="active"><a href="#mdmilitar" aria-controls="home" role="tab" data-toggle="tab">Datos <br> Militares</a></li>
+                             <ul class="nav nav-pills nav-fill nav-justified" >
+                               <li role="presentation" class="active"><a href="#mdmilitar" aria-controls="home" role="tab" data-toggle="tab">Datos Militares</a></li>
                                <li role="presentation"><a href="#mfinanciero" aria-controls="home" role="tab" data-toggle="tab">Cta. Bancaria</a></li>
                                <li role="presentation"><a href="#mdireccion" aria-controls="home" role="tab" data-toggle="tab">Dirección</a></li>
-                               <li role="presentation"><a href="#mpartida" aria-controls="profile" role="tab" data-toggle="tab">Partida Nacimiento</a></li>
-                               <li role="presentation"><a href="#mdfisico" aria-controls="messages" role="tab" data-toggle="tab">Datos Fisicos /<br>  Fisionomico</a></li>
+                               <li role="presentation"><a href="#mpartida" aria-controls="profile" role="tab" data-toggle="tab">Part. Nacimiento</a></li>
+                               <li role="presentation"><a href="#mdfisico" aria-controls="messages" role="tab" data-toggle="tab">Datos Fisicos</a></li>
                                <li role="presentation"><a href="#mdredes" aria-controls="messages" role="tab" data-toggle="tab">Redes Sociales</a></li>
                                <li role="presentation"><a href="#mdcarnet" aria-controls="messages" role="tab" data-toggle="tab">TIM</a></li>
 
@@ -108,13 +108,13 @@
 
                                     <div class="form-group">
                                     <div class="col-md-4 col-sm-12">
-                                        <label >Fecha Graduación:</label>
-                                        <input id="txtfechagraduacion" class="form-control"  type="text" >
+                                        <label >Fecha Ingreso FANB:</label>
+                                        <input id="txtfechagraduacion" class="form-control"  type="text" disabled="disabled">
                                      </div>
                                       <div class="col-md-4 col-sm-12">
                                         <label>Componente:</label>
                                         <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbcomponente" disabled="disabled" onChange="cambiarGrado()">
-                                          <option selected="selected" value="S">--- SELECCIONE ---</option>
+                                          <option selected="selected" value="S"></option>
                                           <option value="EJ">EJERCITO</option>
                                           <option value="AR">ARMADA</option>
                                           <option value="AV">AVIACION</option>
@@ -124,51 +124,55 @@
                                       <div class="col-md-4 col-sm-12">
                                         <label >Grado:</label>
                                         <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbgrado" disabled="disabled">
-                                          <option selected="selected" value="S">--- SELECCIONE ---</option>
+                                          <option selected="selected" value="S"></option>
                                          </select>
                                      </div>
                                   </div><!-- Grupo Grado-->
 
                                     <div class="form-group">
                                       <div class="col-md-4 col-sm-12">
+                                        <label>Categoria:</label>
+                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbclase" disabled="disabled">
+                                          <option selected="selected" value="S"></option>
+
+                                          <option value="OFI">COMANDO</option>
+                                          <option value="OFIT">TECNICO</option>
+                                          <option value="OFITR">DE TROPA</option>
+                                          <option value="ASI">ASIMILADO</option>
+                                          <option value="TPROF">TROPA PROFESIONAL</option>
+                                          <option value="SUBOFI" disabled="disabled">SUB OFICIAL</option>
+
+                                        </select>
+                                      </div>
+                                      <div class="col-md-4 col-sm-12">
+                                        <label>Clasificación:</label>
+                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbcategoria" disabled="disabled">
+                                          <option selected="selected" value="S"></option>
+                                          <option value="EFE">OFICIAL</option> <!-- TROPA -->
+                                          <option value="TRP">TROPA PROFESIONAL</option> <!-- TROPA -->
+                                          <option value="CAD"  disabled="disabled">CADETE</option>
+                                          <option value="ALU"  disabled="disabled">ALUMNO</option>
+                                          <option value="TALIS"  disabled="disabled">TROPA ALISTADA</option>
+                                          <option value="ASI" disabled="disabled">ASIMILADO</option>
+                                          <option value="INV" disabled="disabled">INVALIDEZ</option>
+                                          <option value="RES" disabled="disabled">RESERVA</option>
+                                          <option value="X" disabled="disabled">CONVERSION</option>
+                                        </select>
+                                      </div>
+                                      <div class="col-md-4 col-sm-12">
                                         <label>Situación:</label>
                                         <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbsituacion" disabled="disabled">
-                                          <option selected="selected" value="S">--- SELECCIONE ---</option>
+                                          <option selected="selected" value="S"></option>
                                           <option value="ACT">ACTIVO</option>
-                                          <option value="D">DISPONIBLE</option>
-                                          <option value="FCP">FALLECIDO CON PENSION</option>
-                                          <option value="FSP">FALLECIDO SIN PENSION</option>
-                                          <option value="I">INVALIDO</option>
-                                          <option value="RCP">RETIRADO CON PENSION</option>
-                                          <option value="RSP">RETIRADO SIN PENSION</option>
+                                          <option value="RCP">RESERVA ACTIVA</option> <!-- RETIRADO CON PENSION-->
+                                          <option value="RSP">RETIRADO</option>
+                                          <option value="FCP" disabled="disabled">FALLECIDO CON PENSION</option>
+                                          <option value="FSP" disabled="disabled">FALLECIDO SIN PENSION</option>
+                                          <option value="I" disabled="disabled">INVALIDO</option>
+                                          <option value="D" disabled="disabled">DISPONIBLE</option>
                                         </select>
                                       </div>
-                                      <div class="col-md-4 col-sm-12">
-                                        <label>Clase:</label>
-                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbclase" disabled="disabled">
-                                          <option selected="selected" value="S">--- SELECCIONE ---</option>
-                                          <option value="ALU">ALUMNO</option>
-                                          <option value="CAD">CADETE</option>
-                                          <option value="OFI">OFICIAL</option>
-                                          <option value="OFIT">OFICIAL TECNICO</option>
-                                          <option value="OFITR">OFICIAL DE TROPA</option>
-                                          <option value="SUBOFI">SUB OFICIAL</option>
-                                          <option value="TALIS">TROPA ALISTADA</option>
-                                          <option value="TPROF">TROPA PROFESIONAL</option>
-                                        </select>
-                                      </div>
-                                      <div class="col-md-4 col-sm-12">
-                                        <label>Categoria:</label>
-                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbcategoria" disabled="disabled">
-                                          <option selected="selected" value="S">--- SELECCIONE ---</option>
-                                          <option value="ASI">ASIMILADO</option>
-                                          <option value="EFE">EFECTIVO</option>
-                                          <option value="INV">INVALIDEZ</option>
-                                          <option value="RES">RESERVA</option>
-                                          <option value="TRP">TROPA</option>
-                                          <option value="X">CONVERSION</option>
-                                        </select>
-                                      </div>
+
 
                                   </div> <!-- Grupo nombres-->
 
@@ -232,17 +236,17 @@
 
                                     <div class="col-md-4">
                                       <select class="js-states form-control" style="width: 100%"  id="cmbmestado" >
-                                        <option value="S" selected="selected">--- SELECCIONE ---</option>
+                                        <option value="S" selected="selected"></option>
                                       </select>
                                     </div>
                                     <div class="col-md-4">
                                       <select class="js-states form-control" style="width: 100%"  id="cmbmciudad" >
-                                        <option value="S" selected="selected">--- SELECCIONE ---</option>
+                                        <option value="S" selected="selected"></option>
                                       </select>
                                     </div>
                                     <div class="col-md-4">
                                       <select class="js-states form-control" style="width: 100%" id="cmbmmunicipio" >
-                                        <option value="S" selected="selected">--- SELECCIONE ---</option>
+                                        <option value="S" selected="selected"></option>
                                       </select>
                                     </div>
                                   </div> <!-- Grupo nombres-->
@@ -258,7 +262,7 @@
 
                                     <div class="col-md-4">
                                        <select class="js-states form-control" style="width: 100%"  id="cmbparroquia" >
-                                        <option value="S" selected="selected">--- SELECCIONE ---</option>
+                                        <option value="S" selected="selected"></option>
                                       </select>
                                     </div>
                                     <div class="col-md-4">
@@ -450,11 +454,11 @@
     </form>
   </div><!-- /.box-body -->
   <div class="modal-footer" id="_botonesmilitar">
-    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="CConstanciaAfiliacion()">
+    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="CConstanciaAfiliacion()" id="_btnConstancia">
       <i class="fa fa-print "></i>&nbsp;&nbsp;Constancia de Afiliación</button>
-    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="VisualizarCarnet()">
+    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="VisualizarCarnet()" id="_btnTIM">
       <i class="fa fa-credit-card"></i>&nbsp;&nbsp;Tarjeta de Identificación</button>
-      <button type="button" class="btn btn-warning" data-dismiss="modal" onclick="activarSalvar()">
+      <button type="button" class="btn btn-warning" data-dismiss="modal" onclick="activarSalvar()" id="_btnSavlvar">
         <i class="fa fa-pencil"></i>&nbsp;&nbsp;Modificar Datos</button>
 
   </div>
