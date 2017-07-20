@@ -39,16 +39,8 @@ function results_api_activar_menu()
 
 			for( var i=0; i<count(Menu) ; i++ )
 			{
-				/*
-				{
-						"url" : "inc/datos",
-						"icono" : "fa fa-search",
-						"nombre" : "Datos"
-				}*/
-				menuStr = menuStr + "<li ><a href='#' onclick='LlamarMenu(\""+Menu[i].url+"\")' ><i class='"+Menu[i].icono+"'></i><span>"+Menu[i].nombre+"</span></a></li> ";
 
-				//<li ><a href="#"   onclick="CallMenu()" ><i class='fa fa-gears'></i>       <span>Gestionar Usuario</span></a></li>
-				alert( Menu[i].url +" "+ Menu[i].icono +" "+Menu[i].nombre )
+				menuStr = menuStr + "<li ><a href='#' onclick='LlamarMenu(\""+Menu[i].url+"\")' ><i class='"+Menu[i].icono+"'></i><span>"+Menu[i].nombre+"</span></a></li> ";
 			}			
 			$('#_menu').html(menuStr);
 		}
