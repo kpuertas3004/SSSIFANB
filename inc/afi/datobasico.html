@@ -1,0 +1,466 @@
+<div class="box box-primary box-solid " >
+  <div class="box-header with-border">
+
+     <h3 class="box-title">Datos Basicos del Militar</h3>
+     <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" onclick="ActivarBuscar()"><i class="fa fa-search"></i>
+        <button type="button" class="btn btn-box-tool" onclick="CConstanciaAfiliacion()"><i class="fa fa-print"></i>
+        <button type="button" class="btn btn-box-tool" onclick="VisualizarCarnet()"><i class="fa fa-credit-card"></i>
+        <button type="button" class="btn btn-box-tool" onclick="activarSalvar()"><i class="fa fa-pencil"></i>
+        <button type="button" class="btn btn-box-tool" onclick="ObtenerMilitar()"><i class="fa fa-save"></i>
+
+
+        </button>
+      </div>
+
+  </div>
+  <div class="box-body">
+    <form class="form-horizontal">
+      <div class="box-body">
+          <div class="form-group">
+            <div class="col-md-4 col-sm-12">
+            <label>Cédula:</label>
+              <div class="input-group">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">V&nbsp;&nbsp;
+                      <span class="fa fa-caret-down"></span></button>
+                </span>
+                <input class="form-control" id="txtcedula"  type="text" disabled="disabled" maxlength="10">
+              </div>
+          </div> <!-- Cedula -->
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-6 col-sm-12">
+            <label>Nombres:</label>
+            <input  id="txtnombre" class="form-control"  type="text" disabled="disabled">
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <label>Apellidos:</label>
+           <input  id="txtapellido" class="form-control"  type="text" disabled="disabled">
+          </div>
+       </div> <!-- Grupo nombres-->
+
+
+         <div class="form-group">
+           <div class="col-md-3 col-sm-12">
+             <label>Fecha de Nacimiento:</label>
+             <div class="input-group input-group-sm">
+             <input type="text" class="form-control"  id="txtnacimiento" disabled="disabled" onClick="seleccionarPartida()">
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-success btn-flat btn-md" id="btnnacimiento" onClick="seleccionarPartida()" disabled="disabled"><i class="fa fa-file-text"></i></button>
+                  </span>
+              </div>
+           </div>
+           <div class="col-md-3 col-sm-6">
+             <label >Sexo:</label>
+             <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbsexo" disabled="disabled">
+               <option selected="selected" value="S"></option>
+               <option value="F">FEMENINO</option>
+               <option value="M">MASCULINO</option>
+             </select>
+           </div>
+           <div class="col-md-3 col-sm-6">
+              <label>Estado Civil:</label>
+              <select class="js-states form-control" style="width: 100%" tabindex="-1"
+                  aria-hidden="true" id="cmbedocivil" disabled="disabled" onchange="seleccionarActas()">
+                <option selected="selected" value="S"></option>
+                <option value="S">SOLTERO</option>
+                <option value="C">CASADO</option>
+                <option value="D">DIVORCIADO</option>
+                <option value="V">VIUDO</option>
+              </select>
+           </div>
+           <div class="col-md-3 col-sm-12">
+             <label>Fecha de Defunción:</label>
+             <div class="input-group input-group-sm">
+             <input type="text" class="form-control" id="txtdefuncion" disabled="disabled" onClick="seleccionarDefuncion()">
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-success btn-flat btn-md" id="btndefuncion" onClick="seleccionarDefuncion()" disabled="disabled"><i class="fa fa-file-text"></i></button>
+                  </span>
+              </div>
+           </div>
+        </div> <!-- Grupo nombres-->
+
+
+
+      <br>
+
+
+     <div class="row">
+
+              <div class="nav-tabs-custom">
+                             <!-- Nav tabs -->
+                             <ul class="nav nav-pills nav-fill nav-justified" >
+                               <li role="presentation" class="active"><a href="#mdmilitar" aria-controls="home" role="tab" data-toggle="tab">Datos Militares</a></li>
+                               <li role="presentation"><a href="#mfinanciero" aria-controls="home" role="tab" data-toggle="tab">Cta. Bancaria</a></li>
+                               <li role="presentation"><a href="#mdireccion" aria-controls="home" role="tab" data-toggle="tab">Dirección</a></li>
+                               <li role="presentation"><a href="#mpartida" aria-controls="profile" role="tab" data-toggle="tab">Part. Nacimiento</a></li>
+                               <li role="presentation"><a href="#mdfisico" aria-controls="messages" role="tab" data-toggle="tab">Datos Fisicos</a></li>
+                               <li role="presentation"><a href="#mdredes" aria-controls="messages" role="tab" data-toggle="tab">Redes Sociales</a></li>
+                               <li role="presentation"><a href="#mdcarnet" aria-controls="messages" role="tab" data-toggle="tab">TIM</a></li>
+
+                             </ul>
+
+                             <!-- Tab panes -->
+                             <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="mdmilitar" style="padding:15px">
+
+                                    <div class="form-group">
+                                    <div class="col-md-4 col-sm-12">
+                                        <label >Fecha Ingreso FANB:</label>
+                                        <input id="txtfechagraduacion" class="form-control"  type="text" disabled="disabled">
+                                     </div>
+                                      <div class="col-md-4 col-sm-12">
+                                        <label>Componente:</label>
+                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbcomponente" disabled="disabled" onChange="cambiarGrado()">
+                                          <option selected="selected" value="S"></option>
+                                          <option value="EJ">EJERCITO</option>
+                                          <option value="AR">ARMADA</option>
+                                          <option value="AV">AVIACION</option>
+                                          <option value="GN">GUARDA NACIONAL</option>
+                                        </select>
+                                      </div>
+                                      <div class="col-md-4 col-sm-12">
+                                        <label >Grado:</label>
+                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbgrado" disabled="disabled">
+                                          <option selected="selected" value="S"></option>
+                                         </select>
+                                     </div>
+                                  </div><!-- Grupo Grado-->
+
+                                    <div class="form-group">
+                                      <div class="col-md-4 col-sm-12">
+                                        <label>Categoria:</label>
+                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbclase" disabled="disabled">
+                                          <option selected="selected" value="S"></option>
+
+                                          <option value="OFI">COMANDO</option>
+                                          <option value="OFIT">TECNICO</option>
+                                          <option value="OFITR">DE TROPA</option>
+                                          <option value="ASI">ASIMILADO</option>
+                                          <option value="TPROF">TROPA PROFESIONAL</option>
+                                          <option value="SUBOFI" disabled="disabled">SUB OFICIAL</option>
+
+                                        </select>
+                                      </div>
+                                      <div class="col-md-4 col-sm-12">
+                                        <label>Clasificación:</label>
+                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbcategoria" disabled="disabled">
+                                          <option selected="selected" value="S"></option>
+                                          <option value="EFE">OFICIAL</option> <!-- TROPA -->
+                                          <option value="TRP">TROPA PROFESIONAL</option> <!-- TROPA -->
+                                          <option value="CAD"  disabled="disabled">CADETE</option>
+                                          <option value="ALU"  disabled="disabled">ALUMNO</option>
+                                          <option value="TALIS"  disabled="disabled">TROPA ALISTADA</option>
+                                          <option value="ASI" disabled="disabled">ASIMILADO</option>
+                                          <option value="INV" disabled="disabled">INVALIDEZ</option>
+                                          <option value="RES" disabled="disabled">RESERVA</option>
+                                          <option value="X" disabled="disabled">CONVERSION</option>
+                                        </select>
+                                      </div>
+                                      <div class="col-md-4 col-sm-12">
+                                        <label>Situación:</label>
+                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbsituacion" disabled="disabled">
+                                          <option selected="selected" value="S"></option>
+                                          <option value="ACT">ACTIVO</option>
+                                          <option value="RCP">RESERVA ACTIVA</option> <!-- RETIRADO CON PENSION-->
+                                          <option value="RSP">RETIRADO</option>
+                                          <option value="FCP" disabled="disabled">FALLECIDO CON PENSION</option>
+                                          <option value="FSP" disabled="disabled">FALLECIDO SIN PENSION</option>
+                                          <option value="I" disabled="disabled">INVALIDO</option>
+                                          <option value="D" disabled="disabled">DISPONIBLE</option>
+                                        </select>
+                                      </div>
+
+
+                                  </div> <!-- Grupo nombres-->
+
+
+                                </div><!-- Tab panes Datos Militares-->
+
+                                <!-- Tab Datos Financieros-->
+
+                                 <div role="tabpanel" class="tab-pane" id="mfinanciero"  style="padding:15px">
+                                 <div class="row">
+                                   <div class="form-group">
+                                    <label class="col-md-3 ">Institución Financiera</label>
+
+                                   <div class="col-md-9">
+                                     <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbinstfinanciera" >
+                                       <option value="0003">BANFANB</option>
+                                       <option value="0102">BCO. DE VENEZUELA</option>
+                                       <option value="0177">BICENTENARIO</option>
+                                       <option value="0134">BANESCO</option>
+                                       <option value="0175">MERCANTIL</option>
+                                     </select>
+                                   </div>
+
+
+
+                                  </div> <!-- Grupo nombres-->
+                                  </div>
+                                  <div class="row">
+                                    <div class="form-group">
+                                     <label class="col-md-6 ">Tipo de Cuenta:</label>
+                                      <label class="col-md-6">Nro. de Cuenta:</label>
+                                     <div class="col-md-6">
+                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbtipofinanciera" >
+                                       <option value="CA" selected="selected">AHORRO</option>
+                                       <option value="CC">CORRIENTE</option>
+                                        </select>
+                                     </div>
+
+                                     <div class="col-md-6">
+                                       <input  id="txtnrocuenta" class="form-control"  type="text" >
+                                     </div>
+
+                                   </div> <!-- Grupo nombres-->
+
+                                 </div>
+
+                               </div><!-- Tab Datos Financieros-->
+
+
+
+
+
+                               <div role="tabpanel" class="tab-pane" id="mdireccion" style="padding:15px">
+
+
+                                 <div class="row">
+                                   <div class="form-group">
+                                    <label class="col-md-4">Estado:</label>
+                                    <label class="col-md-4">Ciudad:</label>
+                                    <label class="col-md-4">Municipio:</label>
+
+                                    <div class="col-md-4">
+                                      <select class="js-states form-control" style="width: 100%"  id="cmbmestado" >
+                                        <option value="S" selected="selected"></option>
+                                      </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <select class="js-states form-control" style="width: 100%"  id="cmbmciudad" >
+                                        <option value="S" selected="selected"></option>
+                                      </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <select class="js-states form-control" style="width: 100%" id="cmbmmunicipio" >
+                                        <option value="S" selected="selected"></option>
+                                      </select>
+                                    </div>
+                                  </div> <!-- Grupo nombres-->
+                                 </div>
+
+                                 <div class="row">
+                                   <div class="form-group">
+                                    <label class="col-md-4">Parroquia:</label>
+                                    <label class="col-md-4">Calle / Edificio:</label>
+                                    <label class="col-md-2"># Casa:</label>
+                                    <label class="col-md-2"># Apto.:</label>
+
+
+                                    <div class="col-md-4">
+                                       <select class="js-states form-control" style="width: 100%"  id="cmbparroquia" >
+                                        <option value="S" selected="selected"></option>
+                                      </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <input id="txtmcalle" class="form-control"  type="text" >
+                                    </div>
+                                    <div class="col-md-2">
+                                      <input id="txtmcasa" class="form-control"  type="text" >
+                                    </div>
+                                    <div class="col-md-2">
+                                      <input id="txtmapto" class="form-control"  type="text" >
+                                    </div>
+                                  </div> <!-- Grupo nombres-->
+                                 </div>
+
+                                 <div class="row">
+                                   <div class="form-group">
+                                     <label class="col-md-4">Teléfono:</label>
+                                     <label class="col-md-4">Celular:</label>
+                                     <label class="col-md-4">Correo Electronico:</label>
+                                     <div class="col-md-4">
+                                       <input id="txtmtelefono" class="form-control"  type="text" >
+                                     </div>
+                                     <div class="col-md-4">
+                                       <input id="txtmcelular" class="form-control"  type="text" >
+                                     </div>
+                                     <div class="col-md-4">
+                                       <input  id="txtmcorreo" class="form-control"  type="text" >
+                                     </div>
+                                   </div>
+                                 </div>
+
+
+
+                               </div><!-- Tab panes  Direccion-->
+                               <div role="tabpanel" class="tab-pane" id="mpartida" style="padding:15px">
+
+                                 <div class="row">
+                                   <div class="col-md-2">
+                                     <img class="profile-user-img img-responsive" style="width:90px" src="images/ndisponible.jpg"
+                                       onerror="this.src='images/ndisponible.jpg'"  alt="Partida" id="_imgpartida">
+                                   </div>
+                                   <div class="col-md-10">
+                                     <div class="row" >
+                                       <label class="col-md-10">Registro Civil:</label>
+                                       <label class="col-md-2">Año:</label>
+                                       <div class="col-md-10">
+                                         <input id="txtpregistrocivil" class="form-control"  type="text" >
+                                       </div>
+                                       <div class="col-md-2">
+                                         <input id="txtpano" class="form-control"  type="text" >
+                                       </div>
+                                     </div>
+
+                                     <div class="row">
+                                       <label class="col-md-4">Nro. Acta:</label>
+                                       <label class="col-md-4">Nro. Folio:</label>
+                                       <label class="col-md-4">Libro:</label>
+                                       <div class="col-md-4">
+                                         <input id="txtpacta" class="form-control"  type="text" >
+                                       </div>
+                                       <div class="col-md-4">
+                                         <input  id="txtpfolio" class="form-control"  type="text" >
+                                       </div>
+                                       <div class="col-md-4">
+                                         <input  id="txtplibro" class="form-control"  type="text" >
+                                       </div>
+                                     </div>
+
+
+
+                                   </div>
+
+                                 </div>
+
+                               </div><!-- Tab panel Partida de Nacimiento -->
+                               <div role="tabpanel" class="tab-pane" id="mdfisico"  style="padding:15px">
+                                 <div class="row">
+                                   <div class="form-group">
+                                    <label class="col-md-3">Estatura:</label>
+                                    <label class="col-md-3">Peso:</label>
+                                    <label class="col-md-3">Talla:</label>
+                                    <label class="col-md-3">Grupo Sanguineo:</label>
+
+                                    <div class="col-md-3">
+                                      <input  id="txtmestatura" class="form-control"  type="text" >
+                                    </div>
+                                    <div class="col-md-3">
+                                      <input  id="txtmpeso" class="form-control"  type="text" >
+                                    </div>
+                                    <div class="col-md-3">
+                                     <input  id="txtmtalla" class="form-control"  type="text" >
+                                    </div>
+                                    <div class="col-md-3">
+                                     <input  id="txtmgruposanguineo" class="form-control"  type="text" >
+                                    </div>
+                                  </div> <!-- Grupo nombres-->
+                                 </div>
+
+                                 <div class="row">
+                                   <div class="form-group">
+                                    <label class="col-md-3">Color de Piel:</label>
+                                    <label class="col-md-3">Color de Ojos:</label>
+                                    <label class="col-md-3">Color de Cabello:</label>
+
+                                    <label class="col-md-3">Seña Particular:</label>
+
+                                    <div class="col-md-3">
+                                      <select class="js-states form-control" style="width: 100%"  id="cmbmpiel" >
+                                        <option value="S" selected="selected"></option>
+                                      </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                      <select class="js-states form-control" style="width: 100%"  id="cmbmojos" >
+                                        <option value="S" selected="selected"></option>
+                                      </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                      <select class="js-states form-control" style="width: 100%"  id="cmbmcolorcabello" >
+                                        <option value="S" selected="selected"></option>
+                                      </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                      <input  id="txtmsenaparticular" class="form-control"  type="text" >
+                                    </div>
+                                  </div> <!-- Grupo nombres-->
+                                 </div>
+
+
+                               </div><!-- Tab panes Datos Fisicos-->
+                               <div role="tabpanel" class="tab-pane" id="mdredes"  style="padding:15px">
+                                 <div class="row">
+                                   <div class="form-group">
+                                    <label class="col-md-6 ">Twitter:</label>
+                                     <label class="col-md-6">FaceBook:</label>
+                                    <div class="col-md-6">
+                                      <input id="txtmtwitter" class="form-control"  type="text" >
+                                    </div>
+
+                                    <div class="col-md-6">
+                                      <input id="txtmfacebook" class="form-control"  type="text" >
+                                    </div>
+
+                                  </div> <!-- Grupo nombres-->
+                                  </div>
+                                  <div class="row">
+                                    <div class="form-group">
+                                     <label class="col-md-6 ">InstaGrant:</label>
+                                      <label class="col-md-6">Linkedin:</label>
+                                     <div class="col-md-6">
+                                       <input  id="txtminstagran" class="form-control"  type="text" >
+                                     </div>
+
+                                     <div class="col-md-6">
+                                       <input  id="txtmlinkedin" class="form-control"  type="text" >
+                                     </div>
+
+                                   </div> <!-- Grupo nombres-->
+
+                                 </div>
+
+                               </div><!-- Tab panes Redes Sociales-->
+                               <div role="tabpanel" class="tab-pane" id="mdcarnet"  style="padding:15px">
+                                 <div class="row">
+                                   <label class="col-md-2">&nbsp;&nbsp;&nbsp;Huella</label>
+                                    <label class="col-md-2 ">&nbsp;&nbsp;&nbsp;Firma</label>
+                                    <label class="col-md-8 "></label>
+                                 </div>
+                                 <div class="row">
+                                   <div class="col-md-2">
+                                     <img class="profile-user-img img-responsive" style="width:90px" src="images/ndisponible.jpg"
+                                       onerror="this.src='images/ndisponible.jpg'"  alt="Partida" id="_imghuella">
+                                   </div>
+                                   <div class="col-md-2">
+                                     <img class="profile-user-img img-responsive" style="width:90px" src="images/ndisponible.jpg"
+                                       onerror="this.src='images/ndisponible.jpg'"  alt="Partida" id="_imgfirma">
+                                   </div>
+                                   <div class="col-md-8"></div>
+                                 </div>
+                               </div><!-- Tab panes Redes Sociales-->
+                             </div>
+
+
+     </div> <!-- Fila para el Tabs Militar -->
+
+
+   </div>
+
+      </div>
+    </form>
+  </div><!-- /.box-body -->
+  <div class="modal-footer" id="_botonesmilitar">
+    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="CConstanciaAfiliacion()" id="_btnConstancia">
+      <i class="fa fa-print "></i>&nbsp;&nbsp;Constancia de Afiliación</button>
+    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="VisualizarCarnet()" id="_btnTIM">
+      <i class="fa fa-credit-card"></i>&nbsp;&nbsp;Tarjeta de Identificación</button>
+    <button type="button" class="btn btn-warning" data-dismiss="modal" onclick="activarSalvar()" id="_btnModificar">
+      <i class="fa fa-pencil"></i>&nbsp;&nbsp;Modificar Datos</button>
+    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="Salvar()" id="_btnSavlvar">
+      <i class="fa fa-save"></i>&nbsp;&nbsp;Guardar</button>
+  </div>
+</div><!-- /.box -->

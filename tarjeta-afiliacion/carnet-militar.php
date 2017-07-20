@@ -147,21 +147,27 @@ body {margin: 0px;}
   <div class="marco-carnet">
 
     <div class="css-foto">
-
-      <img src="images/ndisponible.jpg" style="width:73px; height:91px;"/>
+		<img style="width:73px; height:91px;" src="http://192.168.12.161/imagenes/<?php echo $Persona->DatoBasico['cedula']; ?>.jpg" >
 
       </div>
     <!---imagen del grado -->
     <div class="css-insignia">
-      <img src="images/grados/<?php echo $militar->Grado['abreviatura'] ?>.png" style="width:102px; height:50px;"/>
+      <img src="../images/grados/<?php echo strtolower($militar->Grado['abreviatura']) ?>.png" style="width:102px; height:50px;"/>
       </div>
     <!---imagen del grado -->
     <div class="fecha-vencimiento">
       VENCE 05/07/2025
       </div>
 
+
+			<?php
+				$descripcion = $militar->Grado['descripcion'];
+				if ($militar->Grado['abreviatura'] == "1ER TTE") {
+					$descripcion = "PRIMER TENIENTE";
+				}
+			?>
     <div class="labels-dat-person-resl">
-      <label class="letra-8"><?php echo $militar->Grado['descripcion'] ?></label>
+      <label class="letra-8"><?php echo $descripcion ?></label>
       <br />
       <label><?php echo $Persona->DatoBasico['nombreprimero'].' '. $Persona->DatoBasico['nombresegundo'] ?></label>
       <br />
@@ -193,12 +199,20 @@ body {margin: 0px;}
 	<img src="assets/huella/huella.bmp" style="height:70px;width:70px;" />
 	</div>
 		<?php
-		$categoria = $militar->categoria;
-		if ($militar->situacion == 'RCP') {
-			echo '<div class="categoria1"> '.$categoria.' </div>';
-		}else{
-			echo '<div class="categoria"> '.$categoria.' </div>';
-				}
+			$categoria = $militar->categoria;
+			switch ($militar->categoria) {
+				case "EFE":
+					$categoria = "EFECTIVO";
+					break;
+				case "ASI":
+					$categoria = "ASIMILADO";
+					break;
+			}
+			if ($militar->situacion == 'RCP') {
+				echo '<div class="categoria1"> '.$categoria.' </div>';
+			}else{
+				echo '<div class="categoria"> '.$categoria.' </div>';
+			}
 		 ?>
      <!--div class="estatus"-->
     <!--/div-->
