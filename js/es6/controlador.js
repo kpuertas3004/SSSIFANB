@@ -51,6 +51,55 @@ $(function () {
     $('#_aceptar').focus();
   });
 
+  var local = {
+        "format": 'YYYY/MM/DD',
+        "applyLabel": "Aceptar",
+        "cancelLabel": "Cancelar",
+        "customRangeLabel": 'Por Rango',
+        "daysOfWeek": [
+            "Do",
+            "Lu",
+            "Ma",
+            "Mi",
+            "Ju",
+            "Vi",
+            "Sa"
+        ],
+        "monthNames": [
+            "Enero",
+            "Febrero",
+            "Marzo",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio",
+            "Agosto",
+            "Septiembre",
+            "Octubre",
+            "Noviembre",
+            "Diciembre"
+        ],
+    };
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+        {
+            locale: local,
+            ranges: {
+                'Hoy': [moment(), moment()],
+                'Ayer': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Hace 7 Dias': [moment().subtract(6, 'days'), moment()],
+                'Hace 30 Dias': [moment().subtract(29, 'days'), moment()],
+                'Este Mes': [moment().startOf('month'), moment().endOf('month')],
+                'Mes Pasado': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            },
+            startDate: moment().subtract(29, 'days'),
+            endDate: moment()
+        },
+        function (start, end) {
+            $('#daterange-btn span').html(start.format('YYYY/MM/DD') + ' - ' + end.format('YYYY/MM/DD'));
+        }
+    );
+
 });
 
 function Enter(e){
