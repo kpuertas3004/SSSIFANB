@@ -14,17 +14,38 @@ class Conexion{
 }
 
 
+class Menu {
+  constructor() {
+
+  }
+  ValidarPrivilegio(JsonObjArr){
+    var Menu = JsonObjArr.perfil.privilegio;
+  }
+  //Crear Menu Dinamicamente
+  CrearMenu(JsonObjArr) {
+      var Menu = JsonObjArr.perfil.menu;
+			var menuStr = "<li class='header'>Menu</li>";
+			for( var i=0; i<count(Menu) ; i++ )
+				menuStr = menuStr + "<li ><a href='#' onclick='CargarUrl(\"_cuerpo\",\""+Menu[i].url+"\")' >\
+        <i class='"+Menu[i].icono+"'></i><span>"+Menu[i].nombre+"</span></a></li> ";
+			$('#_menu').html(menuStr);
+  }
+}
+
+var Mnu = new Menu();
 var Conn = new Conexion();
 
 $(function () {
+  CargarAPI("js/es6/esquema.menu.json", Mnu);
   CargarUrl("_bxBuscar", "afi/buscar");
   CargarUrl("_bxTarjeta", "afi/tarjeta");
   CargarUrl("_bxDatoBasico", "afi/datobasico");
   CargarUrl("_bxDatosFamiliar", "afi/familiar");
   CargarUrl("_bxTarjetaFamiliar", "afi/tarjetafamiliar");
   CargarUrl("_contenidoh", "afi/historicomilitar");
-   CargarUrl("_contenidohc", "afi/historiaclinica");
+  CargarUrl("_contenidohc", "afi/historiaclinica");
   CargarUrl("_contenidorpt", "rpt/constancia");
+
   $("#salvar").hide();
   $('#modMsj').on('shown.bs.modal', function () {
     $('#_aceptar').focus();
@@ -82,15 +103,14 @@ function HistoriaClinica(){
 }
 
 
-function CargarAPI(sURL, funcion){
+function CargarAPI(sURL, Objeto){
+  alert("HOLA");
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", Conn.URL + sURL);
+  xhttp.open("GET", sURL);
   xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         json = JSON.parse(xhttp.responseText);
-        if(funcion != undefined){
-          function(json);
-        }
+        Objeto.CrearMenu(json);
         return false;
       }
   }
