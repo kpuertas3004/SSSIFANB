@@ -1,3 +1,8 @@
+Number.prototype.zeroPadding = function(){
+  var ret = "" + this.valueOf();
+  return ret.length == 1 ? "0" + ret : ret;
+};
+
 class Conexion{
   constructor(){
       this.IP = "192.168.6.45";
@@ -24,7 +29,7 @@ $(function () {
   $('#modMsj').on('shown.bs.modal', function () {
     $('#_aceptar').focus();
   });
-
+  
 });
 
 function Enter(e){
@@ -75,4 +80,3 @@ function HistoricoMilitar(){
 function HistoriaClinica(){
   $('#modHistoriaClinica').modal('show');
 }
-

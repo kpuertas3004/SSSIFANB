@@ -25,23 +25,22 @@ function Buscar( id ){
           $("#_aceptar").focus();
 
         }else{
-          t =  $('#tblresultados').DataTable({
+          var t = $('#tblFamiliares').DataTable({
             'paging'      : false,
             'lengthChange': false,
             'searching'   : false,
             'ordering'    : false,
             'info'        : false,
-            //'autoWidth'   : false
-             'autoWidth'   : false
+            'autoWidth'   : false
           });
-          t.clear();
+          t.clear().draw();
           var DB = militar.Persona.DatoBasico;
           $("#txtcedula").val(DB.cedula);
           url = "images/grados/" + militar.Grado.abreviatura + ".png";
           url = url.toLowerCase();
           $("#_imggrado").attr("src", url);
-          //url = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
-          url = "http://192.168.6.45/temp/" +  $("#txtcedula").val() + "/foto.jpg";
+          url = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
+          //url = "http://192.168.6.45/temp/" +  $("#txtcedula").val() + "/foto.jpg";
           $("#_img").attr("src", url);
           url = "http://192.168.6.45/temp/" +  $("#txtcedula").val() + "/huella.bmp";
           $("#_imghuella").attr("src", url);
@@ -72,7 +71,7 @@ function Buscar( id ){
           $("#txtnrocuenta").val(DF.cuenta);
           $("#cmbinstfinanciera").val(DF.institucion);
           $("#cmbtipofinanciera").val(DF.tipocuenta);
-          let i = 1;
+          let j = 1;
           $.each(militar.Familiar, function (c, v){
             let familiar = new Familiar();
             let DBF = v.Persona.DatoBasico;
@@ -92,15 +91,19 @@ function Buscar( id ){
             }
 
             //ok = '<font color="#blue"><i class="fa fa-fw fa-close"></i></font>';
-
+            fechavencimiento = "";
+            // if (v.fechavencimiento != undefined){
+            //   fechavencimiento = v.fechavencimiento;
+            // }
             if (v.beneficio == true){
               situacion = "ACTIVO";
             }else {
                situacion = "INACTIVO"
             }
             mod = '<font color="#red"><i class="fa fa-fw fa-pencil"></i></font>';
+
             t.row.add ([
-              i++, //0
+              j++, //0
               cedula, //1
               mil, //2
               familiar.GenerarParentesco(), //3
@@ -113,11 +116,8 @@ function Buscar( id ){
               apellidos, //10
               v.condicion, //11
               v.estudia, //12
-              v.fechavencimiento //13
-
-
+              fechavencimiento //13
             ]).draw(false);
-
 
           });
 
@@ -129,11 +129,12 @@ function Buscar( id ){
           t.column(10).visible(false);
           t.column(11).visible(false);
           t.column(12).visible(false);
+          t.column(13).visible(false);
 
 
 
 
-          $('#tblresultados tbody').on('click', 'tr', function () {
+          $('#tblFamiliares tbody').on('click', 'tr', function () {
               var data = t.row(this).data();
               urlf = "http://192.168.12.161/imagenes/" +  data[1] + ".jpg";
               $("#_imgfamiliar").attr("src", urlf);
@@ -146,7 +147,7 @@ function Buscar( id ){
 
           });
 
-          $('#tblresultados tbody').on('dblclick', 'tr', function () {
+          $('#tblFamiliares tbody').on('dblclick', 'tr', function () {
             var data = t.row(this).data();
             urlf = "http://192.168.12.161/imagenes/" +  data[1] + ".jpg";
             $("#modFamiliar").modal('show');
@@ -497,4 +498,8 @@ function cambiarGrado(){
 
   };
   xhttp.send();
+}
+
+function GenerarCodigoBarra(){
+
 }
