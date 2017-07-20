@@ -28,11 +28,11 @@
 		],
     "menu": [
 			{
-				"url" : "inc/usuario",
+				"url" : "usuario",
 				"icono" : "fa fa-search",
 				"nombre" : "Datos"
 			},{
-        "url" : "inc/usuario",
+        "url" : "usuario",
 				"icono" : "fa fa-users",
 				"nombre" : "Gestion de Usuarios"
 			}

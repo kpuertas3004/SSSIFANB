@@ -1,97 +1,32 @@
 //Direccion API Menu
+/*
 url_api_menu  = "js/es6/esquema.menu.json";
 
 //Variable General para el trabajo XmlHttpObject
 var http_api_menu = getXmlHttpObject_API_menu();
-
-
-//Llama el archivo .html para desplegar en el menu
-function LlamarMenu(file)
-{
-      var xhttp = new XMLHttpRequest();
-      alert(file+'.html')
-      xhttp.open('GET', file+'.html');
-      xhttp.onreadystatechange = function(){
-          if (this.readyState == 4 && this.status == 200)
-          {
-             $('#_cuerpo').html(xhttp.responseText);
-          }
-      };
-      xhttp.send();
-}
+*/
 
 
 //Funcion asincrona para construir el menu
-function results_api_activar_menu()
-{
-	if ( http_api_menu.readyState == 4 && http_api_menu.status == 200 )
-	{
-		resultsText = http_api_menu.responseText;	
-		JsonObjArr = JSON.parse(resultsText);
-		
-		if( resultsText=="" )
-			alert("NO SE PUDO LEER EL API QUE CONTIENE EL MENU")
-		else
-		{
-			JsonObjArr  = JSON.parse(resultsText);
-			var Menu    = JsonObjArr.perfil.menu;
+function CrearMenu(JSON)
+{	
+			JsonObjArr  = JSON;
 			var menuStr = "<li class='header'>Menu</li>";
-
 			for( var i=0; i<count(Menu) ; i++ )
-			{
-
-				menuStr = menuStr + "<li ><a href='#' onclick='LlamarMenu(\""+Menu[i].url+"\")' ><i class='"+Menu[i].icono+"'></i><span>"+Menu[i].nombre+"</span></a></li> ";
-			}			
+				menuStr = menuStr + "<li ><a href='#' onclick='CargarUrl(\"_cuerpo\",\""+Menu[i].url+"\")' ><i class='"+Menu[i].icono+"'></i><span>"+Menu[i].nombre+"</span></a></li> ";
+			
 			$('#_menu').html(menuStr);
-		}
-	}
 }
 
 
 function MenuActivar()
 {
-	http_api_menu.open("GET", url_api_menu, true);
+	/*http_api_menu.open("GET", url_api_menu, true);
 	http_api_menu.onreadystatechange = results_api_activar_menu;
 	http_api_menu.send(null);	
+	*/
+	CargarAPI(sURL, CrearMenu());
 }
 
 
 
-/************** Funciones Generales para metodo GET **************/
-function getXmlHttpObject_API_menu()
-{
-	var xmlhttp; 
-	/*@cc_on 
-	@if (@_jscript_version >= 5) 
-	try
-	{
-		xmlhttp = new ActiveXObject("Msxml2.XMLHTTP"); 
-	}
-	catch (e)
-	{ 
-		try
-		{ 
-			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); 
-		} 
-		catch (e)
-		{ 
-			xmlhttp = false; 
-		} 
-	} 
-	@else 
-		xmlhttp = false; 
-	@end @*/ 
-			
-	if (!xmlhttp && typeof XMLHttpRequest != 'undefined')
-	{ 
-		try
-		{ 
-			xmlhttp = new XMLHttpRequest(); 
-		} 
-		catch (e)
-		{ 
-			xmlhttp = false; 
-		} 
-	} 
-			return xmlhttp; 
-} 
