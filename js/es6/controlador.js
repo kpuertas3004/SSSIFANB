@@ -104,14 +104,11 @@ function HistoriaClinica(){
 
 
 function CargarAPI(sURL, Objeto){
-  alert("HOLA");
   var xhttp = new XMLHttpRequest();
   xhttp.open("GET", sURL);
   xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        json = JSON.parse(xhttp.responseText);
-        Objeto.CrearMenu(json);
-        return false;
+        Objeto.CrearMenu(JSON.parse(xhttp.responseText));
       }
   }
   xhttp.onerror = function() {

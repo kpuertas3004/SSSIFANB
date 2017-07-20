@@ -4,7 +4,7 @@ function Buscar( id ){
   }
   if($("#_cedula").val() == ""){
     $("#_contenido").html("Debe introducir una cédula");
-    $("#_botones").html('<button type="button" class="btn btn-default" data-dismiss="modal" id="_aceptar" onClick="IrCedula()">Aceptar</button>')
+    $("#_botones").html('<button type="button" class="btn btn-default" data-dismiss="modal" id="_aceptar" onClick="IrCedula()">Aceptar</button>');
     $("#modMsj").modal("show");
     return false;
   }
@@ -13,14 +13,14 @@ function Buscar( id ){
   var xhttp = new XMLHttpRequest();
   xhttp.open("GET", Conn.URL + "/ipsfa/api/militar/crud/" + $("#_cedula").val());
   xhttp.onreadystatechange = function() {
-
       if (this.readyState == 4 && this.status == 200) {
-
         militar = JSON.parse(xhttp.responseText);
         if(militar.tipo != undefined){
           $("#_cedula").val("");
-          $("#_contenido").html("El usuario no existe");
-          $("#_botones").html('<button type="button" class="btn btn-default" data-dismiss="modal" id="_aceptar">Aceptar</button>')
+          $("#_contenido").html("La cédula no existe en el sistema. ¿Desea Realizar un nuevo ingreso?");
+          $("#_botones").html('<button type="button" class="btn btn-default" data-dismiss="modal" \
+            id="_aceptar" onClick="incluirAfiliado()">Aceptar</button>\
+            <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>');
           $("#modMsj").modal("show");
           $("#_aceptar").focus();
 
@@ -500,6 +500,10 @@ function cambiarGrado(){
 
   };
   xhttp.send();
+}
+
+function ValidarCampos(){
+
 }
 
 function GenerarCodigoBarra(){
