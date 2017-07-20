@@ -29,7 +29,7 @@ $(function () {
   $('#modMsj').on('shown.bs.modal', function () {
     $('#_aceptar').focus();
   });
-  
+
 });
 
 function Enter(e){
@@ -79,4 +79,28 @@ function HistoricoMilitar(){
 
 function HistoriaClinica(){
   $('#modHistoriaClinica').modal('show');
+}
+
+
+function CargarAPI(sURL, funcion){
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", Conn.URL + sURL);
+  xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        json = JSON.parse(xhttp.responseText);
+        if(funcion != undefined){
+          function(json);
+        }
+        return false;
+      }
+  }
+  xhttp.onerror = function() {
+      if (this.readyState == 4 && this.status == 0) {
+        $.notify("No se puede conectar al servidor");
+        $("#_cargando").hide();
+      }
+
+  };
+  xhttp.send();
+
 }

@@ -476,6 +476,8 @@ function seleccionarDefuncion(){
   $('#modDocument').modal('show');
 }
 
+
+
 function cambiarGrado(){
   var xhttp = new XMLHttpRequest();
   xhttp.open("GET", Conn.URL + "/ipsfa/api/componente/" + $("#cmbcomponente option:selected").val());
