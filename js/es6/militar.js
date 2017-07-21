@@ -304,6 +304,7 @@ class Persona{
 		this.Direccion = new Direccion();
 		this.Telefono = new Telefono();
 		this.PartidaNacimiento = new PartidaNacimiento();
+		this.Defuncion = new Defuncion();
 		this.DocumentoCivil = new DocumentoCivil();
 		this.RedSocial = new RedSocial();
 		this.urlFoto = "1";
@@ -313,6 +314,16 @@ class Persona{
 }
 
 class PartidaNacimiento{
+	constructor(){
+		this.registrocivil = "";
+		this.ano = "";
+		this.acta = "";
+		this.folio = "";
+		this.libro = "";
+	}
+}
+
+class Defuncion{
 	constructor(){
 		this.registrocivil = "";
 		this.ano = "";
@@ -430,11 +441,16 @@ function ObtenerMilitar(){
 	militar.Persona.DocumentoCivil.ConstanciaViudez.archivo = $('#_imgviudez').val();
 	militar.Persona.DocumentoCivil.ConstanciaViudez.registrocivil = $('#txtRegistroCivilV').val();
 	militar.Persona.DocumentoCivil.ConstanciaViudez.fecha = $('#txtFechaV').val();
-	militar.Persona.PartidaNacimiento.registrocivil= $("#txtpregistrocivil").val();
-	militar.Persona.PartidaNacimiento.ano = $("#txtpano").val();
-	militar.Persona.PartidaNacimiento.acta = $("#txtpacta").val();
-	militar.Persona.PartidaNacimiento.folio = $("#txtpfolio").val();
-	militar.Persona.PartidaNacimiento.libro = $("#txtplibro").val();
+	militar.Persona.PartidaNacimiento.registrocivil= $("#txtRegistroCivilN").val();
+	militar.Persona.PartidaNacimiento.ano = $("#txtAnoN").val();
+	militar.Persona.PartidaNacimiento.acta = $("#txtNumeroActaN").val();
+	militar.Persona.PartidaNacimiento.folio = $("#txtNumeroFolioN").val();
+	militar.Persona.PartidaNacimiento.libro = $("#txtLibroN").val();
+	militar.Persona.Defuncion.registrocivil= $("#txtRegistroCivilD").val();
+	militar.Persona.Defuncion.ano = $("#txtAnoD").val();
+	militar.Persona.Defuncion.acta = $("#txtNumeroActaD").val();
+	militar.Persona.Defuncion.folio = $("#txtNumeroFolioD").val();
+	militar.Persona.Defuncion.libro = $("#txtLibroD").val();
 	console.log(militar);
 
 }
