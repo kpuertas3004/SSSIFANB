@@ -476,6 +476,11 @@ function ObtenerMilitar(){
 	militar.Persona.DocumentoCivil.ConstanciaViudez.archivo = $('#_imgviudez').val();
 	militar.Persona.DocumentoCivil.ConstanciaViudez.registrocivil = $('#txtRegistroCivilV').val();
 	militar.Persona.DocumentoCivil.ConstanciaViudez.fecha = $('#txtFechaV').val();
+	militar.Persona.PartidaNacimiento.registrocivil= $("#txtpregistrocivil").val();
+	militar.Persona.PartidaNacimiento.ano = $("#txtpano").val();
+	militar.Persona.PartidaNacimiento.acta = $("#txtpacta").val();
+	militar.Persona.PartidaNacimiento.folio = $("#txtpfolio").val();
+	militar.Persona.PartidaNacimiento.libro = $("#txtplibro").val();
 	console.log(militar);
 
 }

@@ -523,6 +523,7 @@ function seleccionarPartida(){
   nac = $("#txtnacimiento").val();
   $("#_titulod").html("Cargar Partida de Nacimiento");
   CargarUrl("_contenidod", "afi/partidanacimiento");
+  $('#calendario').datepicker();
   $('#modDocument').modal('show');
 }
 
