@@ -54,7 +54,7 @@
            </div>
            <div class="col-md-3 col-sm-6">
              <label >Sexo:</label>
-             <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbsexo" disabled="disabled">
+             <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbsexo" disabled="disabled" onchange="SeleccionarPorSexo()">
                <option selected="selected" value="S"></option>
                <option value="F">FEMENINO</option>
                <option value="M">MASCULINO</option>
@@ -65,10 +65,6 @@
               <select class="js-states form-control" style="width: 100%" tabindex="-1"
                   aria-hidden="true" id="cmbedocivil" disabled="disabled" onchange="seleccionarActas()">
                 <option selected="selected" value="S"></option>
-                <option value="S">SOLTERO</option>
-                <option value="C">CASADO</option>
-                <option value="D">DIVORCIADO</option>
-                <option value="V">VIUDO</option>
               </select>
            </div>
            <div class="col-md-3 col-sm-12">

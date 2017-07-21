@@ -8,7 +8,7 @@ function Buscar( id ){
     $("#modMsj").modal("show");
     return false;
   }
-  $("#_cargando").show()
+  $("#_cargando").show();
   $("#_imgfamiliar").attr("src", "images/ndisponible.jpg");
   var xhttp = new XMLHttpRequest();
   xhttp.open("GET", Conn.URL + "/ipsfa/api/militar/crud/" + $("#_cedula").val());
@@ -25,6 +25,7 @@ function Buscar( id ){
           $("#_aceptar").focus();
 
         }else{
+          $("#_tblFamiliares").html(FamiliaresHTML());
           var t = $('#tblFamiliares').DataTable({
             'paging'      : false,
             'lengthChange': false,
@@ -172,6 +173,7 @@ function Buscar( id ){
 
           });
 
+          $("#_tblHistorialMilitar").html(HistoricoMilitarHTML());
           var th= $('#tblhistoricomilitar').DataTable({
             'paging'      : false,
             'lengthChange': false,
@@ -182,7 +184,7 @@ function Buscar( id ){
              'autoWidth'   : false
           });
 
-          th.clear();
+          th.clear().draw();
           i = 0;
           $.each(militar.HistorialMilitar,function(c,v){
              th.row.add ([
@@ -232,6 +234,61 @@ function desactivarSalvar(){
   $('#modMsj').modal('hide');
   $("#salvar").hide();
   FrmDatosBasicos(true);
+}
+function SeleccionarPorSexo(sexo){
+  if(sexo == undefined){
+    gen = ($("#cmbsexo").val() == 'F')?"A":"O";
+  }else{
+    gen = (sexo == 'F')?"A":"O";
+  }
+  $("#cmbedocivil").html('<option value="S">SOLTER' + gen + '</option>\
+  <option value="C">CASAD' + gen + '</option> \
+  <option value="D">DIVORCIAD' + gen + '</option>\
+  <option value="V">VIUD' + gen + '</option>');
+}
+function FamiliaresHTML(){
+  var html = '<table class="ui celled table" cellspacing="0" width="100%" id="tblFamiliares" >\
+    <thead>\
+      <tr>\
+        <th>#</th>\
+        <th>CÉDULA</th>\
+        <th>APELLIDOS Y NOMBRES</th>\
+        <th>RELACIÓN</th>\
+        <th>SITUACIÓN</th>\
+        <th >FECHA</th>\
+        <th >TIPO</th>\
+        <th >MODIFICAR</th>\
+        <th >NOMBRES</th>\
+        <th >SEXO</th>\
+        <th >APELLIDOS</th>\
+        <th >CONDICION ESPECIAL</th>\
+        <th >ESTUDIA</th>\
+        <th>FECHA VCTO. CARNET</th>\
+      </tr>\
+    </thead >\
+    <tbody>\
+    </tbody>\
+  </table>';
+  return html;
+
+}
+
+function HistoricoMilitarHTML(){
+  var html = '<table id="tblhistoricomilitar" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">\
+    <thead>\
+      <tr>\
+        <th>#</th>\
+        <th>CATEGORIA</th>\
+        <th>CLASIFICACIÓN</th>\
+        <th>SITUACIÓN</th>\
+        <th>GRADO</th>\
+        <th>FECHA RESUELTO</th>\
+      </tr>\
+    </thead>\
+    <tbody>\
+    </tbody>\
+  </table>';
+  return html;
 }
 
 function IrCedula(){
