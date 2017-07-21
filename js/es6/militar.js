@@ -481,7 +481,8 @@ function ObtenerMilitar(){
 	militar.Persona.PartidaNacimiento.acta = $("#txtpacta").val();
 	militar.Persona.PartidaNacimiento.folio = $("#txtpfolio").val();
 	militar.Persona.PartidaNacimiento.libro = $("#txtplibro").val();
-	console.log(militar);
+	//console.log(militar);
+	return militar;
 
 }
 

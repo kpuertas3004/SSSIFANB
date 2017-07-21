@@ -36,7 +36,7 @@ var Mnu = new Menu();
 var Conn = new Conexion();
 
 $(function () {
-  CargarAPI("js/es6/esquema.menu.json", Mnu);
+  CargarAPI("js/es6/esquema.menu.json", "GET","",Mnu);
   CargarUrl("_bxBuscar", "afi/buscar");
   CargarUrl("_bxTarjeta", "afi/tarjeta");
   CargarUrl("_bxDatoBasico", "afi/datobasico");
@@ -135,12 +135,19 @@ function HistoriaClinica(){
 }
 
 
-function CargarAPI(sURL, Objeto){
+function CargarAPI(sURL, metodo, valores, Objeto){
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", sURL);
+  xhttp.open(metodo, sURL);
   xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        Objeto.CrearMenu(JSON.parse(xhttp.responseText));
+        if(Objeto==undefined){
+          Objeto.CrearMenu(JSON.parse(xhttp.responseText));
+        }else{
+          respuesta = JSON.parse(xhttp.responseText);
+          if (respuesta.tipo != 0){
+            $.notify("Se ha Insertado correctamente");
+          }
+        }
       }
   }
   xhttp.onerror = function() {
@@ -150,6 +157,11 @@ function CargarAPI(sURL, Objeto){
       }
 
   };
-  xhttp.send();
+  if(valores != undefined){
+    xhttp.send(JSON.stringify(valores));
+  }else{
+    xhttp.send();  
+  }
+  
 
 }

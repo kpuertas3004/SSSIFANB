@@ -391,6 +391,9 @@ function Salvar(){
   $("#_btnTIM").show();
   $("#_btnModificar").show();
   $("#_btnSavlvar").hide();
+  CargarAPI(Conn.URL+"/ipsfa/api/militar/crud" , "POST", ObtenerMilitar());
+  console.log("Hola mundo");
+
 }
 
 function FrmDatosBasicos(valor){
