@@ -397,7 +397,7 @@ function incluirAfiliado(){
   $("#_btnTIM").hide();
   $("#_btnModificar").hide();
   $("#_btnSavlvar").show();
-
+  Util.ValidarFormulario("_frmDatoBasico");
   FrmDatosBasicos(false);
   FrmDatosMilitar(false);
   FrmCuentaBancaria(false);
@@ -407,29 +407,34 @@ function incluirAfiliado(){
   FrmRedSocial(false);
   FrmTim(false);
   ModDocumentoCivil(false);
-  LimpiarFrmDatosBasicos();
-  LimpiarFrmDatosMilitar();
-  LimpiarFrmCuentaBancaria();
-  LimpiarFrmDireccion();
-  LimpiarFrmPartidaNacimiento();
-  LimpiarFrmFisicoFisionomico();
-  LimpiarFrmRedSocial();
-  LimpiarFrmTim();
-  LimpiarModDocumentoCivil();
+  // LimpiarFrmDatosBasicos();
+  // LimpiarFrmDatosMilitar();
+  // LimpiarFrmCuentaBancaria();
+  // LimpiarFrmDireccion();
+  // LimpiarFrmPartidaNacimiento();
+  // LimpiarFrmFisicoFisionomico();
+  // LimpiarFrmRedSocial();
+  // LimpiarFrmTim();
+  // LimpiarModDocumentoCivil();
 
 }
 function Salvar(){
-  $("#_bxFamiliar").show();
-  $("#_bxFamiliarTarjeta").show();
-  $("#_btnConstancia").show();
-  $("#_btnTIM").show();
-  $("#_btnModificar").show();
-  $("#_btnSavlvar").hide();
-<<<<<<< HEAD
-  CargarAPI(Conn.URL+"/ipsfa/api/militar/crud" , "POST", ObtenerMilitar());
-  console.log("Hola mundo");
-=======
->>>>>>> 9e424dc5d655cf57d02b4289e6f23f2b4c144d21
+  if (FrmValidar == true ) {
+    $("#_bxFamiliar").show();
+    $("#_bxFamiliarTarjeta").show();
+    $("#_btnConstancia").show();
+    $("#_btnTIM").show();
+    $("#_btnModificar").show();
+    $("#_btnSavlvar").hide();
+    CargarAPI(Conn.URL+"/ipsfa/api/militar/crud" , "POST", ObtenerMilitar());
+    FrmValidar = false;
+  }else{
+    $.notify("Recuerde verificar todos los datos completos del formulario");
+  }
+
+  //
+
+
 
 }
 

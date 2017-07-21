@@ -34,7 +34,7 @@ class Menu {
 
 var Mnu = new Menu();
 var Conn = new Conexion();
-
+var Util = new Utilidad();
 $(function () {
   CargarAPI("js/es6/esquema.menu.json", "GET","",Mnu);
   CargarUrl("_bxBuscar", "afi/buscar");
@@ -140,7 +140,7 @@ function CargarAPI(sURL, metodo, valores, Objeto){
   xhttp.open(metodo, sURL);
   xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        if(Objeto==undefined){
+        if(Objeto != undefined){
           Objeto.CrearMenu(JSON.parse(xhttp.responseText));
         }else{
           respuesta = JSON.parse(xhttp.responseText);
@@ -160,8 +160,8 @@ function CargarAPI(sURL, metodo, valores, Objeto){
   if(valores != undefined){
     xhttp.send(JSON.stringify(valores));
   }else{
-    xhttp.send();  
+    xhttp.send();
   }
-  
+
 
 }

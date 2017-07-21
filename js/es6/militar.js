@@ -83,8 +83,8 @@ class DocumentoCivil{
 		this.acta = "";
 		this.folio = "";
 		this.libro = "";
-		this.archivo = "";	
-		return this;	
+		this.archivo = "";
+		return this;
 	}
 
 	ActaDivorcio(){
@@ -92,28 +92,28 @@ class DocumentoCivil{
 		this.numerosentencia = "";
 		this.fechasentencia = "";
 		this.archivo = "";
-		return this;	
+		return this;
 	}
 
 	CartaSolteria(){
 		this.registrocivil = "";
 		this.fecha = "";
 		this.archivo = "";
-		return this;	
+		return this;
 	}
 
 	ConstanciaViudez(){
 		this.registrocivil = "";
 		this.fecha = "";
 		this.archivo = "";
-		return this;	
+		return this;
 	}
 
 	ActaDefuncion(){
 		this.registrocivil = "";
 		this.fecha = "";
 		this.archivo = "";
-		return this;	
+		return this;
 	}
 
 }
@@ -360,7 +360,79 @@ class Militar{
 		this.urlcedula = "";
 	}
 	Obtener(){
+		this.Persona.DatoBasico.cedula = $("#txtcedula").val();
+		this.Persona.DatoBasico.nombreprimero = $("#txtnombre").val();
+		this.Persona.DatoBasico.apellidoprimero = $("#txtapellido").val();
+		this.Persona.DatoBasico.fechanacimiento = new Date($("#txtnacimiento").val());
+		this.Persona.DatoBasico.sexo = $("#cmbsexo option:selected").val();
+		this.Persona.DatoBasico.estadocivil = $("#cmbedocivil").val();
+		this.fingreso = new Date($("#txtfechagraduacion").val());
+		this.fascenso = new Date($("#txtfechagraduacion").val());
+		this.situacion = $("#cmbsituacion option:selected").val();
+		this.categoria = $("#cmbcategoria option:selected").val();
+		this.clase = $("#cmbclase option:selected").val();
+		this.Componente.descripcion = $("#cmbcomponente option:selected").text();
+		this.Componente.abreviatura = $("#cmbcomponente option:selected").val();
+		this.Grado.descripcion = $("#cmbgrado option:selected").text();
+		this.Grado.abreviatura = $("#cmbgrado option:selected").val();
+		this.Persona.CuentaBancaria.banco = $("#cmbinstfinanciera option:selected").val();
+		this.Persona.CuentaBancaria.tipocuenta = $("#cmbtipofinanciera option:selected").val();
+		this.Persona.CuentaBancaria.numerocuenta = $("#txtnrocuenta").val();
+		this.Persona.Direccion.estado = $("#cmbmestado option:selected").val();
+		this.Persona.Direccion.municipio = $("#cmbmmunicipio option:selected").val();
+		this.Persona.Direccion.parroquia = $("#cmbmparroquia option:selected").val();
+		this.Persona.Direccion.sector = $("#txtmciudad").val();
+		this.Persona.Direccion.calleavenida = $("#txtmcalle").val();
+		this.Persona.Direccion.casa = $("#txtmcasa").val();
+		this.Persona.Direccion.apartamento = $("#txtmapto").val();
+		this.Persona.Direccion.telefonofijo = $("#txtmtelefono").val();
+		this.Persona.Direccion.telefonomovil = $("#txtmcelular").val();
+		this.Persona.Direccion.correo = $("#txtmcorreo").val();
+		/*this.Persona.PartidaNacimiento.registrocivil= $("#txtpregistrocivil").val();
+		this.Persona.PartidaNacimiento.ano = $("#txtpano").val();
+		this.Persona.PartidaNacimiento.acta = $("#txtpacta").val();
+		this.Persona.PartidaNacimiento.folio = $("#txtpfolio").val();
+		this.Persona.PartidaNacimiento.libro = $("#txtplibro").val();*/
+		this.Persona.DatoFisico.peso = $("#txtmpeso").val();
+		this.Persona.DatoFisico.talla = $("#txtmtalla").val();
+		this.Persona.DatoFisionomico.coloropiel = $("#cmbmpiel option:selected").val();
+		this.Persona.DatoFisionomico.colorojos = $("#cmbmojos option:selected").val();
+		this.Persona.DatoFisionomico.colorcabello = $("#cmbmcolorcabello option:selected").val();
+		this.Persona.DatoFisionomico.estatura = $("#txtmestatura").val();
+		this.Persona.DatoFisionomico.senaParticular = $("#txtmsenaparticular").val();
+		this.Persona.DatoFisionomico.gruposanguineo = $("#txtmgruposanguineo").val();
+		//this.Grado.abreviatura = $("#cmbgrado option:selected").val();
+		this.Persona.RedSocial.twitter = $("#txtmtwitter").val();
+		this.Persona.RedSocial.facebook = $("#txtmfacebook").val();
+		this.Persona.RedSocial.instagram = $("#txtminstagran").val();
+		this.Persona.RedSocial.linkedin = $("#txtmlinkedin").val();
+		//this.Tim.huella = $('#_imghuella').val();
+		//this.Tim.firma = $('#_imgfirma').val();
+		/*this.Persona.DocumentoCivil.ActaMatrimonio.archivo = $('#_imgmatrimonio').val();
+		this.Persona.DocumentoCivil.ActaMatrimonio.registrocivil = $('#txtRegistroCivilM').val();
+		this.Persona.DocumentoCivil.ActaMatrimonio.ano = $('#txtAnoM').val();
+		this.Persona.DocumentoCivil.ActaMatrimonio.acta = $('#txtNumeroActaM').val();
+		this.Persona.DocumentoCivil.ActaMatrimonio.folio = $('#txtNumeroFolioM').val();
+		this.Persona.DocumentoCivil.ActaMatrimonio.libro = $('#txtLibroM').val();
+		//this.Persona.DocumentoCivil.libro = $('#txtRegistroCivilD').val();
+		this.Persona.DocumentoCivil.ActaDivorcio.archivo = $('#_imgdivorcio').val();
+		this.Persona.DocumentoCivil.ActaDivorcio.tribunal = $('#txttribunalD').val();
+		this.Persona.DocumentoCivil.ActaDivorcio.numerosentencia = $('#txtnumerosentenciaD').val();
+		this.Persona.DocumentoCivil.ActaDivorcio.fechasentencia = $('#txtfechasentenciaD').val();
+		this.Persona.DocumentoCivil.CartaSolteria.archivo = $('#_imgsolteria').val();
+		this.Persona.DocumentoCivil.CartaSolteria.registrocivil = $('#txtRegistroCivilS').val();
+		this.Persona.DocumentoCivil.CartaSolteria.fecha = $('#txtFechaS').val();
+		this.Persona.DocumentoCivil.ConstanciaViudez.archivo = $('#_imgviudez').val();
+		this.Persona.DocumentoCivil.ConstanciaViudez.registrocivil = $('#txtRegistroCivilV').val();
+		this.Persona.DocumentoCivil.ConstanciaViudez.fecha = $('#txtFechaV').val();
+		this.Persona.PartidaNacimiento.registrocivil= $("#txtpregistrocivil").val();
+		this.Persona.PartidaNacimiento.ano = $("#txtpano").val();
+		this.Persona.PartidaNacimiento.acta = $("#txtpacta").val();
+		this.Persona.PartidaNacimiento.folio = $("#txtpfolio").val();
+		this.Persona.PartidaNacimiento.libro = $("#txtplibro").val();*/
+		//console.log(this);
 		return this;
+
 	}
 }
 
@@ -374,7 +446,7 @@ class CuentaBancaria{
 
 
 function ObtenerFamiliar(){
-	
+
 	let familiar = new Familiar();
 	familiar.Persona.DatoBasico.cedula = $("#txtcedulaf").val();
 	familiar.Persona.DatoBasico.fechanacimiento = $("#txtnacimientof").val();
@@ -419,85 +491,9 @@ function ObtenerFamiliar(){
 }
 
 
-function ObtenerMilitar(){
-	
-	let militar = new Militar();
-	militar.Persona.DatoBasico.cedula = $("#txtcedula").val();
-	militar.Persona.DatoBasico.nombreprimero = $("#txtnombre").val();
-	militar.Persona.DatoBasico.apellidoprimero = $("#txtapellido").val();
-	militar.Persona.DatoBasico.fechanacimiento = new Date($("#txtnacimiento").val());
-	militar.Persona.DatoBasico.sexo = $("#cmbsexo option:selected").val();
-	militar.Persona.DatoBasico.estadocivil = $("#cmbedocivil").val();
-	militar.fingreso = new Date($("#txtfechagraduacion").val());
-	militar.fascenso = new Date($("#txtfechagraduacion").val());
-	militar.situacion = $("#cmbsituacion option:selected").val();
-	militar.categoria = $("#cmbcategoria option:selected").val();
-	militar.clase = $("#cmbclase option:selected").val();
-	militar.Componente.descripcion = $("#cmbcomponente option:selected").text();
-	militar.Componente.abreviatura = $("#cmbcomponente option:selected").val();
-	militar.Grado.descripcion = $("#cmbgrado option:selected").text();
-	militar.Grado.abreviatura = $("#cmbgrado option:selected").val();
-	militar.Persona.CuentaBancaria.banco = $("#cmbinstfinanciera option:selected").val();
-	militar.Persona.CuentaBancaria.tipocuenta = $("#cmbtipofinanciera option:selected").val();
-	militar.Persona.CuentaBancaria.numerocuenta = $("#txtnrocuenta").val();
-	militar.Persona.Direccion.estado = $("#cmbmestado option:selected").val();
-	militar.Persona.Direccion.municipio = $("#cmbmmunicipio option:selected").val();
-	militar.Persona.Direccion.parroquia = $("#cmbmparroquia option:selected").val();
-	militar.Persona.Direccion.sector = $("#txtmciudad").val();
-	militar.Persona.Direccion.calleavenida = $("#txtmcalle").val();
-	militar.Persona.Direccion.casa = $("#txtmcasa").val();
-	militar.Persona.Direccion.apartamento = $("#txtmapto").val();
-	militar.Persona.Direccion.telefonofijo = $("#txtmtelefono").val();
-	militar.Persona.Direccion.telefonomovil = $("#txtmcelular").val();
-	militar.Persona.Direccion.correo = $("#txtmcorreo").val();
-	/*militar.Persona.PartidaNacimiento.registrocivil= $("#txtpregistrocivil").val();
-	militar.Persona.PartidaNacimiento.ano = $("#txtpano").val();
-	militar.Persona.PartidaNacimiento.acta = $("#txtpacta").val();
-	militar.Persona.PartidaNacimiento.folio = $("#txtpfolio").val();
-	militar.Persona.PartidaNacimiento.libro = $("#txtplibro").val();*/
-	militar.Persona.DatoFisico.peso = $("#txtmpeso").val();
-	militar.Persona.DatoFisico.talla = $("#txtmtalla").val();
-	militar.Persona.DatoFisionomico.coloropiel = $("#cmbmpiel option:selected").val();
-	militar.Persona.DatoFisionomico.colorojos = $("#cmbmojos option:selected").val();
-	militar.Persona.DatoFisionomico.colorcabello = $("#cmbmcolorcabello option:selected").val();
-	militar.Persona.DatoFisionomico.estatura = $("#txtmestatura").val();
-	militar.Persona.DatoFisionomico.senaParticular = $("#txtmsenaparticular").val();
-	militar.Persona.DatoFisionomico.gruposanguineo = $("#txtmgruposanguineo").val();
-	//militar.Grado.abreviatura = $("#cmbgrado option:selected").val();
-	militar.Persona.RedSocial.twitter = $("#txtmtwitter").val();
-	militar.Persona.RedSocial.facebook = $("#txtmfacebook").val();
-	militar.Persona.RedSocial.instagram = $("#txtminstagran").val();
-	militar.Persona.RedSocial.linkedin = $("#txtmlinkedin").val();
-	//militar.Tim.huella = $('#_imghuella').val();
-	//militar.Tim.firma = $('#_imgfirma').val();
-	/*militar.Persona.DocumentoCivil.ActaMatrimonio.archivo = $('#_imgmatrimonio').val();
-	militar.Persona.DocumentoCivil.ActaMatrimonio.registrocivil = $('#txtRegistroCivilM').val();
-	militar.Persona.DocumentoCivil.ActaMatrimonio.ano = $('#txtAnoM').val();
-	militar.Persona.DocumentoCivil.ActaMatrimonio.acta = $('#txtNumeroActaM').val();
-	militar.Persona.DocumentoCivil.ActaMatrimonio.folio = $('#txtNumeroFolioM').val();
-	militar.Persona.DocumentoCivil.ActaMatrimonio.libro = $('#txtLibroM').val();
-	//militar.Persona.DocumentoCivil.libro = $('#txtRegistroCivilD').val();
-	militar.Persona.DocumentoCivil.ActaDivorcio.archivo = $('#_imgdivorcio').val();
-	militar.Persona.DocumentoCivil.ActaDivorcio.tribunal = $('#txttribunalD').val();
-	militar.Persona.DocumentoCivil.ActaDivorcio.numerosentencia = $('#txtnumerosentenciaD').val();
-	militar.Persona.DocumentoCivil.ActaDivorcio.fechasentencia = $('#txtfechasentenciaD').val();
-	militar.Persona.DocumentoCivil.CartaSolteria.archivo = $('#_imgsolteria').val();
-	militar.Persona.DocumentoCivil.CartaSolteria.registrocivil = $('#txtRegistroCivilS').val();
-	militar.Persona.DocumentoCivil.CartaSolteria.fecha = $('#txtFechaS').val();
-	militar.Persona.DocumentoCivil.ConstanciaViudez.archivo = $('#_imgviudez').val();
-	militar.Persona.DocumentoCivil.ConstanciaViudez.registrocivil = $('#txtRegistroCivilV').val();
-	militar.Persona.DocumentoCivil.ConstanciaViudez.fecha = $('#txtFechaV').val();
-	militar.Persona.PartidaNacimiento.registrocivil= $("#txtpregistrocivil").val();
-	militar.Persona.PartidaNacimiento.ano = $("#txtpano").val();
-	militar.Persona.PartidaNacimiento.acta = $("#txtpacta").val();
-	militar.Persona.PartidaNacimiento.folio = $("#txtpfolio").val();
-	militar.Persona.PartidaNacimiento.libro = $("#txtplibro").val();*/
-	//console.log(militar);
-	return militar;
 
-}
 
-$(function (){	
+$(function (){
   if (sessionStorage.getItem('ipsfaToken') == undefined ){
 		$(location).attr("href","index.html");
 	}else{

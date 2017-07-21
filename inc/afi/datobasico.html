@@ -1,3 +1,4 @@
+<form class="form-horizontal" id="_frmDatoBasico">
 <div class="box box-primary box-solid " >
   <div class="box-header with-border">
 
@@ -15,7 +16,7 @@
 
   </div>
   <div class="box-body">
-    <form class="form-horizontal">
+
       <div class="box-body">
           <div class="form-group">
             <div class="col-md-4 col-sm-12">
@@ -25,7 +26,7 @@
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">V&nbsp;&nbsp;
                       <span class="fa fa-caret-down"></span></button>
                 </span>
-                <input class="form-control" id="txtcedula"  type="text" disabled="disabled" maxlength="10">
+                <input class="form-control" id="txtcedula"  type="text" disabled="disabled" maxlength="10" required tabindex="1">
               </div>
           </div> <!-- Cedula -->
         </div>
@@ -33,11 +34,11 @@
         <div class="form-group">
           <div class="col-md-6 col-sm-12">
             <label>Nombres:</label>
-            <input  id="txtnombre" class="form-control"  type="text" disabled="disabled">
+            <input  id="txtnombre" class="form-control"  type="text" disabled="disabled" required tabindex="2">
           </div>
           <div class="col-md-6 col-sm-12">
             <label>Apellidos:</label>
-           <input  id="txtapellido" class="form-control"  type="text" disabled="disabled">
+           <input  id="txtapellido" class="form-control"  type="text" disabled="disabled" required tabindex="3">
           </div>
        </div> <!-- Grupo nombres-->
 
@@ -46,15 +47,15 @@
            <div class="col-md-3 col-sm-12">
              <label>Fecha de Nacimiento:</label>
              <div class="input-group input-group-sm">
-             <input type="text" class="form-control"  id="txtnacimiento" disabled="disabled" onClick="seleccionarPartida()">
+             <input type="text" class="form-control"  id="txtnacimiento" disabled="disabled" onClick="seleccionarPartida()" tabindex="4">
                   <span class="input-group-btn">
-                    <button type="button" class="btn btn-success btn-flat btn-md" id="btnnacimiento" onClick="seleccionarPartida()" disabled="disabled"><i class="fa fa-file-text"></i></button>
+                    <button type="button" class="btn btn-success btn-flat btn-md" id="btnnacimiento" onClick="seleccionarPartida()" disabled="disabled" required><i class="fa fa-file-text"></i></button>
                   </span>
               </div>
            </div>
            <div class="col-md-3 col-sm-6">
              <label >Sexo:</label>
-             <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbsexo" disabled="disabled" onchange="SeleccionarPorSexo()">
+             <select class="js-states form-control" style="width: 100%"  aria-hidden="true" id="cmbsexo" disabled="disabled" onchange="SeleccionarPorSexo()" required>
                <option selected="selected" value="S"></option>
                <option value="F">FEMENINO</option>
                <option value="M">MASCULINO</option>
@@ -62,15 +63,15 @@
            </div>
            <div class="col-md-3 col-sm-6">
               <label>Estado Civil:</label>
-              <select class="js-states form-control" style="width: 100%" tabindex="-1"
-                  aria-hidden="true" id="cmbedocivil" disabled="disabled" onchange="seleccionarActas()">
+              <select class="js-states form-control" style="width: 100%"
+                  aria-hidden="true" id="cmbedocivil" disabled="disabled" onchange="seleccionarActas()" required>
                 <option selected="selected" value="S"></option>
               </select>
            </div>
            <div class="col-md-3 col-sm-12">
              <label>Fecha de Defunción:</label>
              <div class="input-group input-group-sm">
-             <input type="text" class="form-control" id="txtdefuncion" disabled="disabled" onClick="seleccionarDefuncion()">
+             <input type="text" class="form-control" id="txtdefuncion" disabled="disabled" onClick="seleccionarDefuncion()" required>
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-success btn-flat btn-md" id="btndefuncion" onClick="seleccionarDefuncion()" disabled="disabled"><i class="fa fa-file-text"></i></button>
                   </span>
@@ -83,8 +84,7 @@
       <br>
 
 
-     <div class="row">
-
+     <div class="row" style="padding:10px;">
               <div class="nav-tabs-custom">
                              <!-- Nav tabs -->
                              <ul class="nav nav-pills nav-fill nav-justified" >
@@ -105,11 +105,11 @@
                                     <div class="form-group">
                                     <div class="col-md-4 col-sm-12">
                                         <label >Fecha Ingreso FANB:</label>
-                                        <input id="txtfechagraduacion" class="form-control"  type="text" disabled="disabled">
+                                        <input id="txtfechagraduacion" class="form-control"  type="text" disabled="disabled" required>
                                      </div>
                                       <div class="col-md-4 col-sm-12">
                                         <label>Componente:</label>
-                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbcomponente" disabled="disabled" onChange="cambiarGrado()">
+                                        <select class="js-states form-control" style="width: 100%"  aria-hidden="true" id="cmbcomponente" required disabled="disabled" onChange="cambiarGrado()">
                                           <option selected="selected" value="S"></option>
                                           <option value="EJ">EJERCITO</option>
                                           <option value="AR">ARMADA</option>
@@ -119,7 +119,7 @@
                                       </div>
                                       <div class="col-md-4 col-sm-12">
                                         <label >Grado:</label>
-                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbgrado" disabled="disabled">
+                                        <select class="js-states form-control" style="width: 100%"  aria-hidden="true" id="cmbgrado" required disabled="disabled">
                                           <option selected="selected" value="S"></option>
                                          </select>
                                      </div>
@@ -128,7 +128,7 @@
                                     <div class="form-group">
                                       <div class="col-md-4 col-sm-12">
                                         <label>Categoria:</label>
-                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbclase" disabled="disabled">
+                                        <select class="js-states form-control" style="width: 100%"  aria-hidden="true" id="cmbclase" required disabled="disabled">
                                           <option selected="selected" value="S"></option>
 
                                           <option value="OFI">COMANDO</option>
@@ -142,7 +142,7 @@
                                       </div>
                                       <div class="col-md-4 col-sm-12">
                                         <label>Clasificación:</label>
-                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbcategoria" disabled="disabled">
+                                        <select class="js-states form-control" style="width: 100%"  aria-hidden="true" required id="cmbcategoria" disabled="disabled">
                                           <option selected="selected" value="S"></option>
                                           <option value="EFE">OFICIAL</option> <!-- TROPA -->
                                           <option value="TRP">TROPA PROFESIONAL</option> <!-- TROPA -->
@@ -157,7 +157,7 @@
                                       </div>
                                       <div class="col-md-4 col-sm-12">
                                         <label>Situación:</label>
-                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbsituacion" disabled="disabled">
+                                        <select class="js-states form-control" style="width: 100%"  aria-hidden="true" required id="cmbsituacion" disabled="disabled">
                                           <option selected="selected" value="S"></option>
                                           <option value="ACT">ACTIVO</option>
                                           <option value="RCP">RESERVA ACTIVA</option> <!-- RETIRADO CON PENSION-->
@@ -183,7 +183,7 @@
                                     <label class="col-md-3 ">Institución Financiera</label>
 
                                    <div class="col-md-9">
-                                     <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbinstfinanciera" >
+                                     <select class="js-states form-control" style="width: 100%" aria-hidden="true" required id="cmbinstfinanciera" >
                                        <option value="0003">BANFANB</option>
                                        <option value="0102">BCO. DE VENEZUELA</option>
                                        <option value="0177">BICENTENARIO</option>
@@ -201,7 +201,7 @@
                                      <label class="col-md-6 ">Tipo de Cuenta:</label>
                                       <label class="col-md-6">Nro. de Cuenta:</label>
                                      <div class="col-md-6">
-                                        <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbtipofinanciera" >
+                                        <select class="js-states form-control" style="width: 100%"  required aria-hidden="true" id="cmbtipofinanciera" >
                                        <option value="CA" selected="selected">AHORRO</option>
                                        <option value="CC">CORRIENTE</option>
                                         </select>
@@ -231,17 +231,17 @@
                                     <label class="col-md-4">Municipio:</label>
 
                                     <div class="col-md-4">
-                                      <select class="js-states form-control" style="width: 100%"  id="cmbmestado" >
+                                      <select class="js-states form-control" style="width: 100%"  id="cmbmestado" required>
                                         <option value="S" selected="selected"></option>
                                       </select>
                                     </div>
                                     <div class="col-md-4">
-                                      <select class="js-states form-control" style="width: 100%"  id="cmbmciudad" >
+                                      <select class="js-states form-control" style="width: 100%"  id="cmbmciudad" required>
                                         <option value="S" selected="selected"></option>
                                       </select>
                                     </div>
                                     <div class="col-md-4">
-                                      <select class="js-states form-control" style="width: 100%" id="cmbmmunicipio" >
+                                      <select class="js-states form-control" style="width: 100%" id="cmbmmunicipio" required>
                                         <option value="S" selected="selected"></option>
                                       </select>
                                     </div>
@@ -257,18 +257,18 @@
 
 
                                     <div class="col-md-4">
-                                       <select class="js-states form-control" style="width: 100%"  id="cmbparroquia" >
+                                       <select class="js-states form-control" style="width: 100%"  id="cmbparroquia" required>
                                         <option value="S" selected="selected"></option>
                                       </select>
                                     </div>
                                     <div class="col-md-4">
-                                      <input id="txtmcalle" class="form-control"  type="text" >
+                                      <input id="txtmcalle" class="form-control"  type="text" required>
                                     </div>
                                     <div class="col-md-2">
-                                      <input id="txtmcasa" class="form-control"  type="text" >
+                                      <input id="txtmcasa" class="form-control"  type="text" required>
                                     </div>
                                     <div class="col-md-2">
-                                      <input id="txtmapto" class="form-control"  type="text" >
+                                      <input id="txtmapto" class="form-control"  type="text" required>
                                     </div>
                                   </div> <!-- Grupo nombres-->
                                  </div>
@@ -279,13 +279,13 @@
                                      <label class="col-md-4">Celular:</label>
                                      <label class="col-md-4">Correo Electronico:</label>
                                      <div class="col-md-4">
-                                       <input id="txtmtelefono" class="form-control"  type="text" >
+                                       <input id="txtmtelefono" class="form-control"  type="text" required>
                                      </div>
                                      <div class="col-md-4">
-                                       <input id="txtmcelular" class="form-control"  type="text" >
+                                       <input id="txtmcelular" class="form-control"  type="text" required>
                                      </div>
                                      <div class="col-md-4">
-                                       <input  id="txtmcorreo" class="form-control"  type="text" >
+                                       <input  id="txtmcorreo" class="form-control"  type="text" required>
                                      </div>
                                    </div>
                                  </div>
@@ -305,10 +305,10 @@
                                        <label class="col-md-10">Registro Civil:</label>
                                        <label class="col-md-2">Año:</label>
                                        <div class="col-md-10">
-                                         <input id="txtpregistrocivil" class="form-control"  type="text" >
+                                         <input id="txtpregistrocivil" class="form-control"  type="text" required>
                                        </div>
                                        <div class="col-md-2">
-                                         <input id="txtpano" class="form-control"  type="text" >
+                                         <input id="txtpano" class="form-control"  type="text" required>
                                        </div>
                                      </div>
 
@@ -317,13 +317,13 @@
                                        <label class="col-md-4">Nro. Folio:</label>
                                        <label class="col-md-4">Libro:</label>
                                        <div class="col-md-4">
-                                         <input id="txtpacta" class="form-control"  type="text" >
+                                         <input id="txtpacta" class="form-control"  type="text" required>
                                        </div>
                                        <div class="col-md-4">
-                                         <input  id="txtpfolio" class="form-control"  type="text" >
+                                         <input  id="txtpfolio" class="form-control"  type="text" required>
                                        </div>
                                        <div class="col-md-4">
-                                         <input  id="txtplibro" class="form-control"  type="text" >
+                                         <input  id="txtplibro" class="form-control"  type="text" required>
                                        </div>
                                      </div>
 
@@ -343,16 +343,16 @@
                                     <label class="col-md-3">Grupo Sanguineo:</label>
 
                                     <div class="col-md-3">
-                                      <input  id="txtmestatura" class="form-control"  type="text" >
+                                      <input  id="txtmestatura" class="form-control"  type="text" required>
                                     </div>
                                     <div class="col-md-3">
-                                      <input  id="txtmpeso" class="form-control"  type="text" >
+                                      <input  id="txtmpeso" class="form-control"  type="text" required>
                                     </div>
                                     <div class="col-md-3">
-                                     <input  id="txtmtalla" class="form-control"  type="text" >
+                                     <input  id="txtmtalla" class="form-control"  type="text" required>
                                     </div>
                                     <div class="col-md-3">
-                                     <input  id="txtmgruposanguineo" class="form-control"  type="text" >
+                                     <input  id="txtmgruposanguineo" class="form-control"  type="text" required>
                                     </div>
                                   </div> <!-- Grupo nombres-->
                                  </div>
@@ -366,22 +366,22 @@
                                     <label class="col-md-3">Seña Particular:</label>
 
                                     <div class="col-md-3">
-                                      <select class="js-states form-control" style="width: 100%"  id="cmbmpiel" >
+                                      <select class="js-states form-control" style="width: 100%"  id="cmbmpiel" required>
                                         <option value="S" selected="selected"></option>
                                       </select>
                                     </div>
                                     <div class="col-md-3">
-                                      <select class="js-states form-control" style="width: 100%"  id="cmbmojos" >
+                                      <select class="js-states form-control" style="width: 100%"  id="cmbmojos" required>
                                         <option value="S" selected="selected"></option>
                                       </select>
                                     </div>
                                     <div class="col-md-3">
-                                      <select class="js-states form-control" style="width: 100%"  id="cmbmcolorcabello" >
+                                      <select class="js-states form-control" style="width: 100%"  id="cmbmcolorcabello" required>
                                         <option value="S" selected="selected"></option>
                                       </select>
                                     </div>
                                     <div class="col-md-3">
-                                      <input  id="txtmsenaparticular" class="form-control"  type="text" >
+                                      <input  id="txtmsenaparticular" class="form-control"  type="text" required>
                                     </div>
                                   </div> <!-- Grupo nombres-->
                                  </div>
@@ -440,7 +440,6 @@
                                </div><!-- Tab panes Redes Sociales-->
                              </div>
 
-
      </div> <!-- Fila para el Tabs Militar -->
 
 
@@ -456,7 +455,7 @@
       <i class="fa fa-credit-card"></i>&nbsp;&nbsp;Tarjeta de Identificación</button>
     <button type="button" class="btn btn-warning" data-dismiss="modal" onclick="activarSalvar()" id="_btnModificar">
       <i class="fa fa-pencil"></i>&nbsp;&nbsp;Modificar Datos</button>
-    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="Salvar()" id="_btnSavlvar">
+    <button type="submit" class="btn btn-success" data-dismiss="modal" onclick="Salvar()" id="_btnSavlvar">
       <i class="fa fa-save"></i>&nbsp;&nbsp;Guardar</button>
   </div>
 </div><!-- /.box -->
