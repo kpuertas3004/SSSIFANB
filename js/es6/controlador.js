@@ -82,6 +82,7 @@ $(function () {
     };
 
 
+
 });
 
 function Enter(e){
@@ -93,7 +94,7 @@ function Enter(e){
 
 function CargarUrl(id, url){
   var xhttp = new XMLHttpRequest();
-  xhttp.open('GET', 'inc/' + url + '.html');
+  xhttp.open('GET', 'inc/' + url + '.html', false);
   xhttp.onreadystatechange = function() {
        if (this.readyState == 4 && this.status == 200) {
           $('#'+id).html(xhttp.responseText);
