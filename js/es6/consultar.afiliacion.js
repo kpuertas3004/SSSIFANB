@@ -235,6 +235,7 @@ function desactivarSalvar(){
   $("#salvar").hide();
   FrmDatosBasicos(true);
 }
+
 function SeleccionarPorSexo(sexo){
   if(sexo == undefined){
     gen = ($("#cmbsexo").val() == 'F')?"A":"O";
@@ -246,6 +247,24 @@ function SeleccionarPorSexo(sexo){
   <option value="D">DIVORCIAD' + gen + '</option>\
   <option value="V">VIUD' + gen + '</option>');
 }
+
+function SeleccionarPorSexoFamiliar(sexo){
+  if(sexo == undefined){
+    gen = ($("#cmbsexof").val() == 'F')?"A":"O";
+  }else{
+    gen = (sexo == 'F')?"A":"O";
+  }
+  $("#cmbedocivilf").html('<option value="S">SOLTER' + gen + '</option>\
+  <option value="C">CASAD' + gen + '</option> \
+  <option value="D">DIVORCIAD' + gen + '</option>\
+  <option value="V">VIUD' + gen + '</option>');
+
+  $("#cmbparentescof").html('<option value="H">HIJ' + gen + '</option>\
+  <option value="PD">PADRE</option> \
+  <option value="MD">MADRE</option>');
+}
+
+
 function FamiliaresHTML(){
   var html = '<table class="ui celled table" cellspacing="0" width="100%" id="tblFamiliares" >\
     <thead>\
