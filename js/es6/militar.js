@@ -200,7 +200,7 @@ class Carnet{
 
 class Familiar{
 	constructor(){
-		this.Persona = "" ;//new Persona();
+		this.Persona = new Persona();
 		this.parentesco = "";
 		this.esmilitar = "";
 		this.condicion = "";
