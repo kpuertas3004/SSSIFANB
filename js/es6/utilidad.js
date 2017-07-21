@@ -23,7 +23,7 @@ class Utilidad {
   //Retorna Fecha Formato: AAAA-MM-DD
   ConvertirFechaUnix(f){
       f = f.split("/");
-      return f[2] + "-" + fa[1] + "-" + fa[0];
+      return f[2] + "-" + f[1] + "-" + f[0];
   }
 
   //leer todos los campos de mondo textos
