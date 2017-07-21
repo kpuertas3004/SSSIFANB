@@ -32,7 +32,7 @@
 				"icono" : "fa fa-search",
 				"nombre" : "Datos"
 			},{
-        "url" : "usuario",
+        		"url" : "sec/administrar",
 				"icono" : "fa fa-users",
 				"nombre" : "Gestion de Usuarios"
 			}

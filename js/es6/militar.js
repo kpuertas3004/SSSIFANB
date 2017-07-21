@@ -374,6 +374,52 @@ class CuentaBancaria{
 }
 
 
+function ObtenerFamiliar(){
+	
+	let familiar = new Familiar();
+	familiar.Persona.DatoBasico.cedula = $("#txtcedulaf").val();
+	familiar.Persona.DatoBasico.fechanacimiento = $("#txtnacimientof").val();
+	familiar.Persona.DatoBasico.sexo = $("#cmbsexof").val();
+	familiar.Persona.DatoBasico.nombreprimero = $("#txtnombref").val();
+	familiar.Persona.DatoBasico.apellidoprimero = $("#txtapellidof").val();
+	familiar.Persona.DatoBasico.estadocivil = $("#cmbedocivilf").val();
+	familiar.parentesco = $("#cmbparentescof").val();
+	familiar.condicion = $("#cmbcondicionf").val();
+	familiar.estudia = $("#cmbestudiaf").val();
+	familiar.Persona.Direccion.estado = $("#cmbestadof").val();
+	familiar.Persona.Direccion.municipio = $("#cmbmunicipiof").val();
+	familiar.Persona.Direccion.parroquia = $("#cmbparroquiaf").val();
+	familiar.Persona.Direccion.ciudad = $("#cmbciudadf").val();
+	familiar.Persona.Direccion.calleavenida = $("#txtcallef").val();
+	familiar.Persona.Direccion.casa = $("#txtcasaf").val();
+	familiar.Persona.Direccion.apartamento = $("#txtaptof").val();
+	familiar.Persona.Direccion.telefonofijo = $("#txttelefonof").val();
+	familiar.Persona.Direccion.telefonomovil = $("#txtcelularf").val();
+	familiar.Persona.Direccion.correo = $("#txtcorreof").val();
+	familiar.Persona.PartidaNacimiento.registrocivil= $("#txtpregistrocivilf").val();
+	familiar.Persona.PartidaNacimiento.ano = $("#txtpanof").val();
+	familiar.Persona.PartidaNacimiento.acta = $("#txtpactaf").val();
+	familiar.Persona.PartidaNacimiento.folio = $("#txtpfoliof").val();
+	familiar.Persona.PartidaNacimiento.libro = $("#txtplibrof").val();
+	familiar.Persona.DatoFisico.peso = $("#txtpesof").val();
+	familiar.Persona.DatoFisico.talla = $("#txttallaf").val();
+	familiar.Persona.DatoFisionomico.coloropiel = $("#cmbpielf").val();
+	familiar.Persona.DatoFisionomico.colorojos = $("#cmbojosf").val();
+	familiar.Persona.DatoFisionomico.colorcabello = $("#cmbcolorcabellof").val();
+	familiar.Persona.DatoFisionomico.estatura = $("#txtestaturaf").val();
+	familiar.Persona.DatoFisionomico.senaParticular = $("#txtsenaparticularf").val();
+	familiar.Persona.DatoFisionomico.gruposanguineo = $("#txtgruposanguineof").val();
+	familiar.Persona.RedSocial.twitter = $("#txttwitterf").val();
+	familiar.Persona.RedSocial.facebook = $("#txtfacebookf").val();
+	familiar.Persona.RedSocial.instagram = $("#txtinstagranf").val();
+	familiar.Persona.RedSocial.linkedin = $("#txtlinkedinf").val();
+	//familiar.Carnet.huella = $('#_imghuellaf').val();
+	//familiar.Carnet.firma = $('#_imgfirmaf').val();
+
+	console.log(familiar);
+}
+
+
 function ObtenerMilitar(){
 	
 	let militar = new Militar();
