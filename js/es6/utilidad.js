@@ -26,15 +26,27 @@ class Utilidad {
       return f[2] + "-" + f[1] + "-" + f[0];
   }
 
-  //leer todos los campos de mondo textos
-  ValidarCamposTexto(DIV){
-      //en construccion
+  
+  //Valida todos los elementos de un formulario, requiere de jquery.
+  //Recibe el id del formulario
+  //Debe ser invocada al finalizar un formulario deesta forma Objecto.ValidarFormulario("id_formulario")
+  //Utiliza el imput tipo submit para realizar activar validacion
+  ValidarFormulario(idForm)
+  {
+      var highlightForm = document.querySelector("form#"+idForm);
+      highlightForm.addEventListener('submit',this.highlightFormulario , false);      
   }
 
-  //leer todos los campos por select
-  ValidarCamposSelect(DIV){
-      //en construccion
+  //Metodo que utiliza ValidarFormulario recibir respuesta de validacion completa
+  highlightFormulario(event)
+  {
+      event.preventDefault();
+      alert('Formulario validado exiosamente');
+      return false;
   }
+
+
+
 
   //Obtener la direccion mac
   ObtenerMAC(MAC){
