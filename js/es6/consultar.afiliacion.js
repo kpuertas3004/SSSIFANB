@@ -230,11 +230,16 @@ function editarDB(){
   $("#salvar").show();
 }
 
+function retornarFecha(){
+
+}
+
 function desactivarSalvar(){
   $('#modMsj').modal('hide');
   $("#salvar").hide();
   FrmDatosBasicos(true);
 }
+
 function SeleccionarPorSexo(sexo){
   if(sexo == undefined){
     gen = ($("#cmbsexo").val() == 'F')?"A":"O";
@@ -246,6 +251,24 @@ function SeleccionarPorSexo(sexo){
   <option value="D">DIVORCIAD' + gen + '</option>\
   <option value="V">VIUD' + gen + '</option>');
 }
+
+function SeleccionarPorSexoFamiliar(sexo){
+  if(sexo == undefined){
+    gen = ($("#cmbsexof").val() == 'F')?"A":"O";
+  }else{
+    gen = (sexo == 'F')?"A":"O";
+  }
+  $("#cmbedocivilf").html('<option value="S">SOLTER' + gen + '</option>\
+  <option value="C">CASAD' + gen + '</option> \
+  <option value="D">DIVORCIAD' + gen + '</option>\
+  <option value="V">VIUD' + gen + '</option>');
+
+  $("#cmbparentescof").html('<option value="H">HIJ' + gen + '</option>\
+  <option value="PD">PADRE</option> \
+  <option value="MD">MADRE</option>');
+}
+
+
 function FamiliaresHTML(){
   var html = '<table class="ui celled table" cellspacing="0" width="100%" id="tblFamiliares" >\
     <thead>\
@@ -306,6 +329,7 @@ function IncluirFamiliar(){
   $("#modFamiliar").modal('show');
   BlanquearFamiliar();
 }
+
 
 function BlanquearFamiliar(){
   $("#txtcedulaf").val("");
@@ -383,6 +407,16 @@ function incluirAfiliado(){
   FrmRedSocial(false);
   FrmTim(false);
   ModDocumentoCivil(false);
+  LimpiarFrmDatosBasicos();
+  LimpiarFrmDatosMilitar();
+  LimpiarFrmCuentaBancaria();
+  LimpiarFrmDireccion();
+  LimpiarFrmPartidaNacimiento();
+  LimpiarFrmFisicoFisionomico();
+  LimpiarFrmRedSocial();
+  LimpiarFrmTim();
+  LimpiarModDocumentoCivil();
+
 }
 function Salvar(){
   $("#_bxFamiliar").show();
@@ -391,8 +425,11 @@ function Salvar(){
   $("#_btnTIM").show();
   $("#_btnModificar").show();
   $("#_btnSavlvar").hide();
+<<<<<<< HEAD
   CargarAPI(Conn.URL+"/ipsfa/api/militar/crud" , "POST", ObtenerMilitar());
   console.log("Hola mundo");
+=======
+>>>>>>> 9e424dc5d655cf57d02b4289e6f23f2b4c144d21
 
 }
 
@@ -407,6 +444,17 @@ function FrmDatosBasicos(valor){
   $("#btnnacimiento").attr('disabled', valor);
   $("#btndefuncion").attr('disabled', valor);
 }
+function LimpiarFrmDatosBasicos(){
+  $("#txtcedula").val("");
+  $("#txtnombre").val("");
+  $("#txtapellido").val("");
+  $("#txtnacimiento").val("");
+  $("#cmbsexo").val("");
+  $("#cmbedocivil").val("");
+  $("#txtdefuncion").val("");
+  $("#btnnacimiento").val("");
+  $("#btndefuncion").val("");
+}
 
 function FrmDatosMilitar(valor){
   $("#txtfechagraduacion").attr('disabled',valor);
@@ -417,10 +465,25 @@ function FrmDatosMilitar(valor){
   $("#cmbcategoria").attr('disabled',valor);
 }
 
+function LimpiarFrmDatosMilitar(valor){
+  $("#txtfechagraduacion").val("");
+  $("#cmbcomponente").val("");
+  $("#cmbgrado").val("");
+  $("#cmbsituacion").val("");
+  $("#cmbclase").val("");
+  $("#cmbcategoria").val("");
+}
+
 function FrmCuentaBancaria(valor){
   $("#cmbinstfinanciera").attr('disabled',valor);
   $("#cmbtipofinanciera").attr('disabled',valor);
   $("#txtnrocuenta").attr('disabled',valor);
+}
+
+function LimpiarFrmCuentaBancaria(valor){
+  $("#cmbinstfinanciera").val("");
+  $("#cmbtipofinanciera").val("");
+  $("#txtnrocuenta").val("");
 }
 
 function FrmDireccion(valor){
@@ -436,12 +499,33 @@ function FrmDireccion(valor){
   $("#txtmcorreo").attr('disabled',valor);
 }
 
+function LimpiarFrmDireccion(valor){
+  $("#cmbmestado").val("");
+  $("#cmbmmunicipio").val("");
+  $("#cmbmparroquia").val("");
+  $("#txtmciudad").val("");
+  $("#txtmcalle").val("");
+  $("#txtmcasa").val("");
+  $("#txtmapto").val("");
+  $("#txtmtelefono").val("");
+  $("#txtmcelular").val("");
+  $("#txtmcorreo").val("");
+}
+
 function FrmPartidaNacimiento(valor){
-  $("#txtpregistrocivil").attr('disabled',valor);
-  $("#txtpano").attr('disabled',valor);
-  $("#txtpacta").attr('disabled',valor);
-  $("#txtpfolio").attr('disabled',valor);
-  $("#txtplibro").attr('disabled',valor);
+  $("#txtRegistroCivilN").attr('disabled',valor);
+  $("#txtAnoN").attr('disabled',valor);
+  $("#txtNumeroActaN").attr('disabled',valor);
+  $("#txtNumeroFolioN").attr('disabled',valor);
+  $("#txtLibroN").attr('disabled',valor);
+}
+
+function LimpiarFrmPartidaNacimiento(valor){
+  $("#txtpregistrocivilN").val("");
+  $("#txtpanoN").val("");
+  $("#txtpactaN").val("");
+  $("#txtpfolioN").val("");
+  $("#txtplibroN").val("");
 }
 
 function FrmFisicoFisionomico(valor){
@@ -455,6 +539,17 @@ function FrmFisicoFisionomico(valor){
   $("#txtmsenaparticular").attr('disabled',valor);
 }
 
+function LimpiarFrmFisicoFisionomico(valor){
+  $("#txtmestatura").val("");
+  $("#txtmpeso").val("");
+  $("#txtmtalla").val("");
+  $("#txtmgruposanguineo").val("");
+  $("#cmbmpiel").val("");
+  $("#cmbmojos").val("");
+  $("#cmbmcolorcabello").val("");
+  $("#txtmsenaparticular").val("");
+}
+
 function FrmRedSocial(valor){
   $("#txtmtwitter").attr('disabled',valor);
   $("#txtmfacebook").attr('disabled',valor);
@@ -462,9 +557,21 @@ function FrmRedSocial(valor){
   $("#txtmlinkedin").attr('disabled',valor);
 }
 
+function LimpiarFrmRedSocial(valor){
+  $("#txtmtwitter").val("");
+  $("#txtmfacebook").val("");
+  $("#txtminstagran").val("");
+  $("#txtmlinkedin").val("");
+}
+
 function FrmTim(valor){
   $("#_imghuella").attr('disabled',valor);
   $("#_imgfirma").attr('disabled',valor);
+}
+
+function LimpiarFrmTim(valor){
+  $("#_imghuella").val("");
+  $("#_imgfirma").val("");
 }
 
 function ModDocumentoCivil(valor){
@@ -524,17 +631,17 @@ function seleccionarActas(){
 
 function seleccionarPartida(){
   nac = $("#txtnacimiento").val();
-  $("#_titulod").html("Cargar Partida de Nacimiento");
-  CargarUrl("_contenidod", "afi/partidanacimiento");
+  $("#_titulopd").html("Registrar Partida de Nacimiento");
+  CargarUrl("_contenidopd", "afi/partidanacimiento");
   $('#calendario').datepicker();
-  $('#modDocument').modal('show');
+  $('#modPartidaActa').modal('show');
 }
 
 function seleccionarDefuncion(){
   def = $("#txtdefuncion").val();
-  $("#_titulod").html("Cargar Acta de Defunción");
-  CargarUrl("_contenidod", "afi/defuncion");
-  $('#modDocument').modal('show');
+  $("#_titulopd").html("Registrar Acta de Defunción");
+  CargarUrl("_contenidopd", "afi/actadefuncion");
+  $('#modPartidaActa').modal('show');
 }
 
 
