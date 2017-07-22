@@ -447,10 +447,6 @@ function Salvar(){
     $.notify("Recuerde verificar todos los datos completos del formulario");
   }
 
-  //
-
-
-
 }
 
 function FrmDatosBasicos(valor){
