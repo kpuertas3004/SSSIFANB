@@ -8,21 +8,64 @@ class Conexion{
       this.IP = "192.168.6.45";
       this.Puerto = ":8080";
       this.PuertoSSL = ":2608";
-      this.URL = "http://" + this.IP + this.Puerto;
-      this.URLS = "http://" + this.IP + this.PuertoSSL;
+      this.API = "/ipsfa/api/";
+      this.URL = "http://" + this.IP + this.Puerto + this.API;
+      this.URLS = "http://" + this.IP + this.PuertoSSL + this.API;
+  }
+}
+
+class Estado{
+  constructor() {
+
+  }
+  Crear(Json) {
+    if (sessionStorage.getItem('ipsfaEstado') == undefined ){
+  		 sessionStorage.setItem('ipsfaEstado', JSON.stringify(Json));
+  	}
+  }
+  ObtenerEstados(){
+    let estado = JSON.parse(sessionStorage.getItem('ipsfaEstado'));
+
+    $("#cmbmestado").html('');
+    $.each(estado, function (c, v){
+      $("#cmbmestado").append('<option value="' + v.codigo + '">' + v.nombre + '</option>');
+    });
+
+  }
+  ObtenerCiudadMunicipio(estado){
+    let cm = JSON.parse(sessionStorage.getItem('ipsfaEstado')); //CiudadMunicipio
+    $.each(cm, function(c, v){
+      if (v.codigo == estado){
+
+        let ciudad = v.ciudad;
+        let municipio = v.municipio;
+        $("#cmbmciudad").html('');
+        $("#cmbmmunicipio").html('');
+        console.log(municipio);
+        $.each(ciudad, function (c,v){
+          console.log(v);
+          $("#cmbmciudad").append('<option value="' + v.nombre + '">' + v.nombre + '</option>');
+        });
+
+        $.each(municipio, function (c,v){
+          $("#cmbmmunicipio").append('<option value="' + v + '">' + v + '</option>');
+        });
+      }
+    });
+  }
+  ObtenerParroquia(parroquia){
+
   }
 }
 
 
 class Menu {
-  constructor() {
-
-  }
+  constructor() {}
   ValidarPrivilegio(JsonObjArr){
     var Menu = JsonObjArr.perfil.privilegio;
   }
   //Crear Menu Dinamicamente
-  CrearMenu(JsonObjArr) {
+  Crear(JsonObjArr) {
       var Menu = JsonObjArr.perfil.menu;
 			var menuStr = "<li class='header'>Menu</li>";
 			for( var i=0; i<count(Menu) ; i++ )
@@ -35,8 +78,11 @@ class Menu {
 var Mnu = new Menu();
 var Conn = new Conexion();
 var Util = new Utilidad();
+var Estados = new Estado();
+
 $(function () {
   CargarAPI("js/es6/esquema.menu.json", "GET","",Mnu);
+  CargarAPI(Conn.URL + "estado", "GET", "", Estados);
   CargarUrl("_bxBuscar", "afi/buscar");
   CargarUrl("_bxTarjeta", "afi/tarjeta");
   CargarUrl("_bxDatoBasico", "afi/datobasico");
@@ -91,6 +137,9 @@ function Enter(e){
   }
 }
 
+function CiudadMunicipio(){
+  Estados.ObtenerCiudadMunicipio($("#cmbmestado option:selected").val());
+}
 
 function CargarUrl(id, url){
   var xhttp = new XMLHttpRequest();
@@ -141,7 +190,7 @@ function CargarAPI(sURL, metodo, valores, Objeto){
   xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         if(Objeto != undefined){
-          Objeto.CrearMenu(JSON.parse(xhttp.responseText));
+          Objeto.Crear(JSON.parse(xhttp.responseText));
         }else{
           respuesta = JSON.parse(xhttp.responseText);
           if (respuesta.tipo != 0){

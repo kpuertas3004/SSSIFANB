@@ -11,7 +11,7 @@ function Buscar( id ){
   $("#_cargando").show();
   $("#_imgfamiliar").attr("src", "images/ndisponible.jpg");
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", Conn.URL + "/ipsfa/api/militar/crud/" + $("#_cedula").val());
+  xhttp.open("GET", Conn.URL + "militar/crud/" + $("#_cedula").val());
   xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         militar = JSON.parse(xhttp.responseText);
@@ -387,6 +387,7 @@ function VisualizarCarnetFamiliar(){
 }
 
 function incluirAfiliado(){
+  Estados.ObtenerEstados();
   $("#_cedula").val("");
   $("#_ficha").show();
   $("#_consultarbox").hide();
@@ -407,6 +408,7 @@ function incluirAfiliado(){
   FrmRedSocial(false);
   FrmTim(false);
   ModDocumentoCivil(false);
+
   // LimpiarFrmDatosBasicos();
   // LimpiarFrmDatosMilitar();
   // LimpiarFrmCuentaBancaria();
@@ -426,7 +428,7 @@ function Salvar(){
     $("#_btnTIM").show();
     $("#_btnModificar").show();
     $("#_btnSavlvar").hide();
-    CargarAPI(Conn.URL+"/ipsfa/api/militar/crud" , "POST", ObtenerMilitar());
+    CargarAPI(Conn.URL + "militar/crud" , "POST", ObtenerMilitar());
     FrmValidar = false;
   }else{
     $.notify("Recuerde verificar todos los datos completos del formulario");
@@ -649,7 +651,7 @@ function seleccionarDefuncion(){
 
 function cambiarGrado(){
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", Conn.URL + "/ipsfa/api/componente/" + $("#cmbcomponente option:selected").val());
+  xhttp.open("GET", Conn.URL + "componente/" + $("#cmbcomponente option:selected").val());
   xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         componente = JSON.parse(xhttp.responseText);
