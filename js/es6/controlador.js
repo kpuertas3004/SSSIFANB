@@ -227,3 +227,39 @@ function CargarAPI(sURL, metodo, valores, Objeto){
 
 
 }
+
+
+
+
+
+function readURL(input, id) {
+ 	var archivo = input.files[0];
+	bFile = 0;
+	type = 'image.*';
+	if(archivo.size < 1000000){
+    if (input.files && input.files[0]) {
+    	if (!archivo.type.match(type)) {
+    		$.notify('El formato de archivo debe ser: (' + type + ')');
+    		limpiarObjetos(input, id);
+    		return false;
+    	}
+    	$("#load" + id).show();
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#pre-view-' + id).attr('src', e.target.result);
+          bFile = 1;
+        };
+    reader.readAsDataURL(input.files[0]);
+    $("#load" + id).hide();
+    }
+  }else{
+   limpiarObjetos(input, id);
+	 $.notify('No se puede subir un archivo mayor a 1 MB');
+ } 
+}
+
+
+function limpiarObjetos(input, id){
+   input.value = "";
+   $('#view-' + id).html('<img style="width: 140px;height: 140px; margin-left: 0px" class="file-path-wrapper-pre-view" id="pre-view-' + id + '" />');
+ }
