@@ -388,54 +388,40 @@
 
            </div>
 
-         </div><!-- Tab panes Redes Sociales-->
+         </div><!-- Tab panel Tarjeta de Identificación Militar-->
          <div role="tabpanel" class="tab-pane" id="mdcarnet"  style="padding:15px">
            <div class="row">
-             <label class="col-md-2">&nbsp;&nbsp;&nbsp;Huella</label>
-              <label class="col-md-2 ">&nbsp;&nbsp;&nbsp;Firma</label>
-              <label class="col-md-8 "></label>
+              <label class="col-md-12"></label>
            </div>
            <div class="row">
+                 <!-- Firma-->
+             <div class="col-md-3">
+                <div>
+                  <div style="width: 120px;height: 140px; margin-left:20px " id="view-0" >
+                    <img style="width: 120px;height: 140px; margin-left: 0px" class="profile-user-img img-responsive file-path-wrapper-pre-view" id="pre-view-0" src="images/ndisponible.jpg" onerror="this.src='images/ndisponible.jpg'" id="_imghuella"/>
+                  </div>
+                  <div class="file-field input-field col file-field-input-field " >
+                    &nbsp;&nbsp;&nbsp;<label class="btn btn-default btn-file">Seleccionar Firma
+                    <input type="file" style="visibility:hidden;" name="imgfactura" id="imgfirma" accept="image/*" onchange="readURL(this,0);" onclick="clearURL(this)">
+                    </label>
+                  </div>
+                </div>
+             </div>
+             <!--Fin Firma -->
+             <div class="col-md-3">
+                <div>
+                  <div style="width: 120px;height: 140px; margin-left:20px " id="view-0" >
+                    <img style="width: 120px;height: 140px; margin-left: 0px" class="profile-user-img img-responsive file-path-wrapper-pre-view" id="pre-view-1" src="images/ndisponible.jpg" onerror="this.src='images/ndisponible.jpg'" id="_imgfirma"/>
+                  </div>
+                  <div class="file-field input-field col file-field-input-field " >
+                    &nbsp;<label class="btn btn-default btn-file">Seleccionar Huellas
+                    <input type="file" style="visibility:hidden;" name="imgfactura" id="imhuella" accept="image/*" onchange="readURL(this,1);" onclick="clearURL(this)">
+                    </label>
+                  </div>
+                </div>
+             </div>
+            
              <div class="col-md-2">
-               <img class="profile-user-img img-responsive" style="width:120px" src="images/ndisponible.jpg"
-                 onerror="this.src='images/ndisponible.jpg'"  alt="Partida" id="_imghuella">
-             </div>
-             <div class="col-md-2">
-               <img class="profile-user-img img-responsive" style="width:120px" src="images/ndisponible.jpg"
-                 onerror="this.src='images/ndisponible.jpg'"  alt="Partida" id="_imgfirma">
-             </div>
-             <div class="col-md-4">
-
-               <div class="col s12 m6 l4 white" >
-                 <div style="width: 120px;height: 140px; margin-left:20px " id="view-0" >
-                   <img style="width: 120px;height: 140px; margin-left: 0px" class="file-path-wrapper-pre-view" id="pre-view-0" />
-                 </div>
-
-                 <div class="file-field input-field col file-field-input-field" >
-                 <div class="file-path-wrapper file-path-wrapper-sopor">
-                   <input class="file-path validate" type="text"  placeholder="">
-                 </div>
-
-                 <div >
-
-                   <label class="btn btn-default btn-file">
-                      Seleccionar <input type="file" style="display: none;" name="imgfactura" id="inputFile[0]" accept=".jpg"
-                      onchange="readURL(this,0);" onclick="clearURL(this)">
-                  </label>
-                 </div>
-                  <div class="progress" id="load0" style="display: none">
-                   <div class="indeterminate"></div>
-                 </div>
-               </div>
-             </div>
-
-
-
-
-
-
-
-
              </div>
              <div class="col-md-4">
                <div class="form-group">
