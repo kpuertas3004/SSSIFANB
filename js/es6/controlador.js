@@ -26,35 +26,45 @@ class Estado{
   ObtenerEstados(){
     let estado = JSON.parse(sessionStorage.getItem('ipsfaEstado'));
 
-    $("#cmbmestado").html('');
+    $("#cmbmestado").html('<option value="S" selected="selected"></option>');
     $.each(estado, function (c, v){
       $("#cmbmestado").append('<option value="' + v.codigo + '">' + v.nombre + '</option>');
     });
 
   }
   ObtenerCiudadMunicipio(estado){
-    let cm = JSON.parse(sessionStorage.getItem('ipsfaEstado')); //CiudadMunicipio
+    var cm = JSON.parse(sessionStorage.getItem('ipsfaEstado')); //CiudadMunicipio
     $.each(cm, function(c, v){
       if (v.codigo == estado){
 
         let ciudad = v.ciudad;
         let municipio = v.municipio;
-        $("#cmbmciudad").html('');
-        $("#cmbmmunicipio").html('');
-        console.log(municipio);
+        $("#cmbmciudad").html('<option value="S" selected="selected"></option>');
+        $("#cmbmmunicipio").html('<option value="S" selected="selected"></option>');
         $.each(ciudad, function (c,v){
-          console.log(v);
           $("#cmbmciudad").append('<option value="' + v.nombre + '">' + v.nombre + '</option>');
         });
-
         $.each(municipio, function (c,v){
-          $("#cmbmmunicipio").append('<option value="' + v + '">' + v + '</option>');
+          $("#cmbmmunicipio").append('<option value="' + v.nombre + '">' + v.nombre + '</option>');
         });
       }
     });
   }
-  ObtenerParroquia(parroquia){
-
+  ObtenerParroquia(estado, municipio){
+    var cm = JSON.parse(sessionStorage.getItem('ipsfaEstado')); //CiudadMunicipio
+    $.each(cm, function(c, v){
+      if (v.codigo == estado){
+        var mun = v.municipio;
+        $.each(mun, function (c,v){
+          if(v.nombre == municipio){
+            $("#cmbmparroquia").html('<option value="S"></option>');
+            $.each(v.parroquia, function(cl, vl){
+              $("#cmbmparroquia").append('<option value="' + vl + '">' + vl + '</option>');
+            });
+          }
+        });
+      }
+    });
   }
 }
 
@@ -140,6 +150,9 @@ function Enter(e){
 function CiudadMunicipio(){
   Estados.ObtenerCiudadMunicipio($("#cmbmestado option:selected").val());
 }
+function SeleccionarParroquia(){
+  Estados.ObtenerParroquia($("#cmbmestado option:selected").val(), $("#cmbmmunicipio option:selected").val());
+}
 
 function CargarUrl(id, url){
   var xhttp = new XMLHttpRequest();
@@ -214,3 +227,39 @@ function CargarAPI(sURL, metodo, valores, Objeto){
 
 
 }
+
+
+
+
+
+function readURL(input, id) {
+ 	var archivo = input.files[0];
+	bFile = 0;
+	type = 'image.*';
+	if(archivo.size < 1000000){
+    if (input.files && input.files[0]) {
+    	if (!archivo.type.match(type)) {
+    		$.notify('El formato de archivo debe ser: (' + type + ')');
+    		limpiarObjetos(input, id);
+    		return false;
+    	}
+    	$("#load" + id).show();
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#pre-view-' + id).attr('src', e.target.result);
+          bFile = 1;
+        };
+    reader.readAsDataURL(input.files[0]);
+    $("#load" + id).hide();
+    }
+  }else{
+   limpiarObjetos(input, id);
+	 $.notify('No se puede subir un archivo mayor a 1 MB');
+ } 
+}
+
+
+function limpiarObjetos(input, id){
+   input.value = "";
+   $('#view-' + id).html('<img style="width: 140px;height: 140px; margin-left: 0px" class="file-path-wrapper-pre-view" id="pre-view-' + id + '" />');
+ }
