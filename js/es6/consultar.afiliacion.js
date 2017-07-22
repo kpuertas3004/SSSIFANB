@@ -36,6 +36,7 @@ function Buscar( id ){
           });
           t.clear().draw();
           var DB = militar.Persona.DatoBasico;
+          $("#_divfechadefuncion").show();
           $("#txtcedula").val(DB.cedula);
           url = "images/grados/" + militar.Grado.abreviatura + ".png";
           url = url.toLowerCase();
@@ -55,6 +56,7 @@ function Buscar( id ){
           $("#txtapellido").val(DB.apellidoprimero + ' ' + DB.apellidosegundo);
           $("#txtnacimiento").val(ConvertirFechaHumana(DB.fechanacimiento));
           $("#cmbsexo").val(DB.sexo);
+          SeleccionarPorSexo(DB.sexo);
           $("#cmbedocivil").val(DB.estadocivil);
           $("#cmbcomponente").val(militar.Componente.abreviatura);
           $("#cmbgrado").html('<option value="' + militar.Grado.abreviatura + '">' + militar.Grado.descripcion + '</option>');
@@ -388,6 +390,7 @@ function VisualizarCarnetFamiliar(){
 
 function incluirAfiliado(){
   Estados.ObtenerEstados();
+  $("#_divfechadefuncion").hide();
   $("#_cedula").val("");
   $("#_ficha").show();
   $("#_consultarbox").hide();
