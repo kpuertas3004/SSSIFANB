@@ -1,15 +1,14 @@
-let FrmValidar = false;
-
 class Utilidad {
   constructor(){
 
   }
 
   SoloNumero(event){
-          if( event.charCode >= 48 && event.charCode <= 57 )
-            return event.charCode;
-          else
-            return false;
+    if( event.charCode >= 48 && event.charCode <= 57 ){
+      return event.charCode;
+    }else{
+      return false;
+    }
   }
 
   //Recibe  Fecha Formato: AAAA-MM-DD 00:00:00
@@ -41,7 +40,9 @@ class Utilidad {
   //Metodo que utiliza ValidarFormulario recibir respuesta de validacion completa
   frm(event) {
       event.preventDefault();
-      FrmValidar = true;
+      var militar = new Militar();
+      militar.Salvar();
+
       return false;
   }
 

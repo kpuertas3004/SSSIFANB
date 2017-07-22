@@ -26,7 +26,7 @@
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">V&nbsp;&nbsp;
                       <span class="fa fa-caret-down"></span></button>
                 </span>
-                <input class="form-control" id="txtcedula"  type="text" disabled="disabled" maxlength="10" required tabindex="1">
+                <input class="form-control" id="txtcedula"  type="text" disabled="disabled" maxlength="10" required tabindex="1"">
               </div>
           </div> <!-- Cedula -->
         </div>
@@ -287,64 +287,60 @@
 
 
          <div role="tabpanel" class="tab-pane" id="mpartida" style="padding:15px">
-
-           <div class="row">
-             <div class="col-md-2">
+           <div class="form-group">
+             <div class="col-md-3">
                <img class="profile-user-img img-responsive" style="width:120px" src="images/ndisponible.jpg"
                  onerror="this.src='images/ndisponible.jpg'"  alt="Partida" id="_imgpartida">
              </div>
-             <div class="col-md-10">
-               <div class="row" >
-                 <label class="col-md-10">Registro Civil:</label>
-                 <label class="col-md-2">Año:</label>
-                 <div class="col-md-10">
+             <div class="col-md-9">
+               <div class="form-group">
+                 <div class="col-md-8">
+                   <label>Registro Civil:</label>
                    <input id="txtpregistrocivil" class="form-control"  type="text">
                  </div>
-                 <div class="col-md-2">
+                 <div class="col-md-4">
+                   <label>Año:</label>
                    <input id="txtpano" class="form-control"  type="text">
                  </div>
-               </div>
+              </div>
 
-               <div class="row">
-                 <label class="col-md-4">Nro. Acta:</label>
-                 <label class="col-md-4">Nro. Folio:</label>
-                 <label class="col-md-4">Libro:</label>
-                 <div class="col-md-4">
-                   <input id="txtpacta" class="form-control"  type="text">
-                 </div>
-                 <div class="col-md-4">
-                   <input  id="txtpfolio" class="form-control"  type="text">
-                 </div>
-                 <div class="col-md-4">
-                   <input  id="txtplibro" class="form-control"  type="text">
-                 </div>
-               </div>
-
-
-
+              <div class="form-group">
+                <div class="col-md-4">
+                  <label >Nro. Acta:</label>
+                  <input id="txtpacta" class="form-control"  type="text">
+                </div>
+                <div class="col-md-4">
+                  <label>Nro. Folio:</label>
+                  <input  id="txtpfolio" class="form-control"  type="text">
+                </div>
+                <div class="col-md-4">
+                  <label>Libro / Tomo:</label>
+                  <input  id="txtplibro" class="form-control"  type="text">
+                </div>
              </div>
 
+             </div>
            </div>
-
          </div><!-- Tab panel Partida de Nacimiento -->
+
          <div role="tabpanel" class="tab-pane" id="mdfisico"  style="padding:15px">
 
              <div class="form-group">
               <div class="col-md-3">
                 <label>Estatura:</label>
-                <input  id="txtmestatura" class="form-control"  type="text" required>
+                <input  id="txtmestatura" class="form-control"  type="text" required maxlength="4">
               </div>
               <div class="col-md-3">
                 <label>Peso:</label>
-                <input  id="txtmpeso" class="form-control"  type="text" required>
+                <input  id="txtmpeso" class="form-control"  type="text" required maxlength="4">
               </div>
               <div class="col-md-3">
                 <label>Talla:</label>
-                <input  id="txtmtalla" class="form-control"  type="text" required>
+                <input  id="txtmtalla" class="form-control"  type="text" required maxlength="4">
               </div>
               <div class="col-md-3">
                 <labe>Grupo Sanguineo:</label>
-               <input  id="txtmgruposanguineo" class="form-control"  type="text" required>
+               <input  id="txtmgruposanguineo" class="form-control"  type="text" maxlength="4">
               </div>
             </div> <!-- Grupo nombres-->
 
@@ -354,18 +350,38 @@
                 <label>Color de Piel:</label>
                 <select class="js-states form-control" style="width: 100%"  id="cmbmpiel" required>
                   <option value="S" selected="selected"></option>
+                  <option value="NE">NEGRA</option>
+                  <option value="BL">BLANCA</option>
+                  <option value="CA">CANELA</option>
+                  <option value="MO">MORENA</option>
+                  <option value="RO">ROSADA</option>
                 </select>
               </div>
               <div class="col-md-3">
                 <label>Color de Ojos:</label>
                 <select class="js-states form-control" style="width: 100%"  id="cmbmojos" required>
                   <option value="S" selected="selected"></option>
+                  <option value="CA">CASTAÑO</option>
+                  <option value="AM">ÁMBAR</option>
+                  <option value="AV">AVELLANA</option>
+                  <option value="VE">VERDE</option>
+                  <option value="AZ">AZUL</option>
+                  <option value="GR">GRIS</option>
+                  <option value="NE">NEGRO</option>
+                  <option value="MA">MARRÓN</option>
                 </select>
               </div>
               <div class="col-md-3">
                 <label>Color de Cabello:</label>
                 <select class="js-states form-control" style="width: 100%"  id="cmbmcolorcabello" required>
                   <option value="S" selected="selected"></option>
+                  <option value="NE">NEGRO</option>
+                  <option value="BA">BLANCO</option>
+                  <option value="MA">MARRON</option>
+                  <option value="CA">CASTAÑO</option>
+                  <option value="AM">AMARILLO</option>
+                  <option value="AZ">AZUL</option>
+                  <option value="VI">VIOLETA</option>
                 </select>
               </div>
               <div class="col-md-3">
@@ -440,10 +456,8 @@
                   </div>
                 </div>
              </div>
-            
-             <div class="col-md-2">
-             </div>
-             <div class="col-md-4">
+
+             <div class="col-md-6">
                <div class="form-group">
                  <div class="col-md-12">
                    <label>Codigo de Componente:</label>

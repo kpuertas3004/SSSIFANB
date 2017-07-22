@@ -3,6 +3,9 @@ Number.prototype.zeroPadding = function(){
   return ret.length == 1 ? "0" + ret : ret;
 };
 
+
+let Frm = "";
+
 class Conexion{
   constructor(){
       this.IP = "192.168.6.45";
@@ -158,7 +161,7 @@ function SeleccionarParroquia(){
 
 function CargarUrl(id, url){
   var xhttp = new XMLHttpRequest();
-  xhttp.open('GET', 'inc/' + url + '.html', false);
+  xhttp.open('GET', 'inc/' + url + '.html');
   xhttp.onreadystatechange = function() {
        if (this.readyState == 4 && this.status == 200) {
           $('#'+id).html(xhttp.responseText);
@@ -209,7 +212,7 @@ function CargarAPI(sURL, metodo, valores, Objeto){
         }else{
           respuesta = JSON.parse(xhttp.responseText);
           if (respuesta.tipo != 0){
-            $.notify("Se ha Insertado correctamente");
+            $.notify("Se ha Insertado correctamente", "success");
           }
         }
       }

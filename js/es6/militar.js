@@ -434,6 +434,17 @@ class Militar{
 		return this;
 
 	}
+	Salvar(){
+		$("#_bxFamiliar").show();
+    $("#_bxFamiliarTarjeta").show();
+    $("#_btnConstancia").show();
+    $("#_btnTIM").show();
+    $("#_btnModificar").show();
+    $("#_btnSavlvar").hide();
+    console.log(this.Obtener());
+    console.log(Conn.URL);
+    CargarAPI(Conn.URL + "militar/crud" , "POST", this.Obtener());
+	}
 }
 
 class CuentaBancaria{

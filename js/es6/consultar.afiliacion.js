@@ -25,6 +25,7 @@ function Buscar( id ){
           $("#_aceptar").focus();
 
         }else{
+          $("#_bxFamiliar").show();
           $("#_tblFamiliares").html(FamiliaresHTML());
           var t = $('#tblFamiliares').DataTable({
             'paging'      : false,
@@ -400,6 +401,10 @@ function incluirAfiliado(){
         autoclose: true
   });
 
+  $('#txtcedula').keyup(function (){
+    this.value = (this.value + '').replace(/[^0-9]/g, '');
+  });
+
   $("#_divfechadefuncion").hide();
   $("#_cedula").val("");
   $("#_ficha").show();
@@ -434,18 +439,10 @@ function incluirAfiliado(){
 
 }
 function Salvar(){
-  if (FrmValidar == true ) {
-    $("#_bxFamiliar").show();
-    $("#_bxFamiliarTarjeta").show();
-    $("#_btnConstancia").show();
-    $("#_btnTIM").show();
-    $("#_btnModificar").show();
-    $("#_btnSavlvar").hide();
-    CargarAPI(Conn.URL + "militar/crud" , "POST", ObtenerMilitar());
-    FrmValidar = false;
-  }else{
-    $.notify("Recuerde verificar todos los datos completos del formulario");
-  }
+  frm = "M";
+
+    
+
 
 }
 
@@ -652,7 +649,7 @@ function seleccionarActas(){
     case "S":
       // $("#_titulod").html("Cargar Carta de Solteria");
       // CargarUrl("_contenidod", "afi/cartasolteria");
-      $('#modDocumentSoltero').modal('show');
+      //$('#modDocumentSoltero').modal('show');
       break;
     default:
   }
