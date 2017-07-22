@@ -320,7 +320,9 @@
 
 
 
+<div id="_bxContenedores">
 
+</div>
 
 <!-- Carnet Afiliado Dentro del Box -->
 
@@ -340,7 +342,7 @@
 
         </div>
       </div>
-      <div class="modal-footer" id="_botones">
+      <div class="modal-footer" id="_botonescarnet">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
       </div>
     </div><!-- /.modal-content -->
@@ -350,7 +352,6 @@
 <!-- Fin modal Carnet Afiliado -->
 
 <!-- Carnet Familiar Dentro del Box -->
-
 <div class="modal fade" tabindex="-1" role="dialog" id="modCarnetFamiliar">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -359,16 +360,12 @@
         <h4 class="modal-title">Modelo de Carnet</h4>
       </div>
       <div class="modal-body">
-
         <div clas="row" id="_objectFamiliar">
-
-
-
 
         </div>
       </div>
       <div class="modal-footer" id="_botones">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -400,46 +397,31 @@
 </div><!-- /.modal Reporte -->
 
 
-  <!-- Small modal -->
-  <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="modMsj">
-    <div class="modal-dialog modal-sm" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="_titulo">Mensaje</h4>
-        </div>
-        <div class="modal-body">
-          <p id="_contenido"></p>
 
-        </div>
-        <div class="modal-footer" id="_botones">
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="modMsj">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="_titulo">Mensaje</h4>
+      </div>
+      <div class="modal-body" id="_contenido">
 
+      </div>
+      <div class="modal-footer" id="_botonesmsj">
 
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
-  <!-- Small modal -->
-  <div class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" id="modDocument">
-    <div class="modal-dialog modal-md" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="_titulod">Mensaje</h4>
-        </div>
-        <div class="modal-body">
-          <p id="_contenidod"></p>
 
-        </div>
-        <div class="modal-footer" id="_botonesd">
-          <button type="button" class="btn btn-default" data-dismiss="modal" onclick="editarDB()">Si</button>
-          <button type="button" class="btn btn-primary" onclick="desactivarSalvar()">No</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+
+
+
+
+
 
 
   <!-- Modal Partida Nacimiento - Acta Defuncion -->
@@ -510,340 +492,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title">Datos Básicos</h4>
         </div>
-        <div class="modal-body">
-
-
-
-
-                    <div class="row">
-                      <div class="col-md-10">
-                        <div class="row">
-                          <div class="form-group">
-                            <label class="col-md-4">Cédula:</label>
-                            <label class="col-md-4">Fecha de Nacimiento:</label>
-                            <label class="col-md-4">Sexo:</label>
-                            <div class="col-md-4">
-                              <div class="input-group">
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">V&nbsp;&nbsp;
-                                      <span class="fa fa-caret-down"></span></button>
-                                      <ul class="dropdown-menu">
-                                        <li><a href="#">M</a></li>
-                                        <li><a href="#">E</a></li>
-                                      </ul>
-                                </span>
-                                <input class="form-control" placeholder="Cédula de Identidad" id="txtcedulaf" type="text" >
-                              </div>
-                            </div>
-                            <div class="col-md-4">
-                              <input placeholder="Nacimiento" id="txtnacimientof" class="form-control"  type="text" >
-                            </div>
-                            <div class="col-md-4">
-                              <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbsexof" onchange="SeleccionarPorSexoFamiliar()" >
-                                <option selected="selected" value="F">FEMENINO</option>
-                                <option value="M">MASCULINO</option>
-                              </select>
-                            </div>
-                          </div> <!-- Fecha Nacimiento -->
-                        </div><!-- /.Row -->
-
-                        <div class="row">
-                          <div class="form-group">
-                           <label class="col-md-6 ">Nombres:</label>
-                            <label class="col-md-6">Apellidos:</label>
-                           <div class="col-md-6">
-                             <input placeholder="Nombre Completo" id="txtnombref" class="form-control"  type="text" >
-                           </div>
-
-                           <div class="col-md-6">
-                             <input placeholder="Apellido Completo" id="txtapellidof" class="form-control"  type="text" >
-                           </div>
-
-                         </div> <!-- Grupo nombres-->
-                        </div>
-
-                        <div class="row">
-                         <div class="form-group">
-
-                           <label class="col-md-4">Edo. Civil:</label>
-                           <label class="col-md-4">Parentesco:</label>
-                           <label class="col-md-2">Cond.Especial:</label>
-                           <label class="col-md-2">Estudia:</label>
-
-
-
-                          <div class="col-md-4">
-                            <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbedocivilf" >
-                              <option value="S" selected="selected">SOLTERO</option>
-                              <option value="C">CASADO</option>
-                              <option value="D">DIVORCIADO</option>
-                              <option value="V">VIUDO</option>
-                            </select>
-                          </div>
-                          <div class="col-md-4">
-                            <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbparentescof" >
-                              <option value="H" selected="selected">HIJO</option>
-                              <option value="PD">PADRE</option>
-                              <option value="MD">MADRE</option>
-                            </select>
-                          </div>
-                          <div class="col-md-2">
-                            <select class="js-states form-control" style="width: 100%" id="cmbcondicionf" >
-                              <option selected="selected" value=0>NO</option>
-                              <option value=1>SI</option>
-
-                            </select>
-                          </div>
-                          <div class="col-md-2">
-                            <select class="js-states form-control" style="width: 100%" id="cmbestudiaf" >
-                              <option selected="selected" value=0>NO</option>
-                              <option value=1>SI</option>
-
-                            </select>
-                          </div>
-                        </div> <!-- Grupo nombres   <div class="row">-->
-                        </div>
-                      </div>
-                      <div class="col-md-2">
-                        <br>
-                        <img class="profile-user-img" style="width:120px" src="images/ndisponible.jpg"
-                          onerror="this.src='images/ndisponible.jpg'"  alt="Partida" id="_imgpartida">
-                      </div>
-                    </div>
-
-                    <br>
-                  <div class="row">
-                    <div>
-
-                      <!-- Nav tabs -->
-                      <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#direccion" aria-controls="home" role="tab" data-toggle="tab">Dirección</a></li>
-                        <li role="presentation"><a href="#partida" aria-controls="profile" role="tab" data-toggle="tab">Partida Nacimiento</a></li>
-                        <li role="presentation"><a href="#dfisico" aria-controls="messages" role="tab" data-toggle="tab">Datos Fisicos / Fisionomico</a></li>
-                        <li role="presentation"><a href="#dredes" aria-controls="messages" role="tab" data-toggle="tab">Redes Sociales</a></li>
-                        <li role="presentation"><a href="#dcarnet" aria-controls="messages" role="tab" data-toggle="tab">TIF</a></li>
-
-                      </ul>
-
-                      <!-- Tab panes -->
-                      <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="direccion" style="padding:25px">
-
-
-                          <div class="row">
-                            <div class="form-group">
-                             <label class="col-md-4">Estado:</label>
-                             <label class="col-md-4">Municipio:</label>
-                             <label class="col-md-4">Parroquia:</label>
-
-                             <div class="col-md-4">
-                               <select class="js-states form-control" style="width: 100%"  id="cmbestadof" >
-                                 <option value="S" selected="selected"></option>
-                               </select>
-                             </div>
-                             <div class="col-md-4">
-                               <select class="js-states form-control" style="width: 100%"  id="cmbmunicipiof" >
-                                 <option value="S" selected="selected"></option>
-                               </select>
-                             </div>
-                             <div class="col-md-4">
-                               <select class="js-states form-control" style="width: 100%" id="cmbparroquiaf" >
-                                 <option value="S" selected="selected"></option>
-                               </select>
-                             </div>
-                           </div> <!-- Grupo nombres-->
-                          </div>
-
-                          <div class="row">
-                            <div class="form-group">
-                             <label class="col-md-4">Ciudad:</label>
-                             <label class="col-md-4">Calle / Edificio:</label>
-                             <label class="col-md-2"># Casa:</label>
-                             <label class="col-md-2"># Apto.:</label>
-
-
-                             <div class="col-md-4">
-                               <input id="txtciudadf" class="form-control"  type="text" >
-                             </div>
-                             <div class="col-md-4">
-                               <input id="txtcallef" class="form-control"  type="text" >
-                             </div>
-                             <div class="col-md-2">
-                               <input id="txtcasaf" class="form-control"  type="text" >
-                             </div>
-                             <div class="col-md-2">
-                               <input id="txtaptof" class="form-control"  type="text" >
-                             </div>
-                           </div> <!-- Grupo nombres-->
-                          </div>
-
-                          <div class="row">
-                            <div class="form-group">
-                              <label class="col-md-4">Teléfono:</label>
-                              <label class="col-md-4">Celular:</label>
-                              <label class="col-md-4">Correo Electronico:</label>
-                              <div class="col-md-4">
-                                <input id="txttelefonof" class="form-control"  type="text" >
-                              </div>
-                              <div class="col-md-4">
-                                <input id="txtcelularf" class="form-control"  type="text" >
-                              </div>
-                              <div class="col-md-4">
-                                <input  id="txtcorreof" class="form-control"  type="text" >
-                              </div>
-                            </div>
-                          </div>
-
-
-
-                        </div><!-- Tab panes  Direccion-->
-                        <div role="tabpanel" class="tab-pane" id="partida" style="padding:15px">
-
-                          <div class="row">
-                            <div class="col-md-2">
-                              <img class="profile-user-img img-responsive" style="width:90px" src="images/ndisponible.jpg"
-                                onerror="this.src='images/ndisponible.jpg'"  alt="Partida" id="_imgpartida">
-                            </div>
-                            <div class="col-md-10">
-                              <div class="row" >
-                                <label class="col-md-10">Registro Civil:</label>
-                                <label class="col-md-2">Año:</label>
-                                <div class="col-md-10">
-                                  <input id="txtpregistrocivilf" class="form-control"  type="text" >
-                                </div>
-                                <div class="col-md-2">
-                                  <input id="txtpanof" class="form-control"  type="text" >
-                                </div>
-                              </div>
-
-                              <div class="row">
-                                <label class="col-md-4">Nro. Acta:</label>
-                                <label class="col-md-4">Nro. Folio:</label>
-                                <label class="col-md-4">Libro:</label>
-                                <div class="col-md-4">
-                                  <input id="txtpactaf" class="form-control"  type="text" >
-                                </div>
-                                <div class="col-md-4">
-                                  <input  id="txtpfoliof" class="form-control"  type="text" >
-                                </div>
-                                <div class="col-md-4">
-                                  <input  id="txtplibrof" class="form-control"  type="text" >
-                                </div>
-                              </div>
-
-
-
-                            </div>
-
-                          </div>
-
-                        </div><!-- Tab panel Partida de Nacimiento -->
-                        <div role="tabpanel" class="tab-pane" id="dfisico"  style="padding:15px">
-                          <div class="row">
-                            <div class="form-group">
-                             <label class="col-md-4">Estatura:</label>
-                             <label class="col-md-4">Peso:</label>
-                             <label class="col-md-4">Talla:</label>
-
-                             <div class="col-md-4">
-                               <input  id="txtestaturaf" class="form-control"  type="text" >
-                             </div>
-                             <div class="col-md-4">
-                               <input  id="txtpesof" class="form-control"  type="text" >
-                             </div>
-                             <div class="col-md-4">
-                              <input  id="txttallaf" class="form-control"  type="text" >
-                             </div>
-                           </div> <!-- Grupo nombres-->
-                          </div>
-
-                          <div class="row">
-                            <div class="form-group">
-                             <label class="col-md-3">Color de Piel:</label>
-                             <label class="col-md-3">Color de Ojos:</label>
-                             <label class="col-md-3">Color de Cabello:</label>
-
-                             <label class="col-md-3">Seña Particular:</label>
-
-                             <div class="col-md-3">
-                               <select class="js-states form-control" style="width: 100%"  id="cmbpielf" >
-                                 <option value="S" selected="selected"></option>
-                               </select>
-                             </div>
-                             <div class="col-md-3">
-                               <select class="js-states form-control" style="width: 100%"  id="cmbojosf" >
-                                 <option value="S" selected="selected"></option>
-                               </select>
-                             </div>
-                             <div class="col-md-3">
-                               <select class="js-states form-control" style="width: 100%"  id="cmbcolorcabellof" >
-                                 <option value="S" selected="selected"></option>
-                               </select>
-                             </div>
-                             <div class="col-md-3">
-                               <input  id="txtsenaparticularf" class="form-control"  type="text" >
-                             </div>
-                           </div> <!-- Grupo nombres-->
-                          </div>
-
-
-                        </div><!-- Tab panes Datos Fisicos-->
-                        <div role="tabpanel" class="tab-pane" id="dredes"  style="padding:15px">
-                          <div class="row">
-                            <div class="form-group">
-                             <label class="col-md-6 ">Twitter:</label>
-                              <label class="col-md-6">FaceBook:</label>
-                             <div class="col-md-6">
-                               <input id="txttwitterf" class="form-control"  type="text" >
-                             </div>
-
-                             <div class="col-md-6">
-                               <input id="txtfacebookf" class="form-control"  type="text" >
-                             </div>
-
-                           </div> <!-- Grupo nombres-->
-                           </div>
-                           <div class="row">
-                             <div class="form-group">
-                              <label class="col-md-6 ">InstaGrant:</label>
-                               <label class="col-md-6">Linkedin:</label>
-                              <div class="col-md-6">
-                                <input  id="txtinstagranf" class="form-control"  type="text" >
-                              </div>
-
-                              <div class="col-md-6">
-                                <input  id="txtlinkedinf" class="form-control"  type="text" >
-                              </div>
-
-                            </div> <!-- Grupo nombres-->
-
-                          </div>
-
-                        </div><!-- Tab panes Redes Sociales-->
-                        <div role="tabpanel" class="tab-pane" id="dcarnet"  style="padding:15px">
-                          <div class="row">
-                             <label class="col-md-2 ">&nbsp;&nbsp;&nbsp;Firma</label>
-                             <label class="col-md-2">&nbsp;&nbsp;&nbsp;Huella</label>
-                             <label class="col-md-8 "></label>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-2">
-                              <img class="profile-user-img img-responsive" style="width:90px" src="images/ndisponible.jpg"
-                                onerror="this.src='images/ndisponible.jpg'"  alt="Partida" id="_imgpartida">
-                            </div>
-                            <div class="col-md-2">
-                              <img class="profile-user-img img-responsive" style="width:90px" src="images/ndisponible.jpg"
-                                onerror="this.src='images/ndisponible.jpg'"  alt="Partida" id="_imgpartida">
-                            </div>
-                            <div class="col-md-8"></div>
-                          </div>
-                        </div><!-- Tab panes Redes Sociales-->
-                      </div>
-
-                    </div>
-
-                  </div>
-
+        <div class="modal-body" id="_boxModFamiliares">
 
         </div>
         <div class="modal-footer" id="_botonesfamiliar">

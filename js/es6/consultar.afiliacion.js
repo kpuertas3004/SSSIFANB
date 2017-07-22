@@ -4,7 +4,7 @@ function Buscar( id ){
   }
   if($("#_cedula").val() == ""){
     $("#_contenido").html("Debe introducir una cédula");
-    $("#_botones").html('<button type="button" class="btn btn-default" data-dismiss="modal" id="_aceptar" onClick="IrCedula()">Aceptar</button>');
+    $("#_botonesmsj").html('<button type="button" class="btn btn-default" data-dismiss="modal" id="_aceptar" onClick="IrCedula()">Aceptar</button>');
     $("#modMsj").modal("show");
     return false;
   }
@@ -18,9 +18,9 @@ function Buscar( id ){
         if(militar.tipo != undefined){
           $("#_cedula").val("");
           $("#_contenido").html("La cédula no existe en el sistema. ¿Desea Realizar un nuevo ingreso?");
-          $("#_botones").html('<button type="button" class="btn btn-default" data-dismiss="modal" \
-            id="_aceptar" onClick="incluirAfiliado()">Aceptar</button>\
-            <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>');
+          var botones = '<button type="button" class="btn btn-success" data-dismiss="modal" id="_aceptar" onClick="incluirAfiliado()">Si</button>\
+            <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>';
+          $("#_botonesmsj").html(botones);
           $("#modMsj").modal("show");
           $("#_aceptar").focus();
 
@@ -248,7 +248,7 @@ function SeleccionarPorSexo(sexo){
   }else{
     gen = (sexo == 'F')?"A":"O";
   }
-  $("#cmbedocivil").html('<option value="S">SOLTER' + gen + '</option>\
+  $("#cmbedocivil").html('<option value=""></option><option value="S">SOLTER' + gen + '</option>\
   <option value="C">CASAD' + gen + '</option> \
   <option value="D">DIVORCIAD' + gen + '</option>\
   <option value="V">VIUD' + gen + '</option>');
@@ -260,7 +260,7 @@ function SeleccionarPorSexoFamiliar(sexo){
   }else{
     gen = (sexo == 'F')?"A":"O";
   }
-  $("#cmbedocivilf").html('<option value="S">SOLTER' + gen + '</option>\
+  $("#cmbedocivilf").html('<option value=""></option><option value="S">SOLTER' + gen + '</option>\
   <option value="C">CASAD' + gen + '</option> \
   <option value="D">DIVORCIAD' + gen + '</option>\
   <option value="V">VIUD' + gen + '</option>');
@@ -390,6 +390,16 @@ function VisualizarCarnetFamiliar(){
 
 function incluirAfiliado(){
   Estados.ObtenerEstados();
+  $('#txtnacimiento').datepicker({
+      autoclose: true
+  });
+  $('#txtfechagraduacion').datepicker({
+      autoclose: true
+  });
+  $('#txtdefuncion').datepicker({
+        autoclose: true
+  });
+
   $("#_divfechadefuncion").hide();
   $("#_cedula").val("");
   $("#_ficha").show();
@@ -411,16 +421,16 @@ function incluirAfiliado(){
   FrmRedSocial(false);
   FrmTim(false);
   ModDocumentoCivil(false);
-
-  // LimpiarFrmDatosBasicos();
-  // LimpiarFrmDatosMilitar();
-  // LimpiarFrmCuentaBancaria();
-  // LimpiarFrmDireccion();
-  // LimpiarFrmPartidaNacimiento();
-  // LimpiarFrmFisicoFisionomico();
-  // LimpiarFrmRedSocial();
-  // LimpiarFrmTim();
-  // LimpiarModDocumentoCivil();
+  LimpiarFrmDatosBasicos();
+  LimpiarFrmDatosMilitar();
+  LimpiarFrmCuentaBancaria();
+  LimpiarFrmDireccion();
+  LimpiarFrmPartidaNacimiento();
+  LimpiarFrmFisicoFisionomico();
+  LimpiarFrmRedSocial();
+  LimpiarFrmTim();
+  LimpiarFrmTarjeta();
+  //LimpiarModDocumentoCivil();
 
 }
 function Salvar(){
@@ -584,6 +594,19 @@ function LimpiarFrmTim(valor){
   $("#_imgfirma").val("");
 }
 
+function LimpiarFrmTarjeta(){
+
+
+  $("#_img").attr("src", "images/ndisponible.jpg");
+  $("#_imggrado").attr("src", "images/grados/no.png");
+  $("#_fingreso").html("");
+  $("#_fascenso").html("");
+  $("#_categoria").html("");
+  $("#_situacion").html("");
+  $("#_clasificacion").html("");
+  $("#_tiemposervicio").html("");
+}
+
 function ModDocumentoCivil(valor){
   doc = $("#cmbedocivil option:selected").val();
   switch (doc) {
@@ -616,24 +639,24 @@ function seleccionarActas(){
   edo = $("#cmbedocivil option:selected").val();
   switch (edo) {
     case "C":
-      $("#_titulod").html("Cargar Acta de Matrimonio");
-      CargarUrl("_contenidod", "afi/actamatrimonio");
-      $('#modDocument').modal('show');
+      // $("#_titulod").html("Cargar Acta de Matrimonio");
+      // CargarUrl("_contenidod", "afi/actamatrimonio");
+      $('#modDocumentCasado').modal('show');
       break;
     case "D":
-      $("#_titulod").html("Cargar Acta de Divorcio");
-      CargarUrl("_contenidod", "afi/actadivorcio");
-      $('#modDocument').modal('show');
+      // $("#_titulod").html("Cargar Acta de Divorcio");
+      // CargarUrl("_contenidod", "afi/actadivorcio");
+      $('#modDocumentDivorcio').modal('show');
       break;
     case "V":
-      $("#_titulod").html("Cargar Constancia de Viudez");
-      CargarUrl("_contenidod", "afi/constanciaviudez");
-      $('#modDocument').modal('show');
+      // $("#_titulod").html("Cargar Constancia de Viudez");
+      // CargarUrl("_contenidod", "afi/constanciaviudez");
+      $('#modDocumentViudez').modal('show');
       break;
     case "S":
-      $("#_titulod").html("Cargar Carta de Solteria");
-      CargarUrl("_contenidod", "afi/cartasolteria");
-      $('#modDocument').modal('show');
+      // $("#_titulod").html("Cargar Carta de Solteria");
+      // CargarUrl("_contenidod", "afi/cartasolteria");
+      $('#modDocumentSoltero').modal('show');
       break;
     default:
   }
@@ -641,10 +664,10 @@ function seleccionarActas(){
 
 function seleccionarPartida(){
   nac = $("#txtnacimiento").val();
-  $("#_titulopd").html("Registrar Partida de Nacimiento");
-  CargarUrl("_contenidopd", "afi/partidanacimiento");
-  $('#calendario').datepicker();
-  $('#modPartidaActa').modal('show');
+  // $("#_titulopd").html("Registrar Partida de Nacimiento");
+  // CargarUrl("_contenidopd", "afi/partidanacimiento");
+  //$('#modPartidaActa').modal('show');
+  $('#modDocumentPartida').modal('show');
 }
 
 function seleccionarDefuncion(){

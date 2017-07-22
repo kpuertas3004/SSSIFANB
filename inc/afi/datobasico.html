@@ -46,12 +46,21 @@
          <div class="form-group">
            <div class="col-md-3 col-sm-12">
              <label>Fecha de Nacimiento:</label>
-             <div class="input-group input-group-sm">
-             <input type="text" class="form-control"  id="txtnacimiento" disabled="disabled" onClick="seleccionarPartida()" tabindex="4">
-                  <span class="input-group-btn">
-                    <button type="button" class="btn btn-success btn-flat btn-md" id="btnnacimiento" onClick="seleccionarPartida()" disabled="disabled" required><i class="fa fa-file-text"></i></button>
-                  </span>
-              </div>
+
+
+               <div class="input-group date">
+                 <div class="input-group-addon">
+                   <i class="fa fa-calendar"></i>
+                 </div>
+                 <div class="input-group input-group-sm">
+                   <input type="text" class="form-control"  id="txtnacimiento" disabled="disabled" tabindex="4">
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-success btn-flat"
+                      id="btnnacimiento" onClick="seleccionarPartida()" disabled="disabled" required><i class="glyphicon glyphicon-paperclip"></i></button>
+                    </span>
+                </div>
+               </div>
+
            </div>
            <div class="col-md-3 col-sm-6">
              <label >Sexo:</label>
@@ -71,7 +80,7 @@
            <div class="col-md-3 col-sm-12" id="_divfechadefuncion">
              <label>Fecha de Defunción:</label>
              <div class="input-group input-group-sm">
-             <input type="text" class="form-control" id="txtdefuncion" disabled="disabled" onClick="seleccionarDefuncion()">
+             <input type="text" class="form-control" id="txtdefuncion" disabled="disabled">
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-success btn-flat btn-md" id="btndefuncion" onClick="seleccionarDefuncion()" disabled="disabled"><i class="fa fa-file-text"></i></button>
                   </span>
@@ -106,7 +115,18 @@
               <div class="form-group">
               <div class="col-md-4 col-sm-12">
                   <label >Fecha Ingreso FANB:</label>
-                  <input id="txtfechagraduacion" class="form-control"  type="text" disabled="disabled" required>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+
+                    <input type="text" class="form-control"  id="txtfechagraduacion" disabled="disabled" tabindex="4" required>
+
+                  </div>
+
+
+
+
                </div>
                 <div class="col-md-4 col-sm-12">
                   <label>Componente:</label>
@@ -201,7 +221,7 @@
                 </div>
                 <div class="col-md-6 col-sm-12">
                   <label>Nro. de Cuenta:</label>
-                  <input  id="txtnrocuenta" class="form-control"  type="text" >
+                  <input  id="txtnrocuenta" class="form-control"  type="text" maxlength="20">
                 </div>
               </div><!-- .Form-Group -->
 

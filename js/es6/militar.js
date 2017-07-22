@@ -363,11 +363,11 @@ class Militar{
 		this.Persona.DatoBasico.cedula = $("#txtcedula").val();
 		this.Persona.DatoBasico.nombreprimero = $("#txtnombre").val();
 		this.Persona.DatoBasico.apellidoprimero = $("#txtapellido").val();
-		this.Persona.DatoBasico.fechanacimiento = new Date($("#txtnacimiento").val());
+		this.Persona.DatoBasico.fechanacimiento = new Date(Util.ConvertirFechaUnix($("#txtnacimiento").val()));
 		this.Persona.DatoBasico.sexo = $("#cmbsexo option:selected").val();
 		this.Persona.DatoBasico.estadocivil = $("#cmbedocivil").val();
-		this.fingreso = new Date($("#txtfechagraduacion").val());
-		this.fascenso = new Date($("#txtfechagraduacion").val());
+		this.fingreso = new Date(Util.ConvertirFechaUnix($("#txtfechagraduacion").val()));
+		this.fascenso = new Date(Util.ConvertirFechaUnix($("#txtfechagraduacion").val()));
 		this.situacion = $("#cmbsituacion option:selected").val();
 		this.categoria = $("#cmbcategoria option:selected").val();
 		this.clase = $("#cmbclase option:selected").val();

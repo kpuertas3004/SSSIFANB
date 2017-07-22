@@ -98,9 +98,12 @@ $(function () {
   CargarUrl("_bxDatoBasico", "afi/datobasico");
   CargarUrl("_bxDatosFamiliar", "afi/familiar");
   CargarUrl("_bxTarjetaFamiliar", "afi/tarjetafamiliar");
+  CargarUrl("_boxModFamiliares", "afi/modalfamiliares");
   CargarUrl("_contenidoh", "afi/historicomilitar");
   CargarUrl("_contenidohc", "afi/historiaclinica");
   CargarUrl("_contenidorpt", "rpt/constancia");
+
+  CargarUrl("_bxContenedores", "afi/contenedores");
 
   $("#salvar").hide();
   $('#modMsj').on('shown.bs.modal', function () {
@@ -136,7 +139,6 @@ $(function () {
             "Diciembre"
         ],
     };
-
 
 
 });
@@ -255,7 +257,7 @@ function readURL(input, id) {
   }else{
    limpiarObjetos(input, id);
 	 $.notify('No se puede subir un archivo mayor a 1 MB');
- } 
+ }
 }
 
 
