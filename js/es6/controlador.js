@@ -248,7 +248,7 @@ function readURL(input, id) {
     	$("#load" + id).show();
         var reader = new FileReader();
         reader.onload = function (e) {
-          $('#pre-view-' + id).attr('src', e.target.result);
+          $('#' + id).attr('src', e.target.result);
           bFile = 1;
         };
     reader.readAsDataURL(input.files[0]);
