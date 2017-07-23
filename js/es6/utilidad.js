@@ -40,13 +40,15 @@ class Utilidad {
 
   //Metodo que utiliza ValidarFormulario recibir respuesta de validacion completa
   frm(event) {
-    
+
       event.preventDefault();
       var militar = new Militar();
       switch (Frm) {
         case "S":
+
           militar.Salvar();
           ActivarFormulario(true);
+          $("#_cargando").hide();
           break;
         case "A":
           //militar.Actualizar();

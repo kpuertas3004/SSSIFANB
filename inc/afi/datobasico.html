@@ -26,7 +26,7 @@
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">V&nbsp;&nbsp;
                       <span class="fa fa-caret-down"></span></button>
                 </span>
-                <input class="form-control" id="txtcedula"  type="text" disabled="disabled" maxlength="10" required tabindex="1">
+                <input class="form-control" id="txtcedula"  type="text" disabled="disabled" maxlength="8" required tabindex="1" onblur="BuscarInsert()">
               </div>
           </div> <!-- Cedula -->
         </div>
@@ -528,9 +528,9 @@
       <i class="fa fa-credit-card"></i>&nbsp;&nbsp;Tarjeta de Identificación</button>
     <button type="button" class="btn btn-lg btn-warning" data-dismiss="modal" onclick="activarSalvar()" id="_btnModificar">
       <i class="fa fa-pencil"></i>&nbsp;&nbsp;Modificar Datos</button>
-    <button type="submit" class="btn btn-lg btn-primary"  onclick="Actualizar()" id="_btnActualizar" style="display:none">
-      <i class="fa fa-refresh"></i>&nbsp;&nbsp;Actualizar</button>
     <button type="submit" class="btn btn-lg btn-success"  onclick="Salvar()" id="_btnSavlvar" style="display:none">
       <i class="fa fa-save"></i>&nbsp;&nbsp;Continuar</button>
+    <button type="submit" class="btn btn-lg btn-primary"  onclick="Actualizar()" id="_btnActualizar" style="display:none">
+      <i class="fa fa-refresh"></i>&nbsp;&nbsp;Actualizar</button>
   </div>
 </div><!-- /.box -->
