@@ -71,10 +71,13 @@ function Buscar( id ){
           $("#_situacion").html($("#cmbsituacion option:selected").text());
           $("#_clasificacion").html($("#cmbclase option:selected").text());
           $("#_tiemposervicio").html(militar.tiemposervicio);
-          var DF = militar.Persona.DatoFinanciero[0];
-          $("#txtnrocuenta").val(DF.cuenta);
-          $("#cmbinstfinanciera").val(DF.institucion);
-          $("#cmbtipofinanciera").val(DF.tipocuenta);
+          if (militar.Persona.DatoFinanciero != undefined){
+            var DF = militar.Persona.DatoFinanciero;
+            $("#txtnrocuenta").val(DF.cuenta);
+            $("#cmbinstfinanciera").val(DF.institucion);
+            $("#cmbtipofinanciera").val(DF.tipocuenta);
+          }
+
           let j = 1;
           $.each(militar.Familiar, function (c, v){
             let familiar = new Familiar();
