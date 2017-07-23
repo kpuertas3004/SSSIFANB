@@ -10,7 +10,7 @@
 class DatoBasico{
 	constructor(){
 		this.cedula = "";
-		this.nropersona = "";
+		this.nropersona = 0;
 		this.nacionalidad = "";
 		this.nombreprimero = "";
 		this.nombresegundo = "";
@@ -139,9 +139,9 @@ class DatoFisionomico{
 
 class Correo{
 	constructor(){
-		this.correoprincipal = "";
-		this.correoalternativo = "";
-		this.correoinstitucional = "";
+		this.principal = "";
+		this.alternativo = "";
+		this.institucional = "";
 	}
 }
 
@@ -157,16 +157,16 @@ class RedSocial{
 
 class Telefono{
 	constructor(){
-		this.telefonomovil = "";
-		this.telefonodomiciliario = "";
-		this.telefonoemergencia = "";
+		this.movil = "";
+		this.domiciliario = "";
+		this.emergencia = "";
 	}
 }
 
 
 class Direccion{
 	constructor(){
-		this.tipo = "";
+		this.tipo = 0;
 		this.estado = "";
 		this.municipio = "";
 		this.parroquia = "";
@@ -174,10 +174,8 @@ class Direccion{
 		this.calleavenida = "";
 		this.casa = "";
 		this.apartamento = "";
-		this.numero = "";
-		this.telefonofijo = "";
-		this.telefonomovil = "";
-		this.correo = "";
+		this.numero = 0;
+
 
 	}
 }
@@ -300,8 +298,9 @@ class Persona{
 		this.DatoBasico = new DatoBasico();
 		this.CuentaBancaria = new CuentaBancaria();
 		this.DatoFisico = new DatoFisico();
+		this.Correo = new Correo();
 		this.DatoFisionomico = new DatoFisionomico();
-		this.Direccion = new Direccion();
+		this.Direccion = [];
 		this.Telefono = new Telefono();
 		this.PartidaNacimiento = new PartidaNacimiento();
 		this.Defuncion = new Defuncion();
@@ -360,14 +359,18 @@ class Militar{
 		this.urlcedula = "";
 	}
 	Obtener(){
+		var fingreso = Util.ConvertirFechaUnix($("#txtfechagraduacion").val());
+		var fnacimiento = Util.ConvertirFechaUnix($("#txtnacimiento").val());
+
+		this.Persona.DatoBasico.nacionalidad = "V";
 		this.Persona.DatoBasico.cedula = $("#txtcedula").val();
 		this.Persona.DatoBasico.nombreprimero = $("#txtnombre").val();
 		this.Persona.DatoBasico.apellidoprimero = $("#txtapellido").val();
-		this.Persona.DatoBasico.fechanacimiento = new Date(Util.ConvertirFechaUnix($("#txtnacimiento").val()));
+		this.Persona.DatoBasico.fechanacimiento = new Date(fnacimiento);
 		this.Persona.DatoBasico.sexo = $("#cmbsexo option:selected").val();
 		this.Persona.DatoBasico.estadocivil = $("#cmbedocivil").val();
-		this.fingreso = new Date(Util.ConvertirFechaUnix($("#txtfechagraduacion").val()));
-		this.fascenso = new Date(Util.ConvertirFechaUnix($("#txtfechagraduacion").val()));
+		this.fingreso = new Date(fingreso);
+		this.fascenso = new Date(fingreso);
 		this.situacion = $("#cmbsituacion option:selected").val();
 		this.categoria = $("#cmbcategoria option:selected").val();
 		this.clase = $("#cmbclase option:selected").val();
@@ -378,16 +381,22 @@ class Militar{
 		this.Persona.CuentaBancaria.banco = $("#cmbinstfinanciera option:selected").val();
 		this.Persona.CuentaBancaria.tipocuenta = $("#cmbtipofinanciera option:selected").val();
 		this.Persona.CuentaBancaria.numerocuenta = $("#txtnrocuenta").val();
-		this.Persona.Direccion.estado = $("#cmbmestado option:selected").val();
-		this.Persona.Direccion.municipio = $("#cmbmmunicipio option:selected").val();
-		this.Persona.Direccion.parroquia = $("#cmbmparroquia option:selected").val();
-		this.Persona.Direccion.sector = $("#txtmciudad").val();
-		this.Persona.Direccion.calleavenida = $("#txtmcalle").val();
-		this.Persona.Direccion.casa = $("#txtmcasa").val();
-		this.Persona.Direccion.apartamento = $("#txtmapto").val();
-		this.Persona.Direccion.telefonofijo = $("#txtmtelefono").val();
-		this.Persona.Direccion.telefonomovil = $("#txtmcelular").val();
-		this.Persona.Direccion.correo = $("#txtmcorreo").val();
+
+		var dir = new Direccion();
+		dir.tipo = 0;
+		dir.estado = $("#cmbmestado option:selected").val();
+		dir.municipio = $("#cmbmmunicipio option:selected").val();
+		dir.parroquia = $("#cmbmparroquia option:selected").val();
+		dir.sector = $("#txtmciudad").val();
+		dir.calleavenida = $("#txtmcalle").val();
+		dir.casa = $("#txtmcasa").val();
+		dir.apartamento = $("#txtmapto").val();
+		this.Persona.Direccion[0] = dir;
+
+		this.Persona.Correo.principal = $("#txtmcorreo").val();
+
+		this.Persona.Telefono.domiciliario = $("#txtmtelefono").val();
+		this.Persona.Telefono.movil = $("#txtmcelular").val();
 		/*this.Persona.PartidaNacimiento.registrocivil= $("#txtpregistrocivil").val();
 		this.Persona.PartidaNacimiento.ano = $("#txtpano").val();
 		this.Persona.PartidaNacimiento.acta = $("#txtpacta").val();
@@ -398,7 +407,7 @@ class Militar{
 		this.Persona.DatoFisionomico.coloropiel = $("#cmbmpiel option:selected").val();
 		this.Persona.DatoFisionomico.colorojos = $("#cmbmojos option:selected").val();
 		this.Persona.DatoFisionomico.colorcabello = $("#cmbmcolorcabello option:selected").val();
-		this.Persona.DatoFisionomico.estatura = $("#txtmestatura").val();
+		this.Persona.DatoFisionomico.estatura = parseFloat($("#txtmestatura").val());
 		this.Persona.DatoFisionomico.senaParticular = $("#txtmsenaparticular").val();
 		this.Persona.DatoFisionomico.gruposanguineo = $("#txtmgruposanguineo").val();
 		//this.Grado.abreviatura = $("#cmbgrado option:selected").val();
