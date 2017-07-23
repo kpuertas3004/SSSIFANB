@@ -17,6 +17,7 @@ function Buscar( id ){
         militar = JSON.parse(xhttp.responseText);
         if(militar.tipo != undefined){
           $("#_cedula").val("");
+          if (id != undefined) { return false}
           $("#_contenido").html("La cédula no existe en el sistema. ¿Desea Realizar un nuevo ingreso?");
           var botones = '<button type="button" class="btn btn-success" data-dismiss="modal" id="_aceptar" onClick="incluirAfiliado()">Si</button>\
             <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>';
@@ -26,6 +27,13 @@ function Buscar( id ){
 
         }else{
           ActivarFormulario(true);
+          $("#_btnModificar").show();
+          $("#_btnConstancia").show();
+          $("#_btnTIM").show();
+          $("#_btnActualizar").hide();
+          $("#_btnSavlvar").hide();
+
+
           $("#_bxFamiliar").show();
           $("#_tblFamiliares").html(FamiliaresHTML());
           var t = $('#tblFamiliares').DataTable({
@@ -267,7 +275,9 @@ function Buscar( id ){
   };
   xhttp.send();
 }
-
+function BuscarInsert(){
+  Buscar($("#txtcedula").val());
+}
 function activarSalvar(){
   $("#_contenido").html("¿Está seguro que desea editar?");
   var botones = '<button type="button" class="btn btn-success" data-dismiss="modal" id="_aceptar" onClick="activarActualizar()">Si</button>\
@@ -280,6 +290,7 @@ function activarActualizar(){
   $("#_btnConstancia").hide();
   $("#_btnTIM").hide();
   ActivarFormulario(false);
+  FrmDatosBasicos(true);
   $("#_btnActualizar").show();
 }
 function Salvar(){
