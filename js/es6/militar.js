@@ -127,7 +127,7 @@ class  DatoFisico{
 
 class DatoFisionomico{
 	constructor(){
-		this.coloropiel = "";
+		this.colorpiel = "";
 		this.colorojos = "";
 		this.colorcabello = "";
 		this.estatura = "";
@@ -135,8 +135,6 @@ class DatoFisionomico{
 		this.gruposanguineo = "";
 	}
 }
-
-
 
 class Correo{
 	constructor(){
@@ -169,9 +167,9 @@ class Direccion{
 	constructor(){
 		this.tipo = 0;
 		this.estado = "";
+		this.ciudad = "";
 		this.municipio = "";
 		this.parroquia = "";
-		this.sector = "";
 		this.calleavenida = "";
 		this.casa = "";
 		this.apartamento = "";
@@ -230,7 +228,6 @@ class Familiar{
 
 }
 
-
 class Tim{
 	constructor(){
 		this.fechacreacion = "";
@@ -242,15 +239,13 @@ class Tim{
 	}
 }
 
-
 class Componente{
 	constructor(){
 		this.nombre = "";
 		this.descripcion = "";
 		this.abreviatura = "";
 	}
-
-GenerarComponente(){
+ GenerarComponente(){
 		let abreviatura= "";
 		 switch(this.abreviatura) {
 		    case "EJ":
@@ -279,7 +274,6 @@ GenerarComponente(){
 
 
 }
-
 
 class Grado{
 	constructor(){
@@ -323,7 +317,7 @@ class Persona{
 
 class PartidaNacimiento{
 	constructor(){
-		this.registrocivil = "";
+		this.registro = "";
 		this.ano = "";
 		this.acta = "";
 		this.folio = "";
@@ -368,21 +362,22 @@ class Militar{
 		this.urlfirma = "";
 		this.urlcedula = "";
 	}
+
 	Obtener(){
-		var fingreso = Util.ConvertirFechaUnix($("#txtfechagraduacion").val());
-		var fnacimiento = Util.ConvertirFechaUnix($("#txtnacimiento").val());
+		var fingreso = new Date(Util.ConvertirFechaUnix($("#txtfechagraduacion").val())).toISOString();
+		var fnacimiento = new Date(Util.ConvertirFechaUnix($("#txtnacimiento").val())).toISOString();
 
 		this.id = $("#txtcedula").val();
 		this.Persona.DatoBasico.nacionalidad = "V";
 
 		this.Persona.DatoBasico.cedula = $("#txtcedula").val();
-		this.Persona.DatoBasico.nombreprimero = $("#txtnombre").val();
-		this.Persona.DatoBasico.apellidoprimero = $("#txtapellido").val();
-		this.Persona.DatoBasico.fechanacimiento = new Date(fnacimiento);
+		this.Persona.DatoBasico.nombreprimero = $("#txtnombre").val().toUpperCase();
+		this.Persona.DatoBasico.apellidoprimero = $("#txtapellido").val().toUpperCase();
+		this.Persona.DatoBasico.fechanacimiento = fnacimiento;
 		this.Persona.DatoBasico.sexo = $("#cmbsexo option:selected").val();
 		this.Persona.DatoBasico.estadocivil = $("#cmbedocivil").val();
-		this.fingreso = new Date(fingreso);
-		this.fascenso = new Date(fingreso);
+		this.fingreso = fingreso;
+		this.fascenso = fingreso;
 		this.situacion = $("#cmbsituacion option:selected").val();
 		this.categoria = $("#cmbcategoria option:selected").val();
 		this.clase = $("#cmbclase option:selected").val();
@@ -399,10 +394,10 @@ class Militar{
 		dir.estado = $("#cmbmestado option:selected").val();
 		dir.municipio = $("#cmbmmunicipio option:selected").val();
 		dir.parroquia = $("#cmbmparroquia option:selected").val();
-		dir.sector = $("#txtmciudad").val();
-		dir.calleavenida = $("#txtmcalle").val();
-		dir.casa = $("#txtmcasa").val();
-		dir.apartamento = $("#txtmapto").val();
+		dir.ciudad = $("#cmbmciudad").val();
+		dir.calleavenida = $("#txtmcalle").val().toUpperCase();
+		dir.casa = $("#txtmcasa").val().toUpperCase();
+		dir.apartamento = $("#txtmapto").val().toUpperCase();
 		this.Persona.Direccion[0] = dir;
 
 		var banco = new DatoFinanciero();
@@ -411,28 +406,27 @@ class Militar{
 		banco.institucion = $("#cmbminstfinanciera option:selected").val();
 		this.Persona.DatoFinanciero[0] = banco;
 
-		this.Persona.Correo.principal = $("#txtmcorreo").val();
-
+		this.Persona.Correo.principal = $("#txtmcorreo").val().toUpperCase();
 		this.Persona.Telefono.domiciliario = $("#txtmtelefono").val();
 		this.Persona.Telefono.movil = $("#txtmcelular").val();
-		/*this.Persona.PartidaNacimiento.registrocivil= $("#txtpregistrocivil").val();
+		this.Persona.PartidaNacimiento.registro= $("#txtpregistrocivil").val();
 		this.Persona.PartidaNacimiento.ano = $("#txtpano").val();
 		this.Persona.PartidaNacimiento.acta = $("#txtpacta").val();
 		this.Persona.PartidaNacimiento.folio = $("#txtpfolio").val();
-		this.Persona.PartidaNacimiento.libro = $("#txtplibro").val();*/
+		this.Persona.PartidaNacimiento.libro = $("#txtplibro").val();
 		this.Persona.DatoFisico.peso = $("#txtmpeso").val();
 		this.Persona.DatoFisico.talla = $("#txtmtalla").val();
-		this.Persona.DatoFisionomico.coloropiel = $("#cmbmpiel option:selected").val();
+		this.Persona.DatoFisionomico.colorpiel = $("#cmbmpiel option:selected").val();
 		this.Persona.DatoFisionomico.colorojos = $("#cmbmojos option:selected").val();
 		this.Persona.DatoFisionomico.colorcabello = $("#cmbmcolorcabello option:selected").val();
 		this.Persona.DatoFisionomico.estatura = parseFloat($("#txtmestatura").val());
-		this.Persona.DatoFisionomico.senaParticular = $("#txtmsenaparticular").val();
-		this.Persona.DatoFisionomico.gruposanguineo = $("#txtmgruposanguineo").val();
+		this.Persona.DatoFisionomico.senaParticular = $("#txtmsenaparticular").val().toUpperCase();
+		this.Persona.DatoFisionomico.gruposanguineo = $("#txtmgruposanguineo").val().toUpperCase();
 		//this.Grado.abreviatura = $("#cmbgrado option:selected").val();
-		this.Persona.RedSocial.twitter = $("#txtmtwitter").val();
-		this.Persona.RedSocial.facebook = $("#txtmfacebook").val();
-		this.Persona.RedSocial.instagram = $("#txtminstagran").val();
-		this.Persona.RedSocial.linkedin = $("#txtmlinkedin").val();
+		this.Persona.RedSocial.twitter = $("#txtmtwitter").val().toUpperCase();
+		this.Persona.RedSocial.facebook = $("#txtmfacebook").val().toUpperCase();
+		this.Persona.RedSocial.instagram = $("#txtminstagran").val().toUpperCase();
+		this.Persona.RedSocial.linkedin = $("#txtmlinkedin").val().toUpperCase();
 		//this.Tim.huella = $('#_imghuella').val();
 		//this.Tim.firma = $('#_imgfirma').val();
 		/*this.Persona.DocumentoCivil.ActaMatrimonio.archivo = $('#_imgmatrimonio').val();
@@ -468,9 +462,16 @@ class Militar{
     $("#_btnTIM").show();
     $("#_btnModificar").show();
     $("#_btnSavlvar").hide();
-    console.log(this.Obtener());
-    console.log(Conn.URL);
     CargarAPI(Conn.URL + "militar/crud" , "POST", this.Obtener());
+	}
+	Actualizar(){
+		$("#_bxFamiliar").show();
+    $("#_bxFamiliarTarjeta").show();
+    $("#_btnConstancia").show();
+    $("#_btnTIM").show();
+    $("#_btnModificar").show();
+    $("#_btnSavlvar").hide();
+    CargarAPI(Conn.URL + "militar/crud" , "PUT", this.Obtener());
 	}
 }
 
@@ -481,7 +482,6 @@ class CuentaBancaria{
 		this.numerocuenta = "";
 	}
 }
-
 
 function ObtenerFamiliar(){
 
@@ -527,9 +527,6 @@ function ObtenerFamiliar(){
 
 	console.log(familiar);
 }
-
-
-
 
 $(function (){
   if (sessionStorage.getItem('ipsfaToken') == undefined ){

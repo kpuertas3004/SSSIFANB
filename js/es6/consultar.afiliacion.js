@@ -25,6 +25,7 @@ function Buscar( id ){
           $("#_aceptar").focus();
 
         }else{
+          ActivarFormulario(true);
           $("#_bxFamiliar").show();
           $("#_tblFamiliares").html(FamiliaresHTML());
           var t = $('#tblFamiliares').DataTable({
@@ -72,10 +73,51 @@ function Buscar( id ){
           $("#_clasificacion").html($("#cmbclase option:selected").text());
           $("#_tiemposervicio").html(militar.tiemposervicio);
           if (militar.Persona.DatoFinanciero != undefined){
-            var DF = militar.Persona.DatoFinanciero;
-            $("#txtnrocuenta").val(DF.cuenta);
-            $("#cmbinstfinanciera").val(DF.institucion);
-            $("#cmbtipofinanciera").val(DF.tipocuenta);
+
+            var DF = militar.Persona.DatoFinanciero[0];
+            $("#txtmnrocuenta").val(DF.cuenta);
+            $("#cmbminstfinanciera").val(DF.institucion);
+            $("#cmbmtipofinanciera").val(DF.tipo);
+          }
+          if (militar.Persona.Direccion != undefined){
+
+            var DIR = militar.Persona.Direccion[0];
+            Estados.ObtenerEstados();
+            $("#cmbmestado").val(DIR.estado);
+            $("#cmbmmunicipio").html('<option selected="selected" value="' + DIR.municipio + '">' + DIR.municipio + '</option>');
+            $("#cmbmparroquia").html('<option selected="selected" value="' + DIR.parroquia + '">' + DIR.parroquia + '</option>');
+            $("#cmbmciudad").html('<option selected="selected" value="' + DIR.ciudad + '">' + DIR.ciudad + '</option>');
+            $("#txtmcalle").val(DIR.calleavenida);
+            $("#txtmcasa").val(DIR.casa);
+            $("#txtmapto").val(DIR.apartamento);
+
+          }
+          if (militar.Persona.Correo != undefined){
+            $("#txtmtelefono").val(militar.Persona.Telefono.domiciliario);
+            $("#txtmcelular").val(militar.Persona.Telefono.movil);
+            $("#txtmcorreo").val(militar.Persona.Correo.principal);
+          }
+
+          if(militar.Persona.PartidaNacimiento != undefined){
+            $("#txtpregistrocivil").val(militar.Persona.PartidaNacimiento.registro);
+        		$("#txtpano").val(militar.Persona.PartidaNacimiento.ano);
+        		$("#txtpacta").val(militar.Persona.PartidaNacimiento.acta);
+        		$("#txtpfolio").val(militar.Persona.PartidaNacimiento.folio);
+        		$("#txtplibro").val(militar.Persona.PartidaNacimiento.libro);
+          }
+
+          if(militar.Persona.DatoFisionomico != undefined){
+
+            var df = militar.Persona.DatoFisico;
+            var dfi = militar.Persona.DatoFisionomico;
+            $("#txtmpeso").val(df.peso);
+        		$("#txtmtalla").val(df.talla);
+        		$("#cmbmpiel").val(dfi.colorpiel);
+        		$("#cmbmojos").val(dfi.colorojos);
+        		$("#cmbmcolorcabello").val(dfi.colorcabello);
+        		$("#txtmestatura").val(dfi.estatura);
+        		$("#txtmsenaparticular").val(dfi.senaParticular);
+        		$("#txtmgruposanguineo").val(dfi.gruposanguineo);
           }
 
           let j = 1;
@@ -228,7 +270,28 @@ function Buscar( id ){
 
 function activarSalvar(){
   $("#_contenido").html("¿Está seguro que desea editar?");
+  var botones = '<button type="button" class="btn btn-success" data-dismiss="modal" id="_aceptar" onClick="activarActualizar()">Si</button>\
+    <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>';
+  $("#_botonesmsj").html(botones);
   $('#modMsj').modal('show');
+}
+function activarActualizar(){
+  $("#_btnModificar").hide();
+  $("#_btnConstancia").hide();
+  $("#_btnTIM").hide();
+  ActivarFormulario(false);
+  $("#_btnActualizar").show();
+}
+function Salvar(){
+  Frm = "S";
+}
+function Actualizar(){
+  var militar = new Militar();
+  militar.Actualizar();
+  $("#_btnModificar").show();
+  $("#_btnActualizar").hide();
+  ActivarFormulario(true);
+  Frm = "A";
 }
 function editarDB(){
   FrmDatosBasicos(false);
@@ -393,13 +456,10 @@ function VisualizarCarnetFamiliar(){
 }
 
 function incluirAfiliado(){
-  Estados.ObtenerEstados();
-  $('#txtnacimiento').datepicker({autoclose: true});
-  $('#txtnacimiento').datepicker( "option", "dateFormat", "dd/mm/yy");
-  $('#txtfechagraduacion').datepicker({autoclose: true});
-  $('#txtfechagraduacion').datepicker( "option", "dateFormat", "dd/mm/yy");
-  $('#txtdefuncion').datepicker({autoclose: true});
-  $('#txtdefuncion').datepicker( "option", "dateFormat", "dd/mm/yy");
+
+  $('#txtnacimiento').datepicker({autoclose: true, format:"dd/mm/yyyy" });
+  $('#txtfechagraduacion').datepicker({autoclose: true, format:"dd/mm/yyyy" });
+  $('#txtdefuncion').datepicker({autoclose: true, format:"dd/mm/yyyy" });
 
   $('#txtcedula').keyup(function (){
     this.value = (this.value + '').replace(/[^0-9]/g, '');
@@ -417,15 +477,7 @@ function incluirAfiliado(){
   $("#_btnModificar").hide();
   $("#_btnSavlvar").show();
   Util.ValidarFormulario("_frmDatoBasico");
-  FrmDatosBasicos(false);
-  FrmDatosMilitar(false);
-  FrmCuentaBancaria(false);
-  FrmDireccion(false);
-  FrmPartidaNacimiento(false);
-  FrmFisicoFisionomico(false);
-  FrmRedSocial(false);
-  FrmTim(false);
-  ModDocumentoCivil(false);
+  ActivarFormulario(false);
   LimpiarFrmDatosBasicos();
   LimpiarFrmDatosMilitar();
   LimpiarFrmCuentaBancaria();
@@ -435,15 +487,21 @@ function incluirAfiliado(){
   LimpiarFrmRedSocial();
   LimpiarFrmTim();
   LimpiarFrmTarjeta();
+
+  Estados.ObtenerEstados();
   //LimpiarModDocumentoCivil();
 
 }
-function Salvar(){
-  frm = "M";
-
-
-
-
+function ActivarFormulario(valor){
+  FrmDatosBasicos(valor);
+  FrmDatosMilitar(valor);
+  FrmCuentaBancaria(valor);
+  FrmDireccion(valor);
+  FrmPartidaNacimiento(valor);
+  FrmFisicoFisionomico(valor);
+  FrmRedSocial(valor);
+  FrmTim(valor);
+  ModDocumentoCivil(valor);
 }
 
 function FrmDatosBasicos(valor){
@@ -488,9 +546,9 @@ function LimpiarFrmDatosMilitar(valor){
 }
 
 function FrmCuentaBancaria(valor){
-  $("#cmbinstfinanciera").attr('disabled',valor);
-  $("#cmbtipofinanciera").attr('disabled',valor);
-  $("#txtnrocuenta").attr('disabled',valor);
+  $("#cmbminstfinanciera").attr('disabled',valor);
+  $("#cmbmtipofinanciera").attr('disabled',valor);
+  $("#txtmnrocuenta").attr('disabled',valor);
 }
 
 function LimpiarFrmCuentaBancaria(valor){
@@ -503,7 +561,7 @@ function FrmDireccion(valor){
   $("#cmbmestado").attr('disabled',valor);
   $("#cmbmmunicipio").attr('disabled',valor);
   $("#cmbmparroquia").attr('disabled',valor);
-  $("#txtmciudad").attr('disabled',valor);
+  $("#cmbmciudad").attr('disabled',valor);
   $("#txtmcalle").attr('disabled',valor);
   $("#txtmcasa").attr('disabled',valor);
   $("#txtmapto").attr('disabled',valor);
@@ -513,10 +571,10 @@ function FrmDireccion(valor){
 }
 
 function LimpiarFrmDireccion(valor){
-  $("#cmbmestado").val("");
-  $("#cmbmmunicipio").val("");
-  $("#cmbmparroquia").val("");
-  $("#txtmciudad").val("");
+  $("#cmbmestado").html('<option selected="selected" value="S"></option>');
+  $("#cmbmmunicipio").html('<option selected="selected" value="S"></option>');
+  $("#cmbmparroquia").html('<option selected="selected" value="S"></option>');
+  $("#cmbmciudad").html('<option selected="selected" value="S"></option>');
   $("#txtmcalle").val("");
   $("#txtmcasa").val("");
   $("#txtmapto").val("");
@@ -526,6 +584,12 @@ function LimpiarFrmDireccion(valor){
 }
 
 function FrmPartidaNacimiento(valor){
+  $("#txtpregistrocivil").attr('disabled',valor);
+  $("#txtpano").attr('disabled',valor);
+  $("#txtpacta").attr('disabled',valor);
+  $("#txtpfolio").attr('disabled',valor);
+  $("#txtplibro").attr('disabled',valor);
+  //
   $("#txtRegistroCivilN").attr('disabled',valor);
   $("#txtAnoN").attr('disabled',valor);
   $("#txtNumeroActaN").attr('disabled',valor);
@@ -534,6 +598,12 @@ function FrmPartidaNacimiento(valor){
 }
 
 function LimpiarFrmPartidaNacimiento(valor){
+  $("#txtpregistrocivil").val("");
+  $("#txtpano").val("");
+  $("#txtpacta").val("");
+  $("#txtpfolio").val("");
+  $("#txtplibro").val("");
+  //
   $("#txtpregistrocivilN").val("");
   $("#txtpanoN").val("");
   $("#txtpactaN").val("");
@@ -557,9 +627,9 @@ function LimpiarFrmFisicoFisionomico(valor){
   $("#txtmpeso").val("");
   $("#txtmtalla").val("");
   $("#txtmgruposanguineo").val("");
-  $("#cmbmpiel").val("");
-  $("#cmbmojos").val("");
-  $("#cmbmcolorcabello").val("");
+  $("#cmbmpiel").val("S");
+  $("#cmbmojos").val("S");
+  $("#cmbmcolorcabello").val("S");
   $("#txtmsenaparticular").val("");
 }
 
@@ -678,7 +748,6 @@ function cambiarGrado(){
   xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         componente = JSON.parse(xhttp.responseText);
-        console.log(componente);
         $("#cmbgrado").html('<option selected="selected" value="S"></option>');
         $.each(componente.Grado,function(c,v){
           $("#cmbgrado").append('<option selected="selected" value="'+v.codigo+'">'+v.descripcion+'</option>')
@@ -702,4 +771,9 @@ function ValidarCampos(){
 
 function GenerarCodigoBarra(){
 
+}
+
+
+function SeleccionarCuenta(){
+  $("#txtmnrocuenta").val($("#cmbminstfinanciera option:selected").val());
 }
