@@ -35,13 +35,27 @@ class Utilidad {
   ValidarFormulario(idForm){
       var frm = document.querySelector("form#"+idForm);
       frm.addEventListener('submit',this.frm, false);
+
   }
 
   //Metodo que utiliza ValidarFormulario recibir respuesta de validacion completa
   frm(event) {
+    
       event.preventDefault();
       var militar = new Militar();
-      militar.Salvar();
+      switch (Frm) {
+        case "S":
+          militar.Salvar();
+          ActivarFormulario(true);
+          break;
+        case "A":
+          //militar.Actualizar();
+
+          // $("#_btnModificar").show();
+          // $("#_btnActualizar").hide();
+        default:
+
+      }
 
       return false;
   }
