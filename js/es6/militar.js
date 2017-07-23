@@ -137,6 +137,7 @@ class DatoFisionomico{
 }
 
 
+
 class Correo{
 	constructor(){
 		this.principal = "";
@@ -292,6 +293,13 @@ class Grado{
 	}
 }
 
+class DatoFinanciero{
+	constructor(){
+		this.tipo = "";
+		this.institucion = "";
+		this.cuenta = "";
+	}
+}
 
 class Persona{
 	constructor(){
@@ -301,6 +309,7 @@ class Persona{
 		this.Correo = new Correo();
 		this.DatoFisionomico = new DatoFisionomico();
 		this.Direccion = [];
+		this.DatoFinanciero = [];
 		this.Telefono = new Telefono();
 		this.PartidaNacimiento = new PartidaNacimiento();
 		this.Defuncion = new Defuncion();
@@ -334,6 +343,7 @@ class Defuncion{
 
 class Militar{
 	constructor(){
+		this.id = "";
 		this.tipodato = 0;
 		this.Persona = new Persona();
 		this.categoria = "";
@@ -362,7 +372,9 @@ class Militar{
 		var fingreso = Util.ConvertirFechaUnix($("#txtfechagraduacion").val());
 		var fnacimiento = Util.ConvertirFechaUnix($("#txtnacimiento").val());
 
+		this.id = $("#txtcedula").val();
 		this.Persona.DatoBasico.nacionalidad = "V";
+
 		this.Persona.DatoBasico.cedula = $("#txtcedula").val();
 		this.Persona.DatoBasico.nombreprimero = $("#txtnombre").val();
 		this.Persona.DatoBasico.apellidoprimero = $("#txtapellido").val();
@@ -392,6 +404,12 @@ class Militar{
 		dir.casa = $("#txtmcasa").val();
 		dir.apartamento = $("#txtmapto").val();
 		this.Persona.Direccion[0] = dir;
+
+		var banco = new DatoFinanciero();
+		banco.tipo = $("#cmbmtipofinanciera option:selected").val();
+		banco.cuenta = $("#txtmnrocuenta").val();
+		banco.institucion = $("#cmbminstfinanciera option:selected").val();
+		this.Persona.DatoFinanciero[0] = banco;
 
 		this.Persona.Correo.principal = $("#txtmcorreo").val();
 

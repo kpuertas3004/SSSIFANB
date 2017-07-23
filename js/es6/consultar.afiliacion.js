@@ -71,10 +71,13 @@ function Buscar( id ){
           $("#_situacion").html($("#cmbsituacion option:selected").text());
           $("#_clasificacion").html($("#cmbclase option:selected").text());
           $("#_tiemposervicio").html(militar.tiemposervicio);
-          var DF = militar.Persona.DatoFinanciero;
-          $("#txtnrocuenta").val(DF.cuenta);
-          $("#cmbinstfinanciera").val(DF.institucion);
-          $("#cmbtipofinanciera").val(DF.tipocuenta);
+          if (militar.Persona.DatoFinanciero != undefined){
+            var DF = militar.Persona.DatoFinanciero;
+            $("#txtnrocuenta").val(DF.cuenta);
+            $("#cmbinstfinanciera").val(DF.institucion);
+            $("#cmbtipofinanciera").val(DF.tipocuenta);
+          }
+
           let j = 1;
           $.each(militar.Familiar, function (c, v){
             let familiar = new Familiar();
@@ -391,15 +394,12 @@ function VisualizarCarnetFamiliar(){
 
 function incluirAfiliado(){
   Estados.ObtenerEstados();
-  $('#txtnacimiento').datepicker({
-      autoclose: true
-  });
-  $('#txtfechagraduacion').datepicker({
-      autoclose: true
-  });
-  $('#txtdefuncion').datepicker({
-        autoclose: true
-  });
+  $('#txtnacimiento').datepicker({autoclose: true});
+  $('#txtnacimiento').datepicker( "option", "dateFormat", "dd/mm/yy");
+  $('#txtfechagraduacion').datepicker({autoclose: true});
+  $('#txtfechagraduacion').datepicker( "option", "dateFormat", "dd/mm/yy");
+  $('#txtdefuncion').datepicker({autoclose: true});
+  $('#txtdefuncion').datepicker( "option", "dateFormat", "dd/mm/yy");
 
   $('#txtcedula').keyup(function (){
     this.value = (this.value + '').replace(/[^0-9]/g, '');
@@ -441,7 +441,7 @@ function incluirAfiliado(){
 function Salvar(){
   frm = "M";
 
-    
+
 
 
 }

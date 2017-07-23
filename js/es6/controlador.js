@@ -143,7 +143,6 @@ $(function () {
         ],
     };
 
-
 });
 
 function Enter(e){
