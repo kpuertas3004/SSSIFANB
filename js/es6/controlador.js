@@ -103,7 +103,7 @@ $(function () {
   CargarUrl("_bxTarjetaFamiliar", "afi/tarjetafamiliar");
   CargarUrl("_boxModFamiliares", "afi/modalfamiliares");
   CargarUrl("_contenidoh", "afi/historicomilitar");
-  CargarUrl("_contenidohc", "afi/historiaclinica");
+  //CargarUrl("_contenidohc", "afi/historiaclinica");
   CargarUrl("_contenidorpt", "rpt/constancia");
 
   CargarUrl("_bxContenedores", "afi/contenedores");
@@ -197,7 +197,7 @@ function HistoricoMilitar(){
 }
 
 function HistoriaClinica(){
-  $('#modHistoriaClinica').modal('show');
+  $('#modDocumentClinico').modal('show');
 }
 
 
