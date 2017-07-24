@@ -70,6 +70,9 @@ function Buscar( id ){
           $("#cmbedocivil").val(DB.estadocivil);
           $("#cmbcomponente").val(militar.Componente.abreviatura);
           $("#cmbgrado").html('<option value="' + militar.Grado.abreviatura + '">' + militar.Grado.descripcion + '</option>');
+          $("#txtnresuelto").val(militar.nresuelto);
+          $("#txtmfecharesuelto").val(militar.fresuelto);
+          $("#txtposicion").val(militar.posicion);
           $("#txtfechagraduacion").val(ConvertirFechaHumana(militar.fingreso));
           $("#_fingreso").html(ConvertirFechaHumana(militar.fingreso));
           $("#_fascenso").html(ConvertirFechaHumana(militar.fascenso));
@@ -545,6 +548,10 @@ function FrmDatosMilitar(valor){
   $("#cmbsituacion").attr('disabled',valor);
   $("#cmbclase").attr('disabled',valor);
   $("#cmbcategoria").attr('disabled',valor);
+
+  $("#txtnresuelto").attr('disabled',valor);
+  $("#txtmfecharesuelto").attr('disabled',valor);
+  $("#txtposicion").attr('disabled',valor);
 }
 
 function LimpiarFrmDatosMilitar(valor){
@@ -554,6 +561,9 @@ function LimpiarFrmDatosMilitar(valor){
   $("#cmbsituacion").val("");
   $("#cmbclase").val("");
   $("#cmbcategoria").val("");
+  $("#txtnresuelto").val("");
+  $("#txtmfecharesuelto").val("");
+  $("#txtposicion").val("");
 }
 
 function FrmCuentaBancaria(valor){

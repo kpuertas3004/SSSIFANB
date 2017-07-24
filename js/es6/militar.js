@@ -349,6 +349,8 @@ class Militar{
 		this.mreconocido = 0;
 		this.dreconocido = 0;
 		this.posicion = 0;
+		this.fresuelto = "";
+		this.nresuelto = 0;
 		this.descripcionhistorica = "";
 		this.Componente = new Componente();
 		this.Grado = new Grado();
@@ -366,6 +368,7 @@ class Militar{
 	Obtener(){
 		var fingreso = new Date(Util.ConvertirFechaUnix($("#txtfechagraduacion").val())).toISOString();
 		var fnacimiento = new Date(Util.ConvertirFechaUnix($("#txtnacimiento").val())).toISOString();
+		var fresuelto = new Date(Util.ConvertirFechaUnix($("#txtfechagraduacion").val())).toISOString();
 
 		this.id = $("#txtcedula").val();
 		this.Persona.DatoBasico.nacionalidad = "V";
@@ -378,6 +381,9 @@ class Militar{
 		this.Persona.DatoBasico.estadocivil = $("#cmbedocivil").val();
 		this.fingreso = fingreso;
 		this.fascenso = fingreso;
+		this.fresuelto = fresuelto;
+		this.nresuelto = $("#txtnresuelto").val().toUpperCase();
+		this.posicion = parseInt($("#txtposicion").val());
 		this.situacion = $("#cmbsituacion option:selected").val();
 		this.categoria = $("#cmbcategoria option:selected").val();
 		this.clase = $("#cmbclase option:selected").val();
