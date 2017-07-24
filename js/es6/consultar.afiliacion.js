@@ -316,6 +316,7 @@ function activarActualizar(){
   $("#_btnConstancia").hide();
   $("#_btnTIM").hide();
   ActivarFormulario(false);
+  Estados.ObtenerEstados();
   ActivarCalendarios();
   $("#txtcedula").attr("disabled", true);
   $("#_btnActualizar").show();
@@ -514,10 +515,16 @@ function VisualizarCarnet(){
   if(Util.ValidarFormulario("_frmDatoBasico") == false){
     Util.ModalValidar("Favor actualizar afiliado");
   }else{
-    $("#modCarnet").modal("show");
+
+    $("#modCarnetValidar").modal("show");
+    //$("#modCarnet").modal("show");
   }
 
 }
+function ContinuarTIM(){
+    $("#modCarnet").modal("show");
+}
+
 function VisualizarCarnetFamiliar(){
   $("#modCarnetFamiliar").modal("show");
 }
@@ -544,6 +551,12 @@ function ActivarCalendarios(){
     format:"dd/mm/yyyy",
     language: 'es'
   });
+  $('#txtmfechaC').datepicker({
+    autoclose: true,
+    format:"dd/mm/yyyy",
+    language: 'es'
+  });
+
 }
 function incluirAfiliado(){
 
@@ -899,6 +912,49 @@ function GenerarCodigoBarra(){
 
 }
 
+function ValidarGenerarCarnet(){
+  cr = $("#cmbMotivoCarnet option:selected").val();
+  $('#txtmfechaC').datepicker({
+    autoclose: true,
+    format:"dd/mm/yyyy",
+    language: 'es'
+  });
+  $("#_reciboC").show();
+  $("#txtnresueltoC").val($("#txtnresuelto").val());
+  $("#txtmfecharesueltoC").val($("#txtmfecharesuelto").val());
+  $("#txtposicionC").val($("#txtposicion").val());
+  // txtndeterioroC
+  // txtmfechadeterioroC
+  // txtunidadeterioroC
+  switch (cr) {
+    case "I":
+      $("#_cingreso").show();
+      $("#_cvencimiento").hide();
+      $("#_cdeterioro").hide();
+      break;
+    case "C":
+      $("#_cingreso").show();
+      $("#_cvencimiento").hide();
+      $("#_cdeterioro").hide();
+      break;
+    case "D":
+      $("#_cingreso").hide();
+      $("#_cvencimiento").hide();
+      $("#_cdeterioro").show();
+      break;
+    case "E":
+      $("#_cingreso").hide();
+      $("#_cvencimiento").hide();
+      $("#_cdeterioro").show();
+      break;
+    case "CA":
+        $("#_cingreso").hide();
+        $("#_cvencimiento").hide();
+        $("#_cdeterioro").show();
+        break;
+    default:
+  }
+}
 
 function SeleccionarCuenta(){
   $("#txtmnrocuenta").val($("#cmbminstfinanciera option:selected").val());

@@ -248,7 +248,7 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
 
-     <br><br><br>
+     <br><br>
       <!-- Sidebar Menu -->
 
       <ul class="sidebar-menu" data-widget="tree"  id='_menu' >
@@ -262,18 +262,17 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-      Afiliación
-      </h1>
+      <h1>Afiliación</h1>
       <ol class="breadcrumb">
-        <li><a href="#" onClick="incluirAfiliado()"><i class="fa fa-dashboard"></i> <font style="font-size:15px;"><b> Nuevo Ingreso</a></a></li>
-
+        <li><a href="#" onClick="incluirAfiliado()"><i class="fa fa-dashboard"></i> <font style="font-size:15px;"><b> Nuevo Ingreso</b></font></a></li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content container-fluid" id='_cuerpo' >
+      <div id="_bxContenedores">
 
+      </div>
       <div class="row " id="_bxBuscar"></div>
 
 
@@ -322,170 +321,176 @@
 
 
 
-<div id="_bxContenedores">
 
-</div>
 
-<!-- Carnet Afiliado Dentro del Box -->
-
-<div class="modal fade" tabindex="-1" role="dialog" id="modCarnet">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modelo de Carnet</h4>
-      </div>
-      <div class="modal-body">
-
-        <div clas="row" id="_objectPDF">
+  <!-- Validacion por motivo de emición del TIM -->
 
 
 
 
-        </div>
-      </div>
-      <div class="modal-footer" id="_botonescarnet">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+  <!-- Carnet Afiliado Dentro del Box -->
 
-<!-- Fin modal Carnet Afiliado -->
-
-<!-- Carnet Familiar Dentro del Box -->
-<div class="modal fade" tabindex="-1" role="dialog" id="modCarnetFamiliar">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modelo de Carnet</h4>
-      </div>
-      <div class="modal-body">
-        <div clas="row" id="_objectFamiliar">
-
-        </div>
-      </div>
-      <div class="modal-footer" id="_botones">
-
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<!-- Fin modal Carnet Familiar -->
-
-
-
-<!-- Reporte Modal-->
-
-
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="modRpt">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Constancia de Afiliación</h4>
-      </div>
-      <div class="modal-body">
-        <div id="_contenidorpt"></div>
-
-      </div>
-      <div class="modal-footer" id="_botonesrpt">
-
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal Reporte -->
-
-
-
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="modMsj">
-  <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="_titulo">Mensaje</h4>
-      </div>
-      <div class="modal-body" id="_contenido">
-
-      </div>
-      <div class="modal-footer" id="_botonesmsj">
-
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
-
-
-
-
-
-
-
-
-  <!-- Modal Partida Nacimiento - Acta Defuncion -->
-  <div class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" id="modPartidaActa">
-    <div class="modal-dialog modal-md" role="document">
+  <div class="modal fade" tabindex="-1" role="dialog" id="modCarnet">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="_titulopd">Mensaje</h4>
+          <h4 class="modal-title">Modelo de Carnet</h4>
         </div>
         <div class="modal-body">
-          <p id="_contenidopd"></p>
 
+          <div clas="row" id="_objectPDF">
+
+
+
+
+          </div>
         </div>
-        <div class="modal-footer" id="_botonespd">
-          <button type="button" class="btn btn-default" data-dismiss="modal" onclick="retornarFecha()">Si</button>
-          <button type="button" class="btn btn-primary" onclick="">No</button>
+        <div class="modal-footer" id="_botonescarnet">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 
-  <!--  modal HISTORIAL MILITAR-->
-  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="modHistoricoMilitar">
+  <!-- Fin modal Carnet Afiliado -->
+
+  <!-- Carnet Familiar Dentro del Box -->
+  <div class="modal fade" tabindex="-1" role="dialog" id="modCarnetFamiliar">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Modelo de Carnet</h4>
+        </div>
+        <div class="modal-body">
+          <div clas="row" id="_objectFamiliar">
+
+          </div>
+        </div>
+        <div class="modal-footer" id="_botones">
+
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <!-- Fin modal Carnet Familiar -->
+
+
+
+  <!-- Reporte Modal-->
+
+
+  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="modRpt">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="_tituloh">Histórico Militar</h4>
+          <h4 class="modal-title">Constancia de Afiliación</h4>
         </div>
         <div class="modal-body">
-          <p id="_contenidoh"></p>
+          <div id="_contenidorpt"></div>
 
         </div>
-        <div class="modal-footer" id="_botonesh">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+        <div class="modal-footer" id="_botonesrpt">
 
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+  </div><!-- /.modal Reporte -->
 
 
 
-
-  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="modFamiliar">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content ">
+  <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="modMsj">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Datos Básicos</h4>
+          <h4 class="modal-title" id="_titulo">Mensaje</h4>
         </div>
-        <div class="modal-body" id="_boxModFamiliares">
+        <div class="modal-body" id="_contenido">
 
         </div>
-        <div class="modal-footer" id="_botonesfamiliar">
-          <button type="button" class="btn btn-default" data-dismiss="modal" onclick="ObtenerFamiliar()">Aceptar</button>
-          <button type="button" class="btn btn-primary" onclick="desactivarSalvar()">Cancelar</button>
+        <div class="modal-footer" id="_botonesmsj">
+
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+
+
+
+
+
+
+
+
+
+
+    <!-- Modal Partida Nacimiento - Acta Defuncion -->
+    <div class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" id="modPartidaActa">
+      <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="_titulopd">Mensaje</h4>
+          </div>
+          <div class="modal-body">
+            <p id="_contenidopd"></p>
+
+          </div>
+          <div class="modal-footer" id="_botonespd">
+            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="retornarFecha()">Si</button>
+            <button type="button" class="btn btn-primary" onclick="">No</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!--  modal HISTORIAL MILITAR-->
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="modHistoricoMilitar">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="_tituloh">Histórico Militar</h4>
+          </div>
+          <div class="modal-body">
+            <p id="_contenidoh"></p>
+
+          </div>
+          <div class="modal-footer" id="_botonesh">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+
+
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="modFamiliar">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content ">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Datos Básicos</h4>
+          </div>
+          <div class="modal-body" id="_boxModFamiliares">
+
+          </div>
+          <div class="modal-footer" id="_botonesfamiliar">
+            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="ObtenerFamiliar()">Aceptar</button>
+            <button type="button" class="btn btn-primary" onclick="desactivarSalvar()">Cancelar</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+
 
 
 

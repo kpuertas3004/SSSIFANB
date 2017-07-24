@@ -368,7 +368,7 @@ class Militar{
 	Obtener(){
 		var fingreso = new Date(Util.ConvertirFechaUnix($("#txtfechagraduacion").val())).toISOString();
 		var fnacimiento = new Date(Util.ConvertirFechaUnix($("#txtnacimiento").val())).toISOString();
-		var fresuelto = new Date(Util.ConvertirFechaUnix($("#txtfechagraduacion").val())).toISOString();
+		var fresuelto = new Date(Util.ConvertirFechaUnix($("#txtmfecharesuelto").val())).toISOString();
 
 		this.id = $("#txtcedula").val();
 		this.Persona.DatoBasico.nacionalidad = "V";
@@ -427,7 +427,7 @@ class Militar{
 		this.Persona.DatoFisionomico.colorcabello = $("#cmbmcolorcabello option:selected").val();
 		this.Persona.DatoFisionomico.estatura = parseFloat($("#txtmestatura").val());
 		this.Persona.DatoFisionomico.senaParticular = $("#txtmsenaparticular").val().toUpperCase();
-		this.Persona.DatoFisionomico.gruposanguineo = $("#txtmgruposanguineo").val().toUpperCase();
+		this.Persona.DatoFisionomico.gruposanguineo = $("#cmbmgruposanguineo").val().toUpperCase();
 		//this.Grado.abreviatura = $("#cmbgrado option:selected").val();
 		this.Persona.RedSocial.twitter = $("#txtmtwitter").val().toUpperCase();
 		this.Persona.RedSocial.facebook = $("#txtmfacebook").val().toUpperCase();
@@ -471,13 +471,15 @@ class Militar{
     CargarAPI(Conn.URL + "militar/crud" , "POST", this.Obtener());
 	}
 	Actualizar(){
+		alert(11);
+		CargarAPI(Conn.URL + "militar/crud" , "PUT", this.Obtener());
 		$("#_bxFamiliar").show();
     $("#_bxFamiliarTarjeta").show();
     $("#_btnConstancia").show();
     $("#_btnTIM").show();
     $("#_btnModificar").show();
     $("#_btnSavlvar").hide();
-    CargarAPI(Conn.URL + "militar/crud" , "PUT", this.Obtener());
+
 	}
 }
 
