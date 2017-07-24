@@ -34,7 +34,7 @@ function Buscar( id ){
           $("#_btnSavlvar").hide();
 
 
-          $("#_bxFamiliar").show();
+          $("#_bxFamiliar").show(); 
           $("#_tblFamiliares").html(FamiliaresHTML());
           var t = $('#tblFamiliares').DataTable({
             'paging'      : false,
@@ -378,6 +378,8 @@ function FamiliaresHTML(){
   return html;
 
 }
+
+
 
 function HistoricoMilitarHTML(){
   var html = '<table id="tblhistoricomilitar" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">\

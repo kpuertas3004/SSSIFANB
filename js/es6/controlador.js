@@ -89,7 +89,7 @@ class Menu {
 }
 
 var Mnu = new Menu();
-var Conn = new Conexion();
+var Conn = new Conexion(); 
 var Util = new Utilidad();
 var Estados = new Estado();
 
