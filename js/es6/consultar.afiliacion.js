@@ -34,7 +34,7 @@ function Buscar( id ){
           $("#_btnSavlvar").hide();
 
 
-          $("#_bxFamiliar").show(); 
+          $("#_bxFamiliar").show();
           $("#_tblFamiliares").html(FamiliaresHTML());
           var t = $('#tblFamiliares').DataTable({
             'paging'      : false,
@@ -324,12 +324,15 @@ function Salvar(){
   Frm = "S";
 }
 function Actualizar(){
-  var militar = new Militar();
-  militar.Actualizar();
-  $("#_btnModificar").show();
-  $("#_btnActualizar").hide();
-  ActivarFormulario(true);
-  Frm = "A";
+  if(Util.ValidarFormulario("_frmDatoBasico") == false){
+    Util.ModalValidar("Favor completar todos los campos");
+  }else{
+    var militar = new Militar();
+    militar.Actualizar();
+    $("#_btnModificar").show();
+    $("#_btnActualizar").hide();
+    ActivarFormulario(true);
+  }
 }
 function editarDB(){
   FrmDatosBasicos(false);
@@ -508,9 +511,13 @@ function ActivarBuscar(){
 }
 
 function VisualizarCarnet(){
-  $("#modCarnet").modal("show");
-}
+  if(Util.ValidarFormulario("_frmDatoBasico") == false){
+    Util.ModalValidar("Favor actualizar afiliado");
+  }else{
+    $("#modCarnet").modal("show");
+  }
 
+}
 function VisualizarCarnetFamiliar(){
   $("#modCarnetFamiliar").modal("show");
 }
@@ -535,7 +542,7 @@ function ActivarCalendarios(){
   $('#txtmfecharesuelto').datepicker({
     autoclose: true,
     format:"dd/mm/yyyy",
-    language: 'es'    
+    language: 'es'
   });
 }
 function incluirAfiliado(){

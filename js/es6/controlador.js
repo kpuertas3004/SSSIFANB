@@ -4,7 +4,7 @@ Number.prototype.zeroPadding = function(){
 };
 
 
-let Frm = "";
+let FrmValidar = false;
 
 class Conexion{
   constructor(){
@@ -89,7 +89,7 @@ class Menu {
 }
 
 var Mnu = new Menu();
-var Conn = new Conexion(); 
+var Conn = new Conexion();
 var Util = new Utilidad();
 var Estados = new Estado();
 
@@ -103,7 +103,6 @@ $(function () {
   CargarUrl("_bxTarjetaFamiliar", "afi/tarjetafamiliar");
   CargarUrl("_boxModFamiliares", "afi/modalfamiliares");
   CargarUrl("_contenidoh", "afi/historicomilitar");
-  //CargarUrl("_contenidohc", "afi/historiaclinica");
   CargarUrl("_contenidorpt", "rpt/constancia");
 
   CargarUrl("_bxContenedores", "afi/contenedores");
@@ -113,35 +112,7 @@ $(function () {
     $('#_aceptar').focus();
   });
 
-  var local = {
-        "format": 'YYYY/MM/DD',
-        "applyLabel": "Aceptar",
-        "cancelLabel": "Cancelar",
-        "customRangeLabel": 'Por Rango',
-        "daysOfWeek": [
-            "Do",
-            "Lu",
-            "Ma",
-            "Mi",
-            "Ju",
-            "Vi",
-            "Sa"
-        ],
-        "monthNames": [
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre"
-        ],
-    };
+
 
 });
 
