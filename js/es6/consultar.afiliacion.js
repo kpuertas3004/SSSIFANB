@@ -71,7 +71,7 @@ function Buscar( id ){
           $("#cmbcomponente").val(militar.Componente.abreviatura);
           $("#cmbgrado").html('<option value="' + militar.Grado.abreviatura + '">' + militar.Grado.descripcion + '</option>');
           $("#txtnresuelto").val(militar.nresuelto);
-          $("#txtmfecharesuelto").val(militar.fresuelto);
+          $("#txtmfecharesuelto").val(ConvertirFechaHumana(militar.fresuelto));
           $("#txtposicion").val(militar.posicion);
           $("#txtfechagraduacion").val(ConvertirFechaHumana(militar.fingreso));
           $("#_fingreso").html(ConvertirFechaHumana(militar.fingreso));
@@ -83,12 +83,35 @@ function Buscar( id ){
           $("#_situacion").html($("#cmbsituacion option:selected").text());
           $("#_clasificacion").html($("#cmbclase option:selected").text());
           $("#_tiemposervicio").html(militar.tiemposervicio);
+
+          $("#_tblBancos").html(BancariosHTML());
+          var thbanco = $('#tblBanco').DataTable({
+            'paging'      : false,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : false,
+            'info'        : false,
+            //'autoWidth'   : false
+             'autoWidth'   : false
+          });
           if (militar.Persona.DatoFinanciero != undefined){
 
             var DF = militar.Persona.DatoFinanciero[0];
             $("#txtmnrocuenta").val(DF.cuenta);
             $("#cmbminstfinanciera").val(DF.institucion);
             $("#cmbmtipofinanciera").val(DF.tipo);
+            thbanco.clear().draw();
+            i = 0;
+            $.each(militar.Persona.DatoFinanciero,function(c,v){
+               thbanco.row.add ([
+                i++,
+                v.institucion,
+                v.tipo,
+                v.cuenta
+              ]).draw(false);
+
+
+            });
           }
           if (militar.Persona.Direccion != undefined){
 
@@ -128,7 +151,7 @@ function Buscar( id ){
         		$("#cmbmcolorcabello").val(dfi.colorcabello);
         		$("#txtmestatura").val(dfi.estatura);
         		$("#txtmsenaparticular").val(dfi.senaParticular);
-        		$("#txtmgruposanguineo").val(dfi.gruposanguineo);
+        		$("#cmbmgruposanguineo").val(dfi.gruposanguineo);
           }
 
           let j = 1;
@@ -293,7 +316,8 @@ function activarActualizar(){
   $("#_btnConstancia").hide();
   $("#_btnTIM").hide();
   ActivarFormulario(false);
-  FrmDatosBasicos(true);
+  ActivarCalendarios();
+  $("#txtcedula").attr("disabled", true);
   $("#_btnActualizar").show();
 }
 function Salvar(){
@@ -351,6 +375,21 @@ function SeleccionarPorSexoFamiliar(sexo){
   <option value="MD">MADRE</option>');
 }
 
+function BancariosHTML(){
+  var html = '<table class="ui celled table" cellspacing="0" width="100%" id="tblBanco" >\
+    <thead>\
+      <tr>\
+        <th>Nro.</th>\
+        <th>Institución Financiera</th>\
+        <th>Tipo de Cuenta</th>\
+        <th>Nro. de Cuenta</th>\
+      </tr>\
+    </thead>\
+    <tbody>\
+    </tbody>\
+  </table>';
+  return html;
+}
 
 function FamiliaresHTML(){
   var html = '<table class="ui celled table" cellspacing="0" width="100%" id="tblFamiliares" >\
@@ -405,7 +444,12 @@ function IrCedula(){
 function ConvertirFechaHumana(f){
   fe = f.substr(0,10);
   fa = fe.split("-");
-  return fa[2] + "/" + fa[1] + "/" + fa[0];
+  if(fa[0] != "0001"){
+    return fa[2] + "/" + fa[1] + "/" + fa[0];
+  }else {
+    return "";
+  }
+
 }
 
 function IncluirFamiliar(){
@@ -469,11 +513,32 @@ function VisualizarCarnetFamiliar(){
   $("#modCarnetFamiliar").modal("show");
 }
 
+
+function ActivarCalendarios(){
+  $('#txtnacimiento').datepicker({
+    autoclose: true,
+    format:"dd/mm/yyyy",
+    language: 'es'
+  });
+  $('#txtfechagraduacion').datepicker({
+    autoclose: true,
+    format:"dd/mm/yyyy",
+    language: 'es'
+  });
+  $('#txtdefuncion').datepicker({
+    autoclose: true,
+    format:"dd/mm/yyyy",
+    language: 'es'
+  });
+  $('#txtmfecharesuelto').datepicker({
+    autoclose: true,
+    format:"dd/mm/yyyy",
+    language: 'es'    
+  });
+}
 function incluirAfiliado(){
 
-  $('#txtnacimiento').datepicker({autoclose: true, format:"dd/mm/yyyy" });
-  $('#txtfechagraduacion').datepicker({autoclose: true, format:"dd/mm/yyyy" });
-  $('#txtdefuncion').datepicker({autoclose: true, format:"dd/mm/yyyy" });
+  ActivarCalendarios();
 
   $('#txtcedula').keyup(function (){
     this.value = (this.value + '').replace(/[^0-9]/g, '');
@@ -526,7 +591,22 @@ function FrmDatosBasicos(valor){
   $("#cmbsexo").attr('disabled', valor);
   $("#cmbedocivil").attr('disabled', valor);
   $("#txtdefuncion").attr('disabled', valor);
-  $("#btnnacimiento").attr('disabled', valor);
+  //$("#btnnacimiento").attr('disabled', valor);
+  if(valor == false){
+    $("#cargarcopiacedula").show();
+    $("#cargarpartida").show();
+    $("#cargarfoto").show();
+    $("#cargarfirma").show();
+    $("#cargarhuella").show();
+
+  }else{
+    $("#cargarcopiacedula").hide();
+    $("#cargarpartida").hide();
+    $("#cargarfoto").hide();
+    $("#cargarfirma").hide();
+    $("#cargarhuella").hide();
+  }
+
   $("#btndefuncion").attr('disabled', valor);
 }
 function LimpiarFrmDatosBasicos(){
@@ -552,6 +632,10 @@ function FrmDatosMilitar(valor){
   $("#txtnresuelto").attr('disabled',valor);
   $("#txtmfecharesuelto").attr('disabled',valor);
   $("#txtposicion").attr('disabled',valor);
+  $("#txtcodigocomponente").attr('disabled',valor);
+  $("#txtnumhistoriaclinica").attr('disabled',valor);
+
+
 }
 
 function LimpiarFrmDatosMilitar(valor){
@@ -564,12 +648,23 @@ function LimpiarFrmDatosMilitar(valor){
   $("#txtnresuelto").val("");
   $("#txtmfecharesuelto").val("");
   $("#txtposicion").val("");
+  $("#txtcodigocomponente").val("");
+  $("#txtnumhistoriaclinica").val("");
 }
 
 function FrmCuentaBancaria(valor){
   $("#cmbminstfinanciera").attr('disabled',valor);
   $("#cmbmtipofinanciera").attr('disabled',valor);
   $("#txtmnrocuenta").attr('disabled',valor);
+  if(valor == false){
+    $("#_cmbminstfinanciera").show();
+    $("#_cmbmtipofinanciera").show();
+    $("#_txtmnrocuenta").show();
+  }else{
+    $("#_cmbminstfinanciera").hide();
+    $("#_cmbmtipofinanciera").hide();
+    $("#_txtmnrocuenta").hide();
+  }
 }
 
 function LimpiarFrmCuentaBancaria(valor){
@@ -636,7 +731,7 @@ function FrmFisicoFisionomico(valor){
   $("#txtmestatura").attr('disabled',valor);
   $("#txtmpeso").attr('disabled',valor);
   $("#txtmtalla").attr('disabled',valor);
-  $("#txtmgruposanguineo").attr('disabled',valor);
+  $("#cmbmgruposanguineo").attr('disabled',valor);
   $("#cmbmpiel").attr('disabled',valor);
   $("#cmbmojos").attr('disabled',valor);
   $("#cmbmcolorcabello").attr('disabled',valor);
@@ -647,7 +742,7 @@ function LimpiarFrmFisicoFisionomico(valor){
   $("#txtmestatura").val("");
   $("#txtmpeso").val("");
   $("#txtmtalla").val("");
-  $("#txtmgruposanguineo").val("");
+  $("#cmbmgruposanguineo").val("S");
   $("#cmbmpiel").val("S");
   $("#cmbmojos").val("S");
   $("#cmbmcolorcabello").val("S");
@@ -748,10 +843,11 @@ function seleccionarActas(){
 
 function seleccionarPartida(){
   nac = $("#txtnacimiento").val();
-  // $("#_titulopd").html("Registrar Partida de Nacimiento");
-  // CargarUrl("_contenidopd", "afi/partidanacimiento");
-  //$('#modPartidaActa').modal('show');
   $('#modDocumentPartida').modal('show');
+}
+
+function seleccionarCopiaCedula(){
+  $('#modDocumentCedula').modal('show');
 }
 
 function seleccionarDefuncion(){

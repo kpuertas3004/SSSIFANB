@@ -1,4 +1,43 @@
-<!-- Soltera -->
+<!-- Copia de la Cedula de identidad -->
+<div class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" id="modDocumentCedula">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="_titulocopiacedula">Copia de la cédula de identidad</h4>
+      </div>
+      <div class="modal-body" id="_cntcopiacedula">
+        <div class="row">
+          <div class="form-group">
+            <div class="col-md-12 col-sm-12"><center>
+              <!-- <img class="profile-user-img img-responsive" style="width:90px" src="images/ndisponible.jpg"
+                                    onerror="this.src='images/ndisponible.jpg'" id="_imgpartida"></img> -->
+
+                  <div style="width: 120px;height: 140px; margin-left:20px " id="view-_imgcopiacedula" >
+                    <img style="width: 120px;height: 140px; margin-left: 0px" class="profile-user-img img-responsive file-path-wrapper-pre-view" src="images/ndisponible.jpg" onerror="this.src='images/ndisponible.jpg'" id="_imghuella"/>
+                  </div>
+                  <div class="file-field input-field col file-field-input-field " >
+                    &nbsp;&nbsp;&nbsp;<label class="btn btn-default btn-file" id="cargarcopiacedula" style="display:none">Cargar
+                    <input type="file" style="visibility:hidden;" id="imgcopiacedula" accept="image/*" onchange="readURL(this,'_imgcopiacedula');" onclick="clearURL(this)">
+                    </label>
+                  </div>
+                </center>
+            </div>
+
+
+          </div>
+        </div>
+    </div>
+    <div class="modal-footer" id="_btnpartida">
+      <button type="button" class="btn btn-default" data-dismiss="modal" >Aceptar</button>
+    </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<!-- Partida de Nacimiento -->
 <div class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" id="modDocumentPartida">
   <div class="modal-dialog modal-md" role="document">
     <div class="modal-content">
@@ -9,29 +48,39 @@
       <div class="modal-body" id="_cntpartida">
         <div class="row">
           <div class="form-group">
-            <div class="col-md-12 col-sm-12">
-              <img class="profile-user-img img-responsive" style="width:120px" src="images/ndisponible.jpg"
-                                    onerror="this.src='images/ndisponible.jpg'" id="_imgpartida"></img>
+            <div class="col-md-12 col-sm-12"><center>
+              <!-- <img class="profile-user-img img-responsive" style="width:90px" src="images/ndisponible.jpg"
+                                    onerror="this.src='images/ndisponible.jpg'" id="_imgpartida"></img> -->
+
+                  <div style="width: 120px;height: 140px; margin-left:20px " id="view-_imgpartida" >
+                    <img style="width: 120px;height: 140px; margin-left: 0px" class="profile-user-img img-responsive file-path-wrapper-pre-view" src="images/ndisponible.jpg" onerror="this.src='images/ndisponible.jpg'" id="_imghuella"/>
+                  </div>
+                  <div class="file-field input-field col file-field-input-field " >
+                    &nbsp;&nbsp;&nbsp;<label class="btn btn-default btn-file" id="cargarpartida" style="display:none">Cargar
+                    <input type="file" style="visibility:hidden;" id="imgpartida" accept="image/*" onchange="readURL(this,'_imgpartida');" onclick="clearURL(this)">
+                    </label>
+                  </div>
+                </center>
             </div>
            <div class="col-md-10 col-sm-12">
               <label>Registro Civil:</label>
-              <input placeholder="Registro Civil" id="txtRegistroCivilN" class="form-control"  type="text"></input>
+              <input placeholder="" id="txtpregistrocivil" class="form-control"  type="text" required></input>
             </div>
             <div class="col-md-2 col-sm-12">
               <label>Año:</label>
-              <input placeholder="Año" id="txtAnoN" class="form-control"  type="text"></input>
+              <input placeholder="" id="txtpano" class="form-control"  type="text" required></input>
             </div>
             <div class="col-md-4 col-sm-12">
               <label>Nro. Acta:</label>
-              <input placeholder="Nro. Acta" id="txtNumeroActaN" class="form-control"  type="text"></input>
+              <input placeholder="" id="txtpacta" class="form-control"  type="text" required></input>
             </div>
             <div class="col-md-4 col-sm-12">
               <label>Nro. Folio:</label>
-              <input placeholder="Nro. Folio" id="txtNumeroFolioN" class="form-control"  type="text"></input>
+              <input placeholder="" id="txtpfolio" class="form-control"  type="text" required></input>
             </div>
             <div class="col-md-4 col-sm-12">
-              <label>Libro:</label>
-              <input placeholder="Libro" id="txtLibroN" class="form-control"  type="text"></input>
+              <label>Libro / Folio:</label>
+              <input placeholder="" id="txtplibro" class="form-control"  type="text"></input>
             </div>
           </div>
         </div>
@@ -234,6 +283,78 @@
 
         </div>
         <div class="modal-footer" id="_btnviudez">
+          <button type="button" class="btn btn-default" data-dismiss="modal" >Aceptar</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+
+
+
+  <!-- Hitoria Media -->
+  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="modDocumentClinico">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="_tituloclinico">Cargar Historia Clinica</h4>
+        </div>
+        <div class="modal-body" id="_cntclinico">
+          <div class="row">
+
+
+            <div class="form-group">
+               <div class="col-md-8 col-sm-12">
+                <label>Hospital Militar:</label>
+                <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbHospital" >
+                  <option value="S"></option>
+                  <option value="0">HOSPITAL "TCNEL. FRANCISCO VALBUENA"</option>
+                  <option value="1">HOSPITAL "TN.PEDRO MANUEL CHIRINOS"</option>
+                  <option value="2">HOSPITAL "DR.JOSE ÁNGEL ÁLAMO"</option>
+                  <option value="3">HOSPITAL "CNEL. ELBANO PAREDES VIVAS"</option>
+                  <option value="4">HOSPITAL "DR.FRANCISCO ISNARDI"</option>
+                  <option value="5">HOSPITAL "DR.VICENTE SALIAS"</option>
+                  <option value="6">HOSPITAL "DR.CARLOS ARVELO"</option>
+                  <option value="7">HOSPITAL "CNEL.NELSON SAYAGO MORA"</option>
+                  <option value="8">HOSPITAL "CNEL.FRANCISCO JAVIER GUTIÉRREZ"</option>
+                  <option value="9">HOSPITAL "DR.RAÚL PERDONO"</option>
+                  <option value="10">HOSPITAL "DR.MANUEL SILVERIO CASTILLO"</option>
+                  <option value="11">HOSPITAL "CAP.GUILLERMO HERNÁNDEZ JACOBSEN"</option>
+                </select>
+              </div>
+
+              <div class="col-md-4 col-sm-12">
+                  <label>Nro. de Historia:</label>
+                  <input class="form-control" id="nrohistoriaclinica" onkeypress="Enter(event);" type="text">
+              </div>
+            </div>
+
+          </div>
+          <br>
+          <div class="row">
+            <div class="form-group">
+               <div class="col-md-12 col-sm-12">
+                  <table id="tblhistoriaclinica" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                    <thead>
+                      <tr>
+                        <th>Nro.</th>
+                        <th>Hospital Militar</th>
+                        <th>Nro. De Historia Clínica</th>
+                        <th>Fecha Registro</th>
+                        </thead>
+                    <tbody>
+
+                    </tbody>
+                  </table>
+            </div>
+            </div>
+
+
+         </div><!-- ./Row -->
+        </div>
+        <div class="modal-footer" id="_btnclinica">
           <button type="button" class="btn btn-default" data-dismiss="modal" >Aceptar</button>
         </div>
       </div><!-- /.modal-content -->

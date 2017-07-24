@@ -382,7 +382,7 @@ class Militar{
 		this.fingreso = fingreso;
 		this.fascenso = fingreso;
 		this.fresuelto = fresuelto;
-		this.nresuelto = $("#txtnresuelto").val().toUpperCase();
+		this.nresuelto = $("#txtnresuelto").val().toUpperCase()	;
 		this.posicion = parseInt($("#txtposicion").val());
 		this.situacion = $("#cmbsituacion option:selected").val();
 		this.categoria = $("#cmbcategoria option:selected").val();
