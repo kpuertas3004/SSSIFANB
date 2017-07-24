@@ -33,6 +33,17 @@ function Buscar( id ){
           $("#_btnActualizar").hide();
           $("#_btnSavlvar").hide();
 
+          $("#_tblConstFamiliares").html(ConstanciaFamiliaresHTML());
+          var fam = $('#tblConstFamiliares').DataTable({
+            'paging'      : false,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : false,
+            'info'        : false,
+            'autoWidth'   : false
+          });
+
+
 
           $("#_bxFamiliar").show();
           $("#_tblFamiliares").html(FamiliaresHTML());
@@ -154,7 +165,7 @@ function Buscar( id ){
         		$("#cmbmgruposanguineo").val(dfi.gruposanguineo);
           }
 
-          let j = 1;
+          let j = 1, x = 1;
           $.each(militar.Familiar, function (c, v){
             let familiar = new Familiar();
             let DBF = v.Persona.DatoBasico;
@@ -165,8 +176,8 @@ function Buscar( id ){
             familiar.parentesco = parentesco;
             let nombres = DBF.nombreprimero + ' ' + DBF.nombresegundo;
             let apellidos = DBF.apellidoprimero + ' ' + DBF.apellidosegundo;
-            estadocivil= DBF.estadocivil;
-
+            let nombreCompleto = apellidos + ' ' + nombres;
+            let estadocivil= familiar.Persona.DatoBasico.estadocivil;
 
             mil = nombre;
             if (v.esmilitar == true){
@@ -184,6 +195,17 @@ function Buscar( id ){
                situacion = "INACTIVO"
             }
             mod = '<font color="#red"><i class="fa fa-fw fa-pencil"></i></font>';
+
+            fam.row.add([
+              x++, //0
+              nombreCompleto, //1
+              cedula, //2
+              familiar.GenerarParentesco(), //3
+              DBF.fechanacimiento, //4
+              DBF.estadocivil,//5
+              situacion, //6
+              fechavencimiento //8
+            ]).draw(false);
 
             t.row.add ([
               j++, //0
@@ -395,22 +417,22 @@ function BancariosHTML(){
 }
 
 function FamiliaresHTML(){
-  var html = '<table class="ui celled table" cellspacing="0" width="100%" id="tblFamiliares" >\
-    <thead>\
+  var html = '<table class="ui celled table " cellspacing="0" width="100%" id="tblFamiliares" >\
+    <thead class="familiares">\
       <tr>\
         <th>#</th>\
         <th>CÉDULA</th>\
         <th>APELLIDOS Y NOMBRES</th>\
         <th>RELACIÓN</th>\
         <th>SITUACIÓN</th>\
-        <th >FECHA</th>\
-        <th >TIPO</th>\
-        <th >MODIFICAR</th>\
-        <th >NOMBRES</th>\
-        <th >SEXO</th>\
-        <th >APELLIDOS</th>\
-        <th >CONDICION ESPECIAL</th>\
-        <th >ESTUDIA</th>\
+        <th>FECHA</th>\
+        <th>TIPO</th>\
+        <th>MODIFICAR</th>\
+        <th>NOMBRES</th>\
+        <th>SEXO</th>\
+        <th>APELLIDOS</th>\
+        <th>CONDICION ESPECIAL</th>\
+        <th>ESTUDIA</th>\
         <th>FECHA VCTO. CARNET</th>\
       </tr>\
     </thead >\
@@ -421,7 +443,26 @@ function FamiliaresHTML(){
 
 }
 
+function ConstanciaFamiliaresHTML(){
+  var html = '<table class="ui celled table" cellspacing="0" width="100%" id="tblConstFamiliares" >\
+    <thead>\
+      <tr>\
+        <th>#</th>\
+        <th>APELLIDOS Y NOMBRES</th>\
+        <th>CÉDULA</th>\
+        <th>PARENTESCO</th>\
+        <th>FECHA NAC.</th>\
+        <th>EDO CIVIL</th>\
+        <th>SITUACIÓN</th>\
+        <th>FECHA VCTO. CARNET</th>\
+      </tr>\
+    </thead >\
+    <tbody>\
+    </tbody>\
+  </table>';
+  return html;
 
+}
 
 function HistoricoMilitarHTML(){
   var html = '<table id="tblhistoricomilitar" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">\

@@ -1,6 +1,6 @@
 /*
  * Skin: Blue
- * ----------
+ * ---------- 
  */
 .skin-blue .main-header .navbar {
   background-color: #3c8dbc;
@@ -1811,5 +1811,26 @@
           Times, serif;
     color: black;
     font-size: 12pt
+
+  }
+
+  .membrete {
+    font-style: normal;
+    font-family:tahoma, monospace, serif, Arial;
+    font-size: 8pt;
+  }
+
+  .titulo{
+    font-size:14px;
+  }
+
+  .titulo_fondo{
+    font-size:14px; 
+    background-color: #D8D8D8;
+  }
+
+  .familiares{
+    font-size:10px; 
+     background-color: #D8D8D8;
 
   }
