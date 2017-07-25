@@ -340,11 +340,21 @@
              <div class="form-group">
                <div class="col-md-4">
                  <label >Teléfono:</label>
-                 <input id="txtmtelefono" class="form-control" disabled="disabled" type="text" required>
+                 <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-phone"></i>
+                  </div>
+                 <input id="txtmtelefono" class="form-control" disabled="disabled" type="text" data-inputmask='"mask": "(9999) 999-99-99"' data-mask  required>
                </div>
+              </div>
                <div class="col-md-4">
                  <label>Celular:</label>
-                 <input id="txtmcelular" class="form-control" disabled="disabled" type="text" required>
+                  <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-phone"></i>
+                  </div>
+                 <input id="txtmcelular" class="form-control" disabled="disabled" type="text" data-inputmask='"mask": "(9999) 999-99-99"' data-mask  required>
+               </div>
                </div>
                <div class="col-md-4">
                  <label>Correo Electronico:</label>
