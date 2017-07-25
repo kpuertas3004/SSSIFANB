@@ -145,6 +145,7 @@ function Buscar( id ){
             $("#txtmtelefono").val(militar.Persona.Telefono.domiciliario);
             $("#txtmcelular").val(militar.Persona.Telefono.movil);
             $("#txtmcorreo").val(militar.Persona.Correo.principal);
+            //$("#txtmcorreo").html(CorreoValido(militar.Persona.Correo.principal));
           }
 
           if(militar.Persona.PartidaNacimiento != undefined){
@@ -520,6 +521,20 @@ function ConvertirFechaHumana(f){
 
 }
 
+function ValidarCorreo(){
+  var email = $('#txtmcorreo').val();
+  var caracter = new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
+
+    if (! caracter.test(email)){
+      alert("Formato de Correo Invalido");
+
+        return false;
+    }else{
+        return true;
+    }
+}
+
+
 function BlanquearFamiliar(){
   $("#txtcedulaf").val("");
   $("#txtnombref").val("");
@@ -612,6 +627,10 @@ function ActivarCalendarios(){
     format:"dd/mm/yyyy",
     language: 'es'
   });
+
+  ////ACTIVAR MASK
+  $('[data-mask]').inputmask();
+
 
 }
 function incluirAfiliado(){
