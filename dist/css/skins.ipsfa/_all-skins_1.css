@@ -1,6 +1,6 @@
 /*
  * Skin: Blue
- * ---------- 
+ * ----------
  */
 .skin-blue .main-header .navbar {
   background-color: #3c8dbc;
@@ -1216,7 +1216,7 @@
  */
 .skin-yellow .main-header .navbar .nav > li > a {
   color: #FFFFFF;
-  
+
   /* Color de Letra Sombreado del Usuario Franja Delgada */
 }
 .skin-yellow .main-header .navbar .nav > li > a:hover,
@@ -1278,7 +1278,7 @@
   background-color: #3c8dbc ;
 }
 
-/* Color de Fondo del Menú izquierda*/
+/* Color de Fondo del Menï¿½ izquierda*/
 .skin-yellow .content-header {
   background: transparent;
 }
@@ -1292,7 +1292,7 @@
   color: #fff;
 }
 
-/* Color De Fondo del Cuadro (MENÚ)*/
+/* Color De Fondo del Cuadro (MENï¿½)*/
 .skin-yellow .sidebar-menu > li.header {
   color: #4b646f; /*Letra*/
   background: #ecf0f5; /*Fondo*/
@@ -1301,7 +1301,7 @@
   border-left: 3px solid transparent;
 }
 
-/* Color de SOMBREADO, Letra, Rayita izquierda (Minima) del menú Izquierdo*/
+/* Color de SOMBREADO, Letra, Rayita izquierda (Minima) del menï¿½ Izquierdo*/
 .skin-yellow .sidebar-menu > li:hover > a,
 .skin-yellow .sidebar-menu > li.active > a {
   color: #17202a; /*Letra Sombreado*/
@@ -1309,7 +1309,7 @@
   border-left-color: #CCCCCC; /*Borde de Raya*/
 }
 
-/* Color de FONDO Sub-Menú del menú Izquierdo*/
+/* Color de FONDO Sub-Menï¿½ del menï¿½ Izquierdo*/
 .skin-yellow .sidebar-menu > li > .treeview-menu {
   margin: 0 1px;
   background: #771414;
@@ -1805,7 +1805,7 @@
 
 
 
-/* Estilo para letras del Menú*/
+/* Estilo para letras del Menï¿½*/
   a > span {
     font-family:  Arial, "Arial",
           Times, serif;
@@ -1825,12 +1825,6 @@
   }
 
   .titulo_fondo{
-    font-size:14px; 
+    font-size:14px;
     background-color: #D8D8D8;
-  }
-
-  .familiares{
-    font-size:10px; 
-     background-color: #D8D8D8;
-
   }
