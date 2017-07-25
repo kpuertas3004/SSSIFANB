@@ -143,7 +143,7 @@ body {margin: 0px;}
   </style>
 
 
-        <page>
+  <page>
   <div class="marco-carnet">
 
     <div class="css-foto">
@@ -183,7 +183,7 @@ body {margin: 0px;}
     <div class="nota-pie-ii-anverso">LAS CONSIDERACIONES DEBIDAS A SU GRADO</div>
 
   </div>
-        </page>
+</page>
 <page>
 <div class="marco-carnet">
 
