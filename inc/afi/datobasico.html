@@ -356,9 +356,8 @@
                  <input id="txtmcelular" class="form-control" disabled="disabled" type="text" data-inputmask='"mask": "(9999) 999-99-99"' data-mask  required>
                </div>
                </div>
-
               <div class="col-md-4 col-sm-12">
-                  <label class="control-label" for="inputSuccess">Correo Electronico:</label>
+                  <label class="control-label">Correo Electronico:</label>
                   <div class="input-group date">
                     <div class="input-group-addon">
                       <i class="fa fa-envelope"></i>
@@ -366,25 +365,37 @@
                     <input type="email" class="form-control"  id="txtmcorreo" disabled="disabled" required onblur="ValidarCorreo()">
                   </div>
                </div>
-
              </div><!-- Grupo nombres-->
 
              <div class="form-group">
-               <div class="col-md-4">
-                 <label>Twitter:</label>
-                 <input id="txtmtwitter" class="form-control" disabled="disabled" type="text" >
-              </div>
-              <div class="col-md-4">
-                <label class="col-md-6">FaceBook:</label>
-                <input id="txtmfacebook" class="form-control" disabled="disabled" type="text" >
-             </div>
              <div class="col-md-4">
-               <label class="col-md-6 ">Instagram:</label>
-               <input  id="txtminstagran" class="form-control" disabled="disabled" type="text" >
-               <input  id="txtmlinkedin" class="form-control" disabled="disabled" type="hidden" style:"display:none" >
+                  <label class="control-label">Twitter:</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-twitter"></i>
+                    </div>
+                    <input type="text" class="form-control"  id="txtmtwitter" disabled="disabled">
+                  </div>
+              </div>
+             <div class="col-md-4">
+                  <label class="control-label">FaceBook:</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-facebook"></i>
+                    </div>
+                    <input type="text" class="form-control"  id="txtmfacebook" disabled="disabled">
+                  </div>
+               </div>
+             <div class="col-md-4">
+                  <label class="control-label">Instagram:</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-instagram"></i>
+                    </div>
+                    <input type="text" class="form-control"  id="txtminstagran" disabled="disabled">
+                  </div>
+               </div>
             </div>
-            </div>
-
          </div><!-- Tab panes  Direccion-->
 
 
@@ -436,15 +447,15 @@
              <div class="form-group">
               <div class="col-md-3 col-sm-6">
                 <label>Estatura:</label>
-                <input  id="txtmestatura" class="form-control" disabled="disabled" type="text" required maxlength="4">
+                <input  id="txtmestatura" class="form-control" disabled="disabled" type="text" required maxlength="5" data-inputmask='"mask": "99.99"' data-mask>
               </div>
               <div class="col-md-3  col-sm-6">
                 <label>Peso:</label>
-                <input  id="txtmpeso" class="form-control" disabled="disabled" type="text" required maxlength="4">
+                <input  id="txtmpeso" class="form-control" disabled="disabled" type="text" required maxlength="6" data-inputmask='"mask": "999.99"' data-mask>
               </div>
               <div class="col-md-3  col-sm-6">
                 <label>Talla:</label>
-                <input  id="txtmtalla" class="form-control" disabled="disabled" type="text" required maxlength="4">
+                <input  id="txtmtalla" class="form-control" disabled="disabled" type="text" required maxlength="2">
               </div>
               <div class="col-md-3  col-sm-6">
                 <labe>Grupo Sanguineo:</label>
