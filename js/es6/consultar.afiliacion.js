@@ -179,6 +179,9 @@ function Buscar( id ){
             let nombreCompleto = apellidos + ' ' + nombres;
             let estadocivil= familiar.Persona.DatoBasico.estadocivil;
 
+            var modificar = '<button type="button" id="btnModFamiliar' + j + '" \
+            class="btn btn-xs btn-info" onclick="ModificarFamiliar()">\
+              <i class="fa fa-pencil"></i></button>'
             mil = nombre;
             if (v.esmilitar == true){
               mil = nombre + '<font color="#0E6626"><i class="fa fa-fw fa-male"></i></font>&nbsp;'  ;
@@ -195,16 +198,18 @@ function Buscar( id ){
                situacion = "INACTIVO"
             }
             mod = '<font color="#red"><i class="fa fa-fw fa-pencil"></i></font>';
-
+            edocivil = "";
+            if (DBF.estadocivil != undefined ){
+              edocivil = DBF.estadocivil;
+            }
             fam.row.add([
-              x++, //0
               nombreCompleto, //1
               cedula, //2
               familiar.GenerarParentesco(), //3
               DBF.fechanacimiento, //4
-              DBF.estadocivil,//5
+              edocivil,//5
               situacion, //6
-              fechavencimiento //8
+              fechavencimiento //7
             ]).draw(false);
 
             t.row.add ([
@@ -221,7 +226,8 @@ function Buscar( id ){
               apellidos, //10
               v.condicion, //11
               v.estudia, //12
-              fechavencimiento //13
+              fechavencimiento, //13
+              modificar
             ]).draw(false);
 
           });
@@ -435,6 +441,7 @@ function FamiliaresHTML(){
         <th>CONDICION ESPECIAL</th>\
         <th>ESTUDIA</th>\
         <th>FECHA VCTO. CARNET</th>\
+        <th>ACTUALIZAR</th>\
       </tr>\
     </thead >\
     <tbody>\
@@ -448,7 +455,6 @@ function ConstanciaFamiliaresHTML(){
   var html = '<table class="ui celled table" cellspacing="0" width="100%" id="tblConstFamiliares" >\
     <thead>\
       <tr>\
-        <th>#</th>\
         <th>APELLIDOS Y NOMBRES</th>\
         <th>CÉDULA</th>\
         <th>PARENTESCO</th>\
@@ -999,4 +1005,10 @@ function ValidarGenerarCarnet(){
 
 function SeleccionarCuenta(){
   $("#txtmnrocuenta").val($("#cmbminstfinanciera option:selected").val());
+}
+
+
+function ModificarFamiliar(){
+  $("#btnModFamiliar").hide();
+  $("#btnIncFamiliar").show();
 }

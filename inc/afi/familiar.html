@@ -4,12 +4,15 @@
   </div>
   <div class="box-body">
     <div id="_tblFamiliares">
-      <!-- Ahora se crean desde consultar.afiliado.js ( Function :-> FamiliaresHTML() ) --> 
+      <!-- Ahora se crean desde consultar.afiliado.js ( Function :-> FamiliaresHTML() ) -->
     </div>
  </div>
 
   <div class="modal-footer">
-    <button type="button" class="btn btn-lg btn-primary" onclick="IncluirFamiliar()"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Incluir Nuevo</button>
+    <button type="button" id="btnIncFamiliar" style="display:none" class="btn btn-lg btn-primary" onclick="ModificarFamiliar()">
+      <i class="fa fa-pencil"></i>&nbsp;&nbsp;Incluir</button>
+      <button type="button" id="btnModFamiliar" class="btn btn-lg btn-warning" onclick="ModificarFamiliar()">
+        <i class="fa fa-pencil"></i>&nbsp;&nbsp;Editar</button>
   </div>
 </div>
 </div>
