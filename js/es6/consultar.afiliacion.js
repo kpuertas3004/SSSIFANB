@@ -582,7 +582,7 @@ function FrmFamiliar(valor){
   $("#cmbDiscapacidadf").attr('disabled',valor);
   $("#txtdiagnosticof").attr('disabled',valor);
   $("#cmbHospitalf").attr('disabled',valor);
-  $("#btnnacionalidad")..attr('disabled',valor);
+  $("#btnnacionalidad").attr('disabled',valor);
   if(valor == false){
     $("#imgIngFam").show();
   }else{
