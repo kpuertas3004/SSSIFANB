@@ -333,7 +333,7 @@
                 <input id="txtmcasa" class="form-control" disabled="disabled"  type="text">
               </div>
               <div class="col-md-2">
-                <label># Apto.:</label>
+                <label># Apto:</label>
                 <input id="txtmapto" class="form-control" disabled="disabled"  type="text">
               </div>
             </div> <!-- Grupo nombres-->
@@ -346,10 +346,17 @@
                  <label>Celular:</label>
                  <input id="txtmcelular" class="form-control" disabled="disabled" type="text" required>
                </div>
-               <div class="col-md-4">
-                 <label>Correo Electronico:</label>
-                 <input  id="txtmcorreo" class="form-control" disabled="disabled" type="text" required>
+
+              <div class="col-md-4 col-sm-12">
+                  <label class="control-label" for="inputSuccess">Correo Electronico:</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-envelope"></i>
+                    </div>
+                    <input type="email" class="form-control"  id="txtmcorreo" disabled="disabled" required onblur="ValidarCorreo()">
+                  </div>
                </div>
+
              </div><!-- Grupo nombres-->
 
              <div class="form-group">
@@ -509,7 +516,7 @@
                   </div>
                   <div class="file-field input-field col file-field-input-field " >
                     &nbsp;&nbsp;&nbsp;<label class="btn btn-default btn-file" id="cargarfirma">Firma
-                    <input type="file" style="visibility:hidden;" id="imgfirma" accept="image/*" onchange="readURL(this,'_imghuella');" onclick="clearURL(this)">
+                    <input type="file" style="visibility:hidden;" id="imghuella" accept="image/*" onchange="readURL(this,'_imghuella');" onclick="clearURL(this)">
                     </label>
                   </div>
                 </center>
@@ -608,3 +615,10 @@
       <i class="fa fa-refresh"></i>&nbsp;&nbsp;Actualizar</button>
   </div>
 </div><!-- /.box -->
+
+<!--script>
+  $('form').find('input[type=email]').blur(function(){  
+    ValidarCorreo(); //Llamo la funcion que valida el formato del Correo Electronico
+  });
+</script-->
+
