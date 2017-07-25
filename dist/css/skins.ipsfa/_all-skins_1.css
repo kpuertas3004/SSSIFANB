@@ -1816,15 +1816,34 @@
 
   .membrete {
     font-style: normal;
-    font-family:tahoma, monospace, serif, Arial;
+    font-family: monospace, serif, Arial;
     font-size: 8pt;
   }
 
   .titulo{
-    font-size:14px;
+    font-size:10pt;
+    font-family: monospace, serif, Arial;
   }
 
   .titulo_fondo{
-    font-size:14px;
+    font-size:12pt;
+    font-family: monospace, serif, Arial;
     background-color: #D8D8D8;
+  }
+
+  .titulo_tabla{
+    font-size:9pt;
+    font-family: monospace, serif, Arial;
+    background-color: #D8D8D8;
+  }
+
+  .alinear_td{
+    text-align: center;
+  }
+
+  .cuerpo_constancia{
+    font-style: normal;
+    font-family: monospace, serif, Arial;
+    font-size: 14;
+
   }

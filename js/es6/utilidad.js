@@ -19,6 +19,14 @@ class Utilidad {
       return fa[2] + "/" + fa[1] + "/" + fa[0];
   }
 
+  ConvertirFechaActual(){
+    var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio",
+                           "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+    var f=new Date();
+
+    return f.getDate() + " del mes de " + meses[f.getMonth()] + " de " + f.getFullYear();
+  }
+
 
   //Recibe  Fecha Formato: DD/MM/AAAA
   //Retorna Fecha Formato: AAAA-MM-DD

@@ -151,27 +151,7 @@ function GestionarUsuario() {
 }
 
 
-function CConstanciaAfiliacion(){
-  $('#modRpt').modal('show');
-  $("#lblgradoMil").text($("#cmbgrado option:selected").text());
-  $("#lblcedulaMil").text($("#txtcedula").val());
-  $("#lblnombreMil").text($("#txtapellido").val() + ' ' + $("#txtnombre").val());
-  $("#lbledoCivilM").text($("#cmbedocivil option:selected").text());
-  $("#lblfchNacMil").text($("#txtnacimiento").val());
-  $("#lbldireccionMil").text($("#txtmcalle").val()) /*+ $("#txtmcasa").val() +
-                             $("#txtmapto").val() + $("#cmbmparroquia option:selected").text() +
-                             $("#cmbmmunicipio option:selected").text() + 
-                             $("#cmbmciudad option:selected").text() +
-                             $("#cmbmestado option:selected").text())*/;
-  $("#lblfchIngresoFANB").text($("#txtfechagraduacion").val());
-  $("#lblfchUltAscenso").text($("#_fascenso").val());
-  $("#lblaServicio").text(militar.tiemposervicio);
-  $("#lblcomponente").text($("#cmbcomponente option:selected").text());
-  $("#lblsituacionMil").text($("#cmbsituacion option:selected").text());
 
-
-  
-}
 
 function Editar(){
   $('#modMsj').modal('show');

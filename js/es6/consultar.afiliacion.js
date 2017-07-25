@@ -34,14 +34,14 @@ function Buscar( id ){
           $("#_btnSavlvar").hide();
 
           $("#_tblConstFamiliares").html(ConstanciaFamiliaresHTML());
-          var fam = $('#tblConstFamiliares').DataTable({
+          /*var fam = $('#tblConstFamiliares').DataTable({
             'paging'      : false,
             'lengthChange': false,
             'searching'   : false,
             'ordering'    : false,
             'info'        : false,
             'autoWidth'   : false
-          });
+          });*/
 
 
 
@@ -178,6 +178,7 @@ function Buscar( id ){
             let apellidos = DBF.apellidoprimero + ' ' + DBF.apellidosegundo;
             let nombreCompleto = apellidos + ' ' + nombres;
             let estadocivil= familiar.Persona.DatoBasico.estadocivil;
+            let fnac = ConvertirFechaHumana(DBF.fechanacimiento);
 
             var modificar = '<button type="button" id="btnModFamiliar' + j + '" \
             class="btn btn-xs btn-info" onclick="ModificarFamiliar()">\
@@ -202,15 +203,15 @@ function Buscar( id ){
             if (DBF.estadocivil != undefined ){
               edocivil = DBF.estadocivil;
             }
-            fam.row.add([
-              nombreCompleto, //1
-              cedula, //2
-              familiar.GenerarParentesco(), //3
-              DBF.fechanacimiento, //4
-              edocivil,//5
-              situacion, //6
-              fechavencimiento //7
-            ]).draw(false);
+           
+
+            $("#_contenidoFamiliares").append('<tr><td>'+nombreCompleto+'</td>\
+              <td class="alinear_td">'+ cedula +'</td>\
+              <td class="alinear_td">'+ familiar.GenerarParentesco() +'</td>\
+              <td class="alinear_td">'+  fnac +'</td>\
+              <td class="alinear_td">'+ edocivil +'</td>\
+              <td class="alinear_td">'+ situacion +'</td>\
+              <td class="alinear_td">'+ fechavencimiento +'</td></tr>');
 
             t.row.add ([
               j++, //0
@@ -452,19 +453,20 @@ function FamiliaresHTML(){
 }
 
 function ConstanciaFamiliaresHTML(){
-  var html = '<table class="ui celled table" cellspacing="0" width="100%" id="tblConstFamiliares" >\
+  var html = '<table class="table table-bordered " cellspacing="0" width="100%" id="tblConstFamiliares" >\
     <thead>\
-      <tr>\
-        <th>APELLIDOS Y NOMBRES</th>\
-        <th>CÉDULA</th>\
-        <th>PARENTESCO</th>\
-        <th>FECHA NAC.</th>\
-        <th>EDO CIVIL</th>\
-        <th>SITUACIÓN</th>\
-        <th>FECHA VCTO. CARNET</th>\
+    <tr><th colspan="7" class="titulo_fondo">Familiares Afiliados</th></tr>\
+      <tr class="titulo_tabla">\
+        <th class="alinear_td">APELLIDOS Y NOMBRES</th>\
+        <th class="alinear_td">CÉDULA</th>\
+        <th class="alinear_td">PARENTESCO</th>\
+        <th class="alinear_td">FECHA NAC.</th>\
+        <th class="alinear_td">EDO CIVIL</th>\
+        <th class="alinear_td">SITUACIÓN</th>\
+        <th class="alinear_td">FECHA VCTO. CARNET</th>\
       </tr>\
     </thead >\
-    <tbody>\
+    <tbody id="_contenidoFamiliares">\
     </tbody>\
   </table>';
   return html;
@@ -504,6 +506,14 @@ function ConvertirFechaHumana(f){
   }
 
 }
+
+  function ConvertirFechaActual(){
+    var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio",
+                           "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+    var f=new Date();
+
+    return f.getDate() + " del mes de " + meses[f.getMonth()] + " de " + f.getFullYear();
+  }
 
 function IncluirFamiliar(){
   $("#modFamiliar").modal('show');
@@ -1012,3 +1022,58 @@ function ModificarFamiliar(){
   $("#btnModFamiliar").hide();
   $("#btnIncFamiliar").show();
 }
+
+
+function CConstanciaAfiliacion(){
+
+  let urlMil   = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
+  let urlGra   = "images/grados/" + militar.Grado.abreviatura + ".png";
+      urlGra   = urlGra.toLowerCase();
+  let fechaActual = ConvertirFechaActual();
+  let gradoPI  = 'GENERAL DE DIVISIÓN';
+  let nombrePI = 'JESÚS RAFAEL SALAZAR VELÁSQUEZ';
+  $('#modRpt').modal('show');
+  $("#lblgradoMil").text($("#cmbgrado option:selected").text());
+  $("#lblcedulaMil").text($("#txtcedula").val());
+  $("#lblnombreMil").text($("#txtapellido").val() + ' ' + $("#txtnombre").val());
+  $("#lbledoCivilM").text($("#cmbedocivil option:selected").text());
+  $("#lblfchNacMil").text($("#txtnacimiento").val());
+  $("#lbldireccionMil").text($("#txtmcalle").val() + 
+                             $("#txtmcasa").val() +
+                             $("#txtmapto").val() + 
+                             $("#cmbmparroquia option:selected").text() +
+                             $("#cmbmmunicipio option:selected").text() + 
+                             $("#cmbmciudad option:selected").text() +
+                             $("#cmbmestado option:selected").text());
+  $("#lblfchIngresoFANB").text($("#txtfechagraduacion").val());
+  $("#lblfchUltAscenso").text($("#_fascenso").val());
+  $("#lblaServicio").text(militar.tiemposervicio);
+  $("#lblcomponente").text($("#cmbcomponente option:selected").text());
+  $("#lblsituacionMil").text($("#cmbsituacion option:selected").text());
+  $("#_fotoConstancia").attr("src", urlMil);
+  $("#_Constgrado").attr("src", urlGra);
+  $("#lblfchActual").text(fechaActual);
+  $("#lblgradoPI").text(gradoPI);
+  $("#lblnombrePI").text(nombrePI);
+  $("#lblgradoPIF").text(gradoPI);
+  
+}
+function imprSelec(nombre) {
+    
+  // Create and insert new print section
+    var elem = document.getElementById(nombre);
+    var domClone = elem.cloneNode(true);
+    var $printSection = document.createElement("nombre");
+    $printSection.id = "printSection";
+    $printSection.appendChild(domClone);
+    document.body.insertBefore($printSection, document.body.firstChild);
+
+    window.print(); 
+
+    // Clean up print section for future use
+    var oldElem = document.getElementById("printSection");
+    if (oldElem != null) { oldElem.parentNode.removeChild(oldElem); } 
+                          //oldElem.remove() not supported by IE
+
+    return true;
+  }
