@@ -201,10 +201,10 @@ class Familiar{
 		this.parentesco = "";
 		this.esmilitar = "";
 		this.condicion = "";
-		this.estudia = "";
-		this.beneficio = "";
-		this.documento = "";
-		this.documentopadre = "";
+		this.estudia = 0;
+		this.beneficio = 1;
+		this.documento = 0;
+		this.documentopadre = 0;
 	}
 
 	GenerarParentesco(){

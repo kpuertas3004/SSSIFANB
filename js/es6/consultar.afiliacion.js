@@ -208,7 +208,7 @@ function Buscar( id ){
             if (DBF.estadocivil != undefined ){
               edocivil = DBF.estadocivil;
             }
-           
+
 
             $("#_contenidoFamiliares").append('<tr><td>'+nombreCompleto+'</td>\
               <td class="alinear_td">'+ cedula +'</td>\
@@ -535,7 +535,7 @@ function ConvertirFechaHumana(f){
 function IncluirFamiliar(){
   $("#modFamiliar").modal('show');
   BlanquearFamiliar();
-
+}
 
 function ValidarCorreo(){
   var email = $('#txtmcorreo').val();
@@ -1225,29 +1225,27 @@ function ModificarFamiliar(){
 
 }
 
-<<<<<<< HEAD
-
 function CConstanciaAfiliacion(){
 
-  let urlMil   = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
-  let urlGra   = "images/grados/" + militar.Grado.abreviatura + ".png";
+  var urlMil   = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
+  var urlGra   = "images/grados/" + militar.Grado.abreviatura + ".png";
       urlGra   = urlGra.toLowerCase();
-  let fechaActual = ConvertirFechaActual();
-  let gradoPI  = 'GENERAL DE DIVISIÓN';
-  let nombrePI = 'JESÚS RAFAEL SALAZAR VELÁSQUEZ';
+  var fechaActual = ConvertirFechaActual();
+  var gradoPI  = 'GENERAL DE DIVISIÓN';
+  var nombrePI = 'JESÚS RAFAEL SALAZAR VELÁSQUEZ';
   $('#modRpt').modal('show');
   $("#lblgradoMil").text($("#cmbgrado option:selected").text());
   $("#lblcedulaMil").text($("#txtcedula").val());
   $("#lblnombreMil").text($("#txtapellido").val() + ' ' + $("#txtnombre").val());
   $("#lbledoCivilM").text($("#cmbedocivil option:selected").text());
   $("#lblfchNacMil").text($("#txtnacimiento").val());
-  $("#lbldireccionMil").text($("#txtmcalle").val() + 
-                             $("#txtmcasa").val() +
-                             $("#txtmapto").val() + 
-                             $("#cmbmparroquia option:selected").text() +
-                             $("#cmbmmunicipio option:selected").text() + 
-                             $("#cmbmciudad option:selected").text() +
-                             $("#cmbmestado option:selected").text());
+  // $("#lbldireccionMil").text($("#txtmcalle").val() +
+  //                            $("#txtmcasa").val() +
+  //                            $("#txtmapto").val() +
+  //                            $("#cmbmparroquia option:selected").text() +
+  //                            $("#cmbmmunicipio option:selected").text() +
+  //                            $("#cmbmciudad option:selected").text() +
+  //                            $("#cmbmestado option:selected").text());
   $("#lblfchIngresoFANB").text($("#txtfechagraduacion").val());
   $("#lblfchUltAscenso").text($("#_fascenso").val());
   $("#lblaServicio").text(militar.tiemposervicio);
@@ -1259,29 +1257,70 @@ function CConstanciaAfiliacion(){
   $("#lblgradoPI").text(gradoPI);
   $("#lblnombrePI").text(nombrePI);
   $("#lblgradoPIF").text(gradoPI);
-  
+
 }
 function imprSelec(nombre) {
-    
+ var html = $("#" + nombre).html();
+ var ventana = window.open("","_blank");
+ ventana.document.write(html);
+ ventana.document.head.innerHTML = '\
+ <meta charset="utf-8">\
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">\
+ <title>SSSIFANB</title>\
+ <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">\
+ <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">\
+ <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">\
+ <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">\
+ <link rel="stylesheet" href="dist/css/AdminLTE.min.css">\
+ <link rel="stylesheet" href="dist/css/skins.ipsfa/_all-skins_1.css">\
+ <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">\
+ <link rel="stylesheet" href="css/carnet.css">\
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css">\
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.semanticui.min.css">\
+ <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">\
+ <link rel="stylesheet"\
+       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">\
+ <style type="text/css">\
+   .row-centered {\
+       text-align:center;\
+   }\
+   .col-centered {\
+       display:inline-block;\
+       float:none;\
+       text-align:left;\
+       margin-right:-4px;\
+   }\
+   td {\
+     font-size: 12px;\
+     font-weight: normal;\
+   }\
+   @charset "utf-8";\
+   @page {\
+   	margin: 1cm;\
+   	size:8.5in 11in;\
+  }\
+ </style>';
+ ventana.print();
+ ventana.close();
+ //console.log(html);
   // Create and insert new print section
-    var elem = document.getElementById(nombre);
-    var domClone = elem.cloneNode(true);
-    var $printSection = document.createElement("nombre");
-    $printSection.id = "printSection";
-    $printSection.appendChild(domClone);
-    document.body.insertBefore($printSection, document.body.firstChild);
+    // var elem = document.getElementById(nombre);
+    // var domClone = elem.cloneNode(true);
+    // var $printSection = document.createElement("nombre");
+    // $printSection.id = "printSection";
+    // $printSection.appendChild(domClone);
+    // document.body.insertBefore($printSection, document.body.firstChild);
 
-    window.print(); 
+    //
 
     // Clean up print section for future use
-    var oldElem = document.getElementById("printSection");
-    if (oldElem != null) { oldElem.parentNode.removeChild(oldElem); } 
-                          //oldElem.remove() not supported by IE
-
-    return true;
+    // var oldElem = document.getElementById("printSection");
+    // if (oldElem != null) { oldElem.parentNode.removeChild(oldElem); }
+    //                       //oldElem.remove() not supported by IE
+    //
+    // return true;
   }
 
 function CalcularEdadFamiliar(){
   $('#txtedadf').val(Util.CalcularEdad($('#txtnacimientof').val()));
 }
-
