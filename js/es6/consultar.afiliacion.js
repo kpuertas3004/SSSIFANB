@@ -536,10 +536,12 @@ function ConvertirFechaHumana(f){
 function IncluirFamiliar(){
   $("#modFamiliar").modal('show');
   BlanquearFamiliar();
+  ActivarCalendariosFamiliar();
 }
 
 function ValidarCorreo(){
   var email = $('#txtmcorreo').val();
+  var emailf = $('#txtmcorreof').val();
   var caracter = new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
 
     if (! caracter.test(email)){
@@ -657,6 +659,10 @@ function LimpiarFrmFamiliar(){
   $("#txtdiagnosticof").val("");
   $("#cmbHospitalf").val("");
 
+  $("#txtedadf").val("");
+
+  urlf = "http://192.168.12.161/imagenes/ndisponible.jpg";
+  $("#_imgIngFam").attr("src", urlf);
   // $("#txttwitterf").val("");
   // $("#txtfacebookf").val("");
   // $("#txtinstagranf").val("");
@@ -723,6 +729,12 @@ function ActivarCalendarios(){
 }
 
 function ActivarCalendariosFamiliar(){
+  $('#txtnacimientof').datepicker({
+    autoclose: true,
+    format:"dd/mm/yyyy",
+    language: 'es'
+  });
+
   $('#txtfechacondicionf').datepicker({
     autoclose: true,
     format:"dd/mm/yyyy",
@@ -740,6 +752,21 @@ function ActivarCalendariosFamiliar(){
     format:"dd/mm/yyyy",
     language: 'es'
   });
+
+
+  $('#txtnacimientom').datepicker({
+    autoclose: true,
+    format:"dd/mm/yyyy",
+    language: 'es'
+  });
+
+  $('#txtnacimientof').datepicker({
+    autoclose: true,
+    format:"dd/mm/yyyy",
+    language: 'es'
+  });
+  ////ACTIVAR MASK
+  $('[data-mask]').inputmask();
 
 
 }
@@ -1219,7 +1246,9 @@ function ModificarFamiliar(){
   if(Util.ValidarFormulario("_frmDatoBasico") == false){
     Util.ModalValidar("Favor actualizar afiliado");
   }else{
-    $("#modFamiliar").modal('show');
+    ActivarCalendariosFamiliar();
+    $("#modMsjfamiliar").modal('show');
+
     LimpiarFrmFamiliar();
   }
 
@@ -1321,6 +1350,138 @@ function imprSelec(nombre) {
     // return true;
   }
 
-function CalcularEdadFamiliar(){
-  $('#txtedadf').val(Util.CalcularEdad($('#txtnacimientof').val()));
+function CalcularEdadFamiliar(id, vl){
+  fecha = Util.ConvertirFechaUnix($('#'+vl).val());
+  console.log(fecha);
+  $('#'+id).val(Util.CalcularEdad($('#'+vl).val()));
+
+}
+
+function ActivarModalFamiliar(){
+  $("#modFamiliar").modal('show');
+}
+
+function ValidarMilitar(valor){
+
+  if($("#txtcedula").val() == $("#txtcedulam").val()){
+    //
+    $("#modMsjfamiliar").modal('hide');
+    Util.ModalValidarFamiliar("Usted no puede registrar al mismo militar como afiliado");
+    return false;
+  }
+
+  let esCasado = false;
+  $.each(ObjMilitar.Familiar, function (c, v){
+    if (v.parentesco == "EA" && v.beneficio == true){
+        esCasado = true;
+    }
+
+  });
+
+  if($("#cmbparentescom").val() == "EA" && esCasado == true){
+    $("#modMsjfamiliar").modal('hide');
+    Util.ModalValidarFamiliar("El afiliado ya posee una esposa");
+    return false;
+  }
+
+
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", Conn.URL + "militar/crud/" + $("#txtcedulam").val());
+  xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+
+        ActivarCalendariosFamiliar();
+        LimpiarFrmFamiliar();
+        FrmFamiliar(false);
+        $('#txtcedulaf').val($("#txtcedulam").val());
+        $('#txtedadf').val($('#txtedadf').val());
+
+        var militar = JSON.parse(xhttp.responseText);
+        if(militar.tipo == undefined){
+          var DB = militar.Persona.DatoBasico;
+          $('#txtcedulaf').val(DB.cedula);
+          url = "http://192.168.12.161/imagenes/" +  DB.cedula + ".jpg";
+          $("#_imgIngFam").attr("src", url);
+          SeleccionarPorSexoFamiliar(DB.sexo);
+          $('#btnnacionalidad').val(NacionalidadFamiliar(DB.nacionalidad));
+          $('#txtnacimientof').val(ConvertirFechaHumana(DB.fechanacimiento));
+          $('#txtedadf').val(Util.CalcularEdad($('#txtnacimientof').val()));
+          $('#txtnombref').val(DB.nombreprimero);
+          $('#txtapellidof').val(DB.apellidoprimero);
+          $('#cmbsexof').val(DB.sexo);
+          $('#cmbcondicionf').val(0);
+          $('#cmbestudiaf').val(0);
+          $('#cmbmilitarf').val(0);
+          $('#cmbsituacionf').val(0);
+          $("#cmbedocivilf").val("S");
+          $("#_condicionf").hide();
+          $("#_estudiaf").hide();
+          $("#_condicionfdoc").hide();
+          $("#_estudiafdoc").hide();
+          var madre = false;
+          var padre = false;
+          var casado = false;
+          var sexo = DB.sexo;
+          var hijo = false;
+          $.each(militar.Familiar, function (c, v){
+            var familiar = v.Persona.DatoBasico;
+            console.log(v.parentesco);
+            if (v.parentesco == "PD" && familiar.sexo == "M"){
+              padre = true;
+            }else if (v.parentesco == "PD" && familiar.sexo == "F"){
+              madre = true;
+            }
+            if ( v.parentesco == "EA"){
+              casado = true;
+            }
+          }); //Fin de For each
+          var activar = false;
+          var sparentesco = 'ESPOSO';
+          var spadre = 'PADRE';
+          $("#cmbparentescof").html('');
+          if ($("#cmbsexo").val() == "F"){
+            sparentesco =  'ESPOSA';
+            spadre = 'MADRE';
+            if (madre == false ){
+              $("#cmbparentescof").append('<option value="HJ">HIJA</option>');
+              activar = true;
+            }
+          }else{
+            if (padre == false ){
+              $("#cmbparentescof").append('<option value="HJ">HIJO</option>');
+              activar = true;
+            }
+          }
+
+
+
+          var estadocivil = $("#cmbedocivil").val();
+
+          if(casado == false && estadocivil != "C"){
+            $("#cmbparentescof").append('<option value="EA">' + sparentesco + '</option>');
+            activar = true;
+          }
+
+          if(activar != true){
+            $("#modMsjfamiliar").modal('hide');
+            Util.ModalValidarFamiliar("El afiliado no presenta parentesco");
+            return false;
+          }else{
+
+            $("#modFamiliar").modal('show');
+          }
+
+        } //Fin del tipo
+
+      } // fin Estatus
+  }
+  xhttp.onerror = function() {
+      if (this.readyState == 4 && this.status == 0) {
+        $.notify("No se puede conectar al servidor");
+        $("#_cargando").hide();
+      }
+
+  };
+  xhttp.send();
 }

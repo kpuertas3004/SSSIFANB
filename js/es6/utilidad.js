@@ -62,6 +62,20 @@ class Utilidad {
     $("#modMsj").modal("show");
   }
 
+  ModalValidarFamiliar(msj){
+    $("#_contenido").html(msj);
+    var botones = '<button type="button" class="btn btn-success btn-lg" data-dismiss="modal" onclik="ActivarModalFamiliar()">Aceptar</button>';
+    $("#_botonesmsj").html(botones);
+    $("#modMsj").modal("show");
+  }
+
+  ModalValidarFamiliarLimitado(msj){
+
+    $("#_contenido").html('');
+    var botones = '<button type="button" class="btn btn-success btn-lg" data-dismiss="modal" onclik="ContinuarFamiliarValidar()">Aceptar</button>';
+    $("#_botonesmsj").html(botones);
+    $("#modMsj").modal("show");
+  }
   //
   CalcularEdad(fecha){
     var FechaActual = new Date(Date.now());

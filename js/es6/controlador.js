@@ -114,6 +114,8 @@ $(function () {
   CargarUrl("_bxDatosFamiliar", "afi/familiar");
   CargarUrl("_bxTarjetaFamiliar", "afi/tarjetafamiliar");
   CargarUrl("_boxModFamiliares", "afi/modalfamiliares");
+
+  CargarUrl("_contenidofamiliar", "afi/familiarmodalcontinuar");
   CargarUrl("_contenidoh", "afi/historicomilitar");
   CargarUrl("_contenidorpt", "rpt/constancia");
 
