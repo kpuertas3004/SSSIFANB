@@ -23,13 +23,13 @@
             <label>Cédula:</label>
               <div class="input-group">
                 <span class="input-group-btn">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">V
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" disabled="disabled">V
                     </button>
                 </span>
                 <input class="form-control" id="txtcedula"  type="text" disabled="disabled" maxlength="8" required tabindex="1" onblur="BuscarInsert()">
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-success btn-flat"
-                  id="btncopiacedula" onClick="seleccionarCopiaCedula()"><i class="glyphicon glyphicon-paperclip"></i></button>
+                  id="btncopiacedula" disabled="disabled" onClick="seleccionarCopiaCedula()"><i class="glyphicon glyphicon-paperclip"></i></button>
                 </span>
               </div>
           </div> <!-- Cedula -->
@@ -38,11 +38,11 @@
         <div class="form-group">
           <div class="col-md-6 col-sm-12">
             <label>Nombres:</label>
-            <input  id="txtnombre" class="form-control"  type="text" disabled="disabled" required tabindex="2">
+            <input  id="txtnombre" class="form-control"  type="text" disabled="disabled" required tabindex="2" onkeypress="return soloLetras(event)">
           </div>
           <div class="col-md-6 col-sm-12">
             <label>Apellidos:</label>
-           <input  id="txtapellido" class="form-control"  type="text" disabled="disabled" required tabindex="3">
+           <input  id="txtapellido" class="form-control"  type="text" disabled="disabled" required tabindex="3" onkeypress="return soloLetras(event)">
           </div>
        </div> <!-- Grupo nombres-->
 
@@ -60,7 +60,7 @@
                    <input type="text" class="form-control"  id="txtnacimiento" disabled="disabled" tabindex="4">
                     <span class="input-group-btn">
                       <button type="button" class="btn btn-success btn-flat"
-                      id="btnnacimiento" onClick="seleccionarPartida()" ><i class="glyphicon glyphicon-paperclip"></i></button>
+                      id="btnnacimiento" disabled="disabled" onClick="seleccionarPartida()" ><i class="glyphicon glyphicon-paperclip"></i></button>
                     </span>
                 </div>
                </div>
