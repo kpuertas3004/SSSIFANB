@@ -536,10 +536,12 @@ function ConvertirFechaHumana(f){
 function IncluirFamiliar(){
   $("#modFamiliar").modal('show');
   BlanquearFamiliar();
+  ActivarCalendariosFamiliar();
 }
 
 function ValidarCorreo(){
   var email = $('#txtmcorreo').val();
+  var emailf = $('#txtmcorreof').val();
   var caracter = new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
 
     if (! caracter.test(email)){
@@ -725,6 +727,12 @@ function ActivarCalendarios(){
 }
 
 function ActivarCalendariosFamiliar(){
+  $('#txtnacimientof').datepicker({
+    autoclose: true,
+    format:"dd/mm/yyyy",
+    language: 'es'
+  });
+
   $('#txtfechacondicionf').datepicker({
     autoclose: true,
     format:"dd/mm/yyyy",
