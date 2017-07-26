@@ -186,7 +186,7 @@ function Buscar( id ){
             let fnac = ConvertirFechaHumana(DBF.fechanacimiento);
 
             var modificar = '<button type="button" id="btnModFamiliar' + j + '" \
-            class="btn btn-xs btn-info" onclick="ModificarFamiliarPos(' + j + ')">\
+            class="btn btn-sm btn-info" onclick="ModificarFamiliarPos(' + j + ')">\
               <i class="fa fa-pencil"></i></button>'
             mil = nombre;
             if (v.esmilitar == true){
@@ -551,21 +551,78 @@ function ValidarCorreo(){
 
 }
 
+function FrmFamiliar(valor){
+  $("#txtcedulaf").attr('disabled',valor);
+  $("#txtnombref").attr('disabled',valor);
+  $("#txtapellidof").attr('disabled',valor);
+  $("#txtnacimientof").attr('disabled',valor);
+  $("#cmbsexof").attr('disabled',valor);
+  $("#cmbedocivilf").attr('disabled',valor);
+  $("#cmbparentescof").attr('disabled',valor);
+  $("#cmbcondicionf").attr('disabled',valor);
+  $("#cmbsituacionf").attr('disabled',valor);
 
-function BlanquearFamiliar(){
+  $("#cmbestudiaf").attr('disabled',valor);
+  $("#cmbestadof").attr('disabled',valor);
+  $("#cmbmunicipiof").attr('disabled',valor);
+  $("#cmbparroquiaf").attr('disabled',valor);
+  $("#cmbciudadf").attr('disabled',valor);
+  $("#txtcallef").attr('disabled',valor);
+  $("#txtcasaf").attr('disabled',valor);
+  $("#txtaptof").attr('disabled',valor);
+  $("#txttelefonof").attr('disabled',valor);
+  $("#txtcelularf").attr('disabled',valor);
+  $("#txtcorreof").attr('disabled',valor);
+  $("#txtpregistrocivilf").attr('disabled',valor);
+  $("#txtpanof").attr('disabled',valor);
+  $("#txtpactaf").attr('disabled',valor);
+  $("#txtpfoliof").attr('disabled',valor);
+  $("#txtplibrof").attr('disabled',valor);
+  $("#txtestaturaf").attr('disabled',valor);
+  $("#txtpesof").attr('disabled',valor);
+  $("#txttallaf").attr('disabled',valor);
+  $("#txtgruposanguineof").attr('disabled',valor);
+  $("#cmbpielf").attr('disabled',valor);
+  $("#cmbojosf").attr('disabled',valor);
+  $("#cmbcolorcabellof").attr('disabled',valor);
+  $("#txtsenaparticularf").attr('disabled',valor);
+  //
+  $("#txtcarreraf").attr('disabled',valor);
+  $("#cmbnivelf").attr('disabled',valor);
+  $("#txtsemestref").attr('disabled',valor);
+  $("#txtiniciof").attr('disabled',valor);
+  $("#txtfinf").attr('disabled',valor);
+  $("#txtuniversidadf").attr('disabled',valor);
+  $("#txtuniversidadf").attr('disabled',valor);
+  //
+  $("#txtfechacondicionf").attr('disabled',valor);
+  $("#cmbDiscapacidadf").attr('disabled',valor);
+  $("#txtdiagnosticof").attr('disabled',valor);
+  $("#cmbHospitalf").attr('disabled',valor);
+  $("#btnnacionalidad").attr('disabled',valor);
+  if(valor == false){
+    $("#imgIngFam").show();
+  }else{
+    $("#imgIngFam").hide();
+  }
+
+
+}
+function LimpiarFrmFamiliar(){
   $("#txtcedulaf").val("");
   $("#txtnombref").val("");
   $("#txtapellidof").val("");
   $("#txtnacimientof").val("");
-  $("#cmbsexof").val("");
-  $("#cmbedocivilf").val("");
-  $("#cmbparentescof").val("");
-  $("#cmbcondicionf").val("");
-  $("#cmbestudiaf").val("");
-  $("#cmbestadof").val("");
-  $("#cmbmunicipiof").val("");
-  $("#cmbparroquiaf").val("");
-  $("#txtciudadf").val("");
+  $("#cmbsexof").val("S");
+  $("#cmbedocivilf").val("SS");
+  $("#cmbparentescof").val("S");
+  $("#cmbsituacionf").val("S");
+  $("#cmbcondicionf").val("S");
+  $("#cmbestudiaf").val("S");
+  $("#cmbestadof").val("S");
+  $("#cmbmunicipiof").val("S");
+  $("#cmbparroquiaf").val("S");
+  $("#cmbciudadf").val("S");
   $("#txtcallef").val("");;
   $("#txtcasaf").val("");
   $("#txtaptof").val("");
@@ -585,10 +642,25 @@ function BlanquearFamiliar(){
   $("#cmbojosf").val("");
   $("#cmbcolorcabellof").val("");
   $("#txtsenaparticularf").val("");
-  $("#txttwitterf").val("");
-  $("#txtfacebookf").val("");
-  $("#txtinstagranf").val("");
-  $("#txtlinkedinf").val("");
+
+  //
+  $("#txtcarreraf").val("");
+  $("#cmbnivelf").val("");
+  $("#txtsemestref").val("");
+  $("#txtiniciof").val("");
+  $("#txtfinf").val("");
+  $("#txtuniversidadf").val("");
+  $("#txtuniversidadf").val("");
+  //
+  $("#txtfechacondicionf").val("");
+  $("#cmbDiscapacidadf").val("");
+  $("#txtdiagnosticof").val("");
+  $("#cmbHospitalf").val("");
+
+  // $("#txttwitterf").val("");
+  // $("#txtfacebookf").val("");
+  // $("#txtinstagranf").val("");
+  // $("#txtlinkedinf").val("");
 
 }
 
@@ -645,11 +717,34 @@ function ActivarCalendarios(){
     language: 'es'
   });
 
+
   ////ACTIVAR MASK
   $('[data-mask]').inputmask();
 
 
 }
+function ActivarCalendariosFamiliar(){
+  $('#txtfechacondicionf').datepicker({
+    autoclose: true,
+    format:"dd/mm/yyyy",
+    language: 'es'
+  });
+
+  $('#txtiniciof').datepicker({
+    autoclose: true,
+    format:"dd/mm/yyyy",
+    language: 'es'
+  });
+
+  $('#txtfinf').datepicker({
+    autoclose: true,
+    format:"dd/mm/yyyy",
+    language: 'es'
+  });
+
+
+}
+
 function incluirAfiliado(){
 
   ActivarCalendarios();
@@ -1075,14 +1170,16 @@ function ModificarFamiliarPos(pos){
   if(Util.ValidarFormulario("_frmDatoBasico") == false){
     Util.ModalValidar("Favor actualizar afiliado");
   }else{
+    FrmFamiliar(false);
+    ActivarCalendariosFamiliar();
     var Familiar = ObjMilitar.Familiar[pos-1];
     var DB = Familiar.Persona.DatoBasico;
-
     $("#modFamiliar").modal('show');
     $('#txtcedulaf').val(DB.cedula);
     SeleccionarPorSexoFamiliar(DB.sexo);
-    // $('#txtnacimientof').val(DB.nacionalidad);
+    $('#btnnacionalidad').val(NacionalidadFamiliar(DB.nacionalidad));
     $('#txtnacimientof').val(ConvertirFechaHumana(DB.fechanacimiento));
+    $('#txtedadf').val(Util.CalcularEdad($('#txtnacimientof').val()));
     $('#txtnombref').val(DB.nombreprimero);
     $('#txtapellidof').val(DB.apellidoprimero);
     $('#cmbsexof').val(DB.sexo);
@@ -1102,7 +1199,6 @@ function ModificarFamiliarPos(pos){
     if(Familiar.parentesco == "EA"){
         $("#cmbedocivilf").val("C");
     }else if(Familiar.parentesco == "HJ"){
-
       $("#_condicionf").show();
       $("#_estudiaf").show();
       $("#_condicionfdoc").show();
@@ -1124,11 +1220,12 @@ function ModificarFamiliar(){
     Util.ModalValidar("Favor actualizar afiliado");
   }else{
     $("#modFamiliar").modal('show');
-    BlanquearFamiliar();
+    LimpiarFrmFamiliar();
   }
 
 }
 
+<<<<<<< HEAD
 
 function CConstanciaAfiliacion(){
 
@@ -1183,3 +1280,8 @@ function imprSelec(nombre) {
 
     return true;
   }
+
+function CalcularEdadFamiliar(){
+  $('#txtedadf').val(Util.CalcularEdad($('#txtnacimientof').val()));
+}
+

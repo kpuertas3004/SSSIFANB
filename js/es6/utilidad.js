@@ -61,40 +61,36 @@ class Utilidad {
     $("#_botonesmsj").html(botones);
     $("#modMsj").modal("show");
   }
-  //Valida todos los elementos de un formulario, requiere de jquery.
-  //Recibe el id del formulario
-  //Debe ser invocada al finalizar un formulario deesta forma Objecto.ValidarFormulario("id_formulario")
-  //Utiliza el imput tipo submit para realizar activar validacion
-  // ValidarFormulario(idForm){
-  //     var frm = document.querySelector("form#"+idForm);
-  //     frm.addEventListener('submit',this.frm, false);
-  //
-  // }
-  //
-  // //Metodo que utiliza ValidarFormulario recibir respuesta de validacion completa
-  // frm(event) {
-  //
-  //     event.preventDefault();
-  //     var militar = new Militar();
-  //     switch (Frm) {
-  //       case "S":
-  //
-  //         militar.Salvar();
-  //         ActivarFormulario(true);
-  //         $("#_cargando").hide();
-  //         break;
-  //       case "A":
-  //         //militar.Actualizar();
-  //
-  //         // $("#_btnModificar").show();
-  //         // $("#_btnActualizar").hide();
-  //       default:
-  //
-  //     }
-  //
-  //     return false;
-  // }
 
+  //
+  CalcularEdad(fecha){
+    var FechaActual = new Date(Date.now());
+  	var AnnoA = parseInt(FechaActual.getFullYear());
+    var MesA = parseInt(FechaActual.getMonth()) + 1;
+    var DiaA = parseInt(FechaActual.getDate());
+
+    var f = fecha.split("/");
+
+  	var AnoN = parseInt(f[2]);
+    var MesN = parseInt(f[1]);
+    var DiaM = parseInt(f[0]);
+
+  	var Ano = AnnoA - AnoN;
+
+  	var Mes = MesA - MesN;
+  	var Dia = DiaA - DiaM;
+  	if (Dia < 0) {
+  		Dia = 0;
+  		Mes++;
+  	}
+  	if (Mes <= 0) {
+  		Ano--;
+  	}else{
+      Ano;
+    }
+
+  	return Ano;
+  }
 
 
 
