@@ -14,17 +14,25 @@
                                 <li><a href="#" onclick="NacionalidadFamiliar('E');">E</a></li>
                               </ul>
                         </span>
-                        <input class="form-control" id="txtcedulaf" type="text" disabled>
+                        <input class="form-control" id="txtcedulaf" type="text" onblur="ValidarMilitar('txtcedulaf')" disabled>
+                        <select id="cmbmilitarf" style="display:none">
+                          <option selected="selected" value=0></option>
+                          <option value=1></option>
+                        </select>
                       </div>
                     </div>
 
                     <div class="col-md-3 col-sm-8 col-xs-8">
                       <label>Fecha de Nacimiento:</label>
+
                        <div class="input-group date">
                          <div class="input-group-addon">
                            <i class="fa fa-calendar"></i>
                          </div>
-                      <input id="txtnacimientof" class="form-control" disabled type="text" onblur="CalcularEdadFamiliar()" >
+                      
+
+                      <input id="txtnacimientof" class="form-control" disabled type="text" onblur="CalcularEdadFamiliar('txtedadf','txtnacimientof')" >
+
                     </div>
                    </div>
                     <div class="col-md-2 col-sm-4 col-xs-4" >
