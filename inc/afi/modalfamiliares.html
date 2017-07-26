@@ -195,17 +195,33 @@
                   <div class="row">
                     <div class="form-group">
                       <div class="col-md-4">
-                        <label>Teléfono:</label>
-                        <input id="txttelefonof" class="form-control" disabled type="text" >
+                        <label>Teléfono:</label>                 
+                  <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-phone"></i>
+                  </div>
+                        <input id="txttelefonof" class="form-control" disabled type="text" data-inputmask='"mask": "(9999) 999-99-99"' data-mask >
                       </div>
+                  </div>
                       <div class="col-md-4">
                         <label >Celular:</label>
-                        <input id="txtcelularf" class="form-control" disabled type="text" >
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-phone"></i>
+                  </div>
+
+                        <input id="txtcelularf" class="form-control" disabled type="text" data-inputmask='"mask": "(9999) 999-99-99"' data-mask>
                       </div>
+                    </div>
                       <div class="col-md-4" >
                         <label >Correo Electronico:</label>
-                        <input  id="txtcorreof" class="form-control" disabled type="text" >
+                        <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-envelope"></i>
+                    </div>
+                        <input  id="txtcorreof" class="form-control" disabled type="text" onblur="ValidarCorreo()" >
                       </div>
+                       </div>
                     </div>
                   </div>
                 </div><!-- Tab panes  Direccion-->
@@ -389,15 +405,15 @@
                     <div class="form-group">
                      <div class="col-md-4">
                        <label>Estatura:</label>
-                       <input  id="txtestaturaf" class="form-control" disabled type="text" >
+                       <input  id="txtestaturaf" class="form-control" disabled type="text" maxlength="5" data-inputmask='"mask": "99.99"' data-mask>
                      </div>
                      <div class="col-md-4">
                        <label>Peso:</label>
-                       <input  id="txtpesof" class="form-control" disabled type="text" >
+                       <input  id="txtpesof" class="form-control" disabled type="text" maxlength="6" data-inputmask='"mask": "999.99"' data-mask>
                      </div>
                      <div class="col-md-4">
                        <label>Talla:</label>
-                      <input  id="txttallaf" class="form-control" disabled type="text" >
+                      <input  id="txttallaf" class="form-control" disabled type="text" maxlength="2" >
                      </div>
                    </div> <!-- Grupo nombres-->
                   </div>
@@ -407,19 +423,39 @@
                      <div class="col-md-3">
                        <label>Color de Piel:</label>
                        <select class="js-states form-control" style="width: 100%" disabled id="cmbpielf" >
-                         <option value="S" selected="selected"></option>
+                          <option value="S" selected="selected"></option>
+                          <option value="NE">NEGRA</option>
+                          <option value="BL">BLANCA</option>
+                          <option value="CA">CANELA</option>
+                          <option value="MO">MORENA</option>
+                          <option value="RO">ROSADA</option>
                        </select>
                      </div>
                      <div class="col-md-3">
                        <label>Color de Ojos:</label>
                        <select class="js-states form-control" style="width: 100%" disabled id="cmbojosf" >
-                         <option value="S" selected="selected"></option>
+                          <option value="S" selected="selected"></option>
+                          <option value="CA">CASTAÑO</option>
+                          <option value="AM">ÁMBAR</option>
+                          <option value="AV">AVELLANA</option>
+                          <option value="VE">VERDE</option>
+                          <option value="AZ">AZUL</option>
+                          <option value="GR">GRIS</option>
+                          <option value="NE">NEGRO</option>
+                          <option value="MA">MARRÓN</option>
                        </select>
                      </div>
                      <div class="col-md-3">
                        <label>Color de Cabello:</label>
                        <select class="js-states form-control" style="width: 100%" disabled id="cmbcolorcabellof" >
-                         <option value="S" selected="selected"></option>
+                          <option value="S" selected="selected"></option>
+                          <option value="NE">NEGRO</option>
+                          <option value="BA">BLANCO</option>
+                          <option value="MA">MARRON</option>
+                          <option value="CA">CASTAÑO</option>
+                          <option value="AM">AMARILLO</option>
+                          <option value="AZ">AZUL</option>
+                          <option value="VI">VIOLETA</option>
                        </select>
                      </div>
                      <div class="col-md-3">
