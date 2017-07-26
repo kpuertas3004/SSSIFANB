@@ -543,13 +543,11 @@ function ValidarCorreo(){
   var caracter = new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
 
     if (! caracter.test(email)){
-      alert("Formato de Correo Invalido");
-
+       $.notify($('#txtmcorreo'),"Formato de correo invalido",{ position:"top"});
         return false;
     }else{
         return true;
     }
-
 }
 
 
