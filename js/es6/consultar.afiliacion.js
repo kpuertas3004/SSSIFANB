@@ -536,20 +536,20 @@ function ConvertirFechaHumana(f){
 function IncluirFamiliar(){
   $("#modFamiliar").modal('show');
   BlanquearFamiliar();
+  ActivarCalendariosFamiliar();
 }
 
 function ValidarCorreo(){
   var email = $('#txtmcorreo').val();
+  var emailf = $('#txtmcorreof').val();
   var caracter = new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
 
     if (! caracter.test(email)){
-      alert("Formato de Correo Invalido");
-
+       $.notify($('#txtmcorreo'),"Formato de correo invalido",{ position:"top"});
         return false;
     }else{
         return true;
     }
-
 }
 
 
@@ -729,6 +729,12 @@ function ActivarCalendarios(){
 }
 
 function ActivarCalendariosFamiliar(){
+  $('#txtnacimientof').datepicker({
+    autoclose: true,
+    format:"dd/mm/yyyy",
+    language: 'es'
+  });
+
   $('#txtfechacondicionf').datepicker({
     autoclose: true,
     format:"dd/mm/yyyy",
@@ -1186,7 +1192,7 @@ function SeleccionarCuenta(){
   $("#txtmnrocuenta").val($("#cmbminstfinanciera option:selected").val());
 }
 
-
+ 
 function ModificarFamiliarPos(pos){
   if(Util.ValidarFormulario("_frmDatoBasico") == false){
     Util.ModalValidar("Favor actualizar afiliado");
@@ -1319,29 +1325,14 @@ function imprSelec(nombre) {
    }\
    @charset "utf-8";\
    @page {\
-   	margin: 1cm;\
+   	margin: 1.1cm;\
    	size:8.5in 11in;\
   }\
  </style>';
  ventana.print();
  ventana.close();
  //console.log(html);
-  // Create and insert new print section
-    // var elem = document.getElementById(nombre);
-    // var domClone = elem.cloneNode(true);
-    // var $printSection = document.createElement("nombre");
-    // $printSection.id = "printSection";
-    // $printSection.appendChild(domClone);
-    // document.body.insertBefore($printSection, document.body.firstChild);
-
-    //
-
-    // Clean up print section for future use
-    // var oldElem = document.getElementById("printSection");
-    // if (oldElem != null) { oldElem.parentNode.removeChild(oldElem); }
-    //                       //oldElem.remove() not supported by IE
-    //
-    // return true;
+  
   }
 
 function CalcularEdadFamiliar(id, vl){
