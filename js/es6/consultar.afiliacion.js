@@ -61,6 +61,7 @@ function Buscar( id ){
           });
           t.clear().draw();
           var DB = militar.Persona.DatoBasico;
+          $("#_divfechanacimiento").show();
           $("#_divfechadefuncion").show();
           $("#txtcedula").val(DB.cedula);
           url = "images/grados/" + militar.Grado.abreviatura + ".png";
@@ -534,7 +535,6 @@ function ValidarCorreo(){
     }
 }
 
-
 function BlanquearFamiliar(){
   $("#txtcedulaf").val("");
   $("#txtnombref").val("");
@@ -630,9 +630,25 @@ function ActivarCalendarios(){
 
   ////ACTIVAR MASK
   $('[data-mask]').inputmask();
-
-
 }
+
+/*function soloLetras(e) {
+    key = e.keyCode || e.which;
+    tecla = String.fromCharCode(key).toLowerCase();
+    letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+    especiales = [8, 37, 39, 46];
+
+    tecla_especial = false
+    for(var i in especiales) {
+        if(key == especiales[i]) {
+            tecla_especial = true;
+            break;
+        }
+}
+    if(letras.indexOf(tecla) == -1 && !tecla_especial)
+        return false;
+}*/
+
 function incluirAfiliado(){
 
   ActivarCalendarios();
@@ -641,6 +657,7 @@ function incluirAfiliado(){
     this.value = (this.value + '').replace(/[^0-9]/g, '');
   });
 
+  $("#_divfechanacimiento").hide();
   $("#_divfechadefuncion").hide();
   $("#_cedula").val("");
   $("#_ficha").show();
@@ -703,7 +720,7 @@ function FrmDatosBasicos(valor){
     $("#cargarfirma").hide();
     $("#cargarhuella").hide();
   }
-
+  $("#btnnacimiento").attr('disabled', valor);
   $("#btndefuncion").attr('disabled', valor);
 }
 function LimpiarFrmDatosBasicos(){
