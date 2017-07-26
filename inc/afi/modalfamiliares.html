@@ -14,13 +14,27 @@
                                 <li><a href="#" onclick="NacionalidadFamiliar('E');">E</a></li>
                               </ul>
                         </span>
-                        <input class="form-control" id="txtcedulaf" type="text" disabled>
+                        <input class="form-control" id="txtcedulaf" type="text" onblur="ValidarMilitar('txtcedulaf')" disabled>
+                        <select id="cmbmilitarf" style="display:none">
+                          <option selected="selected" value=0></option>
+                          <option value=1></option>
+                        </select>
                       </div>
                     </div>
+
                     <div class="col-md-3 col-sm-8 col-xs-8">
                       <label>Fecha de Nacimiento:</label>
-                      <input id="txtnacimientof" class="form-control" disabled type="text" onblur="CalcularEdadFamiliar()" >
+
+                       <div class="input-group date">
+                         <div class="input-group-addon">
+                           <i class="fa fa-calendar"></i>
+                         </div>
+                      
+
+                      <input id="txtnacimientof" class="form-control" disabled type="text" onblur="CalcularEdadFamiliar('txtedadf','txtnacimientof')" >
+
                     </div>
+                   </div>
                     <div class="col-md-2 col-sm-4 col-xs-4" >
                       <label>Edad:</label>
                       <input id="txtedadf" class="form-control"  type="text" disabled >
@@ -52,7 +66,7 @@
                 <div class="row">
                  <div class="form-group">
 
-                   <div class="col-md-4">
+                   <div class="col-md-3">
                     <label >Edo. Civil:</label>
                     <select class="js-states form-control" style="width: 100%" disabled tabindex="-1" aria-hidden="true" id="cmbedocivilf" >
                       <option selected="selected" value="SS"></option>
@@ -62,7 +76,7 @@
                       <option value="V">VIUDO</option>
                     </select>
                    </div>
-                   <div class="col-md-4">
+                   <div class="col-md-3">
                     <label>Parentesco:</label>
                     <select class="js-states form-control" style="width: 100%" disabled tabindex="-1" aria-hidden="true" id="cmbparentescof" >
                       <option value="S"></option>
@@ -72,7 +86,7 @@
                       <option value="EA">ESPOSO</option>
                     </select>
                    </div>
-                   <div class="col-md-4" id="_situacionf" >
+                   <div class="col-md-3" id="_situacionf" >
                      <label>Situacion:</label>
                      <select class="js-states form-control" style="width: 100%" disabled id="cmbsituacionf" >
                        <option value="S"></option>
@@ -81,7 +95,7 @@
                        <option value=2 disabled>SOBREVIVIENTE</option>
                      </select>
                    </div>
-                   <div class="col-md-4" id="_condicionf" style="display:none">
+                   <div class="col-md-3" id="_condicionf" style="display:none">
                      <label>Condición Especial:</label>
                      <select class="js-states form-control" style="width: 100%" disabled id="cmbcondicionf" >
                        <option selected="selected" value="S"></option>
@@ -90,7 +104,7 @@
 
                      </select>
                    </div>
-                   <div class="col-md-4" id="_estudiaf" style="display:none">
+                   <div class="col-md-3" id="_estudiaf" style="display:none">
                      <label>Constancia de Estudio:</label>
                      <select class="js-states form-control" style="width: 100%" disabled id="cmbestudiaf" >
                        <option selected="selected" value="S"></option>
@@ -100,6 +114,15 @@
                      </select>
                    </div>
 
+                   <div class="col-md-3">
+                      <label>Fecha de Defunción:</label>
+                       <div class="input-group date">
+                         <div class="input-group-addon">
+                           <i class="fa fa-calendar"></i>
+                         </div>
+                      <input id="txtdefuncionf" class="form-control" disabled type="text" >
+                    </div>
+                  </div>
 
                 </div> <!-- Grupo nombres   <div class="row">-->
                 </div>

@@ -235,6 +235,8 @@ class Familiar{
 		this.parentesco = $("#cmbparentescof").val();
 		this.condicion = $("#cmbcondicionf").val();
 		this.estudia = $("#cmbestudiaf").val();
+		this.esmilitar = $("#cmbmilitarf option:selected").val()==0?false:true;
+
 		this.Persona.Direccion.estado = $("#cmbestadof option:selected").val();
 		this.Persona.Direccion.municipio = $("#cmbmunicipiof  option:selected").val();
 		this.Persona.Direccion.parroquia = $("#cmbparroquiaf  option:selected").val();
