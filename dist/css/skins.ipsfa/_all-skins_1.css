@@ -1814,6 +1814,7 @@
 
   }
 
+@media screen, print {
   .membrete {
     font-style: normal;
     font-family: monospace, serif, Arial;
@@ -1847,3 +1848,5 @@
     font-size: 14;
 
   }
+
+}

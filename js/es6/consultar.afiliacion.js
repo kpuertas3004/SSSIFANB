@@ -1192,7 +1192,7 @@ function SeleccionarCuenta(){
   $("#txtmnrocuenta").val($("#cmbminstfinanciera option:selected").val());
 }
 
-
+ 
 function ModificarFamiliarPos(pos){
   if(Util.ValidarFormulario("_frmDatoBasico") == false){
     Util.ModalValidar("Favor actualizar afiliado");
@@ -1325,29 +1325,14 @@ function imprSelec(nombre) {
    }\
    @charset "utf-8";\
    @page {\
-   	margin: 1cm;\
+   	margin: 1.1cm;\
    	size:8.5in 11in;\
   }\
  </style>';
  ventana.print();
  ventana.close();
  //console.log(html);
-  // Create and insert new print section
-    // var elem = document.getElementById(nombre);
-    // var domClone = elem.cloneNode(true);
-    // var $printSection = document.createElement("nombre");
-    // $printSection.id = "printSection";
-    // $printSection.appendChild(domClone);
-    // document.body.insertBefore($printSection, document.body.firstChild);
-
-    //
-
-    // Clean up print section for future use
-    // var oldElem = document.getElementById("printSection");
-    // if (oldElem != null) { oldElem.parentNode.removeChild(oldElem); }
-    //                       //oldElem.remove() not supported by IE
-    //
-    // return true;
+  
   }
 
 function CalcularEdadFamiliar(id, vl){
