@@ -1,8 +1,4 @@
-
-
-
-
-
+        <form id="_frmDatoFamiliar">
             <div class="row">
               <div class="col-md-10">
                 <div class="row">
@@ -11,27 +7,27 @@
                       <label>Cédula:</label>
                       <div class="input-group">
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id="btnnacionalidad">V&nbsp;&nbsp;</button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id="btnnacionalidad" disabled>V</button>
                               <ul class="dropdown-menu" id="liNacionalidad">
                                 <li><a href="#" onclick="NacionalidadFamiliar('V');">V</a></li>
                                 <li><a href="#" onclick="NacionalidadFamiliar('M');">M</a></li>
                                 <li><a href="#" onclick="NacionalidadFamiliar('E');">E</a></li>
                               </ul>
                         </span>
-                        <input class="form-control" id="txtcedulaf" type="text" >
+                        <input class="form-control" id="txtcedulaf" type="text" disabled>
                       </div>
                     </div>
                     <div class="col-md-3 col-sm-8 col-xs-8">
                       <label>Fecha de Nacimiento:</label>
-                      <input id="txtnacimientof" class="form-control"  type="text" >
+                      <input id="txtnacimientof" class="form-control" disabled type="text" onblur="CalcularEdadFamiliar()" >
                     </div>
                     <div class="col-md-2 col-sm-4 col-xs-4" >
                       <label>Edad:</label>
-                      <input id="txtnacimientof" class="form-control"  type="text" disabled >
+                      <input id="txtedadf" class="form-control"  type="text" disabled >
                     </div>
                     <div class="col-md-3">
                       <label>Sexo:</label>
-                      <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbsexof" onchange="SeleccionarPorSexoFamiliar()" >
+                      <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbsexof" disabled onchange="SeleccionarPorSexoFamiliar()" >
                         <option selected="selected" value="F">FEMENINO</option>
                         <option value="M">MASCULINO</option>
                       </select>
@@ -44,11 +40,11 @@
                   <div class="form-group">
                     <div class="col-md-6">
                       <label>Nombres:</label>
-                      <input id="txtnombref" class="form-control"  type="text" >
+                      <input id="txtnombref" class="form-control"  type="text" disabled>
                     </div>
                     <div class="col-md-6">
                       <label>Apellidos:</label>
-                      <input id="txtapellidof" class="form-control"  type="text" >
+                      <input id="txtapellidof" class="form-control"  type="text" disabled>
                     </div>
                  </div> <!-- Grupo nombres-->
                 </div>
@@ -58,7 +54,7 @@
 
                    <div class="col-md-4">
                     <label >Edo. Civil:</label>
-                    <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbedocivilf" >
+                    <select class="js-states form-control" style="width: 100%" disabled tabindex="-1" aria-hidden="true" id="cmbedocivilf" >
                       <option selected="selected" value="SS"></option>
                       <option value="S">SOLTERO</option>
                       <option value="C">CASADO</option>
@@ -68,7 +64,7 @@
                    </div>
                    <div class="col-md-4">
                     <label>Parentesco:</label>
-                    <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbparentescof" >
+                    <select class="js-states form-control" style="width: 100%" disabled tabindex="-1" aria-hidden="true" id="cmbparentescof" >
                       <option value="S"></option>
                       <option value="HJ" selected="selected">HIJO</option>
                       <option value="PD">PADRE</option>
@@ -78,7 +74,7 @@
                    </div>
                    <div class="col-md-4" id="_situacionf" >
                      <label>Situacion:</label>
-                     <select class="js-states form-control" style="width: 100%" id="cmbsituacionf" >
+                     <select class="js-states form-control" style="width: 100%" disabled id="cmbsituacionf" >
                        <option value="S"></option>
                        <option selected="selected" value=1>ACTIVO</option>
                        <option value=0>INACTIVO</option>
@@ -87,7 +83,7 @@
                    </div>
                    <div class="col-md-4" id="_condicionf" style="display:none">
                      <label>Condición Especial:</label>
-                     <select class="js-states form-control" style="width: 100%" id="cmbcondicionf" >
+                     <select class="js-states form-control" style="width: 100%" disabled id="cmbcondicionf" >
                        <option selected="selected" value="S"></option>
                        <option value=0>NO</option>
                        <option value=1>SI</option>
@@ -96,7 +92,7 @@
                    </div>
                    <div class="col-md-4" id="_estudiaf" style="display:none">
                      <label>Constancia de Estudio:</label>
-                     <select class="js-states form-control" style="width: 100%" id="cmbestudiaf" >
+                     <select class="js-states form-control" style="width: 100%" disabled id="cmbestudiaf" >
                        <option selected="selected" value="S"></option>
                        <option value=0>NO</option>
                        <option value=1>SI</option>
@@ -116,7 +112,7 @@
                     src="images/ndisponible.jpg" onerror="this.src='images/ndisponible.jpg'" id="_imgIngFam"/>
                   </div>
                   <div class="file-field input-field col file-field-input-field " >
-                    <label class="btn btn-default btn-file">Seleccionar Foto
+                    <label class="btn btn-default btn-file" style="display:none" id="imgIngFam">Foto
                     <input type="file" style="visibility:hidden;" id="imgIngFam" accept="image/*" onchange="readURL(this,'_imgIngFam');" onclick="clearURL(this)">
                     </label>
                   </div>
@@ -149,26 +145,22 @@
                     <div class="form-group">
                       <div class="col-md-4">
                         <label>Estado:</label>
-                        <select class="js-states form-control" style="width: 100%"  id="cmbestadof" onchange="CiudadMunicipio(1);">
+                        <select class="js-states form-control" style="width: 100%" disabled  id="cmbestadof" onchange="CiudadMunicipio(1);">
                           <option value="S" selected="selected"></option>
                         </select>
                       </div>
                       <div class="col-md-4">
                         <label>Ciudad:</label>
-                        <select class="js-states form-control" style="width: 100%"  id="cmbciudadf">
+                        <select class="js-states form-control" style="width: 100%" disabled  id="cmbciudadf">
                           <option value="S" selected="selected"></option>
                         </select>
                       </div>
                       <div class="col-md-4">
                         <label>Municipio:</label>
-                        <select class="js-states form-control" style="width: 100%"  id="cmbmunicipiof"  required onchange="SeleccionarParroquia(1);" >
+                        <select class="js-states form-control" style="width: 100%" disabled id="cmbmunicipiof"  required onchange="SeleccionarParroquia(1);" >
                           <option value="S" selected="selected"></option>
                         </select>
                       </div>
-
-
-
-
 
                    </div> <!-- Grupo nombres-->
                   </div>
@@ -177,21 +169,21 @@
                     <div class="form-group">
                       <div class="col-md-4">
                         <label>Parroquia:</label>
-                        <select class="js-states form-control" style="width: 100%" id="cmbparroquiaf" required>
+                        <select class="js-states form-control" style="width: 100%" disabled id="cmbparroquiaf" required>
                           <option value="S" selected="selected"></option>
                         </select>
                       </div>
                       <div class="col-md-4">
                         <label>Calle / Edificio:</label>
-                        <input id="txtcallef" class="form-control"  type="text" >
+                        <input id="txtcallef" class="form-control" disabled type="text" >
                       </div>
                       <div class="col-md-2">
                         <label># Casa:</label>
-                        <input id="txtcasaf" class="form-control"  type="text" >
+                        <input id="txtcasaf" class="form-control" disabled type="text" >
                       </div>
                       <div class="col-md-2">
                         <label># Apto.:</label>
-                        <input id="txtaptof" class="form-control"  type="text" >
+                        <input id="txtaptof" class="form-control" disabled type="text" >
                       </div>
                      </div> <!-- Grupo nombres-->
                   </div>
@@ -200,20 +192,19 @@
                     <div class="form-group">
                       <div class="col-md-4">
                         <label>Teléfono:</label>
-                        <input id="txttelefonof" class="form-control"  type="text" >
+                        <input id="txttelefonof" class="form-control" disabled type="text" >
                       </div>
                       <div class="col-md-4">
                         <label >Celular:</label>
-                        <input id="txtcelularf" class="form-control"  type="text" >
+                        <input id="txtcelularf" class="form-control" disabled type="text" >
                       </div>
                       <div class="col-md-4" >
                         <label >Correo Electronico:</label>
-                        <input  id="txtcorreof" class="form-control"  type="text" >
+                        <input  id="txtcorreof" class="form-control" disabled type="text" >
                       </div>
                     </div>
                   </div>
                 </div><!-- Tab panes  Direccion-->
-
                 <div role="tabpanel" class="tab-pane" id="condicionespecial" style="padding:15px">
 
                   <div class="form-group">
@@ -231,7 +222,13 @@
                       <div class="form-group">
                         <div class="col-md-4">
                           <label>Fecha:</label>
-                          <input id="txtfechacondicionf" class="form-control" disabled="disabled"  type="text">
+                          <div class="input-group date">
+                            <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                            </div>
+                            <input id="txtfechacondicionf" class="form-control" disabled="disabled"  type="text">
+                            <!-- <input type="text" class="form-control"  id="txtfechagraduacion" disabled="disabled" tabindex="4" required> -->
+                          </div>
                         </div>
                         <div class="col-md-8">
                           <label>Tipo de Discapacidad:</label>
@@ -275,9 +272,72 @@
 
                 </div>
                 <div role="tabpanel" class="tab-pane" id="datoestudio" style="padding:15px">
+                  <div class="form-group">
+                    <div class="col-md-3">
+                       <div style="width: 120px;height: 140px; margin-left:20px " id="view-_imgEstudiaf" >
+                         <img style="width: 120px;height: 140px; margin-left: 0px" class="profile-user-img img-responsive
+                         file-path-wrapper-pre-view" src="images/ndisponible.jpg" onerror="this.src='images/ndisponible.jpg'" id="_imgEstudiaf"/>
+                       </div>
+                       <div class="file-field input-field col file-field-input-field " >
+                         &nbsp;&nbsp;&nbsp;<label class="btn btn-default btn-file">Seleccionar Firma
+                         <input type="file" style="visibility:hidden;" id="imgEstudiaf" accept="image/*" onchange="readURL(this,'_imgEstudiaf');"
+                         onclick="clearURL(this)"></label>
+                       </div>
+
+                    </div>
+                    <div class="col-md-9">
+                      <div class="form-group">
+                        <div class="col-md-6">
+                          <label>Carrera:</label>
+                          <input id="txtcarreraf" class="form-control" disabled type="text">
+                        </div>
+                        <div class="col-md-6">
+                          <label>Nivel:</label>
+                          <select class="js-states form-control" style="width: 100%" id="cmbnivelf" disabled>
+                            <option selected="selected" value="S"></option>
+                            <option value=0>PREGRADO</option>
+                            <option value=1>POSTGRADO</option>
+                            <option value=2>MAESTRIA</option>
+                          </select>
+                        </div>
+                     </div>
+
+                     <div class="form-group">
+                       <div class="col-md-4">
+                         <label >Semestre / Año:</label>
+                         <input id="txtsemestref" class="form-control" disabled type="text">
+                       </div>
+
+                       <div class="col-md-4">
+                         <label >Fecha de Inicio:</label>
+                         <div class="input-group">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input class="form-control" id="txtiniciof" disabled type="text">
+                        </div>
+                       </div>
+                       <div class="col-md-4">
+                         <label >Fecha de Fin:</label>
+                         <div class="input-group">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input class="form-control" id="txtfinf" disabled type="text">
+                        </div>
+                       </div>
+                       <div class="col-md-12">
+                         <label>Nombre de la Universidad:</label>
+                         <input class="form-control" id="txtuniversidadf" disabled type="text">
+                       </div>
+                    </div>
+
+                    </div>
+                  </div>
+
                 </div>
 
-                <div role="tabpanel" class="tab-pane" id="partida" style="padding:15px">
+                <div role="tabpanel" class="tab-pane" id="partida" disabled style="padding:15px">
                 <div class="row">
                   <div class="col-md-3">
                       <div style="width: 120px;height: 140px; margin-left:20px " id="view-_imgpartidaF" >
@@ -289,30 +349,28 @@
                       </div>
                   </div>
                     <div class="col-md-9">
-                      <div class="row" >
-                        <label class="col-md-10">Registro Civil:</label>
-                        <label class="col-md-2">Año:</label>
+                      <div class="form-group">
                         <div class="col-md-10">
-                          <input id="txtpregistrocivilf" class="form-control"  type="text" >
+                          <label>Registro Civil:</label>
+                          <input id="txtpregistrocivilf" class="form-control" disabled type="text" >
                         </div>
                         <div class="col-md-2">
-                          <input id="txtpanof" class="form-control"  type="text" >
+                          <label>Año:</label>
+                          <input id="txtpanof" class="form-control" disabled type="text" >
                         </div>
-                      </div>
+                        <div class="col-md-4">
+                          <label>Nro. Acta:</label>
+                          <input id="txtpactaf" class="form-control" disabled type="text" >
+                        </div>
+                        <div class="col-md-4">
+                          <label >Nro. Folio:</label>
+                          <input  id="txtpfoliof" class="form-control" disabled type="text" >
+                        </div>
+                        <div class="col-md-4">
+                          <label>Libro:</label>
+                          <input  id="txtplibrof" class="form-control" disabled type="text" >
+                        </div>
 
-                      <div class="row">
-                        <label class="col-md-4">Nro. Acta:</label>
-                        <label class="col-md-4">Nro. Folio:</label>
-                        <label class="col-md-4">Libro:</label>
-                        <div class="col-md-4">
-                          <input id="txtpactaf" class="form-control"  type="text" >
-                        </div>
-                        <div class="col-md-4">
-                          <input  id="txtpfoliof" class="form-control"  type="text" >
-                        </div>
-                        <div class="col-md-4">
-                          <input  id="txtplibrof" class="form-control"  type="text" >
-                        </div>
                       </div>
 
 
@@ -325,50 +383,47 @@
                 <div role="tabpanel" class="tab-pane" id="dfisico"  style="padding:15px">
                   <div class="row">
                     <div class="form-group">
-                     <label class="col-md-4">Estatura:</label>
-                     <label class="col-md-4">Peso:</label>
-                     <label class="col-md-4">Talla:</label>
-
                      <div class="col-md-4">
-                       <input  id="txtestaturaf" class="form-control"  type="text" >
+                       <label>Estatura:</label>
+                       <input  id="txtestaturaf" class="form-control" disabled type="text" >
                      </div>
                      <div class="col-md-4">
-                       <input  id="txtpesof" class="form-control"  type="text" >
+                       <label>Peso:</label>
+                       <input  id="txtpesof" class="form-control" disabled type="text" >
                      </div>
                      <div class="col-md-4">
-                      <input  id="txttallaf" class="form-control"  type="text" >
+                       <label>Talla:</label>
+                      <input  id="txttallaf" class="form-control" disabled type="text" >
                      </div>
                    </div> <!-- Grupo nombres-->
                   </div>
 
                   <div class="row">
                     <div class="form-group">
-                     <label class="col-md-3">Color de Piel:</label>
-                     <label class="col-md-3">Color de Ojos:</label>
-                     <label class="col-md-3">Color de Cabello:</label>
-
-                     <label class="col-md-3">Seña Particular:</label>
-
                      <div class="col-md-3">
-                       <select class="js-states form-control" style="width: 100%"  id="cmbpielf" >
+                       <label>Color de Piel:</label>
+                       <select class="js-states form-control" style="width: 100%" disabled id="cmbpielf" >
                          <option value="S" selected="selected"></option>
                        </select>
                      </div>
                      <div class="col-md-3">
-                       <select class="js-states form-control" style="width: 100%"  id="cmbojosf" >
+                       <label>Color de Ojos:</label>
+                       <select class="js-states form-control" style="width: 100%" disabled id="cmbojosf" >
                          <option value="S" selected="selected"></option>
                        </select>
                      </div>
                      <div class="col-md-3">
-                       <select class="js-states form-control" style="width: 100%"  id="cmbcolorcabellof" >
+                       <label>Color de Cabello:</label>
+                       <select class="js-states form-control" style="width: 100%" disabled id="cmbcolorcabellof" >
                          <option value="S" selected="selected"></option>
                        </select>
                      </div>
                      <div class="col-md-3">
-                       <input  id="txtsenaparticularf" class="form-control"  type="text" >
+                       <label>Seña Particular:</label>
+                       <input  id="txtsenaparticularf" class="form-control" disabled type="text" >
                      </div>
                    </div> <!-- Grupo nombres-->
-                  </div>
+                </div>
 
 
                 </div><!-- Tab panes Datos Fisicos-->
@@ -444,3 +499,4 @@
             </div>
 
           </div>
+        </form>

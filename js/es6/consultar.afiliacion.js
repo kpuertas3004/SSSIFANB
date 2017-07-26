@@ -38,14 +38,14 @@ function Buscar( id ){
           $("#_btnSavlvar").hide();
 
           $("#_tblConstFamiliares").html(ConstanciaFamiliaresHTML());
-          var fam = $('#tblConstFamiliares').DataTable({
+          /*var fam = $('#tblConstFamiliares').DataTable({
             'paging'      : false,
             'lengthChange': false,
             'searching'   : false,
             'ordering'    : false,
             'info'        : false,
             'autoWidth'   : false
-          });
+          });*/
 
 
 
@@ -184,9 +184,10 @@ function Buscar( id ){
             let apellidos = DBF.apellidoprimero + ' ' + DBF.apellidosegundo;
             let nombreCompleto = apellidos + ' ' + nombres;
             let estadocivil= familiar.Persona.DatoBasico.estadocivil;
+            let fnac = ConvertirFechaHumana(DBF.fechanacimiento);
 
             var modificar = '<button type="button" id="btnModFamiliar' + j + '" \
-            class="btn btn-xs btn-info" onclick="ModificarFamiliarPos(' + j + ')">\
+            class="btn btn-sm btn-info" onclick="ModificarFamiliarPos(' + j + ')">\
               <i class="fa fa-pencil"></i></button>'
             mil = nombre;
             if (v.esmilitar == true){
@@ -208,15 +209,15 @@ function Buscar( id ){
             if (DBF.estadocivil != undefined ){
               edocivil = DBF.estadocivil;
             }
-            fam.row.add([
-              nombreCompleto, //1
-              cedula, //2
-              familiar.GenerarParentesco(), //3
-              DBF.fechanacimiento, //4
-              edocivil,//5
-              situacion, //6
-              fechavencimiento //7
-            ]).draw(false);
+
+
+            $("#_contenidoFamiliares").append('<tr><td>'+nombreCompleto+'</td>\
+              <td class="alinear_td">'+ cedula +'</td>\
+              <td class="alinear_td">'+ familiar.GenerarParentesco() +'</td>\
+              <td class="alinear_td">'+  fnac +'</td>\
+              <td class="alinear_td">'+ edocivil +'</td>\
+              <td class="alinear_td">'+ situacion +'</td>\
+              <td class="alinear_td">'+ fechavencimiento +'</td></tr>');
 
             t.row.add ([
               j++, //0
@@ -469,19 +470,20 @@ function FamiliaresHTML(){
 }
 
 function ConstanciaFamiliaresHTML(){
-  var html = '<table class="ui celled table" cellspacing="0" width="100%" id="tblConstFamiliares" >\
+  var html = '<table class="table table-bordered " cellspacing="0" width="100%" id="tblConstFamiliares" >\
     <thead>\
-      <tr>\
-        <th>APELLIDOS Y NOMBRES</th>\
-        <th>CÉDULA</th>\
-        <th>PARENTESCO</th>\
-        <th>FECHA NAC.</th>\
-        <th>EDO CIVIL</th>\
-        <th>SITUACIÓN</th>\
-        <th>FECHA VCTO. CARNET</th>\
+    <tr><th colspan="7" class="titulo_fondo">Familiares Afiliados</th></tr>\
+      <tr class="titulo_tabla">\
+        <th class="alinear_td">APELLIDOS Y NOMBRES</th>\
+        <th class="alinear_td">CÉDULA</th>\
+        <th class="alinear_td">PARENTESCO</th>\
+        <th class="alinear_td">FECHA NAC.</th>\
+        <th class="alinear_td">EDO CIVIL</th>\
+        <th class="alinear_td">SITUACIÓN</th>\
+        <th class="alinear_td">FECHA VCTO. CARNET</th>\
       </tr>\
     </thead >\
-    <tbody>\
+    <tbody id="_contenidoFamiliares">\
     </tbody>\
   </table>';
   return html;
@@ -522,6 +524,20 @@ function ConvertirFechaHumana(f){
 
 }
 
+
+  function ConvertirFechaActual(){
+    var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio",
+                           "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+    var f=new Date();
+
+    return f.getDate() + " del mes de " + meses[f.getMonth()] + " de " + f.getFullYear();
+  }
+
+function IncluirFamiliar(){
+  $("#modFamiliar").modal('show');
+  BlanquearFamiliar();
+}
+
 function ValidarCorreo(){
   var email = $('#txtmcorreo').val();
   var caracter = new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
@@ -533,22 +549,82 @@ function ValidarCorreo(){
     }else{
         return true;
     }
+
 }
 
-function BlanquearFamiliar(){
+
+function FrmFamiliar(valor){
+  $("#txtcedulaf").attr('disabled',valor);
+  $("#txtnombref").attr('disabled',valor);
+  $("#txtapellidof").attr('disabled',valor);
+  $("#txtnacimientof").attr('disabled',valor);
+  $("#cmbsexof").attr('disabled',valor);
+  $("#cmbedocivilf").attr('disabled',valor);
+  $("#cmbparentescof").attr('disabled',valor);
+  $("#cmbcondicionf").attr('disabled',valor);
+  $("#cmbsituacionf").attr('disabled',valor);
+
+  $("#cmbestudiaf").attr('disabled',valor);
+  $("#cmbestadof").attr('disabled',valor);
+  $("#cmbmunicipiof").attr('disabled',valor);
+  $("#cmbparroquiaf").attr('disabled',valor);
+  $("#cmbciudadf").attr('disabled',valor);
+  $("#txtcallef").attr('disabled',valor);
+  $("#txtcasaf").attr('disabled',valor);
+  $("#txtaptof").attr('disabled',valor);
+  $("#txttelefonof").attr('disabled',valor);
+  $("#txtcelularf").attr('disabled',valor);
+  $("#txtcorreof").attr('disabled',valor);
+  $("#txtpregistrocivilf").attr('disabled',valor);
+  $("#txtpanof").attr('disabled',valor);
+  $("#txtpactaf").attr('disabled',valor);
+  $("#txtpfoliof").attr('disabled',valor);
+  $("#txtplibrof").attr('disabled',valor);
+  $("#txtestaturaf").attr('disabled',valor);
+  $("#txtpesof").attr('disabled',valor);
+  $("#txttallaf").attr('disabled',valor);
+  $("#txtgruposanguineof").attr('disabled',valor);
+  $("#cmbpielf").attr('disabled',valor);
+  $("#cmbojosf").attr('disabled',valor);
+  $("#cmbcolorcabellof").attr('disabled',valor);
+  $("#txtsenaparticularf").attr('disabled',valor);
+  //
+  $("#txtcarreraf").attr('disabled',valor);
+  $("#cmbnivelf").attr('disabled',valor);
+  $("#txtsemestref").attr('disabled',valor);
+  $("#txtiniciof").attr('disabled',valor);
+  $("#txtfinf").attr('disabled',valor);
+  $("#txtuniversidadf").attr('disabled',valor);
+  $("#txtuniversidadf").attr('disabled',valor);
+  //
+  $("#txtfechacondicionf").attr('disabled',valor);
+  $("#cmbDiscapacidadf").attr('disabled',valor);
+  $("#txtdiagnosticof").attr('disabled',valor);
+  $("#cmbHospitalf").attr('disabled',valor);
+  $("#btnnacionalidad").attr('disabled',valor);
+  if(valor == false){
+    $("#imgIngFam").show();
+  }else{
+    $("#imgIngFam").hide();
+  }
+
+
+}
+function LimpiarFrmFamiliar(){
   $("#txtcedulaf").val("");
   $("#txtnombref").val("");
   $("#txtapellidof").val("");
   $("#txtnacimientof").val("");
-  $("#cmbsexof").val("");
-  $("#cmbedocivilf").val("");
-  $("#cmbparentescof").val("");
-  $("#cmbcondicionf").val("");
-  $("#cmbestudiaf").val("");
-  $("#cmbestadof").val("");
-  $("#cmbmunicipiof").val("");
-  $("#cmbparroquiaf").val("");
-  $("#txtciudadf").val("");
+  $("#cmbsexof").val("S");
+  $("#cmbedocivilf").val("SS");
+  $("#cmbparentescof").val("S");
+  $("#cmbsituacionf").val("S");
+  $("#cmbcondicionf").val("S");
+  $("#cmbestudiaf").val("S");
+  $("#cmbestadof").val("S");
+  $("#cmbmunicipiof").val("S");
+  $("#cmbparroquiaf").val("S");
+  $("#cmbciudadf").val("S");
   $("#txtcallef").val("");;
   $("#txtcasaf").val("");
   $("#txtaptof").val("");
@@ -568,10 +644,25 @@ function BlanquearFamiliar(){
   $("#cmbojosf").val("");
   $("#cmbcolorcabellof").val("");
   $("#txtsenaparticularf").val("");
-  $("#txttwitterf").val("");
-  $("#txtfacebookf").val("");
-  $("#txtinstagranf").val("");
-  $("#txtlinkedinf").val("");
+
+  //
+  $("#txtcarreraf").val("");
+  $("#cmbnivelf").val("");
+  $("#txtsemestref").val("");
+  $("#txtiniciof").val("");
+  $("#txtfinf").val("");
+  $("#txtuniversidadf").val("");
+  $("#txtuniversidadf").val("");
+  //
+  $("#txtfechacondicionf").val("");
+  $("#cmbDiscapacidadf").val("");
+  $("#txtdiagnosticof").val("");
+  $("#cmbHospitalf").val("");
+
+  // $("#txttwitterf").val("");
+  // $("#txtfacebookf").val("");
+  // $("#txtinstagranf").val("");
+  // $("#txtlinkedinf").val("");
 
 }
 
@@ -628,26 +719,32 @@ function ActivarCalendarios(){
     language: 'es'
   });
 
+
   ////ACTIVAR MASK
   $('[data-mask]').inputmask();
 }
 
-/*function soloLetras(e) {
-    key = e.keyCode || e.which;
-    tecla = String.fromCharCode(key).toLowerCase();
-    letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
-    especiales = [8, 37, 39, 46];
+function ActivarCalendariosFamiliar(){
+  $('#txtfechacondicionf').datepicker({
+    autoclose: true,
+    format:"dd/mm/yyyy",
+    language: 'es'
+  });
 
-    tecla_especial = false
-    for(var i in especiales) {
-        if(key == especiales[i]) {
-            tecla_especial = true;
-            break;
-        }
+  $('#txtiniciof').datepicker({
+    autoclose: true,
+    format:"dd/mm/yyyy",
+    language: 'es'
+  });
+
+  $('#txtfinf').datepicker({
+    autoclose: true,
+    format:"dd/mm/yyyy",
+    language: 'es'
+  });
+
+
 }
-    if(letras.indexOf(tecla) == -1 && !tecla_especial)
-        return false;
-}*/
 
 function incluirAfiliado(){
 
@@ -1075,14 +1172,16 @@ function ModificarFamiliarPos(pos){
   if(Util.ValidarFormulario("_frmDatoBasico") == false){
     Util.ModalValidar("Favor actualizar afiliado");
   }else{
+    FrmFamiliar(false);
+    ActivarCalendariosFamiliar();
     var Familiar = ObjMilitar.Familiar[pos-1];
     var DB = Familiar.Persona.DatoBasico;
-
     $("#modFamiliar").modal('show');
     $('#txtcedulaf').val(DB.cedula);
     SeleccionarPorSexoFamiliar(DB.sexo);
-    // $('#txtnacimientof').val(DB.nacionalidad);
+    $('#btnnacionalidad').val(NacionalidadFamiliar(DB.nacionalidad));
     $('#txtnacimientof').val(ConvertirFechaHumana(DB.fechanacimiento));
+    $('#txtedadf').val(Util.CalcularEdad($('#txtnacimientof').val()));
     $('#txtnombref').val(DB.nombreprimero);
     $('#txtapellidof').val(DB.apellidoprimero);
     $('#cmbsexof').val(DB.sexo);
@@ -1102,7 +1201,6 @@ function ModificarFamiliarPos(pos){
     if(Familiar.parentesco == "EA"){
         $("#cmbedocivilf").val("C");
     }else if(Familiar.parentesco == "HJ"){
-
       $("#_condicionf").show();
       $("#_estudiaf").show();
       $("#_condicionfdoc").show();
@@ -1124,7 +1222,107 @@ function ModificarFamiliar(){
     Util.ModalValidar("Favor actualizar afiliado");
   }else{
     $("#modFamiliar").modal('show');
-    BlanquearFamiliar();
+    LimpiarFrmFamiliar();
   }
 
+}
+
+function CConstanciaAfiliacion(){
+
+  var urlMil   = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
+  var urlGra   = "images/grados/" + militar.Grado.abreviatura + ".png";
+      urlGra   = urlGra.toLowerCase();
+  var fechaActual = ConvertirFechaActual();
+  var gradoPI  = 'GENERAL DE DIVISIÓN';
+  var nombrePI = 'JESÚS RAFAEL SALAZAR VELÁSQUEZ';
+  $('#modRpt').modal('show');
+  $("#lblgradoMil").text($("#cmbgrado option:selected").text());
+  $("#lblcedulaMil").text($("#txtcedula").val());
+  $("#lblnombreMil").text($("#txtapellido").val() + ' ' + $("#txtnombre").val());
+  $("#lbledoCivilM").text($("#cmbedocivil option:selected").text());
+  $("#lblfchNacMil").text($("#txtnacimiento").val());
+  // $("#lbldireccionMil").text($("#txtmcalle").val() +
+  //                            $("#txtmcasa").val() +
+  //                            $("#txtmapto").val() +
+  //                            $("#cmbmparroquia option:selected").text() +
+  //                            $("#cmbmmunicipio option:selected").text() +
+  //                            $("#cmbmciudad option:selected").text() +
+  //                            $("#cmbmestado option:selected").text());
+  $("#lblfchIngresoFANB").text($("#txtfechagraduacion").val());
+  $("#lblfchUltAscenso").text($("#_fascenso").val());
+  $("#lblaServicio").text(militar.tiemposervicio);
+  $("#lblcomponente").text($("#cmbcomponente option:selected").text());
+  $("#lblsituacionMil").text($("#cmbsituacion option:selected").text());
+  $("#_fotoConstancia").attr("src", urlMil);
+  $("#_Constgrado").attr("src", urlGra);
+  $("#lblfchActual").text(fechaActual);
+  $("#lblgradoPI").text(gradoPI);
+  $("#lblnombrePI").text(nombrePI);
+  $("#lblgradoPIF").text(gradoPI);
+
+}
+function imprSelec(nombre) {
+ var html = $("#" + nombre).html();
+ var ventana = window.open("","_blank");
+ ventana.document.write(html);
+ ventana.document.head.innerHTML = '\
+ <meta charset="utf-8">\
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">\
+ <title>SSSIFANB</title>\
+ <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">\
+ <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">\
+ <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">\
+ <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">\
+ <link rel="stylesheet" href="dist/css/AdminLTE.min.css">\
+ <link rel="stylesheet" href="dist/css/skins.ipsfa/_all-skins_1.css">\
+ <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">\
+ <link rel="stylesheet" href="css/carnet.css">\
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css">\
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.semanticui.min.css">\
+ <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">\
+ <link rel="stylesheet"\
+       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">\
+ <style type="text/css">\
+   .row-centered {\
+       text-align:center;\
+   }\
+   .col-centered {\
+       display:inline-block;\
+       float:none;\
+       text-align:left;\
+       margin-right:-4px;\
+   }\
+   td {\
+     font-size: 12px;\
+     font-weight: normal;\
+   }\
+   @charset "utf-8";\
+   @page {\
+   	margin: 1cm;\
+   	size:8.5in 11in;\
+  }\
+ </style>';
+ ventana.print();
+ ventana.close();
+ //console.log(html);
+  // Create and insert new print section
+    // var elem = document.getElementById(nombre);
+    // var domClone = elem.cloneNode(true);
+    // var $printSection = document.createElement("nombre");
+    // $printSection.id = "printSection";
+    // $printSection.appendChild(domClone);
+    // document.body.insertBefore($printSection, document.body.firstChild);
+
+    //
+
+    // Clean up print section for future use
+    // var oldElem = document.getElementById("printSection");
+    // if (oldElem != null) { oldElem.parentNode.removeChild(oldElem); }
+    //                       //oldElem.remove() not supported by IE
+    //
+    // return true;
+  }
+
+function CalcularEdadFamiliar(){
+  $('#txtedadf').val(Util.CalcularEdad($('#txtnacimientof').val()));
 }

@@ -201,10 +201,10 @@ class Familiar{
 		this.parentesco = "";
 		this.esmilitar = "";
 		this.condicion = "";
-		this.estudia = "";
-		this.beneficio = "";
-		this.documento = "";
-		this.documentopadre = "";
+		this.estudia = 0;
+		this.beneficio = 1;
+		this.documento = 0;
+		this.documentopadre = 0;
 	}
 
 	GenerarParentesco(){
@@ -225,7 +225,44 @@ class Familiar{
 		}
 		return parentesco;
 	}
-
+	Obtener(){
+		this.Persona.DatoBasico.cedula = $("#txtcedulaf").val();
+		this.Persona.DatoBasico.fechanacimiento = $("#txtnacimientof").val();
+		this.Persona.DatoBasico.sexo = $("#cmbsexof").val();
+		this.Persona.DatoBasico.nombreprimero = $("#txtnombref").val();
+		this.Persona.DatoBasico.apellidoprimero = $("#txtapellidof").val();
+		this.Persona.DatoBasico.estadocivil = $("#cmbedocivilf  option:selected").val();
+		this.parentesco = $("#cmbparentescof").val();
+		this.condicion = $("#cmbcondicionf").val();
+		this.estudia = $("#cmbestudiaf").val();
+		this.Persona.Direccion.estado = $("#cmbestadof option:selected").val();
+		this.Persona.Direccion.municipio = $("#cmbmunicipiof  option:selected").val();
+		this.Persona.Direccion.parroquia = $("#cmbparroquiaf  option:selected").val();
+		this.Persona.Direccion.ciudad = $("#cmbciudadf  option:selected").val();
+		this.Persona.Direccion.calleavenida = $("#txtcallef").val();
+		this.Persona.Direccion.casa = $("#txtcasaf").val();
+		this.Persona.Direccion.apartamento = $("#txtaptof").val();
+		this.Persona.Direccion.telefonofijo = $("#txttelefonof").val();
+		this.Persona.Direccion.telefonomovil = $("#txtcelularf").val();
+		this.Persona.Direccion.correo = $("#txtcorreof").val();
+		this.Persona.PartidaNacimiento.registrocivil= $("#txtpregistrocivilf").val();
+		this.Persona.PartidaNacimiento.ano = $("#txtpanof").val();
+		this.Persona.PartidaNacimiento.acta = $("#txtpactaf").val();
+		this.Persona.PartidaNacimiento.folio = $("#txtpfoliof").val();
+		this.Persona.PartidaNacimiento.libro = $("#txtplibrof").val();
+		this.Persona.DatoFisico.peso = $("#txtpesof").val();
+		this.Persona.DatoFisico.talla = $("#txttallaf").val();
+		this.Persona.DatoFisionomico.coloropiel = $("#cmbpielf").val();
+		this.Persona.DatoFisionomico.colorojos = $("#cmbojosf").val();
+		this.Persona.DatoFisionomico.colorcabello = $("#cmbcolorcabellof").val();
+		this.Persona.DatoFisionomico.estatura = $("#txtestaturaf").val();
+		this.Persona.DatoFisionomico.senaParticular = $("#txtsenaparticularf").val();
+		this.Persona.DatoFisionomico.gruposanguineo = $("#txtgruposanguineof").val();
+		// this.Persona.RedSocial.twitter = $("#txttwitterf").val();
+		// this.Persona.RedSocial.facebook = $("#txtfacebookf").val();
+		// this.Persona.RedSocial.instagram = $("#txtinstagranf").val();
+		// this.Persona.RedSocial.linkedin = $("#txtlinkedinf").val();
+	}
 }
 
 class Tim{
@@ -471,7 +508,6 @@ class Militar{
     CargarAPI(Conn.URL + "militar/crud" , "POST", this.Obtener());
 	}
 	Actualizar(){
-		alert(11);
 		CargarAPI(Conn.URL + "militar/crud" , "PUT", this.Obtener());
 		$("#_bxFamiliar").show();
     $("#_bxFamiliarTarjeta").show();
@@ -494,42 +530,7 @@ class CuentaBancaria{
 function ObtenerFamiliar(){
 
 	let familiar = new Familiar();
-	familiar.Persona.DatoBasico.cedula = $("#txtcedulaf").val();
-	familiar.Persona.DatoBasico.fechanacimiento = $("#txtnacimientof").val();
-	familiar.Persona.DatoBasico.sexo = $("#cmbsexof").val();
-	familiar.Persona.DatoBasico.nombreprimero = $("#txtnombref").val();
-	familiar.Persona.DatoBasico.apellidoprimero = $("#txtapellidof").val();
-	familiar.Persona.DatoBasico.estadocivil = $("#cmbedocivilf").val();
-	familiar.parentesco = $("#cmbparentescof").val();
-	familiar.condicion = $("#cmbcondicionf").val();
-	familiar.estudia = $("#cmbestudiaf").val();
-	familiar.Persona.Direccion.estado = $("#cmbestadof").val();
-	familiar.Persona.Direccion.municipio = $("#cmbmunicipiof").val();
-	familiar.Persona.Direccion.parroquia = $("#cmbparroquiaf").val();
-	familiar.Persona.Direccion.ciudad = $("#cmbciudadf").val();
-	familiar.Persona.Direccion.calleavenida = $("#txtcallef").val();
-	familiar.Persona.Direccion.casa = $("#txtcasaf").val();
-	familiar.Persona.Direccion.apartamento = $("#txtaptof").val();
-	familiar.Persona.Direccion.telefonofijo = $("#txttelefonof").val();
-	familiar.Persona.Direccion.telefonomovil = $("#txtcelularf").val();
-	familiar.Persona.Direccion.correo = $("#txtcorreof").val();
-	familiar.Persona.PartidaNacimiento.registrocivil= $("#txtpregistrocivilf").val();
-	familiar.Persona.PartidaNacimiento.ano = $("#txtpanof").val();
-	familiar.Persona.PartidaNacimiento.acta = $("#txtpactaf").val();
-	familiar.Persona.PartidaNacimiento.folio = $("#txtpfoliof").val();
-	familiar.Persona.PartidaNacimiento.libro = $("#txtplibrof").val();
-	familiar.Persona.DatoFisico.peso = $("#txtpesof").val();
-	familiar.Persona.DatoFisico.talla = $("#txttallaf").val();
-	familiar.Persona.DatoFisionomico.coloropiel = $("#cmbpielf").val();
-	familiar.Persona.DatoFisionomico.colorojos = $("#cmbojosf").val();
-	familiar.Persona.DatoFisionomico.colorcabello = $("#cmbcolorcabellof").val();
-	familiar.Persona.DatoFisionomico.estatura = $("#txtestaturaf").val();
-	familiar.Persona.DatoFisionomico.senaParticular = $("#txtsenaparticularf").val();
-	familiar.Persona.DatoFisionomico.gruposanguineo = $("#txtgruposanguineof").val();
-	familiar.Persona.RedSocial.twitter = $("#txttwitterf").val();
-	familiar.Persona.RedSocial.facebook = $("#txtfacebookf").val();
-	familiar.Persona.RedSocial.instagram = $("#txtinstagranf").val();
-	familiar.Persona.RedSocial.linkedin = $("#txtlinkedinf").val();
+
 	//familiar.Carnet.huella = $('#_imghuellaf').val();
 	//familiar.Carnet.firma = $('#_imgfirmaf').val();
 

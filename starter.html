@@ -82,12 +82,15 @@
   <script type="text/javascript" src="js/es6/militar.js"></script>
   <script type="text/javascript" src="js/es6/consultar.afiliacion.js"></script>
   <script src="bower_components/barcode/dist/JsBarcode.all.js"></script>
-  <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-  <script src="bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js"></script>
-   <!-- InputMask -->
+  <!-- InputMask -->
   <script src="plugins/input-mask/jquery.inputmask.js"></script>
   <script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
   <script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
+  <script src="bower_components/moment/min/moment.min.js"></script>
+  <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+  <script src="bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js"></script>
+
 
 </head>
 <body class="hold-transition skin-yellow" style="display:none" id="_body">
@@ -389,11 +392,14 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <a href="#" onclick="imprSelec('_contenidorpt');" id="imprimir"><i class="fa fa-print"></i></a>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title">Constancia de Afiliación</h4>
         </div>
         <div class="modal-body">
-          <div id="_contenidorpt"></div>
+          <div id="_contenidorpt">
+
+          </div>
 
         </div>
         <div class="modal-footer" id="_botonesrpt">

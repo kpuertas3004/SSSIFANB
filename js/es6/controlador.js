@@ -171,6 +171,7 @@ function GestionarUsuario() {
 }
 
 
+
 function CConstanciaAfiliacion(){
   $('#modRpt').modal('show');
   $("#lblgradoMil").text($("#cmbgrado option:selected").text());
