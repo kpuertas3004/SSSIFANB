@@ -23,8 +23,8 @@
             <label>Cédula:</label>
               <div class="input-group">
                 <span class="input-group-btn">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">V&nbsp;&nbsp;
-                      <span class="fa fa-caret-down"></span></button>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">V
+                    </button>
                 </span>
                 <input class="form-control" id="txtcedula"  type="text" disabled="disabled" maxlength="8" required tabindex="1" onblur="BuscarInsert()">
                 <span class="input-group-btn">
@@ -203,7 +203,7 @@
             <div class="form-group">
              <div class="col-md-4">
                <label >Resolución Número:</label>
-               <input id="txtnresuelto" class="form-control" disabled="disabled"  type="text" required>
+               <input id="txtnresuelto" class="form-control" disabled="disabled"  type="text" maxlength="8" required>
              </div>
              <div class="col-md-4">
                <label >Resolución Fecha:</label>
@@ -218,7 +218,7 @@
              </div>
              <div class="col-md-4">
                <label>Orden de Merito:</label>
-               <input id="txtposicion" class="form-control" disabled="disabled"  type="text" required>
+               <input id="txtposicion" class="form-control" disabled="disabled"  type="text" maxlength="3" required>
              </div>
            </div> <!-- Grupo nombres-->
 
@@ -283,7 +283,7 @@
                 </div>
                 <div class="col-md-6 col-sm-12" id="_txtmnrocuenta">
                   <label>Nro. de Cuenta:</label>
-                  <input  id="txtmnrocuenta" class="form-control" disabled="disabled"  type="text" maxlength="20">
+                  <input  id="txtmnrocuenta" class="form-control" disabled="disabled"  type="text" maxlength="23" data-inputmask='"mask": "9999-9999-99-9999999999"' data-mask>
                 </div>
               </div><!-- .Form-Group -->
 
@@ -333,41 +333,69 @@
                 <input id="txtmcasa" class="form-control" disabled="disabled"  type="text">
               </div>
               <div class="col-md-2">
-                <label># Apto.:</label>
+                <label># Apto:</label>
                 <input id="txtmapto" class="form-control" disabled="disabled"  type="text">
               </div>
             </div> <!-- Grupo nombres-->
              <div class="form-group">
                <div class="col-md-4">
                  <label >Teléfono:</label>
-                 <input id="txtmtelefono" class="form-control" disabled="disabled" type="text" required>
+                 <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-phone"></i>
+                  </div>
+                 <input id="txtmtelefono" class="form-control" disabled="disabled" type="text" data-inputmask='"mask": "(9999) 999-99-99"' data-mask  required>
                </div>
+              </div>
                <div class="col-md-4">
                  <label>Celular:</label>
-                 <input id="txtmcelular" class="form-control" disabled="disabled" type="text" required>
+                  <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-phone"></i>
+                  </div>
+                 <input id="txtmcelular" class="form-control" disabled="disabled" type="text" data-inputmask='"mask": "(9999) 999-99-99"' data-mask  required>
                </div>
-               <div class="col-md-4">
-                 <label>Correo Electronico:</label>
-                 <input  id="txtmcorreo" class="form-control" disabled="disabled" type="text" required>
+               </div>
+              <div class="col-md-4 col-sm-12">
+                  <label class="control-label">Correo Electronico:</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-envelope"></i>
+                    </div>
+                    <input type="email" class="form-control"  id="txtmcorreo" disabled="disabled" required onblur="ValidarCorreo()">
+                  </div>
                </div>
              </div><!-- Grupo nombres-->
 
              <div class="form-group">
-               <div class="col-md-4">
-                 <label>Twitter:</label>
-                 <input id="txtmtwitter" class="form-control" disabled="disabled" type="text" >
-              </div>
-              <div class="col-md-4">
-                <label class="col-md-6">FaceBook:</label>
-                <input id="txtmfacebook" class="form-control" disabled="disabled" type="text" >
-             </div>
              <div class="col-md-4">
-               <label class="col-md-6 ">Instagram:</label>
-               <input  id="txtminstagran" class="form-control" disabled="disabled" type="text" >
-               <input  id="txtmlinkedin" class="form-control" disabled="disabled" type="hidden" style:"display:none" >
+                  <label class="control-label">Twitter:</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-twitter"></i>
+                    </div>
+                    <input type="text" class="form-control"  id="txtmtwitter" disabled="disabled">
+                  </div>
+              </div>
+             <div class="col-md-4">
+                  <label class="control-label">FaceBook:</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-facebook"></i>
+                    </div>
+                    <input type="text" class="form-control"  id="txtmfacebook" disabled="disabled">
+                  </div>
+               </div>
+             <div class="col-md-4">
+                  <label class="control-label">Instagram:</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-instagram"></i>
+                    </div>
+                    <input type="text" class="form-control"  id="txtminstagran" disabled="disabled">
+                  </div>
+               </div>
             </div>
-            </div>
-
          </div><!-- Tab panes  Direccion-->
 
 
@@ -419,15 +447,15 @@
              <div class="form-group">
               <div class="col-md-3 col-sm-6">
                 <label>Estatura:</label>
-                <input  id="txtmestatura" class="form-control" disabled="disabled" type="text" required maxlength="4">
+                <input  id="txtmestatura" class="form-control" disabled="disabled" type="text" required maxlength="5" data-inputmask='"mask": "99.99"' data-mask>
               </div>
               <div class="col-md-3  col-sm-6">
                 <label>Peso:</label>
-                <input  id="txtmpeso" class="form-control" disabled="disabled" type="text" required maxlength="4">
+                <input  id="txtmpeso" class="form-control" disabled="disabled" type="text" required maxlength="6" data-inputmask='"mask": "999.99"' data-mask>
               </div>
               <div class="col-md-3  col-sm-6">
                 <label>Talla:</label>
-                <input  id="txtmtalla" class="form-control" disabled="disabled" type="text" required maxlength="4">
+                <input  id="txtmtalla" class="form-control" disabled="disabled" type="text" required maxlength="2">
               </div>
               <div class="col-md-3  col-sm-6">
                 <labe>Grupo Sanguineo:</label>
@@ -509,7 +537,7 @@
                   </div>
                   <div class="file-field input-field col file-field-input-field " >
                     &nbsp;&nbsp;&nbsp;<label class="btn btn-default btn-file" id="cargarfirma">Firma
-                    <input type="file" style="visibility:hidden;" id="imgfirma" accept="image/*" onchange="readURL(this,'_imghuella');" onclick="clearURL(this)">
+                    <input type="file" style="visibility:hidden;" id="imghuella" accept="image/*" onchange="readURL(this,'_imghuella');" onclick="clearURL(this)">
                     </label>
                   </div>
                 </center>
@@ -596,15 +624,22 @@
     </form>
   </div><!-- /.box-body -->
   <div class="modal-footer" id="_botonesmilitar">
-    <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal" onclick="CConstanciaAfiliacion()" id="_btnConstancia">
+    <button type="button" class="btn btn-md btn-primary" data-dismiss="modal" onclick="CConstanciaAfiliacion()" id="_btnConstancia">
       <i class="fa fa-print "></i>&nbsp;&nbsp;Constancia</button>
-    <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal" onclick="VisualizarCarnet()" id="_btnTIM">
+    <button type="button" class="btn btn-md btn-primary" data-dismiss="modal" onclick="VisualizarCarnet()" id="_btnTIM">
       <i class="fa fa-credit-card"></i>&nbsp;&nbsp;Emitir TIM</button>
-    <button type="button" class="btn btn-lg btn-warning" data-dismiss="modal" onclick="activarSalvar()" id="_btnModificar">
+    <button type="button" class="btn btn-md btn-warning" data-dismiss="modal" onclick="activarSalvar()" id="_btnModificar">
       <i class="fa fa-pencil"></i>&nbsp;&nbsp;Modificar</button>
-    <button type="submit" class="btn btn-lg btn-success"  onclick="Salvar()" id="_btnSavlvar" style="display:none">
+    <button type="submit" class="btn btn-md btn-success"  onclick="Salvar()" id="_btnSavlvar" style="display:none">
       <i class="fa fa-save"></i>&nbsp;&nbsp;Continuar</button>
-    <button type="submit" class="btn btn-lg btn-primary"  onclick="Actualizar()" id="_btnActualizar" style="display:none">
+    <button type="submit" class="btn btn-md btn-primary"  onclick="Actualizar()" id="_btnActualizar" style="display:none">
       <i class="fa fa-refresh"></i>&nbsp;&nbsp;Actualizar</button>
   </div>
 </div><!-- /.box -->
+
+<!--script>
+  $('form').find('input[type=email]').blur(function(){  
+    ValidarCorreo(); //Llamo la funcion que valida el formato del Correo Electronico
+  });
+</script-->
+

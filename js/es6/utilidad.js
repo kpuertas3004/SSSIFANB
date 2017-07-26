@@ -35,6 +35,8 @@ class Utilidad {
       return f[2] + "-" + f[1] + "-" + f[0];
   }
 
+
+
   ValidarFormulario(_frm){
     let respuesta = true;
     $("#" + _frm + " :input").each(function(i){

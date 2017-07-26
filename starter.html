@@ -83,8 +83,11 @@
   <script type="text/javascript" src="js/es6/consultar.afiliacion.js"></script>
   <script src="bower_components/barcode/dist/JsBarcode.all.js"></script>
   <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-
   <script src="bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js"></script>
+   <!-- InputMask -->
+  <script src="plugins/input-mask/jquery.inputmask.js"></script>
+  <script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+  <script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
 
 </head>
 <body class="hold-transition skin-yellow" style="display:none" id="_body">
@@ -486,7 +489,7 @@
           </div>
           <div class="modal-footer" id="_botonesfamiliar">
             <button type="button" class="btn btn-default" data-dismiss="modal" onclick="ObtenerFamiliar()">Aceptar</button>
-            <button type="button" class="btn btn-primary" onclick="desactivarSalvar()">Cancelar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->

@@ -30,39 +30,51 @@ class Estado{
     let estado = JSON.parse(sessionStorage.getItem('ipsfaEstado'));
 
     $("#cmbmestado").html('<option value="S" selected="selected"></option>');
+    $("#cmbestadof").html('<option value="S" selected="selected"></option>');
     $.each(estado, function (c, v){
       $("#cmbmestado").append('<option value="' + v.codigo + '">' + v.nombre + '</option>');
+      $("#cmbestadof").append('<option value="' + v.codigo + '">' + v.nombre + '</option>');
     });
 
   }
-  ObtenerCiudadMunicipio(estado){
+  ObtenerCiudadMunicipio(estado, nombre){
+    var sciudad = 'cmbmciudad';
+    var smunicipio = 'cmbmmunicipio';
+    if ( nombre != undefined){
+      sciudad = 'cmbciudadf';
+      smunicipio = 'cmbmunicipiof';
+    }
     var cm = JSON.parse(sessionStorage.getItem('ipsfaEstado')); //CiudadMunicipio
     $.each(cm, function(c, v){
       if (v.codigo == estado){
 
         let ciudad = v.ciudad;
         let municipio = v.municipio;
-        $("#cmbmciudad").html('<option value="S" selected="selected"></option>');
-        $("#cmbmmunicipio").html('<option value="S" selected="selected"></option>');
+        $("#" + sciudad).html('<option value="S" selected="selected"></option>');
+        $("#" + smunicipio).html('<option value="S" selected="selected"></option>');
         $.each(ciudad, function (c,v){
-          $("#cmbmciudad").append('<option value="' + v.nombre + '">' + v.nombre + '</option>');
+          $("#" + sciudad).append('<option value="' + v.nombre + '">' + v.nombre + '</option>');
         });
         $.each(municipio, function (c,v){
-          $("#cmbmmunicipio").append('<option value="' + v.nombre + '">' + v.nombre + '</option>');
+          $("#" + smunicipio).append('<option value="' + v.nombre + '">' + v.nombre + '</option>');
         });
       }
     });
   }
-  ObtenerParroquia(estado, municipio){
+  ObtenerParroquia(estado, municipio, nombre){
+    var sparroquia = 'cmbmparroquia';
+    if ( nombre != undefined){
+      sparroquia = 'cmbparroquiaf';
+    }
     var cm = JSON.parse(sessionStorage.getItem('ipsfaEstado')); //CiudadMunicipio
     $.each(cm, function(c, v){
       if (v.codigo == estado){
         var mun = v.municipio;
         $.each(mun, function (c,v){
           if(v.nombre == municipio){
-            $("#cmbmparroquia").html('<option value="S"></option>');
+            $("#" + sparroquia).html('<option value="S"></option>');
             $.each(v.parroquia, function(cl, vl){
-              $("#cmbmparroquia").append('<option value="' + vl + '">' + vl + '</option>');
+              $("#" + sparroquia).append('<option value="' + vl + '">' + vl + '</option>');
             });
           }
         });
@@ -122,11 +134,19 @@ function Enter(e){
   }
 }
 
-function CiudadMunicipio(){
-  Estados.ObtenerCiudadMunicipio($("#cmbmestado option:selected").val());
+function CiudadMunicipio(valor){
+  if (valor == undefined){
+    Estados.ObtenerCiudadMunicipio($("#cmbmestado option:selected").val());
+  }else{
+    Estados.ObtenerCiudadMunicipio($("#cmbestadof option:selected").val(), true);
+  }
 }
-function SeleccionarParroquia(){
-  Estados.ObtenerParroquia($("#cmbmestado option:selected").val(), $("#cmbmmunicipio option:selected").val());
+function SeleccionarParroquia(valor){
+  if (valor == undefined){
+    Estados.ObtenerParroquia($("#cmbmestado option:selected").val(), $("#cmbmmunicipio option:selected").val());
+  }else{
+    Estados.ObtenerParroquia($("#cmbestadof option:selected").val(), $("#cmbmunicipiof option:selected").val(), true);
+  }
 }
 
 function CargarUrl(id, url){
@@ -152,6 +172,27 @@ function GestionarUsuario() {
 
 
 
+function CConstanciaAfiliacion(){
+  $('#modRpt').modal('show');
+  $("#lblgradoMil").text($("#cmbgrado option:selected").text());
+  $("#lblcedulaMil").text($("#txtcedula").val());
+  $("#lblnombreMil").text($("#txtapellido").val() + ' ' + $("#txtnombre").val());
+  $("#lbledoCivilM").text($("#cmbedocivil option:selected").text());
+  $("#lblfchNacMil").text($("#txtnacimiento").val());
+  $("#lbldireccionMil").text($("#txtmcalle").val()) /*+ $("#txtmcasa").val() +
+                             $("#txtmapto").val() + $("#cmbmparroquia option:selected").text() +
+                             $("#cmbmmunicipio option:selected").text() +
+                             $("#cmbmciudad option:selected").text() +
+                             $("#cmbmestado option:selected").text())*/;
+  $("#lblfchIngresoFANB").text($("#txtfechagraduacion").val());
+  $("#lblfchUltAscenso").text($("#_fascenso").val());
+  $("#lblaServicio").text(militar.tiemposervicio);
+  $("#lblcomponente").text($("#cmbcomponente option:selected").text());
+  $("#lblsituacionMil").text($("#cmbsituacion option:selected").text());
+
+
+
+}
 
 function Editar(){
   $('#modMsj').modal('show');
