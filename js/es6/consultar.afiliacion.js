@@ -1300,10 +1300,7 @@ var html = $("#" + nombre).html();
   }
 
 function CalcularEdadFamiliar(id, vl){
-  fecha = Util.ConvertirFechaUnix($('#'+vl).val());
-  console.log(fecha);
   $('#'+id).val(Util.CalcularEdad($('#'+vl).val()));
-
 }
 
 function ActivarModalFamiliar(){
@@ -1319,6 +1316,13 @@ function ValidarMilitar(valor){
     return false;
   }
 
+
+  if( $("#cmbparentescom").val() == "HJ" && parseInt($("#txtedadmm").val()) > 26 ){
+    //
+    $("#modMsjfamiliar").modal('hide');
+    Util.ModalValidarFamiliar("El hijo que intenta ingresar es mayor a 26 años");
+    return false;
+  }
   let esCasado = false;
   $.each(ObjMilitar.Familiar, function (c, v){
     if (v.parentesco == "EA" && v.beneficio == true){
@@ -1375,7 +1379,6 @@ function ValidarMilitar(valor){
           var hijo = false;
           $.each(militar.Familiar, function (c, v){
             var familiar = v.Persona.DatoBasico;
-            console.log(v.parentesco);
             if (v.parentesco == "PD" && familiar.sexo == "M"){
               padre = true;
             }else if (v.parentesco == "PD" && familiar.sexo == "F"){
@@ -1403,24 +1406,22 @@ function ValidarMilitar(valor){
             }
           }
 
-
-
           var estadocivil = $("#cmbedocivil").val();
-
           if(casado == false && estadocivil != "C"){
             $("#cmbparentescof").append('<option value="EA">' + sparentesco + '</option>');
             activar = true;
           }
-
           if(activar != true){
             $("#modMsjfamiliar").modal('hide');
             Util.ModalValidarFamiliar("El afiliado no presenta parentesco");
             return false;
           }else{
-
             $("#modFamiliar").modal('show');
           }
 
+        } else { //if no existe el miliater
+
+          $("#modFamiliar").modal('show');
         } //Fin del tipo
 
       } // fin Estatus
