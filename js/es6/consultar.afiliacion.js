@@ -38,15 +38,6 @@ function Buscar( id ){
           $("#_btnSavlvar").hide();
 
           $("#_tblConstFamiliares").html(ConstanciaFamiliaresHTML());
-          /*var fam = $('#tblConstFamiliares').DataTable({
-            'paging'      : false,
-            'lengthChange': false,
-            'searching'   : false,
-            'ordering'    : false,
-            'info'        : false,
-            'autoWidth'   : false
-          });*/
-
 
 
           $("#_bxFamiliar").show();
@@ -472,7 +463,7 @@ function FamiliaresHTML(){
 function ConstanciaFamiliaresHTML(){
   var html = '<table class="table table-bordered " cellspacing="0" width="100%" id="tblConstFamiliares" >\
     <thead>\
-    <tr><th colspan="7" class="titulo_fondo">Familiares Afiliados</th></tr>\
+    <tr><th colspan="7" class="titulo_fondo" text-align="left">Familiares Afiliados</th></tr>\
       <tr class="titulo_tabla">\
         <th class="alinear_td">APELLIDOS Y NOMBRES</th>\
         <th class="alinear_td">CÉDULA</th>\
@@ -1260,6 +1251,8 @@ function CConstanciaAfiliacion(){
   var urlGra   = "images/grados/" + militar.Grado.abreviatura + ".png";
       urlGra   = urlGra.toLowerCase();
   var fechaActual = ConvertirFechaActual();
+  var ts = militar.tiemposervicio.split(" ");
+  var tiempo = ts[0]+"ÑOS  " + ts[1]+"ESES " + ts[2]+"ÍAS"
   var gradoPI  = 'GENERAL DE DIVISIÓN';
   var nombrePI = 'JESÚS RAFAEL SALAZAR VELÁSQUEZ';
   $('#modRpt').modal('show');
@@ -1268,16 +1261,13 @@ function CConstanciaAfiliacion(){
   $("#lblnombreMil").text($("#txtapellido").val() + ' ' + $("#txtnombre").val());
   $("#lbledoCivilM").text($("#cmbedocivil option:selected").text());
   $("#lblfchNacMil").text($("#txtnacimiento").val());
-  // $("#lbldireccionMil").text($("#txtmcalle").val() +
-  //                            $("#txtmcasa").val() +
-  //                            $("#txtmapto").val() +
-  //                            $("#cmbmparroquia option:selected").text() +
-  //                            $("#cmbmmunicipio option:selected").text() +
-  //                            $("#cmbmciudad option:selected").text() +
-  //                            $("#cmbmestado option:selected").text());
+  $("#lbldireccionMil").text($("#txtmcalle").val() + ' ' + $("#txtmcasa").val() + 
+                        ' ' + $("#txtmapto").val() + ' ' + $("#cmbmparroquia option:selected").text() +
+                        ' ' + $("#cmbmmunicipio option:selected").text() + ' ' + $("#cmbmciudad option:selected").text() +
+                        ' ' + $("#cmbmestado option:selected").text());
   $("#lblfchIngresoFANB").text($("#txtfechagraduacion").val());
   $("#lblfchUltAscenso").text($("#_fascenso").val());
-  $("#lblaServicio").text(militar.tiemposervicio);
+  $("#lblaServicio").text(tiempo);
   $("#lblcomponente").text($("#cmbcomponente option:selected").text());
   $("#lblsituacionMil").text($("#cmbsituacion option:selected").text());
   $("#_fotoConstancia").attr("src", urlMil);
@@ -1288,8 +1278,11 @@ function CConstanciaAfiliacion(){
   $("#lblgradoPIF").text(gradoPI);
 
 }
+
+
 function imprSelec(nombre) {
- var html = $("#" + nombre).html();
+
+var html = $("#" + nombre).html();
  var ventana = window.open("","_blank");
  ventana.document.write(html);
  ventana.document.head.innerHTML = '\
@@ -1297,41 +1290,12 @@ function imprSelec(nombre) {
  <meta http-equiv="X-UA-Compatible" content="IE=edge">\
  <title>SSSIFANB</title>\
  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">\
- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">\
- <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">\
- <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">\
- <link rel="stylesheet" href="dist/css/AdminLTE.min.css">\
  <link rel="stylesheet" href="dist/css/skins.ipsfa/_all-skins_1.css">\
- <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">\
- <link rel="stylesheet" href="css/carnet.css">\
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css">\
- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.semanticui.min.css">\
- <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">\
- <link rel="stylesheet"\
-       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">\
  <style type="text/css">\
-   .row-centered {\
-       text-align:center;\
-   }\
-   .col-centered {\
-       display:inline-block;\
-       float:none;\
-       text-align:left;\
-       margin-right:-4px;\
-   }\
-   td {\
-     font-size: 12px;\
-     font-weight: normal;\
-   }\
-   @charset "utf-8";\
-   @page {\
-   	margin: 1.1cm;\
-   	size:8.5in 11in;\
-  }\
  </style>';
  ventana.print();
  ventana.close();
- //console.log(html);
+ 
   
   }
 
