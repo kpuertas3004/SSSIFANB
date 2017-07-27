@@ -1820,33 +1820,47 @@
     font-family: monospace, serif, Arial;
     font-size: 8pt;
   }
-
   .titulo{
     font-size:10pt;
+    text-align: right;
     font-family: monospace, serif, Arial;
   }
-
   .titulo_fondo{
     font-size:12pt;
     font-family: monospace, serif, Arial;
     background-color: #D8D8D8;
   }
-
   .titulo_tabla{
     font-size:9pt;
     font-family: monospace, serif, Arial;
     background-color: #D8D8D8;
   }
-
   .alinear_td{
     text-align: center;
   }
-
   .cuerpo_constancia{
     font-style: normal;
     font-family: monospace, serif, Arial;
     font-size: 14;
-
+    }
+  }
+   .row-centered {
+       text-align:center;
+   }
+   .col-centered {
+       display:inline-block;
+       float:none;
+       text-align:left;
+       margin-right:-4px;
+   }
+   td {
+     font-size: 12px;
+     font-weight: normal;
+   }
+   @charset "utf-8";
+   @page {
+    margin: 1.1cm;
+    size:8.5in 11in;
   }
 
 }
