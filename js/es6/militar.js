@@ -471,7 +471,7 @@ class Militar{
 		this.Persona.RedSocial.twitter = $("#txtmtwitter").val().toUpperCase();
 		this.Persona.RedSocial.facebook = $("#txtmfacebook").val().toUpperCase();
 		this.Persona.RedSocial.instagram = $("#txtminstagran").val().toUpperCase();
-		this.Persona.RedSocial.linkedin = $("#txtmlinkedin").val().toUpperCase();
+		//this.Persona.RedSocial.linkedin = $("#txtmlinkedin").val().toUpperCase();
 		//this.Tim.huella = $('#_imghuella').val();
 		//this.Tim.firma = $('#_imgfirma').val();
 		/*this.Persona.DocumentoCivil.ActaMatrimonio.archivo = $('#_imgmatrimonio').val();
