@@ -253,31 +253,14 @@ function Buscar( id ){
               $("#_fcedula").html('<a href="#" onClick="Buscar(\'' + data[1] +  '\')">C.I: V- ' + data[1] + '</a>');
               $("#_ffnacimiento").html(ConvertirFechaHumana(data[5]));
               }
-
           });
 
           $('#tblFamiliares tbody').on('dblclick', 'tr', function () {
             var data = t.row(this).data();
-            urlf = "http://192.168.12.161/imagenes/" +  data[1] + ".jpg";
-            $("#modFamiliar").modal('show');
-            $('#txtcedulaf').val(data[1]);
-            $('#txtnacimientof').val(ConvertirFechaHumana(data[5]));
-            $('#txtnombref').val(data[8]);
-            $('#cmbsexof').val(data[9]);
-            $('#txtapellidof').val(data[10]);
 
-
-            if (data[11]==0){
-              $("#cmbcondicionf").html('<option selected="selected" value=0>NO</option>\
-                            <option value=1>SI</option> ');
-            }
-            $('#cmbcondicionf').val(data[11]);
-
-            if (data[12]==0){
-              $("#cmbestudiaf").html('<option selected="selected" value=0>NO</option>\
-                            <option value=1>SI</option> ');
-            }
-            $('#cmbestudiaf').val(data[12]);
+            ModificarFamiliarPos(data[0]);
+            FrmFamiliar(true);
+            console.log("Validar obj");
 
           });
 
@@ -353,7 +336,7 @@ function Salvar(){
   Frm = "S";
 }
 function Actualizar(){
-  if(Util.ValidarFormulario("_frmDatoBasico") == false){
+  if(Util.ValidarFormulario("_bxDatoBasico") == false){
     Util.ModalValidar("Favor completar todos los campos");
   }else{
     var militar = new Militar();
@@ -595,9 +578,12 @@ function FrmFamiliar(valor){
   $("#btnnacionalidad").attr('disabled',valor);
   if(valor == false){
     $("#imgIngFam").show();
+    $("#_btnActeptarFamiliar").show();
   }else{
     $("#imgIngFam").hide();
+    $("#_btnActeptarFamiliar").hide();
   }
+
 
 
 }
@@ -833,8 +819,8 @@ function FrmDatosBasicos(valor){
     $("#cargarfirma").hide();
     $("#cargarhuella").hide();
   }
-  $("#btnnacimiento").attr('disabled', valor);
-  $("#btndefuncion").attr('disabled', valor);
+  //$("#btnnacimiento").attr('disabled', valor);
+  //$("#btndefuncion").attr('disabled', valor);
 }
 function LimpiarFrmDatosBasicos(){
   $("#txtcedula").val("");
@@ -1183,7 +1169,7 @@ function SeleccionarCuenta(){
   $("#txtmnrocuenta").val($("#cmbminstfinanciera option:selected").val());
 }
 
- 
+
 function ModificarFamiliarPos(pos){
   if(Util.ValidarFormulario("_frmDatoBasico") == false){
     Util.ModalValidar("Favor actualizar afiliado");
@@ -1261,7 +1247,7 @@ function CConstanciaAfiliacion(){
   $("#lblnombreMil").text($("#txtapellido").val() + ' ' + $("#txtnombre").val());
   $("#lbledoCivilM").text($("#cmbedocivil option:selected").text());
   $("#lblfchNacMil").text($("#txtnacimiento").val());
-  $("#lbldireccionMil").text($("#txtmcalle").val() + ' ' + $("#txtmcasa").val() + 
+  $("#lbldireccionMil").text($("#txtmcalle").val() + ' ' + $("#txtmcasa").val() +
                         ' ' + $("#txtmapto").val() + ' ' + $("#cmbmparroquia option:selected").text() +
                         ' ' + $("#cmbmmunicipio option:selected").text() + ' ' + $("#cmbmciudad option:selected").text() +
                         ' ' + $("#cmbmestado option:selected").text());
@@ -1295,8 +1281,8 @@ var html = $("#" + nombre).html();
  </style>';
  ventana.print();
  ventana.close();
- 
-  
+
+
   }
 
 function CalcularEdadFamiliar(id, vl){
@@ -1434,4 +1420,9 @@ function ValidarMilitar(valor){
 
   };
   xhttp.send();
+}
+
+function SalvarFamiliar(){
+  var familiar = new Familiar();
+  familiar.Salvar();
 }

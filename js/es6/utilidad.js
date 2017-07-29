@@ -38,13 +38,15 @@ class Utilidad {
 
 
   ValidarFormulario(_frm){
+
     let respuesta = true;
     $("#" + _frm + " :input").each(function(i){
+      //console.log(_frm);
       var valor = $(this).val();
       var dis = $(this).attr('required');
       var id = $(this).attr('id');
+      console.log("ID: " + id + " VALOR: " + valor ) ;
       if (dis == "required"){
-//        console.log("ID: " + id + " VALOR: " + valor + " REQUIERE: " + dis) ;
         if (valor == ""){
           respuesta = false;
           return respuesta;

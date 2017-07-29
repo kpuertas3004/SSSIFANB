@@ -1,3 +1,4 @@
+'use strict';
 /**
  Desarrollado por  :  Maria Elena Nuñez
  Correo            :  marielen936@gmail.com
@@ -204,11 +205,10 @@ class Familiar{
 		this.estudia = 0;
 		this.beneficio = 1;
 		this.documento = 0;
-		this.documentopadre = 0;
+		this.documentopadre = "";
 	}
-
 	GenerarParentesco(){
-		let parentesco= "";
+		var parentesco= "";
 		 switch(this.parentesco) {
 		    case "PD":
 		     	parentesco =(this.Persona.DatoBasico.sexo=="F")?"MADRE":"PADRE";
@@ -226,6 +226,7 @@ class Familiar{
 		return parentesco;
 	}
 	Obtener(){
+		this.documentopadre = $("#txtcedula").val();
 		this.Persona.DatoBasico.cedula = $("#txtcedulaf").val();
 		this.Persona.DatoBasico.fechanacimiento = $("#txtnacimientof").val();
 		this.Persona.DatoBasico.sexo = $("#cmbsexof").val();
@@ -254,16 +255,26 @@ class Familiar{
 		this.Persona.PartidaNacimiento.libro = $("#txtplibrof").val();
 		this.Persona.DatoFisico.peso = $("#txtpesof").val();
 		this.Persona.DatoFisico.talla = $("#txttallaf").val();
-		this.Persona.DatoFisionomico.coloropiel = $("#cmbpielf").val();
+		this.Persona.DatoFisionomico.colorpiel = $("#cmbpielf").val();
 		this.Persona.DatoFisionomico.colorojos = $("#cmbojosf").val();
 		this.Persona.DatoFisionomico.colorcabello = $("#cmbcolorcabellof").val();
 		this.Persona.DatoFisionomico.estatura = $("#txtestaturaf").val();
 		this.Persona.DatoFisionomico.senaParticular = $("#txtsenaparticularf").val();
 		this.Persona.DatoFisionomico.gruposanguineo = $("#txtgruposanguineof").val();
-		// this.Persona.RedSocial.twitter = $("#txttwitterf").val();
-		// this.Persona.RedSocial.facebook = $("#txtfacebookf").val();
-		// this.Persona.RedSocial.instagram = $("#txtinstagranf").val();
+		this.Persona.RedSocial.twitter = $("#txttwitterf").val();
+		this.Persona.RedSocial.facebook = $("#txtfacebookf").val();
+		this.Persona.RedSocial.instagram = $("#txtinstagranf").val();
 		// this.Persona.RedSocial.linkedin = $("#txtlinkedinf").val();
+		console.log(this);
+	}
+	Salvar(){
+		this.Obtener()
+    //CargarAPI(Conn.URL + "familiar/crud" , "POST", this.Obtener());
+	}
+	Actualizar(){
+		//CargarAPI(Conn.URL + "familiar/crud" , "PUT", this.Obtener());
+
+
 	}
 }
 
@@ -393,8 +404,6 @@ class Militar{
 		this.descripcionhistorica = "";
 		this.Componente = new Componente();
 		this.Grado = new Grado();
-//		this.Tim = new Tim();
-//		this.Familiar = new Familiar();
 		this.urlsimbolo = "";
 		this.urlfirmaministro = "";
 		this.urlpresidenteipsfa = "";
@@ -403,7 +412,6 @@ class Militar{
 		this.urlfirma = "";
 		this.urlcedula = "";
 	}
-
 	Obtener(){
 		var fingreso = new Date(Util.ConvertirFechaUnix($("#txtfechagraduacion").val())).toISOString();
 		var fnacimiento = new Date(Util.ConvertirFechaUnix($("#txtnacimiento").val())).toISOString();
@@ -507,17 +515,18 @@ class Militar{
     $("#_btnTIM").show();
     $("#_btnModificar").show();
     $("#_btnSavlvar").hide();
-    CargarAPI(Conn.URL + "militar/crud" , "POST", this.Obtener());
+		console.log(this.Obtener());
+    //CargarAPI(Conn.URL + "militar/crud" , "POST", this.Obtener());
 	}
 	Actualizar(){
-		CargarAPI(Conn.URL + "militar/crud" , "PUT", this.Obtener());
 		$("#_bxFamiliar").show();
     $("#_bxFamiliarTarjeta").show();
     $("#_btnConstancia").show();
     $("#_btnTIM").show();
     $("#_btnModificar").show();
     $("#_btnSavlvar").hide();
-
+		console.log(this.Obtener());
+		//CargarAPI(Conn.URL + "militar/crud" , "PUT", this.Obtener());
 	}
 }
 
