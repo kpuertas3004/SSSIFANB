@@ -14,9 +14,15 @@ class Utilidad {
   //Recibe  Fecha Formato: AAAA-MM-DD 00:00:00
   //Retorna Fecha Formato: DD/MM/AAAA
   ConvertirFechaHumana(f){
-      fe = f.substr(0,10);
-      fa = fe.split("-");
+    var ISODate = new Date(f).toISOString();
+    var fe = ISODate.substr(0,10);
+    var fa = fe.split("-");
+    if(fa[0] != "0001"){
       return fa[2] + "/" + fa[1] + "/" + fa[0];
+    }else {
+      return "";
+    }
+    //return fa[2] + "/" + fa[1] + "/" + fa[0];
   }
 
   ConvertirFechaActual(){
@@ -31,6 +37,7 @@ class Utilidad {
   //Recibe  Fecha Formato: DD/MM/AAAA
   //Retorna Fecha Formato: AAAA-MM-DD
   ConvertirFechaUnix(f){
+    console.log(f);
       f = f.split("/");
       return f[2] + "-" + f[1] + "-" + f[0];
   }
@@ -45,7 +52,7 @@ class Utilidad {
       var valor = $(this).val();
       var dis = $(this).attr('required');
       var id = $(this).attr('id');
-      console.log("ID: " + id + " VALOR: " + valor ) ;
+      //console.log("ID: " + id + " VALOR: " + valor ) ;
       if (dis == "required"){
         if (valor == ""){
           respuesta = false;
@@ -59,14 +66,14 @@ class Utilidad {
 
   ModalValidar(msj){
     $("#_contenido").html(msj);
-    var botones = '<button type="button" class="btn btn-success btn-lg" data-dismiss="modal">Aceptar</button>';
+    var botones = '<button type="button" class="btn btn-success btn-md" data-dismiss="modal">Aceptar</button>';
     $("#_botonesmsj").html(botones);
     $("#modMsj").modal("show");
   }
 
   ModalValidarFamiliar(msj){
     $("#_contenido").html(msj);
-    var botones = '<button type="button" class="btn btn-success btn-lg" data-dismiss="modal" onclik="ActivarModalFamiliar()">Aceptar</button>';
+    var botones = '<button type="button" class="btn btn-success btn-md" data-dismiss="modal" onclik="ActivarModalFamiliar()">Aceptar</button>';
     $("#_botonesmsj").html(botones);
     $("#modMsj").modal("show");
   }
@@ -74,7 +81,7 @@ class Utilidad {
   ModalValidarFamiliarLimitado(msj){
 
     $("#_contenido").html('');
-    var botones = '<button type="button" class="btn btn-success btn-lg" data-dismiss="modal" onclik="ContinuarFamiliarValidar()">Aceptar</button>';
+    var botones = '<button type="button" class="btn btn-success btn-md" data-dismiss="modal" onclik="ContinuarFamiliarValidar()">Aceptar</button>';
     $("#_botonesmsj").html(botones);
     $("#modMsj").modal("show");
   }

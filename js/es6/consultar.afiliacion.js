@@ -71,25 +71,38 @@ function Buscar( id ){
 
           $("#txtnombre").val(DB.nombreprimero + ' ' + DB.nombresegundo);
           $("#txtapellido").val(DB.apellidoprimero + ' ' + DB.apellidosegundo);
-          $("#txtnacimiento").val(ConvertirFechaHumana(DB.fechanacimiento));
+          $("#txtnacimiento").val(Util.ConvertirFechaHumana(DB.fechanacimiento));
           $("#cmbsexo").val(DB.sexo);
           SeleccionarPorSexo(DB.sexo);
           $("#cmbedocivil").val(DB.estadocivil);
           $("#cmbcomponente").val(militar.Componente.abreviatura);
           $("#cmbgrado").html('<option value="' + militar.Grado.abreviatura + '">' + militar.Grado.descripcion + '</option>');
           $("#txtnresuelto").val(militar.nresuelto);
-          $("#txtmfecharesuelto").val(ConvertirFechaHumana(militar.fresuelto));
+          $("#txtmfecharesuelto").val(Util.ConvertirFechaHumana(militar.fresuelto));
           $("#txtposicion").val(militar.posicion);
-          $("#txtfechagraduacion").val(ConvertirFechaHumana(militar.fingreso));
-          $("#_fingreso").html(ConvertirFechaHumana(militar.fingreso));
-          $("#_fascenso").html(ConvertirFechaHumana(militar.fascenso));
+          $("#txtfechagraduacion").val(Util.ConvertirFechaHumana(militar.fingreso));
+          $("#_fingreso").html(Util.ConvertirFechaHumana(militar.fingreso));
+          $("#_fascenso").html(Util.ConvertirFechaHumana(militar.fascenso));
           $("#cmbcategoria").val(militar.categoria);
           $("#cmbsituacion").val(militar.situacion);
-          $("#cmbclase").val(militar.clase)
+          $("#cmbclase").val(militar.clase);
           $("#_categoria").html($("#cmbcategoria option:selected").text());
           $("#_situacion").html($("#cmbsituacion option:selected").text());
           $("#_clasificacion").html($("#cmbclase option:selected").text());
           $("#_tiemposervicio").html(militar.tiemposervicio);
+          var Fideicomiso = militar.Fideicomiso;
+          console.log(Fideicomiso);
+          if (militar.Fideicomiso.areconocido != undefined ){
+            $("#_reconocidos").show();
+            $("#txtareconocido").val(Fideicomiso.areconocido);
+            $("#txtmreconocido").val(Fideicomiso.mreconocido);
+            $("#txtdreconocido").val(Fideicomiso.dreconocido);
+          }else{
+            $("#_reconocidos").hide();
+            $("#txtareconocido").val("");
+            $("#txtmreconocido").val("");
+            $("#txtdreconocido").val("");
+          }
 
           $("#_tblBancos").html(BancariosHTML());
           var thbanco = $('#tblBanco').DataTable({
@@ -175,7 +188,7 @@ function Buscar( id ){
             let apellidos = DBF.apellidoprimero + ' ' + DBF.apellidosegundo;
             let nombreCompleto = apellidos + ' ' + nombres;
             let estadocivil= familiar.Persona.DatoBasico.estadocivil;
-            let fnac = ConvertirFechaHumana(DBF.fechanacimiento);
+            let fnac = Util.ConvertirFechaHumana(DBF.fechanacimiento);
 
             var modificar = '<button type="button" id="btnModFamiliar' + j + '" \
             class="btn btn-sm btn-info" onclick="ModificarFamiliarPos(' + j + ')">\
@@ -247,21 +260,23 @@ function Buscar( id ){
               var data = t.row(this).data();
               urlf = "http://192.168.12.161/imagenes/" +  data[1] + ".jpg";
               $("#_imgfamiliar").attr("src", urlf);
-              $("#_ffnacimiento").html(ConvertirFechaHumana(data[5]));
+              $("#_ffnacimiento").html(Util.ConvertirFechaHumana(data[5]));
               $("#_fcedula").html('C.I: V- ' + data[1]);
               if (data[6] == true){
-              $("#_fcedula").html('<a href="#" onClick="Buscar(\'' + data[1] +  '\')">C.I: V- ' + data[1] + '</a>');
-              $("#_ffnacimiento").html(ConvertirFechaHumana(data[5]));
+                $("#_fcedula").html('<a href="#" onClick="Buscar(\'' + data[1] +  '\')">C.I: V- ' + data[1] + '</a>');
+                $("#_ffnacimiento").html(Util.ConvertirFechaHumana(data[5]));
               }
           });
 
           $('#tblFamiliares tbody').on('dblclick', 'tr', function () {
             var data = t.row(this).data();
-
-            ModificarFamiliarPos(data[0]);
-            FrmFamiliar(true);
-            console.log("Validar obj");
-
+            if (data[6] == true){
+              Util.ModalValidarFamiliar("Este es un afiliado titular");
+              return false;
+            }else{
+              ModificarFamiliarPos(data[0]);
+              FrmFamiliar(true);
+            }
           });
 
           $("#_tblHistorialMilitar").html(HistoricoMilitarHTML());
@@ -485,17 +500,6 @@ function HistoricoMilitarHTML(){
 function IrCedula(){
 
   $("#_cedula").focus();
-}
-
-function ConvertirFechaHumana(f){
-  fe = f.substr(0,10);
-  fa = fe.split("-");
-  if(fa[0] != "0001"){
-    return fa[2] + "/" + fa[1] + "/" + fa[0];
-  }else {
-    return "";
-  }
-
 }
 
 
@@ -804,6 +808,10 @@ function FrmDatosBasicos(valor){
   $("#cmbsexo").attr('disabled', valor);
   $("#cmbedocivil").attr('disabled', valor);
   $("#txtdefuncion").attr('disabled', valor);
+  $("#txtareconocido").attr('disabled', valor);
+  $("#txtmreconocido").attr('disabled', valor);
+  $("#txtdreconocido").attr('disabled', valor);
+
   //$("#btnnacimiento").attr('disabled', valor);
   if(valor == false){
     $("#cargarcopiacedula").show();
@@ -811,6 +819,7 @@ function FrmDatosBasicos(valor){
     $("#cargarfoto").show();
     $("#cargarfirma").show();
     $("#cargarhuella").show();
+    $("#_reconocidos").show();
 
   }else{
     $("#cargarcopiacedula").hide();
@@ -818,6 +827,7 @@ function FrmDatosBasicos(valor){
     $("#cargarfoto").hide();
     $("#cargarfirma").hide();
     $("#cargarhuella").hide();
+    $("#_reconocidos").hide();
   }
   //$("#btnnacimiento").attr('disabled', valor);
   //$("#btndefuncion").attr('disabled', valor);
