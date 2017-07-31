@@ -459,16 +459,16 @@ function FamiliaresHTML(){
 }
 
 function ConstanciaFamiliaresHTML(){
-  var html = '<table class="table-fondo" cellspacing="0" width="100%" id="tblConstFamiliares">\
+  var html = '<table class="table-fondo " cellspacing="0" width="100%" id="tblConstFamiliares" >\
     <thead>\
-      <tr class="titulo_tabla">\
+      <tr class="titulo_tabla table-borderedtd" >\
         <th class="alinear_td">APELLIDOS Y NOMBRES</th>\
-        <th >CÉDULA</th>\
-        <th >PARENTESCO</th>\
-        <th >FECHA NAC.</th>\
-        <th >EDO CIVIL</th>\
-        <th >SITUACIÓN</th>\
-        <th >FECHA VCTO. CARNET</th>\
+        <th class="alinear_tddatos">CÉDULA</th>\
+        <th class="alinear_tddatos">PARENTESCO</th>\
+        <th class="alinear_tddatos">FECHA NAC.</th>\
+        <th class="alinear_tddatos">EDO CIVIL</th>\
+        <th class="alinear_tddatos">SITUACIÓN</th>\
+        <th class="alinear_tddatos">FECHA VCTO. CARNET</th>\
       </tr>\
     </thead >\
     <tbody id="_contenidoFamiliares">\
@@ -1314,18 +1314,28 @@ var html = $("#" + nombre).html();
   }\
   .alinear_td{\
     text-align: center;\
+    border-style: solid;\
+    border-right 1px;\
+    border-left: 0px;\
+    border-top: 0px;\
+    border-bottom: 0px;\
   }\
   .alinear_tddatos{\
     text-align: left;\
+    border-style: solid;\
+    border-right 0px;\
+    border-left: 1px;\
+    border-top: 0px;\
+    border-bottom: 0px;\
   }\
 .marca-de-agua {\
-    background-image: url("images/logo_ipsfa.png");\
+    background-image: url("images/fondo.png");\
     background-repeat: no-repeat;\
     background-position: center;\
     width: 100%;\
     height: auto;\
     margin: auto;\
-}\
+   }\
   .cuerpo_constancia{\
     font-style: normal;\
     font-family:Arial, monospace, serif ;\
@@ -1346,8 +1356,8 @@ var html = $("#" + nombre).html();
       font-weight: normal;\
    }\
   .table-borderedtd{\
-   border: 1px solid black;\
-   border-radius: 7px;\
+  border: 1px solid black;\
+  border-radius: 7px;\
    }\
    .table-fondo{\
     border: 1px solid black;\
@@ -1362,8 +1372,8 @@ var html = $("#" + nombre).html();
       }\
 }\
  </style>';
-ventana.print();
- ventana.close();
+//ventana.print();
+//ventana.close();
 
 
   }
