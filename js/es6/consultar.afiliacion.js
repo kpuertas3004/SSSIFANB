@@ -11,6 +11,7 @@ function Buscar( id ){
     return false;
   }
   $("#_cargando").show();
+  $("#_lblConstanciaPension").hide();
   $("#_imgfamiliar").attr("src", "images/ndisponible.jpg");
   var xhttp = new XMLHttpRequest();
   xhttp.open("GET", Conn.URL + "militar/crud/" + $("#_cedula").val());
@@ -238,6 +239,7 @@ function Buscar( id ){
               v.condicion, //11
               v.estudia, //12
               fechavencimiento, //13
+              v.beneficio,
               modificar
             ]).draw(false);
 
@@ -252,12 +254,14 @@ function Buscar( id ){
           t.column(11).visible(false);
           t.column(12).visible(false);
           t.column(13).visible(false);
-
+          t.column(14).visible(false);
 
 
 
           $('#tblFamiliares tbody').on('click', 'tr', function () {
+
               var data = t.row(this).data();
+              $("#_lblConstanciaPension").hide();
               urlf = "http://192.168.12.161/imagenes/" +  data[1] + ".jpg";
               $("#_imgfamiliar").attr("src", urlf);
               $("#_ffnacimiento").html(Util.ConvertirFechaHumana(data[5]));
@@ -266,6 +270,10 @@ function Buscar( id ){
                 $("#_fcedula").html('<a href="#" onClick="Buscar(\'' + data[1] +  '\')">C.I: V- ' + data[1] + '</a>');
                 $("#_ffnacimiento").html(Util.ConvertirFechaHumana(data[5]));
               }
+              if (data[14] == true){
+                $("#_lblConstanciaPension").show();
+              }
+
           });
 
           $('#tblFamiliares tbody').on('dblclick', 'tr', function () {
@@ -675,7 +683,6 @@ function ContinuarTIM(){
 function VisualizarCarnetFamiliar(){
   $("#modCarnetFamiliar").modal("show");
 }
-
 
 function ActivarCalendarios(){
   $('#txtnacimiento').datepicker({
@@ -1246,6 +1253,40 @@ function CConstanciaAfiliacion(){
   var urlMil   = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
   var urlGra   = "images/grados/" + militar.Grado.abreviatura + ".png";
       urlGra   = urlGra.toLowerCase();
+  var fechaActual = ConvertirFechaActual();
+  var ts = militar.tiemposervicio.split(" ");
+  var tiempo = ts[0]+"ÑOS  " + ts[1]+"ESES " + ts[2]+"ÍAS"
+  var gradoPI  = 'GENERAL DE DIVISIÓN';
+  var nombrePI = 'JESÚS RAFAEL SALAZAR VELÁSQUEZ';
+  $('#modRpt').modal('show');
+  $("#lblgradoMil").text($("#cmbgrado option:selected").text());
+  $("#lblcedulaMil").text($("#txtcedula").val());
+  $("#lblnombreMil").text($("#txtapellido").val() + ' ' + $("#txtnombre").val());
+  $("#lbledoCivilM").text($("#cmbedocivil option:selected").text());
+  $("#lblfchNacMil").text($("#txtnacimiento").val());
+  $("#lbldireccionMil").text($("#txtmcalle").val() + ' ' + $("#txtmcasa").val() +
+                        ' ' + $("#txtmapto").val() + ' ' + $("#cmbmparroquia option:selected").text() +
+                        ' ' + $("#cmbmmunicipio option:selected").text() + ' ' + $("#cmbmciudad option:selected").text() +
+                        ' ' + $("#cmbmestado option:selected").text());
+  $("#lblfchIngresoFANB").text($("#txtfechagraduacion").val());
+  $("#lblfchUltAscenso").text($("#_fascenso").val());
+  $("#lblaServicio").text(tiempo);
+  $("#lblcomponente").text($("#cmbcomponente option:selected").text());
+  $("#lblsituacionMil").text($("#cmbsituacion option:selected").text());
+  $("#_fotoConstancia").attr("src", urlMil);
+  $("#_Constgrado").attr("src", urlGra);
+  $("#lblfchActual").text(fechaActual);
+  $("#lblgradoPI").text(gradoPI);
+  $("#lblnombrePI").text(nombrePI);
+  $("#lblgradoPIF").text(gradoPI);
+
+}
+
+function ConstanciaPensionSobr(){
+
+//  var urlMil   = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
+//  var urlGra   = "images/grados/" + militar.Grado.abreviatura + ".png";
+//      urlGra   = urlGra.toLowerCase();
   var fechaActual = ConvertirFechaActual();
   var ts = militar.tiemposervicio.split(" ");
   var tiempo = ts[0]+"ÑOS  " + ts[1]+"ESES " + ts[2]+"ÍAS"
