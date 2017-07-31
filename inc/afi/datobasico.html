@@ -29,7 +29,7 @@
                 <input class="form-control" id="txtcedula"  type="text" disabled="disabled" maxlength="8" required tabindex="1" onblur="BuscarInsert()">
                 <span class="input-group-btn">
                   <button type="button" class="btn btn-success btn-flat"
-                  id="btncopiacedula" disabled="disabled" onClick="seleccionarCopiaCedula()"><i class="glyphicon glyphicon-paperclip"></i></button>
+                  id="btncopiacedula" onClick="seleccionarCopiaCedula()"><i class="glyphicon glyphicon-paperclip"></i></button>
                 </span>
               </div>
           </div> <!-- Cedula -->
@@ -59,7 +59,7 @@
                    <input type="text" class="form-control"  id="txtnacimiento" disabled="disabled" tabindex="4">
                     <span class="input-group-btn">
                       <button type="button" class="btn btn-success btn-flat"
-                      id="btnnacimiento" disabled="disabled" onClick="seleccionarPartida()" ><i class="glyphicon glyphicon-paperclip"></i></button>
+                      id="btnnacimiento" onClick="seleccionarPartida()" ><i class="glyphicon glyphicon-paperclip"></i></button>
                     </span>
                 </div>
                </div>
@@ -90,9 +90,22 @@
               </div>
            </div>
 
-        </div> <!-- Grupo nombres-->
+         </div> <!-- Grupo nombres-->
 
-
+        <div class="form-group"  id="_reconocidos" style="display:none">
+          <div class="col-md-3 col-sm-6">
+            <label>Año reconocido:</label>
+            <input  id="txtareconocido" class="form-control"  type="text" disabled="disabled">
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <label>Mes reconocido:</label>
+            <input  id="txtmreconocido" class="form-control"  type="text" disabled="disabled">
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <label>Día reconocido:</label>
+            <input  id="txtdreconocido" class="form-control"  type="text" disabled="disabled">
+          </div>
+       </div> <!-- Grupo nombres-->
 
       <br>
 
@@ -143,44 +156,48 @@
                   </select>
                 </div>
                 <div class="col-md-4 col-sm-12">
-                  <label >Grado:</label>
-                  <select class="js-states form-control" style="width: 100%"  aria-hidden="true" id="cmbgrado" required disabled="disabled">
+                  <label>Categoria:</label>
+                  <select class="js-states form-control" style="width: 100%"  aria-hidden="true" id="cmbcategoria" required disabled="disabled">
                     <option selected="selected" value="S"></option>
-                   </select>
-               </div>
+                    <option value="EFE">EFECTIVO</option>
+                    <option value="TRP">EFECTIVO </option>
+                    <option value="ASI">ASIMILADO</option>
+                    <option value="RES">RESERVA</option>
+                    <option value="HNO" disabled="disabled">HONORARIOS</option>
+                    <option value="MIL" disabled="disabled">MILICIA</option>
+
+                  </select>
+                </div>
+
             </div><!-- Grupo Grado-->
 
               <div class="form-group">
 
                 <div class="col-md-4 col-sm-12">
                   <label>Clasificación:</label>
-                  <select class="js-states form-control" style="width: 100%"  aria-hidden="true" required id="cmbcategoria" disabled="disabled">
+                  <select class="js-states form-control" style="width: 100%"  aria-hidden="true" required id="cmbclase" disabled="disabled">
                     <option selected="selected" value="S"></option>
-                    <option value="EFE">OFICIAL</option> <!-- TROPA -->
-                    <option value="TRP">TROPA PROFESIONAL</option> <!-- TROPA -->
-                    <option value="CAD"  disabled="disabled">CADETE</option>
-                    <option value="ALU"  disabled="disabled">ALUMNO</option>
-                    <option value="TALIS" disabled="disabled">TROPA ALISTADA</option>
-                    <option value="ASI" disabled="disabled">ASIMILADO</option>
-                    <option value="INV" disabled="disabled">INVALIDEZ</option>
-                    <option value="RES" disabled="disabled">RESERVA</option>
-                    <option value="X" disabled="disabled">CONVERSION</option>
+                    <option value="OFI">OFICIAL DE COMANDO</option>
+                    <option value="OFIT">OFICIAL DE TECNICO</option>
+                    <option value="OFITR" disabled="disabled">OFICIAL DE TROPA</option>
+                    <option value="TPROF" disabled="disabled">TROPA PROFESIONAL</option>
+                    <option value="ASI">ASIMILIDO</option>
+                    <option value="ASIT">ASIMILIDO TECNICO</option>
+
+                    <option value="HNO" disabled="disabled">HONORARIOS</option>
+                    <option value="MIL" disabled="disabled">MILICIA</option>
+
+                    <option value="EFE" disabled="disabled">EFECTIVO</option>
+
+
                   </select>
                 </div>
                 <div class="col-md-4 col-sm-12">
-                  <label>Categoria:</label>
-                  <select class="js-states form-control" style="width: 100%"  aria-hidden="true" id="cmbclase" required disabled="disabled">
+                  <label >Grado:</label>
+                  <select class="js-states form-control" style="width: 100%"  aria-hidden="true" id="cmbgrado" required disabled="disabled">
                     <option selected="selected" value="S"></option>
-
-                    <option value="OFI">COMANDO</option>
-                    <option value="OFIT">TECNICO</option>
-                    <option value="OFITR">DE TROPA</option>
-                    <option value="ASI">ASIMILADO</option>
-                    <option value="TPROF">TROPA PROFESIONAL</option>
-                    <option value="SUBOFI" disabled="disabled">SUB OFICIAL</option>
-
-                  </select>
-                </div>
+                   </select>
+               </div>
                 <div class="col-md-4 col-sm-12">
                   <label>Situación:</label>
                   <select class="js-states form-control" style="width: 100%"  aria-hidden="true" required id="cmbsituacion" disabled="disabled">
@@ -637,8 +654,7 @@
 </div><!-- /.box -->
 
 <!--script>
-  $('form').find('input[type=email]').blur(function(){  
+  $('form').find('input[type=email]').blur(function(){
     ValidarCorreo(); //Llamo la funcion que valida el formato del Correo Electronico
   });
 </script-->
-

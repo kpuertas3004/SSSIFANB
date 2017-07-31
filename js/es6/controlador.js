@@ -86,17 +86,25 @@ class Estado{
 
 class Menu {
   constructor() {}
-  ValidarPrivilegio(JsonObjArr){
-    var Menu = JsonObjArr.perfil.privilegio;
+  ValidarPrivilegio(Json){
+    var Menu = Json.perfil.privilegio;
   }
   //Crear Menu Dinamicamente
-  Crear(JsonObjArr) {
-      var Menu = JsonObjArr.perfil.menu;
-			var menuStr = "<li class='header'>Menu</li>";
-			for( var i=0; i<count(Menu) ; i++ )
-				menuStr = menuStr + "<li ><a href='#' onclick='CargarUrl(\"_cuerpo\",\""+Menu[i].url+"\")' >\
-        <i class='"+Menu[i].icono+"'></i><span>"+Menu[i].nombre+"</span></a></li> ";
-			$('#_menu').html(menuStr);
+  Crear(Json) {
+      var e = sessionStorage.getItem("ipsfaToken");
+      var s = e.split(".");
+      // var b = JSON.parse(atob(s[1]));
+      // console.log(b);
+      var Menu = Json.perfil.menu;
+      var cadena = "<li class='header'>Menu</li>";
+      Menu.forEach(v => {
+        if(v.url != ''){
+          cadena += `<li><a href="${v.url}"><i class="${v.icono}"></i><span>${v.nombre}</span></a></li>`;
+        }else{
+          cadena += `<li><a href="#" onclick="CargarUrl('_cuerpo','${v.js}')"><i class="${v.icono}"></i><span>${v.nombre}</span></a></li>`;
+        }
+      });
+			$('#_menu').html(cadena);
   }
 }
 
