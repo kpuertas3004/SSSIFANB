@@ -203,12 +203,12 @@ function Buscar( id ){
 
 
             $("#_contenidoFamiliares").append('<tr><td>'+nombreCompleto+'</td>\
-              <td class="alinear_td">'+ cedula +'</td>\
-              <td class="alinear_td">'+ familiar.GenerarParentesco() +'</td>\
-              <td class="alinear_td">'+  fnac +'</td>\
-              <td class="alinear_td">'+ edocivil +'</td>\
-              <td class="alinear_td">'+ situacion +'</td>\
-              <td class="alinear_td">'+ fechavencimiento +'</td></tr>');
+              <td class="alinear_tddatos">'+ cedula +'</td>\
+              <td class="alinear_tddatos">'+ familiar.GenerarParentesco() +'</td>\
+              <td class="alinear_tddatos">'+  fnac +'</td>\
+              <td class="alinear_tddatos">'+ edocivil +'</td>\
+              <td class="alinear_tddatos">'+ situacion +'</td>\
+              <td class="alinear_tddatos">'+ fechavencimiento +'</td></tr>');
 
             t.row.add ([
               j++, //0
@@ -461,22 +461,22 @@ function FamiliaresHTML(){
 }
 
 function ConstanciaFamiliaresHTML(){
-  var html = '<table class="table table-bordered " cellspacing="0" width="100%" id="tblConstFamiliares" >\
+  var html = '<table class="table-fondo" cellspacing="0" width="100%" id="tblConstFamiliares">\
     <thead>\
-    <tr><th colspan="7" class="titulo_fondo" text-align="left">Familiares Afiliados</th></tr>\
       <tr class="titulo_tabla">\
         <th class="alinear_td">APELLIDOS Y NOMBRES</th>\
-        <th class="alinear_td">CÉDULA</th>\
-        <th class="alinear_td">PARENTESCO</th>\
-        <th class="alinear_td">FECHA NAC.</th>\
-        <th class="alinear_td">EDO CIVIL</th>\
-        <th class="alinear_td">SITUACIÓN</th>\
-        <th class="alinear_td">FECHA VCTO. CARNET</th>\
+        <th >CÉDULA</th>\
+        <th >PARENTESCO</th>\
+        <th >FECHA NAC.</th>\
+        <th >EDO CIVIL</th>\
+        <th >SITUACIÓN</th>\
+        <th >FECHA VCTO. CARNET</th>\
       </tr>\
     </thead >\
     <tbody id="_contenidoFamiliares">\
     </tbody>\
   </table>';
+
   return html;
 
 }
@@ -1254,6 +1254,7 @@ function CConstanciaAfiliacion(){
   var ts = militar.tiemposervicio.split(" ");
   var tiempo = ts[0]+"ÑOS  " + ts[1]+"ESES " + ts[2]+"ÍAS"
   var gradoPI  = 'GENERAL DE DIVISIÓN';
+  var clascat = 'OFICIAL / ASIMILADO'
   var nombrePI = 'JESÚS RAFAEL SALAZAR VELÁSQUEZ';
   $('#modRpt').modal('show');
   $("#lblgradoMil").text($("#cmbgrado option:selected").text());
@@ -1276,6 +1277,7 @@ function CConstanciaAfiliacion(){
   $("#lblgradoPI").text(gradoPI);
   $("#lblnombrePI").text(nombrePI);
   $("#lblgradoPIF").text(gradoPI);
+  $("#lblclascat").text(clascat);
 
 }
 
@@ -1291,9 +1293,80 @@ var html = $("#" + nombre).html();
  <title>SSSIFANB</title>\
  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">\
  <link rel="stylesheet" href="dist/css/skins.ipsfa/_all-skins_1.css">\
- <style type="text/css">\
+  <style type="text/css">\
+  @media screen,print {\
+  .membrete {\
+    font-style: normal;\
+    font-family:Arial, monospace, serif ;\
+    font-size: 6pt;\
+  }\
+  .titulo{\
+    font-size:8pt;\
+    text-align: left;\
+    font-family:Arial, monospace, serif ;\
+  }\
+  .titulo_fondo{\
+    font-size:10pt;\
+    font-family:Arial, monospace, serif ;\
+    background-color: #D8D8D8;\
+    border-radius: 7px;\
+  }\
+  .titulo_tabla{\
+    font-size:7pt;\
+    font-family:Arial, monospace, serif ;\
+    background-color: #D8D8D8;\
+  }\
+  .alinear_td{\
+    text-align: center;\
+  }\
+  .alinear_tddatos{\
+    text-align: left;\
+  }\
+.marca-de-agua {\
+    background-image: url("images/logo_ipsfa.png");\
+    background-repeat: no-repeat;\
+    background-position: center;\
+    width: 100%;\
+    height: auto;\
+    margin: auto;\
+}\
+  .cuerpo_constancia{\
+    font-style: normal;\
+    font-family:Arial, monospace, serif ;\
+    font-size: 10;\
+    }\
+  }\
+   .row-centered {\
+       text-align:center;\
+   }\
+   .col-centered {\
+       display:inline-block;\
+       float:none;\
+       text-align:left;\
+       margin-right:-4px;\
+   }\
+   td {\
+      font-size: 10px;\
+      font-weight: normal;\
+   }\
+  .table-borderedtd{\
+   border: 1px solid black;\
+   border-radius: 7px;\
+   }\
+   .table-fondo{\
+    border: 1px solid black;\
+    border-radius: 7px;\
+    th:lastchild, td:lastchild {\
+    border-right: 0;\
+   }}\
+   @charset "utf-8";\
+   @page {\
+    margin: 1cm;\
+    size:8.5in 11in;\
+      }\
+}\
  </style>';
- ventana.print();
+ventana.print();
  ventana.close();
  
   
