@@ -1279,6 +1279,7 @@ function CConstanciaAfiliacion(){
   var nombrePI = 'JESÚS RAFAEL SALAZAR VELÁSQUEZ';
   $('#modRpt').modal('show');
   $("#lblgradoMil").text($("#cmbgrado option:selected").text());
+  $("#lblGradoFoto").text($("#cmbgrado option:selected").text());
   $("#lblcedulaMil").text($("#txtcedula").val());
   $("#lblnombreMil").text($("#txtapellido").val() + ' ' + $("#txtnombre").val());
   $("#lbledoCivilM").text($("#cmbedocivil option:selected").text());
@@ -1371,7 +1372,7 @@ function imprSelec(nombre) {
   .cuerpo_constancia{\
     font-style: normal;\
     font-family:Arial, monospace, serif ;\
-    font-size: 11;\
+    font-size: 14;\
     }\
   }\
    .row-centered {\
