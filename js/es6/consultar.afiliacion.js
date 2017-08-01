@@ -1355,19 +1355,9 @@ function imprSelec(nombre) {
   }\
   .alinear_td{\
     text-align: center;\
-    border-style: solid;\
-    border-right 1px;\
-    border-left: 0px;\
-    border-top: 0px;\
-    border-bottom: 0px;\
   }\
   .alinear_tddatos{\
     text-align: left;\
-    border-style: solid;\
-    border-right 0px;\
-    border-left: 1px;\
-    border-top: 0px;\
-    border-bottom: 0px;\
   }\
 .marca-de-agua {\
     background-image: url("images/fondo.png");\
