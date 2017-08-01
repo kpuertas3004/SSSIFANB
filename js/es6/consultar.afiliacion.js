@@ -67,8 +67,8 @@ function Buscar( id ){
           url = "http://192.168.6.45/temp/" +  $("#txtcedula").val() + "/firma.jpg";
           $("#_imgfirma").attr("src", url);
           $("#_imgcarnetmilitar").attr("src", url);
-          $("#_objectPDF").html("<center><iframe src='tarjeta-afiliacion/militar.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
-          $("#_objectFamiliar").html("<center><iframe src='tarjeta-afiliacion/afiliado.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
+          //$("#_objectPDF").html("<center><iframe src='tarjeta-afiliacion/militar.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
+          //$("#_objectFamiliar").html("<center><iframe src='tarjeta-afiliacion/afiliado.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
 
           $("#txtnombre").val(DB.nombreprimero + ' ' + DB.nombresegundo);
           $("#txtapellido").val(DB.apellidoprimero + ' ' + DB.apellidosegundo);
@@ -84,9 +84,11 @@ function Buscar( id ){
           $("#txtfechagraduacion").val(Util.ConvertirFechaHumana(militar.fingreso));
           $("#_fingreso").html(Util.ConvertirFechaHumana(militar.fingreso));
           $("#_fascenso").html(Util.ConvertirFechaHumana(militar.fascenso));
-          $("#cmbcategoria").val(militar.categoria);
+          //$("#cmbcategoria").val(militar.categoria);
+            $("#cmbcategoria").val("S");
           $("#cmbsituacion").val(militar.situacion);
-          $("#cmbclase").val(militar.clase);
+          //$("#cmbclase").val(militar.clase);
+            $("#cmbclase").val("S");
           $("#_categoria").html( $("#cmbcategoria option:selected").text());
           $("#_situacion").html($("#cmbsituacion option:selected").text());
           $("#_clasificacion").html('<font style="size:8px">' + $("#cmbclase option:selected").text() + "</font>");
@@ -175,6 +177,9 @@ function Buscar( id ){
         		$("#txtmsenaparticular").val(dfi.senaParticular);
         		$("#cmbmgruposanguineo").val(dfi.gruposanguineo);
           }
+
+            $("#txtcodigocomponente").val(militar.codigocomponente);
+            $("#txtnumhistoriaclinica").val(militar.numerohistoria);
 
           let j = 1, x = 1;
           $.each(militar.Familiar, function (c, v){
@@ -670,14 +675,27 @@ function VisualizarCarnet(){
   if(Util.ValidarFormulario("_frmDatoBasico") == false){
     Util.ModalValidar("Favor actualizar afiliado");
   }else{
+    if(ObjMilitar.estatuscarnet == undefined){
+        $("#modCarnetValidar").modal("show");
+    }else{
+      alert('Muestro carnet');
+    }
 
-    $("#modCarnetValidar").modal("show");
     //$("#modCarnet").modal("show");
   }
 
 }
 function ContinuarTIM(){
-    $("#modCarnet").modal("show");
+
+  var recibo = new Recibo();
+  if(recibo.Verificar()=== true){
+      recibo.Salvar();
+      $('#modCarnetValidar').modal('hide');
+
+  }else{
+    console.log(recibo);
+  }
+  //$("#modCarnet").modal("show");
 }
 
 function VisualizarCarnetFamiliar(){

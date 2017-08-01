@@ -385,6 +385,62 @@ class Defuncion{
 	}
 }
 
+class Recibo{
+    constructor(){
+        this.id = "";
+        this.motivo = "";
+        this.numero = 0;
+        this.canal = "";
+        this.fecha = "";
+        this.monto = 0.0;
+    }
+
+
+	Verificar(){
+        //alert($("#cmbMotivoCarnet").val());
+        if($("#cmbMotivoCarnet").val() == 'S'){
+            $("#cmbMotivoCarnet").notify("Indique El motivo");
+            return false;
+        }
+        if($("#txtcedula").val() == ''){
+            $("#txtcedula").notify("Ingrese Cedula");
+            return false;
+        }
+        if($("#txtnumeroC").val() == ''){
+            $("#txtnumeroC").notify("Ingrese Numero de Cuenta");
+            return false;
+        }
+        if($("#cmbminstfinancieraC").val() == 'S'){
+            $("#cmbminstfinancieraC").notify("Indique Institucion");
+            return false;
+        }
+        if($("#txtmfechaC").val() == ''){
+            $("#txtmfechaC").notify("Indique fecha");
+            return false;
+        }
+        if($("#txtmontoC").val() == ''){
+            $("#txtmontoC").notify("Indique monto");
+            return false;
+        }
+        return true;
+	}
+
+
+    Obtener(){
+    	this.id = $("#txtcedula").val();
+    	this.motivo = $("#cmbMotivoCarnet").val();
+    	this.numero = $("#txtnumeroC").val();
+    	this.canal = $("#cmbminstfinancieraC").val();
+    	this.fecha = new Date(Util.ConvertirFechaUnix($("#txtmfechaC").val())).toISOString();
+    	this.monto = parseFloat($("#txtmontoC").val());
+    	return this;
+	}
+
+	Salvar(){
+
+        CargarAPI(Conn.URL + "recibo/crud" , "POST", this.Obtener());
+	}
+}
 class Militar{
 	constructor(){
 		this.id = "";
@@ -411,6 +467,8 @@ class Militar{
 		this.urlhuella = "";
 		this.urlfirma = "";
 		this.urlcedula = "";
+		this.codigocomponente = "";
+        this.numerohistoria = "";
 	}
 	Obtener(){
 		var fingreso = new Date(Util.ConvertirFechaUnix($("#txtfechagraduacion").val())).toISOString();
@@ -482,6 +540,8 @@ class Militar{
 		this.Persona.RedSocial.facebook = $("#txtmfacebook").val().toUpperCase();
 		this.Persona.RedSocial.instagram = $("#txtminstagran").val().toUpperCase();
 
+        this.codigocomponente = $("#txtcodigocomponente").val();
+        this.numerohistoria =   $("#txtnumhistoriaclinica").val();
 
 		//this.Persona.RedSocial.linkedin = $("#txtmlinkedin").val().toUpperCase();
 		//this.Tim.huella = $('#_imghuella').val();
@@ -508,10 +568,12 @@ class Militar{
 		this.Persona.PartidaNacimiento.acta = $("#txtpacta").val();
 		this.Persona.PartidaNacimiento.folio = $("#txtpfolio").val();
 		this.Persona.PartidaNacimiento.libro = $("#txtplibro").val();*/
-		//console.log(this);
+		console.log(this);
 		return this;
 
 	}
+
+
 	Salvar(){
 		$("#_bxFamiliar").show();
     $("#_bxFamiliarTarjeta").show();

@@ -378,7 +378,7 @@
             <div class="form-group">
                <div class="col-md-12 col-sm-12">
                 <label>Motivo de la generacion del Carnet:</label>
-                <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbMotivoCarnet" onchange="ValidarGenerarCarnet()">
+                  <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbMotivoCarnet" onchange="ValidarGenerarCarnet()">
                   <option value="S"></option>
                   <option value="I">INGRESO A LA FANB / GRADUACION </option>
                   <option value="C">CAMBIO DE GRADO ( ASCENSO )</option>
@@ -494,7 +494,7 @@
                </div>
               <div class="col-md-4">
                 <label >Número:</label>
-                <input id="txtnumeroC" class="form-control"  type="text">
+                <input id="txtnumeroC" class="form-control"  type="text" onkeypress="return Util.SoloNumero(event)">
               </div>
               <div class="col-md-4">
                 <label >Fecha:</label>
@@ -509,7 +509,7 @@
               </div>
               <div class="col-md-4">
                 <label>Monto:</label>
-                <input id="txtmontoC" class="form-control"  type="text">
+                <input id="txtmontoC" class="form-control"  type="text" onkeypress="return Util.SoloNumero(event)">
               </div>
             </div>
           </div> <!-- Por Recibo -->
@@ -518,7 +518,7 @@
 
         </div>
         <div class="modal-footer" id="_botonescarnetvalidar">
-          <button type="button" class="btn btn-succcess" data-dismiss="modal" onclick="ContinuarTIM()">Continuar</button>
+          <button type="button" class="btn btn-succcess"  onclick="ContinuarTIM()">Enviar Datos</button>
           <button type="button" class="btn " data-dismiss="modal">Cancelar</button>
         </div>
       </div><!-- /.modal-content -->

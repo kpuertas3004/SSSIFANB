@@ -1,4 +1,4 @@
-Number.prototype.zeroPadding = function(){
+ Number.prototype.zeroPadding = function(){
   var ret = "" + this.valueOf();
   return ret.length == 1 ? "0" + ret : ret;
 };
