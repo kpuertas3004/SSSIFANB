@@ -126,6 +126,7 @@ $(function () {
   CargarUrl("_contenidofamiliar", "afi/familiarmodalcontinuar");
   CargarUrl("_contenidoh", "afi/historicomilitar");
   CargarUrl("_contenidorpt", "rpt/constancia");
+  CargarUrl("_contenidocps", "rpt/constanciapensionsobr");
 
   CargarUrl("_bxContenedores", "afi/contenedores");
 
