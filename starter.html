@@ -60,6 +60,13 @@
         cursor: inherit;
         display: block;
     }
+  .grad {
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, #A50000, gray); /* For Safari  */
+    background: -o-linear-gradient(right,#A50000, gray); /* For Opera */
+    background: -moz-linear-gradient(right,#A50000, gray); /* For Firefox  */
+    background: linear-gradient(right,#A50000, gray); /* Standard syntax */
+}
   </style>
 
   <!-- Activar Menu a traves de la API -->
@@ -90,12 +97,15 @@
 
 </head>
 <body class="hold-transition skin-yellow" style="display:none" id="_body">
-<div style='width:100%;height: 70px;' class='hidden-md-up'>
-      <div style='width:20%;height: 70px;float:left;text-align:right; background-color:#3c8dbc;' ><img src='images/1-1.png'></div>
-      <div style='width:65%;height: 70px;float:left;text-align:center;background-color:#3c8dbc;' ><img src='images/1-2.png'></div>
-      <div style='width:15%;height: 70px;float:left;text-align:center;background-color:#3c8dbc;' ><img src='images/1-3.png'></div>
-
+  <header class="header grad">
+    <div class="row">
+  <div class="col-md-3 hidden-xs"><img src='images/1-1.png' class="img-responsive" alt="Responsive image" style='width:30%; float: left;'><p style="font-size:20px; color:white; padding-top: 1.8em;"><b>Gran Misión Negro Primero</b></p></div>
+  <div class="col-md-6 hidden-xs"><center><p style="color:white; font-size:28px; padding-top: 0.2em;" class="lead"><b>SSSIFANB</b></p>
+  <p style="font-size:22px; color:white" class="lead">Sistema de Seguridad Social de la Fuerza Armada Nacional Bolivariana</p></center></div>
+  <div class="col-md-3 hidden-xs"><img src='images/lg.png' class="img-responsive" alt="Responsive image" style="float:right; width:30%;"></div>
 </div>
+  </header>
+
 <div class="wrapper">
 
   <header class="main-header">
@@ -228,7 +238,7 @@
                 </p>
               </li>
 
-              <!-- Menu Footer-->
+              <!-- Menu Footer-->yum install gimp
               <li class="user-footer">
                 <div class="pull-left">
                   <a href="#" class="btn btn-default btn-flat">Perfil</a>
