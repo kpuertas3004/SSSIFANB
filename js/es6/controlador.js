@@ -1,4 +1,4 @@
-Number.prototype.zeroPadding = function(){
+ Number.prototype.zeroPadding = function(){
   var ret = "" + this.valueOf();
   return ret.length == 1 ? "0" + ret : ret;
 };
@@ -126,6 +126,7 @@ $(function () {
   CargarUrl("_contenidofamiliar", "afi/familiarmodalcontinuar");
   CargarUrl("_contenidoh", "afi/historicomilitar");
   CargarUrl("_contenidorpt", "rpt/constancia");
+  CargarUrl("_contenidocps", "rpt/constanciapensionsobr");
 
   CargarUrl("_bxContenedores", "afi/contenedores");
 

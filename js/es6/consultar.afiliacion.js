@@ -67,8 +67,8 @@ function Buscar( id ){
           url = "http://192.168.6.45/temp/" +  $("#txtcedula").val() + "/firma.jpg";
           $("#_imgfirma").attr("src", url);
           $("#_imgcarnetmilitar").attr("src", url);
-          $("#_objectPDF").html("<center><iframe src='tarjeta-afiliacion/militar.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
-          $("#_objectFamiliar").html("<center><iframe src='tarjeta-afiliacion/afiliado.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
+          //$("#_objectPDF").html("<center><iframe src='tarjeta-afiliacion/militar.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
+          //$("#_objectFamiliar").html("<center><iframe src='tarjeta-afiliacion/afiliado.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
 
           $("#txtnombre").val(DB.nombreprimero + ' ' + DB.nombresegundo);
           $("#txtapellido").val(DB.apellidoprimero + ' ' + DB.apellidosegundo);
@@ -84,9 +84,11 @@ function Buscar( id ){
           $("#txtfechagraduacion").val(Util.ConvertirFechaHumana(militar.fingreso));
           $("#_fingreso").html(Util.ConvertirFechaHumana(militar.fingreso));
           $("#_fascenso").html(Util.ConvertirFechaHumana(militar.fascenso));
-          $("#cmbcategoria").val(militar.categoria);
+          //$("#cmbcategoria").val(militar.categoria);
+            $("#cmbcategoria").val("S");
           $("#cmbsituacion").val(militar.situacion);
-          $("#cmbclase").val(militar.clase);
+          //$("#cmbclase").val(militar.clase);
+            $("#cmbclase").val("S");
           $("#_categoria").html( $("#cmbcategoria option:selected").text());
           $("#_situacion").html($("#cmbsituacion option:selected").text());
           $("#_clasificacion").html('<font style="size:8px">' + $("#cmbclase option:selected").text() + "</font>");
@@ -176,6 +178,9 @@ function Buscar( id ){
         		$("#cmbmgruposanguineo").val(dfi.gruposanguineo);
           }
 
+            $("#txtcodigocomponente").val(militar.codigocomponente);
+            $("#txtnumhistoriaclinica").val(militar.numerohistoria);
+
           let j = 1, x = 1;
           $.each(militar.Familiar, function (c, v){
             let familiar = new Familiar();
@@ -239,7 +244,7 @@ function Buscar( id ){
               v.condicion, //11
               v.estudia, //12
               fechavencimiento, //13
-              v.beneficio,
+              //v.beneficio,
               modificar
             ]).draw(false);
 
@@ -254,7 +259,7 @@ function Buscar( id ){
           t.column(11).visible(false);
           t.column(12).visible(false);
           t.column(13).visible(false);
-          t.column(14).visible(false);
+         // t.column(14).visible(false);
 
 
 
@@ -670,14 +675,27 @@ function VisualizarCarnet(){
   if(Util.ValidarFormulario("_frmDatoBasico") == false){
     Util.ModalValidar("Favor actualizar afiliado");
   }else{
+    if(ObjMilitar.estatuscarnet == undefined){
+        $("#modCarnetValidar").modal("show");
+    }else{
+      alert('Muestro carnet');
+    }
 
-    $("#modCarnetValidar").modal("show");
     //$("#modCarnet").modal("show");
   }
 
 }
 function ContinuarTIM(){
-    $("#modCarnet").modal("show");
+
+  var recibo = new Recibo();
+  if(recibo.Verificar()=== true){
+      recibo.Salvar();
+      $('#modCarnetValidar').modal('hide');
+
+  }else{
+    console.log(recibo);
+  }
+  //$("#modCarnet").modal("show");
 }
 
 function VisualizarCarnetFamiliar(){
@@ -1257,10 +1275,11 @@ function CConstanciaAfiliacion(){
   var ts = militar.tiemposervicio.split(" ");
   var tiempo = ts[0]+"ÑOS  " + ts[1]+"ESES " + ts[2]+"ÍAS"
   var gradoPI  = 'GENERAL DE DIVISIÓN';
-  var clascat = 'OFICIAL / ASIMILADO'
+  var clascat = $("#cmbcategoria option:selected").text() + ' / ' + $("#cmbclase option:selected").text() ;
   var nombrePI = 'JESÚS RAFAEL SALAZAR VELÁSQUEZ';
   $('#modRpt').modal('show');
   $("#lblgradoMil").text($("#cmbgrado option:selected").text());
+  $("#lblGradoFoto").text($("#cmbgrado option:selected").text());
   $("#lblcedulaMil").text($("#txtcedula").val());
   $("#lblnombreMil").text($("#txtapellido").val() + ' ' + $("#txtnombre").val());
   $("#lbledoCivilM").text($("#cmbedocivil option:selected").text());
@@ -1286,35 +1305,18 @@ function CConstanciaAfiliacion(){
 
 function ConstanciaPensionSobr(){
 
-//  var urlMil   = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
+  //var urlMil   = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
 //  var urlGra   = "images/grados/" + militar.Grado.abreviatura + ".png";
 //      urlGra   = urlGra.toLowerCase();
   var fechaActual = ConvertirFechaActual();
   var ts = militar.tiemposervicio.split(" ");
   var tiempo = ts[0]+"ÑOS  " + ts[1]+"ESES " + ts[2]+"ÍAS"
   var gradoPI  = 'GENERAL DE DIVISIÓN';
+  var clascat = 'OFICIAL / ASIMILADO'
   var nombrePI = 'JESÚS RAFAEL SALAZAR VELÁSQUEZ';
-  $('#modRpt').modal('show');
-  $("#lblgradoMil").text($("#cmbgrado option:selected").text());
-  $("#lblcedulaMil").text($("#txtcedula").val());
-  $("#lblnombreMil").text($("#txtapellido").val() + ' ' + $("#txtnombre").val());
-  $("#lbledoCivilM").text($("#cmbedocivil option:selected").text());
-  $("#lblfchNacMil").text($("#txtnacimiento").val());
-  $("#lbldireccionMil").text($("#txtmcalle").val() + ' ' + $("#txtmcasa").val() +
-                        ' ' + $("#txtmapto").val() + ' ' + $("#cmbmparroquia option:selected").text() +
-                        ' ' + $("#cmbmmunicipio option:selected").text() + ' ' + $("#cmbmciudad option:selected").text() +
-                        ' ' + $("#cmbmestado option:selected").text());
-  $("#lblfchIngresoFANB").text($("#txtfechagraduacion").val());
-  $("#lblfchUltAscenso").text($("#_fascenso").val());
-  $("#lblaServicio").text(tiempo);
-  $("#lblcomponente").text($("#cmbcomponente option:selected").text());
-  $("#lblsituacionMil").text($("#cmbsituacion option:selected").text());
-  $("#_fotoConstancia").attr("src", urlMil);
-  $("#_Constgrado").attr("src", urlGra);
-  $("#lblfchActual").text(fechaActual);
-  $("#lblgradoPI").text(gradoPI);
-  $("#lblnombrePI").text(nombrePI);
-  $("#lblgradoPIF").text(gradoPI);
+  $('#modConsSobr').modal('show');
+  $('#lblprueba').text("aquioooooioi")
+
 
 }
 
@@ -1355,19 +1357,9 @@ function imprSelec(nombre) {
   }\
   .alinear_td{\
     text-align: center;\
-    border-style: solid;\
-    border-right 1px;\
-    border-left: 0px;\
-    border-top: 0px;\
-    border-bottom: 0px;\
   }\
   .alinear_tddatos{\
     text-align: left;\
-    border-style: solid;\
-    border-right 0px;\
-    border-left: 1px;\
-    border-top: 0px;\
-    border-bottom: 0px;\
   }\
 .marca-de-agua {\
     background-image: url("images/fondo.png");\
@@ -1380,7 +1372,7 @@ function imprSelec(nombre) {
   .cuerpo_constancia{\
     font-style: normal;\
     font-family:Arial, monospace, serif ;\
-    font-size: 10;\
+    font-size: 14;\
     }\
   }\
    .row-centered {\
@@ -1413,8 +1405,8 @@ function imprSelec(nombre) {
       }\
 }\
  </style>';
-//ventana.print();
-//ventana.close();
+ventana.print();
+ventana.close();
 
 }
 

@@ -4,11 +4,22 @@ class Utilidad {
   }
 
   SoloNumero(event){
-    if( event.charCode >= 48 && event.charCode <= 57 ){
-      return event.charCode;
-    }else{
-      return false;
-    }
+      var key = event.keyCode || event.which;
+      var tecla = String.fromCharCode(key).toLowerCase();
+      var numeros = "0123456789";
+      var especiales = [8, 37, 39, 46,13,9];
+
+      var tecla_especial = false
+      for (var i in especiales) {
+          if (key == especiales[i]) {
+              tecla_especial = true;
+              break;
+          }
+      }
+
+      if (numeros.indexOf(tecla) == -1 && !tecla_especial) {
+          return false;
+      }
   }
 
   //Recibe  Fecha Formato: AAAA-MM-DD 00:00:00
