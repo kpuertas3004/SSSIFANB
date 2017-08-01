@@ -239,7 +239,7 @@ function Buscar( id ){
               v.condicion, //11
               v.estudia, //12
               fechavencimiento, //13
-              v.beneficio,
+              //v.beneficio,
               modificar
             ]).draw(false);
 
@@ -254,7 +254,7 @@ function Buscar( id ){
           t.column(11).visible(false);
           t.column(12).visible(false);
           t.column(13).visible(false);
-          t.column(14).visible(false);
+         // t.column(14).visible(false);
 
 
 
@@ -1286,35 +1286,18 @@ function CConstanciaAfiliacion(){
 
 function ConstanciaPensionSobr(){
 
-//  var urlMil   = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
+  //var urlMil   = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
 //  var urlGra   = "images/grados/" + militar.Grado.abreviatura + ".png";
 //      urlGra   = urlGra.toLowerCase();
   var fechaActual = ConvertirFechaActual();
   var ts = militar.tiemposervicio.split(" ");
   var tiempo = ts[0]+"ÑOS  " + ts[1]+"ESES " + ts[2]+"ÍAS"
   var gradoPI  = 'GENERAL DE DIVISIÓN';
+  var clascat = 'OFICIAL / ASIMILADO'
   var nombrePI = 'JESÚS RAFAEL SALAZAR VELÁSQUEZ';
-  $('#modRpt').modal('show');
-  $("#lblgradoMil").text($("#cmbgrado option:selected").text());
-  $("#lblcedulaMil").text($("#txtcedula").val());
-  $("#lblnombreMil").text($("#txtapellido").val() + ' ' + $("#txtnombre").val());
-  $("#lbledoCivilM").text($("#cmbedocivil option:selected").text());
-  $("#lblfchNacMil").text($("#txtnacimiento").val());
-  $("#lbldireccionMil").text($("#txtmcalle").val() + ' ' + $("#txtmcasa").val() +
-                        ' ' + $("#txtmapto").val() + ' ' + $("#cmbmparroquia option:selected").text() +
-                        ' ' + $("#cmbmmunicipio option:selected").text() + ' ' + $("#cmbmciudad option:selected").text() +
-                        ' ' + $("#cmbmestado option:selected").text());
-  $("#lblfchIngresoFANB").text($("#txtfechagraduacion").val());
-  $("#lblfchUltAscenso").text($("#_fascenso").val());
-  $("#lblaServicio").text(tiempo);
-  $("#lblcomponente").text($("#cmbcomponente option:selected").text());
-  $("#lblsituacionMil").text($("#cmbsituacion option:selected").text());
-  $("#_fotoConstancia").attr("src", urlMil);
-  $("#_Constgrado").attr("src", urlGra);
-  $("#lblfchActual").text(fechaActual);
-  $("#lblgradoPI").text(gradoPI);
-  $("#lblnombrePI").text(nombrePI);
-  $("#lblgradoPIF").text(gradoPI);
+  $('#modConsSobr').modal('show');
+  $('#lblprueba').text("aquioooooioi")
+
 
 }
 
