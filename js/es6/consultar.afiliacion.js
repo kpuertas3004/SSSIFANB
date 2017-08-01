@@ -87,12 +87,12 @@ function Buscar( id ){
           $("#cmbcategoria").val(militar.categoria);
           $("#cmbsituacion").val(militar.situacion);
           $("#cmbclase").val(militar.clase);
-          $("#_categoria").html($("#cmbcategoria option:selected").text());
+          $("#_categoria").html( $("#cmbcategoria option:selected").text());
           $("#_situacion").html($("#cmbsituacion option:selected").text());
-          $("#_clasificacion").html($("#cmbclase option:selected").text());
+          $("#_clasificacion").html('<font style="size:8px">' + $("#cmbclase option:selected").text() + "</font>");
           $("#_tiemposervicio").html(militar.tiemposervicio);
           var Fideicomiso = militar.Fideicomiso;
-          console.log(Fideicomiso);
+//          console.log(Fideicomiso);
           if (militar.Fideicomiso.areconocido != undefined ){
             $("#_reconocidos").show();
             $("#txtareconocido").val(Fideicomiso.areconocido);
@@ -467,16 +467,16 @@ function FamiliaresHTML(){
 }
 
 function ConstanciaFamiliaresHTML(){
-  var html = '<table class="table-fondo" cellspacing="0" width="100%" id="tblConstFamiliares">\
+  var html = '<table class="table-fondo " cellspacing="0" width="100%" id="tblConstFamiliares" >\
     <thead>\
-      <tr class="titulo_tabla">\
+      <tr class="titulo_tabla table-borderedtd" >\
         <th class="alinear_td">APELLIDOS Y NOMBRES</th>\
-        <th >CÉDULA</th>\
-        <th >PARENTESCO</th>\
-        <th >FECHA NAC.</th>\
-        <th >EDO CIVIL</th>\
-        <th >SITUACIÓN</th>\
-        <th >FECHA VCTO. CARNET</th>\
+        <th class="alinear_tddatos">CÉDULA</th>\
+        <th class="alinear_tddatos">PARENTESCO</th>\
+        <th class="alinear_tddatos">FECHA NAC.</th>\
+        <th class="alinear_tddatos">EDO CIVIL</th>\
+        <th class="alinear_tddatos">SITUACIÓN</th>\
+        <th class="alinear_tddatos">FECHA VCTO. CARNET</th>\
       </tr>\
     </thead >\
     <tbody id="_contenidoFamiliares">\
@@ -1304,7 +1304,7 @@ function ConstanciaPensionSobr(){
 
 function imprSelec(nombre) {
 
-var html = $("#" + nombre).html();
+ var html = $("#" + nombre).html();
  var ventana = window.open("","_blank");
  ventana.document.write(html);
  ventana.document.head.innerHTML = '\
@@ -1343,13 +1343,13 @@ var html = $("#" + nombre).html();
     text-align: left;\
   }\
 .marca-de-agua {\
-    background-image: url("images/logo_ipsfa.png");\
+    background-image: url("images/fondo.png");\
     background-repeat: no-repeat;\
     background-position: center;\
     width: 100%;\
     height: auto;\
     margin: auto;\
-}\
+   }\
   .cuerpo_constancia{\
     font-style: normal;\
     font-family:Arial, monospace, serif ;\
@@ -1370,8 +1370,8 @@ var html = $("#" + nombre).html();
       font-weight: normal;\
    }\
   .table-borderedtd{\
-   border: 1px solid black;\
-   border-radius: 7px;\
+  border: 1px solid black;\
+  border-radius: 7px;\
    }\
    .table-fondo{\
     border: 1px solid black;\
@@ -1386,11 +1386,10 @@ var html = $("#" + nombre).html();
       }\
 }\
  </style>';
-ventana.print();
- ventana.close();
+//ventana.print();
+//ventana.close();
 
-
-  }
+}
 
 function CalcularEdadFamiliar(id, vl){
   $('#'+id).val(Util.CalcularEdad($('#'+vl).val()));
@@ -1532,4 +1531,23 @@ function ValidarMilitar(valor){
 function SalvarFamiliar(){
   var familiar = new Familiar();
   familiar.Salvar();
+}
+
+
+function GenerarCarnet(){
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", Conn.URL + "militar/crud/" + $("#txtcedulam").val());
+  xhttp.onreadystatechange = function() {
+
+  }
+}
+
+function ImprimirCarnet(){
+
+  var ventana = window.open("inc/rpt/carnet.html","_blank");
+  console.log("ImprimirCarnet");
+  // ventana.print();
+  // ventana.close();
+
+
 }

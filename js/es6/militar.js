@@ -359,9 +359,9 @@ class Persona{
 		this.Defuncion = new Defuncion();
 		this.DocumentoCivil = new DocumentoCivil();
 		this.RedSocial = new RedSocial();
-		this.urlFoto = "1";
-		this.urlHuella = "2";
-		this.urlFirma = "3";
+		this.urlFoto = "";
+		this.urlHuella = "";
+		this.urlFirma = "";
 	}
 }
 
@@ -476,9 +476,13 @@ class Militar{
 		this.Persona.DatoFisionomico.senaParticular = $("#txtmsenaparticular").val().toUpperCase();
 		this.Persona.DatoFisionomico.gruposanguineo = $("#cmbmgruposanguineo").val().toUpperCase();
 		//this.Grado.abreviatura = $("#cmbgrado option:selected").val();
+
+
 		this.Persona.RedSocial.twitter = $("#txtmtwitter").val().toUpperCase();
 		this.Persona.RedSocial.facebook = $("#txtmfacebook").val().toUpperCase();
 		this.Persona.RedSocial.instagram = $("#txtminstagran").val().toUpperCase();
+
+
 		//this.Persona.RedSocial.linkedin = $("#txtmlinkedin").val().toUpperCase();
 		//this.Tim.huella = $('#_imghuella').val();
 		//this.Tim.firma = $('#_imgfirma').val();
@@ -516,7 +520,7 @@ class Militar{
     $("#_btnModificar").show();
     $("#_btnSavlvar").hide();
 		console.log(this.Obtener());
-    //CargarAPI(Conn.URL + "militar/crud" , "POST", this.Obtener());
+    CargarAPI(Conn.URL + "militar/crud" , "POST", this.Obtener());
 	}
 	Actualizar(){
 		$("#_bxFamiliar").show();
@@ -525,8 +529,8 @@ class Militar{
     $("#_btnTIM").show();
     $("#_btnModificar").show();
     $("#_btnSavlvar").hide();
-		console.log(this.Obtener());
-		//CargarAPI(Conn.URL + "militar/crud" , "PUT", this.Obtener());
+		//console.log(this.Obtener());
+		CargarAPI(Conn.URL + "militar/crud" , "PUT", this.Obtener());
 	}
 }
 

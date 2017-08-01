@@ -24,6 +24,11 @@
 				"metodo" : "afiliacion.modificar",
 				"descripcion" : "Modificar Usuario",
 				"accion" : "Update()"
+			},
+			{
+				"metodo" : "afiliacion.carnet",
+				"descripcion" : "Imprimir Carnet",
+				"accion" : "ImprimirAPICarnet()"
 			}
 		],
     "menu": [
@@ -32,6 +37,16 @@
 				"js" : "usuario",
 				"icono" : "fa fa-search",
 				"nombre" : "Datos"
+			},{
+				"url" : "",
+				"js" : "afi/pendiente",
+				"icono" : "fa fa-check-square-o",
+				"nombre" : "Aprobación TIM"
+			},{
+				"url" : "",
+				"js" : "afi/impresion",
+				"icono" : "fa fa-print",
+				"nombre" : "Impresión TIM"
 			},{
 				"url" : "",
 				"js" : "sec/administrar",
