@@ -1257,7 +1257,7 @@ function CConstanciaAfiliacion(){
   var ts = militar.tiemposervicio.split(" ");
   var tiempo = ts[0]+"ÑOS  " + ts[1]+"ESES " + ts[2]+"ÍAS"
   var gradoPI  = 'GENERAL DE DIVISIÓN';
-  var clascat = 'OFICIAL / ASIMILADO'
+  var clascat = $("#cmbcategoria option:selected").text() + ' / ' + $("#cmbclase option:selected").text() ;
   var nombrePI = 'JESÚS RAFAEL SALAZAR VELÁSQUEZ';
   $('#modRpt').modal('show');
   $("#lblgradoMil").text($("#cmbgrado option:selected").text());
@@ -1370,7 +1370,7 @@ function imprSelec(nombre) {
   .cuerpo_constancia{\
     font-style: normal;\
     font-family:Arial, monospace, serif ;\
-    font-size: 10;\
+    font-size: 11;\
     }\
   }\
    .row-centered {\
@@ -1403,8 +1403,8 @@ function imprSelec(nombre) {
       }\
 }\
  </style>';
-//ventana.print();
-//ventana.close();
+ventana.print();
+ventana.close();
 
 }
 
