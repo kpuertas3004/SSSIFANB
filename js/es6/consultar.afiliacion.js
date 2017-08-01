@@ -11,6 +11,7 @@ function Buscar( id ){
     return false;
   }
   $("#_cargando").show();
+  $("#_lblConstanciaPension").hide();
   $("#_imgfamiliar").attr("src", "images/ndisponible.jpg");
   var xhttp = new XMLHttpRequest();
   xhttp.open("GET", Conn.URL + "militar/crud/" + $("#_cedula").val());
@@ -216,12 +217,12 @@ function Buscar( id ){
 
 
             $("#_contenidoFamiliares").append('<tr><td>'+nombreCompleto+'</td>\
-              <td class="alinear_td">'+ cedula +'</td>\
-              <td class="alinear_td">'+ familiar.GenerarParentesco() +'</td>\
-              <td class="alinear_td">'+  fnac +'</td>\
-              <td class="alinear_td">'+ edocivil +'</td>\
-              <td class="alinear_td">'+ situacion +'</td>\
-              <td class="alinear_td">'+ fechavencimiento +'</td></tr>');
+              <td class="alinear_tddatos">'+ cedula +'</td>\
+              <td class="alinear_tddatos">'+ familiar.GenerarParentesco() +'</td>\
+              <td class="alinear_tddatos">'+  fnac +'</td>\
+              <td class="alinear_tddatos">'+ edocivil +'</td>\
+              <td class="alinear_tddatos">'+ situacion +'</td>\
+              <td class="alinear_tddatos">'+ fechavencimiento +'</td></tr>');
 
             t.row.add ([
               j++, //0
@@ -238,6 +239,7 @@ function Buscar( id ){
               v.condicion, //11
               v.estudia, //12
               fechavencimiento, //13
+              v.beneficio,
               modificar
             ]).draw(false);
 
@@ -252,12 +254,14 @@ function Buscar( id ){
           t.column(11).visible(false);
           t.column(12).visible(false);
           t.column(13).visible(false);
-
+          t.column(14).visible(false);
 
 
 
           $('#tblFamiliares tbody').on('click', 'tr', function () {
+
               var data = t.row(this).data();
+              $("#_lblConstanciaPension").hide();
               urlf = "http://192.168.12.161/imagenes/" +  data[1] + ".jpg";
               $("#_imgfamiliar").attr("src", urlf);
               $("#_ffnacimiento").html(Util.ConvertirFechaHumana(data[5]));
@@ -266,6 +270,10 @@ function Buscar( id ){
                 $("#_fcedula").html('<a href="#" onClick="Buscar(\'' + data[1] +  '\')">C.I: V- ' + data[1] + '</a>');
                 $("#_ffnacimiento").html(Util.ConvertirFechaHumana(data[5]));
               }
+              if (data[14] == true){
+                $("#_lblConstanciaPension").show();
+              }
+
           });
 
           $('#tblFamiliares tbody').on('dblclick', 'tr', function () {
@@ -459,22 +467,22 @@ function FamiliaresHTML(){
 }
 
 function ConstanciaFamiliaresHTML(){
-  var html = '<table class="table table-bordered " cellspacing="0" width="100%" id="tblConstFamiliares" >\
+  var html = '<table class="table-fondo " cellspacing="0" width="100%" id="tblConstFamiliares" >\
     <thead>\
-    <tr><th colspan="7" class="titulo_fondo" text-align="left">Familiares Afiliados</th></tr>\
-      <tr class="titulo_tabla">\
+      <tr class="titulo_tabla table-borderedtd" >\
         <th class="alinear_td">APELLIDOS Y NOMBRES</th>\
-        <th class="alinear_td">CÉDULA</th>\
-        <th class="alinear_td">PARENTESCO</th>\
-        <th class="alinear_td">FECHA NAC.</th>\
-        <th class="alinear_td">EDO CIVIL</th>\
-        <th class="alinear_td">SITUACIÓN</th>\
-        <th class="alinear_td">FECHA VCTO. CARNET</th>\
+        <th class="alinear_tddatos">CÉDULA</th>\
+        <th class="alinear_tddatos">PARENTESCO</th>\
+        <th class="alinear_tddatos">FECHA NAC.</th>\
+        <th class="alinear_tddatos">EDO CIVIL</th>\
+        <th class="alinear_tddatos">SITUACIÓN</th>\
+        <th class="alinear_tddatos">FECHA VCTO. CARNET</th>\
       </tr>\
     </thead >\
     <tbody id="_contenidoFamiliares">\
     </tbody>\
   </table>';
+
   return html;
 
 }
@@ -675,7 +683,6 @@ function ContinuarTIM(){
 function VisualizarCarnetFamiliar(){
   $("#modCarnetFamiliar").modal("show");
 }
-
 
 function ActivarCalendarios(){
   $('#txtnacimiento').datepicker({
@@ -1250,6 +1257,42 @@ function CConstanciaAfiliacion(){
   var ts = militar.tiemposervicio.split(" ");
   var tiempo = ts[0]+"ÑOS  " + ts[1]+"ESES " + ts[2]+"ÍAS"
   var gradoPI  = 'GENERAL DE DIVISIÓN';
+  var clascat = 'OFICIAL / ASIMILADO'
+  var nombrePI = 'JESÚS RAFAEL SALAZAR VELÁSQUEZ';
+  $('#modRpt').modal('show');
+  $("#lblgradoMil").text($("#cmbgrado option:selected").text());
+  $("#lblcedulaMil").text($("#txtcedula").val());
+  $("#lblnombreMil").text($("#txtapellido").val() + ' ' + $("#txtnombre").val());
+  $("#lbledoCivilM").text($("#cmbedocivil option:selected").text());
+  $("#lblfchNacMil").text($("#txtnacimiento").val());
+  $("#lbldireccionMil").text($("#txtmcalle").val() + ' ' + $("#txtmcasa").val() +
+                        ' ' + $("#txtmapto").val() + ' ' + $("#cmbmparroquia option:selected").text() +
+                        ' ' + $("#cmbmmunicipio option:selected").text() + ' ' + $("#cmbmciudad option:selected").text() +
+                        ' ' + $("#cmbmestado option:selected").text());
+  $("#lblfchIngresoFANB").text($("#txtfechagraduacion").val());
+  $("#lblfchUltAscenso").text($("#_fascenso").val());
+  $("#lblaServicio").text(tiempo);
+  $("#lblcomponente").text($("#cmbcomponente option:selected").text());
+  $("#lblsituacionMil").text($("#cmbsituacion option:selected").text());
+  $("#_fotoConstancia").attr("src", urlMil);
+  $("#_Constgrado").attr("src", urlGra);
+  $("#lblfchActual").text(fechaActual);
+  $("#lblgradoPI").text(gradoPI);
+  $("#lblnombrePI").text(nombrePI);
+  $("#lblgradoPIF").text(gradoPI);
+  $("#lblclascat").text(clascat);
+
+}
+
+function ConstanciaPensionSobr(){
+
+//  var urlMil   = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
+//  var urlGra   = "images/grados/" + militar.Grado.abreviatura + ".png";
+//      urlGra   = urlGra.toLowerCase();
+  var fechaActual = ConvertirFechaActual();
+  var ts = militar.tiemposervicio.split(" ");
+  var tiempo = ts[0]+"ÑOS  " + ts[1]+"ESES " + ts[2]+"ÍAS"
+  var gradoPI  = 'GENERAL DE DIVISIÓN';
   var nombrePI = 'JESÚS RAFAEL SALAZAR VELÁSQUEZ';
   $('#modRpt').modal('show');
   $("#lblgradoMil").text($("#cmbgrado option:selected").text());
@@ -1287,10 +1330,91 @@ function imprSelec(nombre) {
  <title>SSSIFANB</title>\
  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">\
  <link rel="stylesheet" href="dist/css/skins.ipsfa/_all-skins_1.css">\
- <style type="text/css">\
+  <style type="text/css">\
+  @media screen,print {\
+  .membrete {\
+    font-style: normal;\
+    font-family:Arial, monospace, serif ;\
+    font-size: 6pt;\
+  }\
+  .titulo{\
+    font-size:8pt;\
+    text-align: left;\
+    font-family:Arial, monospace, serif ;\
+  }\
+  .titulo_fondo{\
+    font-size:10pt;\
+    font-family:Arial, monospace, serif ;\
+    background-color: #D8D8D8;\
+    border-radius: 7px;\
+  }\
+  .titulo_tabla{\
+    font-size:7pt;\
+    font-family:Arial, monospace, serif ;\
+    background-color: #D8D8D8;\
+  }\
+  .alinear_td{\
+    text-align: center;\
+    border-style: solid;\
+    border-right 1px;\
+    border-left: 0px;\
+    border-top: 0px;\
+    border-bottom: 0px;\
+  }\
+  .alinear_tddatos{\
+    text-align: left;\
+    border-style: solid;\
+    border-right 0px;\
+    border-left: 1px;\
+    border-top: 0px;\
+    border-bottom: 0px;\
+  }\
+.marca-de-agua {\
+    background-image: url("images/fondo.png");\
+    background-repeat: no-repeat;\
+    background-position: center;\
+    width: 100%;\
+    height: auto;\
+    margin: auto;\
+   }\
+  .cuerpo_constancia{\
+    font-style: normal;\
+    font-family:Arial, monospace, serif ;\
+    font-size: 10;\
+    }\
+  }\
+   .row-centered {\
+       text-align:center;\
+   }\
+   .col-centered {\
+       display:inline-block;\
+       float:none;\
+       text-align:left;\
+       margin-right:-4px;\
+   }\
+   td {\
+      font-size: 10px;\
+      font-weight: normal;\
+   }\
+  .table-borderedtd{\
+  border: 1px solid black;\
+  border-radius: 7px;\
+   }\
+   .table-fondo{\
+    border: 1px solid black;\
+    border-radius: 7px;\
+    th:lastchild, td:lastchild {\
+    border-right: 0;\
+   }}\
+   @charset "utf-8";\
+   @page {\
+    margin: 1cm;\
+    size:8.5in 11in;\
+      }\
+}\
  </style>';
- ventana.print();
- ventana.close();
+//ventana.print();
+//ventana.close();
 
 }
 
