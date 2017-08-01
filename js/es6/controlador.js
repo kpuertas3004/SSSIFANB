@@ -137,6 +137,9 @@ $(function () {
 
 
 });
+function Principal(){
+    $(location).attr("href","starter.html");
+}
 
 function Enter(e){
   if(e.keyCode == 13) {

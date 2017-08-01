@@ -86,12 +86,12 @@ function Buscar( id ){
           $("#cmbcategoria").val(militar.categoria);
           $("#cmbsituacion").val(militar.situacion);
           $("#cmbclase").val(militar.clase);
-          $("#_categoria").html($("#cmbcategoria option:selected").text());
+          $("#_categoria").html( $("#cmbcategoria option:selected").text());
           $("#_situacion").html($("#cmbsituacion option:selected").text());
-          $("#_clasificacion").html($("#cmbclase option:selected").text());
+          $("#_clasificacion").html('<font style="size:8px">' + $("#cmbclase option:selected").text() + "</font>");
           $("#_tiemposervicio").html(militar.tiemposervicio);
           var Fideicomiso = militar.Fideicomiso;
-          console.log(Fideicomiso);
+//          console.log(Fideicomiso);
           if (militar.Fideicomiso.areconocido != undefined ){
             $("#_reconocidos").show();
             $("#txtareconocido").val(Fideicomiso.areconocido);
@@ -1278,7 +1278,7 @@ function CConstanciaAfiliacion(){
 
 function imprSelec(nombre) {
 
-var html = $("#" + nombre).html();
+ var html = $("#" + nombre).html();
  var ventana = window.open("","_blank");
  ventana.document.write(html);
  ventana.document.head.innerHTML = '\
@@ -1292,8 +1292,7 @@ var html = $("#" + nombre).html();
  ventana.print();
  ventana.close();
 
-
-  }
+}
 
 function CalcularEdadFamiliar(id, vl){
   $('#'+id).val(Util.CalcularEdad($('#'+vl).val()));
@@ -1435,4 +1434,23 @@ function ValidarMilitar(valor){
 function SalvarFamiliar(){
   var familiar = new Familiar();
   familiar.Salvar();
+}
+
+
+function GenerarCarnet(){
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", Conn.URL + "militar/crud/" + $("#txtcedulam").val());
+  xhttp.onreadystatechange = function() {
+
+  }
+}
+
+function ImprimirCarnet(){
+
+  var ventana = window.open("inc/rpt/carnet.html","_blank");
+  console.log("ImprimirCarnet");
+  // ventana.print();
+  // ventana.close();
+
+
 }
