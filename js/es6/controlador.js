@@ -223,6 +223,8 @@ function CargarAPI(sURL, metodo, valores, Objeto){
       }
 
   };
+
+
   if(valores != undefined){
     xhttp.send(JSON.stringify(valores));
   }else{

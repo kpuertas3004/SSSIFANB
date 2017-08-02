@@ -243,9 +243,9 @@ class Familiar{
 		this.Persona = new Persona();
 		this.parentesco = "";
 		this.esmilitar = "";
-		this.condicion = "";
+		this.condicion = 0;
 		this.estudia = 0;
-		this.beneficio = 1;
+		this.beneficio = true;
 		this.documento = 0;
 		this.documentopadre = "";
 	}
@@ -270,14 +270,14 @@ class Familiar{
 	Obtener(){
 		this.documentopadre = $("#txtcedula").val();
 		this.Persona.DatoBasico.cedula = $("#txtcedulaf").val();
-		this.Persona.DatoBasico.fechanacimiento = new Date(Util.ConvertirFechaUnix($("#txtnacimientof").val())).toISOString();
+		this.Persona.DatoBasico.fechanacimiento =  new Date(Util.ConvertirFechaUnix($("#txtnacimientof").val())).toISOString();
 		this.Persona.DatoBasico.sexo = $("#cmbsexof").val();
 		this.Persona.DatoBasico.nombreprimero = $("#txtnombref").val();
 		this.Persona.DatoBasico.apellidoprimero = $("#txtapellidof").val();
 		this.Persona.DatoBasico.estadocivil = $("#cmbedocivilf  option:selected").val();
 		this.parentesco = $("#cmbparentescof").val();
-		this.condicion = $("#cmbcondicionf").val();
-		this.estudia = $("#cmbestudiaf").val();
+		this.condicion = parseInt($("#cmbcondicionf").val());
+		this.estudia = parseInt($("#cmbestudiaf").val());
 		this.esmilitar = $("#cmbmilitarf option:selected").val()==0?false:true;
 
 		this.Persona.Direccion.estado = $("#cmbestadof option:selected").val();
@@ -300,21 +300,24 @@ class Familiar{
 		this.Persona.DatoFisionomico.colorpiel = $("#cmbpielf").val();
 		this.Persona.DatoFisionomico.colorojos = $("#cmbojosf").val();
 		this.Persona.DatoFisionomico.colorcabello = $("#cmbcolorcabellof").val();
-		this.Persona.DatoFisionomico.estatura = $("#txtestaturaf").val();
+		this.Persona.DatoFisionomico.estatura = parseFloat($("#txtestaturaf").val());
 		this.Persona.DatoFisionomico.senaParticular = $("#txtsenaparticularf").val();
 		this.Persona.DatoFisionomico.gruposanguineo = $("#txtgruposanguineof").val();
-		this.Persona.RedSocial.twitter = "";//$("#txttwitterf").val();
-		this.Persona.RedSocial.facebook = "";//$("#txtfacebookf").val();
-		this.Persona.RedSocial.instagram = "";//$("#txtinstagranf").val();
+		this.Persona.RedSocial.twitter = $("#txttwitterf").val();
+		this.Persona.RedSocial.facebook = $("#txtfacebookf").val();
+		this.Persona.RedSocial.instagram = $("#txtinstagranf").val();
 		// this.Persona.RedSocial.linkedin = $("#txtlinkedinf").val();
-		console.log(this);
+		return this;
 	}
 	Salvar(){
-		//this.Obtener()
-    	CargarAPI(Conn.URL + "familiar/crud" , "PUT", this.Obtener());
+
+		CargarAPI(Conn.URL + "familiar/crud" , "PUT", this.Obtener());
+    //CargarAPI(Conn.URL + "familiar/crud" , "POST", this.Obtener());
 	}
 	Actualizar(){
-        CargarAPI(Conn.URL + "familiar/crud" , "PUT", this.Obtener());
+		//CargarAPI(Conn.URL + "familiar/crud" , "PUT", this.Obtener());
+
+
 	}
 }
 
@@ -514,7 +517,7 @@ class Militar{
 
         this.id = militar.id;
         this.tipodato = militar.tipodatoo;
-        
+
         this.Persona.DatoBasico = militar.Persona.DatoBasico;
         var DFis = militar.Persona.DatoFisionomico;
 
