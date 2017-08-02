@@ -210,6 +210,8 @@ function CargarAPI(sURL, metodo, valores, Objeto){
           respuesta = JSON.parse(xhttp.responseText);
           if (respuesta.tipo != 0){
             $.notify("Se ha Insertado correctamente", "success");
+          }else{
+              alert(xhttp.responseText)
           }
         }
       }

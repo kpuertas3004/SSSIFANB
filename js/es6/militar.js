@@ -270,7 +270,7 @@ class Familiar{
 	Obtener(){
 		this.documentopadre = $("#txtcedula").val();
 		this.Persona.DatoBasico.cedula = $("#txtcedulaf").val();
-		this.Persona.DatoBasico.fechanacimiento = $("#txtnacimientof").val();
+		this.Persona.DatoBasico.fechanacimiento = new Date(Util.ConvertirFechaUnix($("#txtnacimientof").val())).toISOString();
 		this.Persona.DatoBasico.sexo = $("#cmbsexof").val();
 		this.Persona.DatoBasico.nombreprimero = $("#txtnombref").val();
 		this.Persona.DatoBasico.apellidoprimero = $("#txtapellidof").val();
@@ -303,20 +303,18 @@ class Familiar{
 		this.Persona.DatoFisionomico.estatura = $("#txtestaturaf").val();
 		this.Persona.DatoFisionomico.senaParticular = $("#txtsenaparticularf").val();
 		this.Persona.DatoFisionomico.gruposanguineo = $("#txtgruposanguineof").val();
-		this.Persona.RedSocial.twitter = $("#txttwitterf").val();
-		this.Persona.RedSocial.facebook = $("#txtfacebookf").val();
-		this.Persona.RedSocial.instagram = $("#txtinstagranf").val();
+		this.Persona.RedSocial.twitter = "";//$("#txttwitterf").val();
+		this.Persona.RedSocial.facebook = "";//$("#txtfacebookf").val();
+		this.Persona.RedSocial.instagram = "";//$("#txtinstagranf").val();
 		// this.Persona.RedSocial.linkedin = $("#txtlinkedinf").val();
 		console.log(this);
 	}
 	Salvar(){
-		this.Obtener()
-    //CargarAPI(Conn.URL + "familiar/crud" , "POST", this.Obtener());
+		//this.Obtener()
+    	CargarAPI(Conn.URL + "familiar/crud" , "PUT", this.Obtener());
 	}
 	Actualizar(){
-		//CargarAPI(Conn.URL + "familiar/crud" , "PUT", this.Obtener());
-
-
+        CargarAPI(Conn.URL + "familiar/crud" , "PUT", this.Obtener());
 	}
 }
 
