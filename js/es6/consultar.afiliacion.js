@@ -64,6 +64,7 @@ function Buscar( id ){
           $("#_imggrado").attr("src", url);
           url = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
           //url = "http://192.168.6.45/temp/" +  $("#txtcedula").val() + "/foto.jpg";
+            $("#minifoto").attr("href", url);
           $("#_img").attr("src", url);
           url = "http://192.168.6.45/temp/" +  $("#txtcedula").val() + "/huella.bmp";
           $("#_imghuella").attr("src", url);
