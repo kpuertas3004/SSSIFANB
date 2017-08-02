@@ -65,11 +65,16 @@ function Buscar( id ){
           url = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
           //url = "http://192.168.6.45/temp/" +  $("#txtcedula").val() + "/foto.jpg";
           $("#_img").attr("src", url);
-          url = "http://192.168.6.45/temp/" +  $("#txtcedula").val() + "/huella.bmp";
-          $("#_imghuella").attr("src", url);
-          url = "http://192.168.6.45/temp/" +  $("#txtcedula").val() + "/firma.jpg";
-          $("#_imgfirma").attr("src", url);
+          url = "temp/" +  $("#txtcedula").val() + "/huella.jpg";
+          $("#_imghuellam").attr("src", url);
+          url = "temp/" +  $("#txtcedula").val() + "/firma.png";
+          $("#_imgfirmam").attr("src", url);
           $("#_imgcarnetmilitar").attr("src", url);
+
+          url = "temp/" +  $("#txtcedula").val() + "/cedula.jpg";
+          $("#_imgcopiacedula").attr("src", url);
+          url = "temp/" +  $("#txtcedula").val() + "/partidanac.jpg";
+          $("#_imgpartida").attr("src", url);
           //$("#_objectPDF").html("<center><iframe src='tarjeta-afiliacion/militar.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
           //$("#_objectFamiliar").html("<center><iframe src='tarjeta-afiliacion/afiliado.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
 
@@ -82,20 +87,26 @@ function Buscar( id ){
           $("#cmbcomponente").val(militar.Componente.abreviatura);
           $("#cmbgrado").html('<option value="' + militar.Grado.abreviatura + '">' + militar.Grado.descripcion + '</option>');
           $("#txtnresuelto").val(militar.nresuelto);
+
           $("#txtmfecharesuelto").val(Util.ConvertirFechaHumana(militar.fresuelto));
           $("#txtposicion").val(militar.posicion);
           $("#txtfechagraduacion").val(Util.ConvertirFechaHumana(militar.fingreso));
           $("#_fingreso").html(Util.ConvertirFechaHumana(militar.fingreso));
           $("#_fascenso").html(Util.ConvertirFechaHumana(militar.fascenso));
+
           //$("#cmbcategoria").val(militar.categoria);
-            $("#cmbcategoria").val("S");
+          $("#cmbcategoria").val("S");
           $("#cmbsituacion").val(militar.situacion);
           //$("#cmbclase").val(militar.clase);
-            $("#cmbclase").val("S");
+          $("#cmbclase").val("S");
           $("#_categoria").html( $("#cmbcategoria option:selected").text());
           $("#_situacion").html($("#cmbsituacion option:selected").text());
           $("#_clasificacion").html('<font style="size:8px">' + $("#cmbclase option:selected").text() + "</font>");
           $("#_tiemposervicio").html(militar.tiemposervicio);
+          if($("#txtmfecharesuelto").val() != ""){
+            $("#cmbcategoria").val(militar.categoria);
+            $("#cmbclase").val(militar.clase);
+          }
           var Fideicomiso = militar.Fideicomiso;
 //          console.log(Fideicomiso);
           if (militar.Fideicomiso.areconocido != undefined ){
@@ -165,6 +176,7 @@ function Buscar( id ){
         		$("#txtpacta").val(militar.Persona.PartidaNacimiento.acta);
         		$("#txtpfolio").val(militar.Persona.PartidaNacimiento.folio);
         		$("#txtplibro").val(militar.Persona.PartidaNacimiento.libro);
+
           }
 
           if(militar.Persona.DatoFisionomico != undefined){
@@ -1250,7 +1262,8 @@ function ModificarFamiliarPos(pos){
     $('#txtcedulaf').val(DB.cedula);
     SeleccionarPorSexoFamiliar(DB.sexo);
     $('#btnnacionalidad').val(NacionalidadFamiliar(DB.nacionalidad));
-    $('#txtnacimientof').val(ConvertirFechaHumana(DB.fechanacimiento));
+
+    $('#txtnacimientof').val(Util.ConvertirFechaHumana(DB.fechanacimiento));
     $('#txtedadf').val(Util.CalcularEdad($('#txtnacimientof').val()));
     $('#txtnombref').val(DB.nombreprimero);
     $('#txtapellidof').val(DB.apellidoprimero);
@@ -1283,6 +1296,10 @@ function ModificarFamiliarPos(pos){
     $("#cmbparentescof").val(Familiar.parentesco);
     urlf = "http://192.168.12.161/imagenes/" +  DB.cedula + ".jpg";
     $("#_imgIngFam").attr("src", urlf);
+
+    urlf = "temp/" +  ObjMilitar.id + "/partida" +  DB.cedula + ".jpg";
+    $("#_imgpartidaF").attr("src", urlf);
+
 
   }
 }
@@ -1502,7 +1519,7 @@ function ValidarMilitar(valor){
           $("#_imgIngFam").attr("src", url);
           SeleccionarPorSexoFamiliar(DB.sexo);
           $('#btnnacionalidad').val(NacionalidadFamiliar(DB.nacionalidad));
-          $('#txtnacimientof').val(ConvertirFechaHumana(DB.fechanacimiento));
+          $('#txtnacimientof').val(Util.ConvertirFechaHumana(DB.fechanacimiento));
           $('#txtedadf').val(Util.CalcularEdad($('#txtnacimientof').val()));
           $('#txtnombref').val(DB.nombreprimero);
           $('#txtapellidof').val(DB.apellidoprimero);
