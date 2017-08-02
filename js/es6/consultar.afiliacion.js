@@ -67,14 +67,18 @@ function Buscar( id ){
             $("#minifoto").attr("href", url);
           $("#_img").attr("src", url);
           url = "temp/" +  $("#txtcedula").val() + "/huella.jpg";
+          $("#minihuella").attr("href",url);
           $("#_imghuellam").attr("src", url);
           url = "temp/" +  $("#txtcedula").val() + "/firma.png";
+            $("#minifirma").attr("href",url);
           $("#_imgfirmam").attr("src", url);
           $("#_imgcarnetmilitar").attr("src", url);
 
           url = "temp/" +  $("#txtcedula").val() + "/cedula.jpg";
+            $("#miniced").attr("href", url);
           $("#_imgcopiacedula").attr("src", url);
           url = "temp/" +  $("#txtcedula").val() + "/partidanac.jpg";
+            $("#mininac").attr("href", url);
           $("#_imgpartida").attr("src", url);
           //$("#_objectPDF").html("<center><iframe src='tarjeta-afiliacion/militar.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
           //$("#_objectFamiliar").html("<center><iframe src='tarjeta-afiliacion/afiliado.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
