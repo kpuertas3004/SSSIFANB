@@ -11,7 +11,7 @@
               <li><a href="#" onclick="NacionalidadFamiliar('E');">E</a></li>
             </ul>
       </span>
-      <input class="form-control" id="txtcedulam" type="text" >
+      <input class="form-control" id="txtcedulam" type="text" required >
 
     </div>
   </div>
@@ -21,16 +21,16 @@
       <div class="input-group-addon">
         <i class="fa fa-calendar"></i>
       </div>
-      <input id="txtnacimientom" class="form-control" type="text" onblur="CalcularEdadFamiliar('txtedadmm','txtnacimientom')" >
+      <input id="txtnacimientom" class="form-control" type="text" onblur="CalcularEdadFamiliar('txtedadmm','txtnacimientom')" required >
     </div>
   </div>
   <div class="col-md-4 col-sm-4 col-xs-4" >
     <label>Edad:</label>
-    <input id="txtedadmm" class="form-control"  type="text" disabled >
+    <input id="txtedadmm" class="form-control"  type="text" disabled>
   </div>
   <div class="col-md-4">
     <label>Parentesco:</label>
-    <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbparentescom" >
+    <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbparentescom"  required>
       <option value="S"></option>
       <option value="HJ" selected="selected">HIJO</option>
       <option value="HJ" selected="selected">HIJA</option>

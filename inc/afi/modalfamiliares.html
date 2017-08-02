@@ -14,7 +14,7 @@
                                 <li><a href="#" onclick="NacionalidadFamiliar('E');">E</a></li>
                               </ul>
                         </span>
-                        <input class="form-control" id="txtcedulaf" type="text" onblur="ValidarMilitar('txtcedulaf')" disabled>
+                        <input class="form-control" id="txtcedulaf" type="text" onblur="ValidarMilitar('txtcedulaf')" disabled required>
                         <select id="cmbmilitarf" style="display:none">
                           <option selected="selected" value=0></option>
                           <option value=1></option>
@@ -31,7 +31,7 @@
                          </div>
                       
 
-                      <input id="txtnacimientof" class="form-control" disabled type="text" onblur="CalcularEdadFamiliar('txtedadf','txtnacimientof')" >
+                      <input id="txtnacimientof" class="form-control" disabled type="text" onblur="CalcularEdadFamiliar('txtedadf','txtnacimientof')" required >
 
                     </div>
                    </div>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="col-md-3">
                       <label>Sexo:</label>
-                      <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbsexof" disabled onchange="SeleccionarPorSexoFamiliar()" >
+                      <select class="js-states form-control" style="width: 100%" tabindex="-1" aria-hidden="true" id="cmbsexof" disabled onchange="SeleccionarPorSexoFamiliar()" required >
                         <option selected="selected" value="F">FEMENINO</option>
                         <option value="M">MASCULINO</option>
                       </select>
@@ -54,11 +54,11 @@
                   <div class="form-group">
                     <div class="col-md-6">
                       <label>Nombres:</label>
-                      <input id="txtnombref" class="form-control"  type="text" disabled>
+                      <input id="txtnombref" class="form-control"  type="text" disabled required>
                     </div>
                     <div class="col-md-6">
                       <label>Apellidos:</label>
-                      <input id="txtapellidof" class="form-control"  type="text" disabled>
+                      <input id="txtapellidof" class="form-control"  type="text" disabled required>
                     </div>
                  </div> <!-- Grupo nombres-->
                 </div>
@@ -68,7 +68,7 @@
 
                    <div class="col-md-3">
                     <label >Edo. Civil:</label>
-                    <select class="js-states form-control" style="width: 100%" disabled tabindex="-1" aria-hidden="true" id="cmbedocivilf" >
+                    <select class="js-states form-control" style="width: 100%" disabled tabindex="-1" aria-hidden="true" id="cmbedocivilf" required >
                       <option selected="selected" value="SS"></option>
                       <option value="S">SOLTERO</option>
                       <option value="C">CASADO</option>
@@ -78,7 +78,7 @@
                    </div>
                    <div class="col-md-3">
                     <label>Parentesco:</label>
-                    <select class="js-states form-control" style="width: 100%" disabled tabindex="-1" aria-hidden="true" id="cmbparentescof" >
+                    <select class="js-states form-control" style="width: 100%" disabled tabindex="-1" aria-hidden="true" id="cmbparentescof" required>
                       <option value="S"></option>
                       <option value="HJ" selected="selected">HIJO</option>
                       <option value="PD">PADRE</option>
@@ -97,7 +97,7 @@
                    </div>
                    <div class="col-md-3" id="_condicionf" style="display:none">
                      <label>Condición Especial:</label>
-                     <select class="js-states form-control" style="width: 100%" disabled id="cmbcondicionf" >
+                     <select class="js-states form-control" style="width: 100%" disabled id="cmbcondicionf">
                        <option selected="selected" value="S"></option>
                        <option value=0>NO</option>
                        <option value=1>SI</option>
@@ -106,7 +106,7 @@
                    </div>
                    <div class="col-md-3" id="_estudiaf" style="display:none">
                      <label>Constancia de Estudio:</label>
-                     <select class="js-states form-control" style="width: 100%" disabled id="cmbestudiaf" >
+                     <select class="js-states form-control" style="width: 100%" disabled id="cmbestudiaf">
                        <option selected="selected" value="S"></option>
                        <option value=0>NO</option>
                        <option value=1>SI</option>
@@ -136,7 +136,7 @@
                   </div>
                   <div class="file-field input-field col file-field-input-field " >
                     <label class="btn btn-default btn-file" style="display:none" id="imgIngFam">Foto
-                    <input type="file" style="visibility:hidden;" id="imgIngFam" accept="image/*" onchange="readURL(this,'_imgIngFam');" onclick="clearURL(this)">
+                    <input type="file" style="visibility:hidden;" id="imgIngFam" accept="image/*" onchange="readURL(this,'_imgIngFam');" onclick="clearURL(this)" required>
                     </label>
                   </div>
 
@@ -161,26 +161,26 @@
 
               <!-- Tab panes -->
               <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="direccion" style="padding:25px">
+                <div role="tabpanel" class="tab-pane active" id="direccion" style="padding:25px" >
 
 
                   <div class="row">
                     <div class="form-group">
                       <div class="col-md-4">
                         <label>Estado:</label>
-                        <select class="js-states form-control" style="width: 100%" disabled  id="cmbestadof" onchange="CiudadMunicipio(1);">
+                        <select class="js-states form-control" style="width: 100%" disabled  id="cmbestadof" onchange="CiudadMunicipio(1);" required>
                           <option value="S" selected="selected"></option>
                         </select>
                       </div>
                       <div class="col-md-4">
                         <label>Ciudad:</label>
-                        <select class="js-states form-control" style="width: 100%" disabled  id="cmbciudadf">
+                        <select class="js-states form-control" style="width: 100%" disabled  id="cmbciudadf" required>
                           <option value="S" selected="selected"></option>
                         </select>
                       </div>
                       <div class="col-md-4">
                         <label>Municipio:</label>
-                        <select class="js-states form-control" style="width: 100%" disabled id="cmbmunicipiof"  required onchange="SeleccionarParroquia(1);" >
+                        <select class="js-states form-control" style="width: 100%" disabled id="cmbmunicipiof"  required onchange="SeleccionarParroquia(1);" required>
                           <option value="S" selected="selected"></option>
                         </select>
                       </div>
@@ -198,11 +198,11 @@
                       </div>
                       <div class="col-md-4">
                         <label>Calle / Edificio:</label>
-                        <input id="txtcallef" class="form-control" disabled type="text" >
+                        <input id="txtcallef" class="form-control" disabled type="text"  required>
                       </div>
                       <div class="col-md-2">
                         <label># Casa:</label>
-                        <input id="txtcasaf" class="form-control" disabled type="text" >
+                        <input id="txtcasaf" class="form-control" disabled type="text"  >
                       </div>
                       <div class="col-md-2">
                         <label># Apto.:</label>
@@ -219,7 +219,7 @@
                   <div class="input-group-addon">
                     <i class="fa fa-phone"></i>
                   </div>
-                        <input id="txttelefonof" class="form-control" disabled type="text" data-inputmask='"mask": "(9999) 999-99-99"' data-mask >
+                        <input id="txttelefonof" class="form-control" disabled type="text" data-inputmask='"mask": "(9999) 999-99-99"' data-mask required>
                       </div>
                   </div>
                       <div class="col-md-4">
@@ -229,7 +229,7 @@
                     <i class="fa fa-phone"></i>
                   </div>
 
-                        <input id="txtcelularf" class="form-control" disabled type="text" data-inputmask='"mask": "(9999) 999-99-99"' data-mask>
+                        <input id="txtcelularf" class="form-control" disabled type="text" data-inputmask='"mask": "(9999) 999-99-99"' data-mask required>
                       </div>
                     </div>
                       <div class="col-md-4" >
@@ -238,7 +238,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-envelope"></i>
                     </div>
-                        <input  id="txtcorreof" class="form-control" disabled type="text" onblur="ValidarCorreo()" >
+                        <input  id="txtcorreof" class="form-control" disabled type="text" onblur="ValidarCorreo()" required >
                       </div>
                        </div>
                     </div>
@@ -424,15 +424,15 @@
                     <div class="form-group">
                      <div class="col-md-4">
                        <label>Estatura:</label>
-                       <input  id="txtestaturaf" class="form-control" disabled type="text" maxlength="5" data-inputmask='"mask": "99.99"' data-mask>
+                       <input  id="txtestaturaf" class="form-control" disabled type="text" maxlength="5" data-inputmask='"mask": "99.99"' data-mask required>
                      </div>
                      <div class="col-md-4">
                        <label>Peso:</label>
-                       <input  id="txtpesof" class="form-control" disabled type="text" maxlength="6" data-inputmask='"mask": "999.99"' data-mask>
+                       <input  id="txtpesof" class="form-control" disabled type="text" maxlength="6" data-inputmask='"mask": "999.99"' data-mask required>
                      </div>
                      <div class="col-md-4">
                        <label>Talla:</label>
-                      <input  id="txttallaf" class="form-control" disabled type="text" maxlength="2" >
+                      <input  id="txttallaf" class="form-control" disabled type="text" maxlength="2" required >
                      </div>
                    </div> <!-- Grupo nombres-->
                   </div>
@@ -441,7 +441,7 @@
                     <div class="form-group">
                      <div class="col-md-3">
                        <label>Color de Piel:</label>
-                       <select class="js-states form-control" style="width: 100%" disabled id="cmbpielf" >
+                       <select class="js-states form-control" style="width: 100%" disabled id="cmbpielf" required >
                           <option value="S" selected="selected"></option>
                           <option value="NE">NEGRA</option>
                           <option value="BL">BLANCA</option>
@@ -452,7 +452,7 @@
                      </div>
                      <div class="col-md-3">
                        <label>Color de Ojos:</label>
-                       <select class="js-states form-control" style="width: 100%" disabled id="cmbojosf" >
+                       <select class="js-states form-control" style="width: 100%" disabled id="cmbojosf" required>
                           <option value="S" selected="selected"></option>
                           <option value="CA">CASTAÑO</option>
                           <option value="AM">ÁMBAR</option>
@@ -466,7 +466,7 @@
                      </div>
                      <div class="col-md-3">
                        <label>Color de Cabello:</label>
-                       <select class="js-states form-control" style="width: 100%" disabled id="cmbcolorcabellof" >
+                       <select class="js-states form-control" style="width: 100%" disabled id="cmbcolorcabellof" required>
                           <option value="S" selected="selected"></option>
                           <option value="NE">NEGRO</option>
                           <option value="BA">BLANCO</option>
@@ -479,7 +479,7 @@
                      </div>
                      <div class="col-md-3">
                        <label>Seña Particular:</label>
-                       <input  id="txtsenaparticularf" class="form-control" disabled type="text" >
+                       <input  id="txtsenaparticularf" class="form-control" disabled type="text" required >
                      </div>
                    </div> <!-- Grupo nombres-->
                 </div>
@@ -532,7 +532,7 @@
                                 </div>
                                 <div class="file-field input-field col file-field-input-field " >
                                   &nbsp;&nbsp;&nbsp;<label class="btn btn-default btn-file">Seleccionar Firma
-                                  <input type="file" style="visibility:hidden;" id="imghuellaF" accept="image/*" onchange="readURL(this,'_imghuellaF');" onclick="clearURL(this)">
+                                  <input type="file" style="visibility:hidden;" id="imghuellaF" accept="image/*" onchange="readURL(this,'_imghuellaF');" onclick="clearURL(this)" required>
                                   </label>
                                 </div>
                               </div>
@@ -545,7 +545,7 @@
                                 </div>
                                 <div class="file-field input-field col file-field-input-field " >
                                   &nbsp;<label class="btn btn-default btn-file">Seleccionar Huellas
-                                  <input type="file" style="visibility:hidden;" id="imfirmaF" accept="image/*" onchange="readURL(this,'_imgfirmaF');" onclick="clearURL(this)">
+                                  <input type="file" style="visibility:hidden;" id="imfirmaF" accept="image/*" onchange="readURL(this,'_imgfirmaF');" onclick="clearURL(this)" required>
                                   </label>
                                 </div>
                               </div>
