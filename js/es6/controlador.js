@@ -101,7 +101,7 @@ class Menu {
         if(v.url != ''){
           cadena += `<li><a href="${v.url}"><i class="${v.icono}"></i><span>${v.nombre}</span></a></li>`;
         }else{
-          cadena += `<li><a href="#" onclick="CargarUrl('_cuerpo','${v.js}')"><i class="${v.icono}"></i><span>${v.nombre}</span></a></li>`;
+          cadena += `<li><a href="#" onclick="CargarUrl('_cuerpo','${v.js}');${v.accion}"><i class="${v.icono}"></i><span>${v.nombre}</span></a></li>`;
         }
       });
 			$('#_menu').html(cadena);
