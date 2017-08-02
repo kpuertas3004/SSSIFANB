@@ -101,7 +101,7 @@ class Menu {
         if(v.url != ''){
           cadena += `<li><a href="${v.url}"><i class="${v.icono}"></i><span>${v.nombre}</span></a></li>`;
         }else{
-          cadena += `<li><a href="#" onclick="CargarUrl('_cuerpo','${v.js}')"><i class="${v.icono}"></i><span>${v.nombre}</span></a></li>`;
+          cadena += `<li><a href="#" onclick="CargarUrl('_cuerpo','${v.js}');${v.accion}"><i class="${v.icono}"></i><span>${v.nombre}</span></a></li>`;
         }
       });
 			$('#_menu').html(cadena);
@@ -127,6 +127,7 @@ $(function () {
   CargarUrl("_contenidoh", "afi/historicomilitar");
   CargarUrl("_contenidorpt", "rpt/constancia");
   CargarUrl("_contenidocps", "rpt/constanciapensionsobr");
+  CargarUrl("_objectPDF", "rpt/carnet");
 
   CargarUrl("_bxContenedores", "afi/contenedores");
 
@@ -135,7 +136,7 @@ $(function () {
     $('#_aceptar').focus();
   });
 
-
+  IniciarSesion();
 
 });
 function Principal(){
@@ -280,4 +281,18 @@ function soloLetras(e) {
 }
     if(letras.indexOf(tecla) == -1 && !tecla_especial)
         return false;
+}
+
+function IniciarSesion(){
+  if (sessionStorage.getItem('ipsfaToken') != undefined ){
+
+    var e = sessionStorage.getItem("ipsfaToken");
+    var s = e.split(".");
+    var json = JSON.parse(atob(s[1]));
+    var usr = json.Usuario;
+
+    $("#_PerfilUsuario").html(usr.Perfil.descripcion);
+    $("#_NombreUsuario").html(usr.nombre);
+
+  }
 }

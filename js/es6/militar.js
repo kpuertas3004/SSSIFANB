@@ -135,6 +135,48 @@ class DatoFisionomico{
 		this.senaParticular = "";
 		this.gruposanguineo = "";
 	}
+
+    ObtenerCabello(){
+        var cad = "";
+        switch (this.colorcabello){
+            case "NE":cad = "NEGRO";break;
+            case "BA":cad = "BLANCO";break;
+            case "CA":cad = "CASTAÑO";break;
+			default: cad = "********";break;
+        }
+        return cad;
+    }
+
+    ObtenerPiel(){
+        var cad = "";
+        switch (this.colorpiel){
+			case "NE":cad = "NEGRA";break;
+            case "BL":cad = "BLANCA";break;
+            case "CA":cad = "CANELA";break;
+            case "MO":cad = "MORENA";break;
+
+            default: cad = "********";break;
+        }
+        return cad;
+    }
+
+    ObtenerOjo(){
+        var cad = "";
+        switch (this.colorojos){
+            case "AM":cad = "ÁMBAR";break;
+            case "AV":cad = "AVELLANA";break;
+            case "CA":cad = "CASTAÑO";break;
+            case "VE":cad = "VERDE";break;
+
+            case "AZ":cad = "AZUL";break;
+            case "GR":cad = "GRIS";break;
+            case "NE":cad = "NEGRO";break;
+            case "MA":cad = "MARRON";break;
+
+            default: cad = "********";break;
+        }
+        return cad;
+    }
 }
 
 class Correo{
@@ -470,6 +512,47 @@ class Militar{
 		this.codigocomponente = "";
         this.numerohistoria = "";
 	}
+    Cargar(militar){
+
+        this.id = militar.id;
+        this.tipodato = militar.tipodatoo;
+        
+        this.Persona.DatoBasico = militar.Persona.DatoBasico;
+        var DFis = militar.Persona.DatoFisionomico;
+
+
+        this.Persona.DatoFisionomico.colorojos = DFis.colorojos;
+        this.Persona.DatoFisionomico.colorpiel = DFis.colorpiel;
+        this.Persona.DatoFisionomico.colorcabello = DFis.colorcabello;
+        this.Persona.DatoFisionomico.estatura = DFis.estatura;
+        this.Persona.DatoFisionomico.gruposanguineo = DFis.gruposanguineo;
+
+        this.categoria = militar.categoria;
+        this.situacion = militar.situacion;
+        this.clase = militar.clase;
+        this.fingreso = militar.fingreso ;
+        this.fascenso = militar.fascenso;
+        this.areconocido = militar.areconocido;
+        this.mreconocido = militar.mreconocido;
+        this.dreconocido = militar.dreconocido;
+        this.posicion = militar.posicion ;
+        this.fresuelto = militar.fresuelto;
+        this.nresuelto = militar.nresuelto;
+        this.descripcionhistorica = militar.descripcionhistorica;
+        this.Componente.abreviatura = militar.Componente.abreviatura;
+        this.Componente.descripcion = militar.Componente.descripcion;
+        this.Grado.abreviatura = militar.Grado.abreviatura;
+        this.Grado.descripcion = militar.Grado.descripcion;
+        this.urlsimbolo = "";
+        this.urlfirmaministro = "";
+        this.urlpresidenteipsfa = "";
+        this.urlfoto = "";
+        this.urlhuella = "";
+        this.urlfirma = "";
+        this.urlcedula = "";
+        this.codigocomponente = militar.codigocomponente;
+        this.numerohistoria = militar.numerohistoria;
+    }
 	Obtener(){
 		var fingreso = new Date(Util.ConvertirFechaUnix($("#txtfechagraduacion").val())).toISOString();
 		var fnacimiento = new Date(Util.ConvertirFechaUnix($("#txtnacimiento").val())).toISOString();
@@ -572,6 +655,18 @@ class Militar{
 		return this;
 
 	}
+
+    ObtenerCategoria(){
+        var cad = "";
+        switch (this.categoria){
+            case "EFE":cad = "EFECTIVO";break;
+            case "ASI":cad = "ASIMILADO";break;
+
+            default: cad = "********";break;
+        }
+        return cad;
+    }
+
 
 
 	Salvar(){

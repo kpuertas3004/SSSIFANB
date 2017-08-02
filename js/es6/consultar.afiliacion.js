@@ -1,4 +1,5 @@
 let ObjMilitar = new Militar();
+let OqMilitar = new Militar();
 
 function Buscar( id ){
   if (id != undefined) {
@@ -14,12 +15,13 @@ function Buscar( id ){
   $("#_lblConstanciaPension").hide();
   $("#_imgfamiliar").attr("src", "images/ndisponible.jpg");
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", Conn.URL + "militar/crud/" + $("#_cedula").val());
+  var url = Conn.URL + "militar/crud/" + $("#_cedula").val();
+
+  xhttp.open("GET", url);
   xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         militar = JSON.parse(xhttp.responseText);
         ObjMilitar = militar;
-
         if(militar.tipo != undefined){
           $("#_cedula").val("");
           if (id != undefined) { return false}
@@ -31,6 +33,7 @@ function Buscar( id ){
           $("#_aceptar").focus();
 
         }else{
+          OqMilitar.Cargar(militar);
           ActivarFormulario(true);
           $("#_btnModificar").show();
           $("#_btnConstancia").show();
@@ -61,12 +64,18 @@ function Buscar( id ){
           $("#_imggrado").attr("src", url);
           url = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
           //url = "http://192.168.6.45/temp/" +  $("#txtcedula").val() + "/foto.jpg";
+            $("#minifoto").attr("href", url);
           $("#_img").attr("src", url);
-          url = "http://192.168.6.45/temp/" +  $("#txtcedula").val() + "/huella.bmp";
-          $("#_imghuella").attr("src", url);
-          url = "http://192.168.6.45/temp/" +  $("#txtcedula").val() + "/firma.jpg";
-          $("#_imgfirma").attr("src", url);
+          url = "temp/" +  $("#txtcedula").val() + "/huella.jpg";
+          $("#_imghuellam").attr("src", url);
+          url = "temp/" +  $("#txtcedula").val() + "/firma.png";
+          $("#_imgfirmam").attr("src", url);
           $("#_imgcarnetmilitar").attr("src", url);
+
+          url = "temp/" +  $("#txtcedula").val() + "/cedula.jpg";
+          $("#_imgcopiacedula").attr("src", url);
+          url = "temp/" +  $("#txtcedula").val() + "/partidanac.jpg";
+          $("#_imgpartida").attr("src", url);
           //$("#_objectPDF").html("<center><iframe src='tarjeta-afiliacion/militar.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
           //$("#_objectFamiliar").html("<center><iframe src='tarjeta-afiliacion/afiliado.php?id=" + $('#txtcedula').val() + "' width='500' height='400'></iframe></center> ");
 
@@ -79,20 +88,26 @@ function Buscar( id ){
           $("#cmbcomponente").val(militar.Componente.abreviatura);
           $("#cmbgrado").html('<option value="' + militar.Grado.abreviatura + '">' + militar.Grado.descripcion + '</option>');
           $("#txtnresuelto").val(militar.nresuelto);
+
           $("#txtmfecharesuelto").val(Util.ConvertirFechaHumana(militar.fresuelto));
           $("#txtposicion").val(militar.posicion);
           $("#txtfechagraduacion").val(Util.ConvertirFechaHumana(militar.fingreso));
           $("#_fingreso").html(Util.ConvertirFechaHumana(militar.fingreso));
           $("#_fascenso").html(Util.ConvertirFechaHumana(militar.fascenso));
+
           //$("#cmbcategoria").val(militar.categoria);
-            $("#cmbcategoria").val("S");
+          $("#cmbcategoria").val("S");
           $("#cmbsituacion").val(militar.situacion);
           //$("#cmbclase").val(militar.clase);
-            $("#cmbclase").val("S");
+          $("#cmbclase").val("S");
           $("#_categoria").html( $("#cmbcategoria option:selected").text());
           $("#_situacion").html($("#cmbsituacion option:selected").text());
           $("#_clasificacion").html('<font style="size:8px">' + $("#cmbclase option:selected").text() + "</font>");
           $("#_tiemposervicio").html(militar.tiemposervicio);
+          if($("#txtmfecharesuelto").val() != ""){
+            $("#cmbcategoria").val(militar.categoria);
+            $("#cmbclase").val(militar.clase);
+          }
           var Fideicomiso = militar.Fideicomiso;
 //          console.log(Fideicomiso);
           if (militar.Fideicomiso.areconocido != undefined ){
@@ -162,6 +177,7 @@ function Buscar( id ){
         		$("#txtpacta").val(militar.Persona.PartidaNacimiento.acta);
         		$("#txtpfolio").val(militar.Persona.PartidaNacimiento.folio);
         		$("#txtplibro").val(militar.Persona.PartidaNacimiento.libro);
+
           }
 
           if(militar.Persona.DatoFisionomico != undefined){
@@ -675,10 +691,40 @@ function VisualizarCarnet(){
   if(Util.ValidarFormulario("_frmDatoBasico") == false){
     Util.ModalValidar("Favor actualizar afiliado");
   }else{
-    if(ObjMilitar.estatuscarnet == undefined){
+    //alert(ObjMilitar.estatuscarnet);
+    if(ObjMilitar.estatuscarnet == undefined || ObjMilitar.estatuscarnet == 0){
         $("#modCarnetValidar").modal("show");
     }else{
-      alert('Muestro carnet');
+      console.log(OqMilitar);
+      var militar = OqMilitar;
+      url = "images/grados/" + militar.Grado.abreviatura + ".png";
+
+      url = url.toLowerCase();
+      $("#imggradoCarnet").attr("src", url);
+      url = "http://192.168.12.161/imagenes/" +  $("#txtcedula").val() + ".jpg";
+
+      $("#imgfotoCarnet").attr("src", url);
+      $("#lblgrado").html(militar.Grado.descripcion);
+      $("#lblnombre").html(militar.Persona.DatoBasico.nombreprimero);
+      $("#lblapellido").html(militar.Persona.DatoBasico.apellidoprimero);
+      $("#lblcedula").html(militar.Persona.DatoBasico.cedula);
+      url = "http://192.168.6.45/temp/" +  $("#txtcedula").val() + "/huella.bmp";
+
+      $("#imghuellaCarnet").attr("src", url);
+      $("#divcategoria").html(militar.ObtenerCategoria());
+      $("#divsiglas").html(militar.Componente.abreviatura);
+      url = "images/firma.png";
+      $("#imgfirmaCarnet").attr("src", url);
+      $("#lblcodigo").html(militar.codigocomponente);
+      $("#lblhistoria").html(militar.numerohistoria);
+      $("#lblcabello").html(militar.Persona.DatoFisionomico.ObtenerCabello());
+      $("#lblgrupo").html(militar.Persona.DatoFisionomico.gruposanguineo);
+      $("#lblestatura").html(militar.Persona.DatoFisionomico.estatura);
+      $("#lblojos").html(militar.Persona.DatoFisionomico.ObtenerOjo());
+      $("#lblcolor").html(militar.Persona.DatoFisionomico.ObtenerPiel());
+
+      ImprimirCarnet("_objectPDF");
+
     }
 
     //$("#modCarnet").modal("show");
@@ -1217,7 +1263,8 @@ function ModificarFamiliarPos(pos){
     $('#txtcedulaf').val(DB.cedula);
     SeleccionarPorSexoFamiliar(DB.sexo);
     $('#btnnacionalidad').val(NacionalidadFamiliar(DB.nacionalidad));
-    $('#txtnacimientof').val(ConvertirFechaHumana(DB.fechanacimiento));
+
+    $('#txtnacimientof').val(Util.ConvertirFechaHumana(DB.fechanacimiento));
     $('#txtedadf').val(Util.CalcularEdad($('#txtnacimientof').val()));
     $('#txtnombref').val(DB.nombreprimero);
     $('#txtapellidof').val(DB.apellidoprimero);
@@ -1250,6 +1297,10 @@ function ModificarFamiliarPos(pos){
     $("#cmbparentescof").val(Familiar.parentesco);
     urlf = "http://192.168.12.161/imagenes/" +  DB.cedula + ".jpg";
     $("#_imgIngFam").attr("src", urlf);
+
+    urlf = "temp/" +  ObjMilitar.id + "/partida" +  DB.cedula + ".jpg";
+    $("#_imgpartidaF").attr("src", urlf);
+
 
   }
 }
@@ -1469,7 +1520,7 @@ function ValidarMilitar(valor){
           $("#_imgIngFam").attr("src", url);
           SeleccionarPorSexoFamiliar(DB.sexo);
           $('#btnnacionalidad').val(NacionalidadFamiliar(DB.nacionalidad));
-          $('#txtnacimientof').val(ConvertirFechaHumana(DB.fechanacimiento));
+          $('#txtnacimientof').val(Util.ConvertirFechaHumana(DB.fechanacimiento));
           $('#txtedadf').val(Util.CalcularEdad($('#txtnacimientof').val()));
           $('#txtnombref').val(DB.nombreprimero);
           $('#txtapellidof').val(DB.apellidoprimero);
@@ -1561,12 +1612,134 @@ function GenerarCarnet(){
   }
 }
 
-function ImprimirCarnet(){
-
-  var ventana = window.open("inc/rpt/carnet.html","_blank");
-  console.log("ImprimirCarnet");
-  // ventana.print();
-  // ventana.close();
-
-
+function ImprimirCarnet(nombre){
+    var html = $("#" + nombre).html();
+    var ventana = window.open("","_blank");
+    ventana.document.write(html);
+    ventana.document.head.innerHTML = '<style>\n' +
+        '        @charset "utf-8";\n' +
+        '        @page {\n' +
+        '            margin: 0cm;\n' +
+        '            size: 8cm 5.5cm;\n' +
+        '        }\n' +
+        '        section {\n' +
+        '            page-break-before: always;\n' +
+        '        }\n' +
+        '        <!--\n' +
+        '        body {margin: 0px;}\n' +
+        '\n' +
+        '        .marco-carnet{border:0px #003399 solid;width:8.5cm;height:5.4cm;position:relative;}\n' +
+        '\n' +
+        '        /**PARTE DELANTERA */\n' +
+        '        .css-foto{\n' +
+        '            border: 0px #0033CC solid;\n' +
+        '            width: 68px;\n' +
+        '            height: 90px;\n' +
+        '            position: absolute;\n' +
+        '            left: 231px;\n' +
+        '            top: 69px;\n' +
+        '        }\n' +
+        '        .css-insignia{\n' +
+        '            border: 0px #0033CC solid;\n' +
+        '            width: 70px;\n' +
+        '            height: 60px;\n' +
+        '            position: absolute;\n' +
+        '            left: 95px;\n' +
+        '            top: 65px;\n' +
+        '        }\n' +
+        '        .componente{border:0px #0033FF solid; width:250px; height:14px; position:absolute; left: 50px; top: 44px; font-size:10px;font-weight:bold; font-color:# EFEFEF; text-align:center;}\n' +
+        '        .fecha-vencimiento{\n' +
+        '            border: 0px #0033FF solid;\n' +
+        '            width: 70px;\n' +
+        '            height: 8px;\n' +
+        '            position: absolute;\n' +
+        '            left: 233px;\n' +
+        '            top: 161px;\n' +
+        '            font-size: 7px;\n' +
+        '            text-align: center;\n' +
+        '            font-weight: bold;\n' +
+        '            -webkit-transform: rotate(-0deg);\n' +
+        '            -moz-transform: rotate(-0deg);\n' +
+        '        }\n' +
+        '        .firma-titular{border:0px #0033FF solid; width:84px; height:auto; position:absolute; left: 234px; top: 157px;font-size:7px;font-weight:bold;}\n' +
+        '        .firma-titular-ii{border-top:0px #003300 solid;padding-top:2px;text-align:center;}\n' +
+        '        .labels-dat-person{border:0px #0033FF solid; width:67px; height:auto; position:absolute; left: 5px; top: 128px;font-size:8px;font-weight:bold;}\n' +
+        '        .labels-dat-person-resl{\n' +
+        '            border: 0px #0033FF solid;\n' +
+        '            width: 150px;\n' +
+        '            height: auto;\n' +
+        '            position: absolute;\n' +
+        '            left: 75px;\n' +
+        '            top: 120px;\n' +
+        '            font-size: 11px;\n' +
+        '            font-weight: bold;\n' +
+        '            font-color: #000;\n' +
+        '            text-align: center\n' +
+        '        }\n' +
+        '        .letra-8{font-size:12px;}\n' +
+        '        .nota-pie-i-anverso{border:0px #0033FF solid; width:180px; height:8px; position:absolute; left: 140px; top: 177px; font-size:7px;text-align:left;font-style:normal;}\n' +
+        '        .nota-pie-ii-anverso{border:0px #0033FF solid; width:180px; height:8px; position:absolute; left: 140px; top: 187px; font-size:7px;text-align:left;font-style:normal;}\n' +
+        '\n' +
+        '        /**PARTE TRASERA */\n' +
+        '        .css-huella{border:0px #0033CC solid;width:70px; height:70px; position:absolute; left: 8px; top: 44px;}\n' +
+        '        .firma-presidente{border:0px #0033FF solid; width:96px; height:auto; position:absolute; left: 110px; top: 120px}\n' +
+        '        .firma-ministro{\n' +
+        '            border: 0px #0033FF solid;\n' +
+        '            width: 96px;\n' +
+        '            height: auto;\n' +
+        '            position: absolute;\n' +
+        '            left: 127px;\n' +
+        '            top: 130px\n' +
+        '        }\n' +
+        '        .telefono-contacto{border:0px #0033FF solid; width:76px; height:14px; position:absolute; left: 186px; top: 185px;font-size:10px;font-weight:bold;}\n' +
+        '        .datos-medicos-i{border:0px #0033FF solid; width:150px; height:auto; position:absolute; left: 170px; top: 45px;font-size:10px;font-weight:bold;}\n' +
+        '        .datos-medicos-ii{border:2px #0033FF solid; width:63px; height:auto; position:absolute; left: 500px; top: 94px;font-size:9px;font-weight:bold;font-color:#000;}\n' +
+        '        .serial-numero{border:0px #0033FF solid; width:70px; height:14px; position:absolute; left: 11px; top: 15px;font-size:7px;text-align:center; font-weight:bold;}\n' +
+        '        .serial{border:0px #0033FF solid; width:70px; height:14px; position:absolute; left: 11px; top: 25px;font-size:10px; text-align:center}\n' +
+        '        .categoria{\n' +
+        '            border: 0px #0033FF solid;\n' +
+        '            width: 76px;\n' +
+        '            height: 14px;\n' +
+        '            position: absolute;\n' +
+        '            left: 128px;\n' +
+        '            top: 15px;\n' +
+        '            font-size: 16px;\n' +
+        '            font-weight: bold;\n' +
+        '        }\n' +
+        '        .categoria1{\n' +
+        '            border: 0px #0033FF solid;\n' +
+        '            width: 100px;\n' +
+        '            height: 14px;\n' +
+        '            position: absolute;\n' +
+        '            left: 128px;\n' +
+        '            top: 15px;\n' +
+        '            font-size: 11px;\n' +
+        '            font-weight: bold;\n' +
+        '        }\n' +
+        '        .estatus {border:0px #0033FF solid; width:60px; height:60px; top:60px; left:95px; position:absolute;font-size:40px;font-weight:bold;}\n' +
+        '        .siglas-componente{border:0px #0033FF solid; width:30px; height:14px; position:absolute; left: 258px; top: 17px; font-size:18px;font-weight:bold;}\n' +
+        '        .labels-dat-medicos{\n' +
+        '            border: 0px #0033FF solid;\n' +
+        '            width: 200px;\n' +
+        '            height: auto;\n' +
+        '            position: absolute;\n' +
+        '            left: 123px;\n' +
+        '            top: 48px;\n' +
+        '            font-size: 8px;\n' +
+        '        }\n' +
+        '        .labels-dat-medicos-resl{\n' +
+        '            border: 0px #0033FF solid;\n' +
+        '            width: 60px;\n' +
+        '            height: auto;\n' +
+        '            position: absolute;\n' +
+        '            left: 216px;\n' +
+        '            top: 48px;\n' +
+        '            font-size: 8px;\n' +
+        '        }\n' +
+        '        .nota-pie-i-reverso{border:0px #0033FF solid; width:297px; height:12px;  left:14px; position:absolute; top: 173px;font-weight:bold; font-size:9px; text-align:center}\n' +
+        '        .nota-pie-ii-reverso{border:0px #0033FF solid; width:300px; height:14px; left:12px; position:absolute; top: 182px; font-weight:bold; font-size:8px; text-align:center;}\n' +
+        '        -->\n' +
+        '    </style>';
+    ventana.print();
+    ventana.close();
 }

@@ -41,12 +41,14 @@
 				"url" : "",
 				"js" : "afi/pendiente",
 				"icono" : "fa fa-check-square-o",
-				"nombre" : "Aprobación TIM"
+				"nombre" : "Aprobación TIM",
+				"accion" : "ListarCarnet(0)"
 			},{
 				"url" : "",
 				"js" : "afi/impresion",
 				"icono" : "fa fa-print",
-				"nombre" : "Impresión TIM"
+				"nombre" : "Impresión TIM",
+				"accion" : "ListarCarnet(1)"
 			},{
 				"url" : "",
 				"js" : "sec/administrar",
