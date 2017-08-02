@@ -1305,6 +1305,8 @@ function ModificarFamiliarPos(pos){
     urlf = "temp/" +  ObjMilitar.id + "/partida" +  DB.cedula + ".jpg";
     $("#_imgpartidaF").attr("src", urlf);
 
+    urlf = "temp/" +  ObjMilitar.id + "/cestudio" +  DB.cedula + ".jpg";
+    $("#_imgEstudiaf").attr("src", urlf);
 
   }
 }
