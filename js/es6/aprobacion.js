@@ -1,116 +1,168 @@
 
-class LstCarnet{
-  constructor() {
+class LstCarnet {
+    constructor() {
 
-  }
-  Crear(Json) {
-      if (Json == null){
-        return false
-      }
-      $("#_tblPendiente").html(PendienteHTML());
-      var t = $('#tblPendientesBuzon').DataTable({
-        'paging'      : false,
-        'lengthChange': false,
-        'searching'   : false,
-        'ordering'    : false,
-        'info'        : false,
-        'autoWidth'   : false
-      });
-      t.clear().draw();
-      var j = 0;
+    }
 
-      Json.forEach(v => {
-        var boton = `<div class="btn-group">
-        <button type="button" class="btn btn-sm btn-info" onclick="verCarnet('${v.serial}')">
+    Crear(Json) {
+        if (Json == null) {
+            return false
+        }
+
+        var tabla = "_tblPendiente";
+        var buzon = "tblPendientesBuzon";
+        if (Estatus != 0) {
+            tabla = "_tblPendienteImp";
+            buzon = "tblPendientesBuzonImp";
+        }
+        //alert(tabla);
+        //$("#"+tabla).html(PendienteHTML());
+        var t = $('#' + buzon).DataTable({
+            'paging': false,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': false,
+            'info': false,
+            'autoWidth': false,
+
+        });
+        t.clear().draw();
+        var j = 0;
+
+        Json.forEach(v => {
+            console.log(v);
+            if(Estatus == 0 ){
+            var boton = `<div class="btn-group">
+        <button type="button" class="btn btn-sm btn-info" onclick="verCarnet('${v.serial}','${v.id}','${v.fechavencimiento}')">
         <i class="fa fa-search"></i></button>
-        <button type="button"  class="btn btn-sm btn-success" onclick="aprobarCarnet('${v.serial}')">
+        <button type="button"  class="btn btn-sm btn-success" onclick="aprobarCarnet('${v.serial}',1)">
         Aprobado</button>
-        <button type="button" class="btn btn-sm btn-danger" onclick="pendienteCarnet('${v.serial}')">
+        <button type="button" class="btn btn-sm btn-danger" onclick="pendienteCarnet('${v.serial}','${Estatus}')">
         Pendiente</button>
         </div>`;
-        t.row.add ([
-          j++, //0
-          v.id, //1
-          v.Grado.descripcion, //2
-          v.nombre + " " + v.apellido, //3
-          this.ObtenerMotivo(v.motivo), //v.motivo, //
-          boton //5
+        } else{
+            var boton = `<div class="btn-group">
+        <button type="button" class="btn btn-sm btn-info" onclick="verCarnet('${v.serial}','${v.id}','${v.fechavencimiento}')">
+        <i class="fa fa-search"></i></button>
+        <button type="button"  class="btn btn-sm btn-success" onclick="aprobarCarnet('${v.serial}',0)">
+        Regresar</button>
+        <button type="button" class="btn btn-sm btn-danger" onclick="pendienteCarnet('${v.serial}','${Estatus}')">
+        Pendiente</button>
+        </div>`;
+        }
+
+        t.row.add([
+            j++, //0
+            v.id, //1
+            v.Grado.descripcion, //2
+            v.nombre + " " + v.apellido, //3
+            this.ObtenerMotivo(v.motivo), //v.motivo, //
+            boton //5
         ]).draw(false);
-      });
-  }
-  ObtenerMotivo(motivo){
-    var cadena = "";
-    switch (motivo){
-      case "I" : 
-        cadena = "INGRESO";
-        break;
-      case "C" :
-        cadena = "ASCENSO";
-        break;
-      case "CS" :
-        cadena = "CAMBIO SITUACION";
-        break;
-      case "V" :
-        cadena = "VENCIMIENTO";
-        break;
-      case "D" :
-        cadena = "DETERIORO";
-        break;
-      case "E" :
-        cadena = "EXTRAVIO";
-        break;
-      default: 
-        cadena = "********";
-        break;
+    });
+
     }
-    return cadena;
-  }
+
+    ObtenerMotivo(motivo) {
+        var cadena = "";
+        switch (motivo) {
+            case "I" :
+                cadena = "INGRESO";
+                break;
+            case "C" :
+                cadena = "ASCENSO";
+                break;
+            case "CS" :
+                cadena = "CAMBIO SITUACION";
+                break;
+            case "V" :
+                cadena = "VENCIMIENTO";
+                break;
+            case "D" :
+                cadena = "DETERIORO";
+                break;
+            case "E" :
+                cadena = "EXTRAVIO";
+                break;
+            default:
+                cadena = "********";
+                break;
+        }
+        return cadena;
+    }
 }
 
 let listaCarnet = new LstCarnet();
-/**
-* Listar Carnet's
-*
-**/
-function ListarCarnet(estatus){
-  var ruta = Conn.URL + "carnet/listar/"+ estatus;
-  CargarAPI(ruta, "GET", "", listaCarnet);
+let Estatus = 0;
 
+
+/**
+ * Listar Carnet's
+ *
+ **/
+function ListarCarnet(estatus) {
+    Estatus = estatus;
+    var ruta = Conn.URL + "carnet/listar/" + estatus;
+    CargarAPI(ruta, "GET", "", listaCarnet);
+}
+
+function aprobarCarnet(serial, estatus) {
+    CargarAPI(Conn.URL + "carnet/apro/" + estatus + "/" + serial, "GET");
+}
+
+function pendienteCarnet(serial, estatus) {
+    CargarAPI(Conn.URL + "carnet/apro/2/" + serial, "GET");
+}
+
+function verCarnet(serial, cedula,vence) {
+    CargarUrl("_objectPDF", "rpt/carnet");
+    let ObjMilitar = new Militar();
+    let OqMilitar = new Militar();
+    var xhttp = new XMLHttpRequest();
+    var url = Conn.URL + "militar/crud/" + cedula;
+    $.getJSON( url, function( data ) {
+
+        OqMilitar.Cargar(data);
+        var militar = OqMilitar;
+        url = "images/grados/" + militar.Grado.abreviatura + ".png";
+        url = url.toLowerCase();
+        $("#imggradoCarnet").attr("src", url);
+        url = "http://192.168.12.161/imagenes/" + cedula + ".jpg";
+
+        $("#imgfotoCarnet").attr("src", url);
+        $("#lblgrado").html(militar.Grado.descripcion);
+        $("#lblnombre").html(militar.Persona.DatoBasico.nombreprimero);
+        $("#lblapellido").html(militar.Persona.DatoBasico.apellidoprimero);
+        $("#lblcedula").html(militar.Persona.DatoBasico.cedula);
+        $("#divserial").html(serial);
+        $("#divvencimiento").html(Util.ConvertirFechaHumana(vence));
+
+        url = "http://192.168.6.45/temp/" + cedula + "/huella.bmp";
+
+        $("#imghuellaCarnet").attr("src", url);
+        $("#divcategoria").html(militar.ObtenerCategoria());
+        $("#divsiglas").html(militar.Componente.abreviatura);
+        url = "images/firma.png";
+        $("#imgfirmaCarnet").attr("src", url);
+        $("#lblcodigo").html(militar.codigocomponente);
+        $("#lblhistoria").html(militar.numerohistoria);
+        $("#lblcabello").html(militar.Persona.DatoFisionomico.ObtenerCabello());
+        $("#lblgrupo").html(militar.Persona.DatoFisionomico.gruposanguineo);
+        $("#lblestatura").html(militar.Persona.DatoFisionomico.estatura);
+        $("#lblojos").html(militar.Persona.DatoFisionomico.ObtenerOjo());
+        $("#lblcolor").html(militar.Persona.DatoFisionomico.ObtenerPiel());
+
+        ImprimirCarnet("_objectPDF");
+    });
 
 }
 
-function PendienteHTML(){
-  var html = `<table class="ui celled table " cellspacing="0" width="100%" id="tblPendientesBuzon" >
-    <thead>
-      <tr>
-        <th style="width:50px">NRO.</th>
-        <th style="width:100px">CÉDULA</th>
-        <th style="width:180px">GRADO / PARENTESCO</th>
-        <th>APELLIDOS Y NOMBRES</th>
-        <th>MOTIVO </th>
-        <th style="width:220px">ACCIONES </th>
-      </tr>
-    </thead >
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>10107698</td>
-        <td>CORONEL</td>
-        <td>RAMON ANTONIO PAREDES</td>
-        <td>RENOVACION</td>
-        <td>
-           <div class="btn-group">
-             <button type="button" id="btnModFamiliar" class="btn btn-sm btn-info" onclick="ModificarFamiliarPos">
-               <i class="fa fa-search"></i></button>
-              <button type="button" id="btnModFamiliar" class="btn btn-sm btn-success" onclick="ModificarFamiliarPos">
-                Aprobado</button>
-              <button type="button" id="btnModFamiliar" class="btn btn-sm btn-danger" onclick="ModificarFamiliarPos">
-                Pendiente</button>
-            </div>
-        </td>
-      </tr>
-
-    </tbody>
-  </table>`;
-  return html;
+function ImprimirCarnet2(nombre) {
+    var html = $("#" + nombre).html();
+    console.log(html);
+    var ventana = window.open("", "_blank");
+    ventana.document.write(html);
+    //ventana.document.head.innerHTML = ;
+    ventana.print();
+    ventana.close();
 }

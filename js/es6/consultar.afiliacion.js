@@ -1633,6 +1633,7 @@ function GenerarCarnet() {
 
 function ImprimirCarnet(nombre) {
     var html = $("#" + nombre).html();
+    //console.log(html);
     var ventana = window.open("", "_blank");
     ventana.document.write(html);
     ventana.document.head.innerHTML = '<style>\n' +
