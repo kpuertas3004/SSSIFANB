@@ -136,7 +136,7 @@ $(function () {
     $('#_aceptar').focus();
   });
 
-
+  IniciarSesion();
 
 });
 function Principal(){
@@ -281,4 +281,18 @@ function soloLetras(e) {
 }
     if(letras.indexOf(tecla) == -1 && !tecla_especial)
         return false;
+}
+
+function IniciarSesion(){
+  if (sessionStorage.getItem('ipsfaToken') != undefined ){
+    
+    var e = sessionStorage.getItem("ipsfaToken");
+    var s = e.split(".");
+    var json = JSON.parse(atob(s[1]));
+    var usr = json.Usuario;
+    
+    $("#_PerfilUsuario").html(usr.Perfil.descripcion);
+    $("#_NombreUsuario").html(usr.nombre);
+
+  }
 }
