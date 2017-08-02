@@ -42,12 +42,9 @@ class LstCarnet {
         </div>`;
         } else{
             var boton = `<div class="btn-group">
-        <button type="button" class="btn btn-sm btn-info" onclick="verCarnet('${v.serial}','${v.id}','${v.fechavencimiento}')">
-        <i class="fa fa-search"></i></button>
-        <button type="button"  class="btn btn-sm btn-success" onclick="aprobarCarnet('${v.serial}',0)">
-        Regresar</button>
-        <button type="button" class="btn btn-sm btn-danger" onclick="pendienteCarnet('${v.serial}','${Estatus}')">
-        Pendiente</button>
+        <button type="button" class="btn btn-sm btn-primary" onclick="verCarnet('${v.serial}','${v.id}','${v.fechavencimiento}')">
+        <i class="fa fa-print"></i></button>
+        
         </div>`;
         }
 
