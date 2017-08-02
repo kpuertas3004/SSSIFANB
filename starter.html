@@ -67,6 +67,22 @@
     background: -moz-linear-gradient(#A50000, gray); /* For Firefox  */
     background: linear-gradient(#A50000, gray); /* Standard syntax */
 }
+.logo1{
+  -webkit-transition: width .3s ease-in-out;
+-o-transition: width .3s ease-in-out;
+transition: width .3s ease-in-out;
+display: block;
+float: left;
+height: 50px;
+font-size: 16px;
+line-height: 50px;
+text-align: center;
+width: 580px;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+padding: 0 15px;
+font-weight: 300;
+overflow: hidden;
+}
   </style>
 
   <!-- Activar Menu a traves de la API -->
@@ -96,12 +112,13 @@
 
 
 </head>
-<body class="hold-transition skin-yellow" style="display:none" id="_body">
+<body class="hold-transition skin-black-light" style="display:none" id="_body">
 <header class="header" style="background-color:#A50000">
     <div class="row">
   <div class="col-md-3 hidden-xs"><img src='images/ng.png' class="img-responsive" alt="Responsive image" style='float: left;'></div>
-  <div class="col-md-6 hidden-xs"><center><p style="color:white; font-size:22px; padding-top: 0.2em;" class="lead"><b>SSSIFANB</b></p>
-  <p style="font-size:20px; color:white" class="lead">Sistema de Seguridad Social de la Fuerza Armada Nacional Bolivariana</p></center></div>
+  <div class="col-md-6 hidden-xs">
+  <center><img src='images/rv.png' class="img-responsive" alt="Responsive image" style="margin-top:6px"></center>
+</div>
   <div class="col-md-3 hidden-xs"><img src='images/lg.png' class="img-responsive" alt="Responsive image" style="float:right;"></div>
 </div>
   </header>
@@ -119,7 +136,7 @@
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
-
+<span  class="logo1">Sistema de Seguridad Social de la Fuerza Armada Nacional Bolivariana</span>
       <div class="navbar-custom-menu">
 
         <ul class="nav navbar-nav">
