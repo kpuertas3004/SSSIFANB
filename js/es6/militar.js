@@ -516,7 +516,7 @@ class Militar{
 
         this.id = militar.id;
         this.tipodato = militar.tipodatoo;
-
+        
         this.Persona.DatoBasico = militar.Persona.DatoBasico;
         var DFis = militar.Persona.DatoFisionomico;
 

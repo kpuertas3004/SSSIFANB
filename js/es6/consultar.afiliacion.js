@@ -15,13 +15,13 @@ function Buscar( id ){
   $("#_lblConstanciaPension").hide();
   $("#_imgfamiliar").attr("src", "images/ndisponible.jpg");
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", Conn.URL + "militar/crud/" + $("#_cedula").val());
+  var url = Conn.URL + "militar/crud/" + $("#_cedula").val();
+
+  xhttp.open("GET", url);
   xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         militar = JSON.parse(xhttp.responseText);
         ObjMilitar = militar;
-        OqMilitar.Cargar(militar);
-
         if(militar.tipo != undefined){
           $("#_cedula").val("");
           if (id != undefined) { return false}
@@ -33,6 +33,7 @@ function Buscar( id ){
           $("#_aceptar").focus();
 
         }else{
+          OqMilitar.Cargar(militar);
           ActivarFormulario(true);
           $("#_btnModificar").show();
           $("#_btnConstancia").show();

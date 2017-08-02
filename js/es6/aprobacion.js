@@ -4,6 +4,9 @@ class LstCarnet{
 
   }
   Crear(Json) {
+      if (Json == null){
+        return false
+      }
       $("#_tblPendiente").html(PendienteHTML());
       var t = $('#tblPendientesBuzon').DataTable({
         'paging'      : false,
@@ -30,10 +33,37 @@ class LstCarnet{
           v.id, //1
           v.Grado.descripcion, //2
           v.nombre + " " + v.apellido, //3
-          "", //v.motivo, //
+          this.ObtenerMotivo(v.motivo), //v.motivo, //
           boton //5
         ]).draw(false);
       });
+  }
+  ObtenerMotivo(motivo){
+    var cadena = "";
+    switch (motivo){
+      case "I" : 
+        cadena = "INGRESO";
+        break;
+      case "C" :
+        cadena = "ASCENSO";
+        break;
+      case "CS" :
+        cadena = "CAMBIO SITUACION";
+        break;
+      case "V" :
+        cadena = "VENCIMIENTO";
+        break;
+      case "D" :
+        cadena = "DETERIORO";
+        break;
+      case "E" :
+        cadena = "EXTRAVIO";
+        break;
+      default: 
+        cadena = "********";
+        break;
+    }
+    return cadena;
   }
 }
 
