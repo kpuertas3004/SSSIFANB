@@ -311,12 +311,11 @@ class Familiar{
 	}
 	Salvar(){
 
-		CargarAPI(Conn.URL + "familiar/crud" , "PUT", this.Obtener());
+		CargarAPI(Conn.URL + "familiar/crud" , "POST", this.Obtener());
     //CargarAPI(Conn.URL + "familiar/crud" , "POST", this.Obtener());
 	}
 	Actualizar(){
-		//CargarAPI(Conn.URL + "familiar/crud" , "PUT", this.Obtener());
-
+		CargarAPI(Conn.URL + "familiar/crud" , "PUT", this.Obtener());
 
 	}
 }
