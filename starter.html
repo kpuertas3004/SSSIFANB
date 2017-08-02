@@ -253,13 +253,13 @@ overflow: hidden;
 
 
                 </p>
-                <p data-toggle="modal" data-target="#exampleModal" style="text-align:right; font-size: 12px;">Cambiar clave</p>
+
               </li>
 
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                  <a href="#" class="btn btn-default btn-flat" data-toggle="modal" data-target="#exampleModal">Cambiar clave</a>
                 </div>
                 <div class="pull-right">
                   <a href="#" class="btn btn-default btn-flat" onclick="CerrarSession()">Cerrar Sesión</a>
@@ -348,6 +348,10 @@ overflow: hidden;
       </div>
       <div class="modal-body">
         <form>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Contraseña actual:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">Nueva contraseña:</label>
             <input type="text" class="form-control" id="recipient-name">
