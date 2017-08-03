@@ -269,6 +269,7 @@ class Familiar{
 	}
 	Obtener(){
 		this.documentopadre = $("#txtcedula").val();
+        this.Persona.DatoBasico.nacionalidad = $("#btnnacionalidad").html();
 		this.Persona.DatoBasico.cedula = $("#txtcedulaf").val();
 		this.Persona.DatoBasico.fechanacimiento =  new Date(Util.ConvertirFechaUnix($("#txtnacimientof").val())).toISOString();
 		this.Persona.DatoBasico.sexo = $("#cmbsexof").val();
@@ -280,16 +281,6 @@ class Familiar{
 		this.estudia = parseInt($("#cmbestudiaf").val());
 		this.esmilitar = $("#cmbmilitarf option:selected").val()==0?false:true;
 
-		// this.Persona.Direccion.estado = $("#cmbestadof option:selected").val();
-		// this.Persona.Direccion.municipio = $("#cmbmunicipiof  option:selected").val();
-		// this.Persona.Direccion.parroquia = $("#cmbparroquiaf  option:selected").val();
-		// this.Persona.Direccion.ciudad = $("#cmbciudadf  option:selected").val();
-		// this.Persona.Direccion.calleavenida = $("#txtcallef").val();
-		// this.Persona.Direccion.casa = $("#txtcasaf").val();
-		// this.Persona.Direccion.apartamento = $("#txtaptof").val();
-		//this.Persona.Direccion.telefonofijo = $("#txttelefonof").val();
-		//this.Persona.Direccion.telefonomovil = $("#txtcelularf").val();
-		//this.Persona.Direccion.correo = $("#txtcorreof").val();
 		this.Persona.PartidaNacimiento.registro = $("#txtpregistrocivilf").val();
 		this.Persona.PartidaNacimiento.ano = $("#txtpanof").val();
 		this.Persona.PartidaNacimiento.acta = $("#txtpactaf").val();
@@ -321,6 +312,15 @@ class Familiar{
         dir.casa = $("#txtcasaf").val().toUpperCase();
         dir.apartamento = $("#txtaptof").val().toUpperCase();
         this.Persona.Direccion[0] = dir;
+		if($("#txtfechacondicionf").val() == ''){
+            this.Persona.Discapacidad.fecha == '';
+		}else{
+            this.Persona.Discapacidad.fecha = new Date(Util.ConvertirFechaUnix($("#txtfechacondicionf").val())).toISOString();
+		}
+
+        this.Persona.Discapacidad.tipodiscapacidad = $("#cmbDiscapacidadf").val();
+        this.Persona.Discapacidad.diagnostico = $("#txtdiagnosticof").val();
+        this.Persona.Discapacidad.nombrehospitalmilitar = $("#cmbHospitalf").text();
 
 		return this;
 	}
@@ -417,6 +417,8 @@ class Persona{
 		this.urlFoto = "";
 		this.urlHuella = "";
 		this.urlFirma = "";
+
+		this.Discapacidad = new CondicionEspecial();
 	}
 }
 
@@ -443,6 +445,7 @@ class Defuncion{
 class Recibo{
     constructor(){
         this.id = "";
+        this.idf = "";
         this.motivo = "";
         this.numero = 0;
         this.canal = "";
@@ -480,9 +483,39 @@ class Recibo{
         return true;
 	}
 
+    VerificarF(){
+        //alert($("#cmbMotivoCarnet").val());
+        if($("#cmbMotivoCarnetf").val() == 'S'){
+            $("#cmbMotivoCarnetf").notify("Indique El motivo");
+            return false;
+        }
+        if($("#txtcedulaf").val() == ''){
+            $("#txtcedulaf").notify("Ingrese Cedula");
+            return false;
+        }
+        if($("#txtnumeroCf").val() == ''){
+            $("#txtnumeroCf").notify("Ingrese Numero de Cuenta");
+            return false;
+        }
+        if($("#cmbminstfinancieraCf").val() == 'S'){
+            $("#cmbminstfinancieraCf").notify("Indique Institucion");
+            return false;
+        }
+        if($("#txtmfechaCf ").val() == ''){
+            $("#txtmfechaCf").notify("Indique fecha");
+            return false;
+        }
+        if($("#txtmontoCf").val() == ''){
+            $("#txtmontoCf").notify("Indique monto");
+            return false;
+        }
+        return true;
+    }
+
 
     Obtener(){
     	this.id = $("#txtcedula").val();
+        this.idf = $("#txtcedula").val();
     	this.motivo = $("#cmbMotivoCarnet").val();
     	this.numero = $("#txtnumeroC").val();
     	this.canal = $("#cmbminstfinancieraC").val();
@@ -491,10 +524,26 @@ class Recibo{
     	return this;
 	}
 
+    ObtenerF(){
+        this.id = $("#txtcedula").val();
+        this.idf = $("#txtcedulaf").val();
+        this.motivo = $("#cmbMotivoCarnetf").val();
+        this.numero = $("#txtnumeroCf").val();
+        this.canal = $("#cmbminstfinancieraCf").val();
+        this.fecha = new Date(Util.ConvertirFechaUnix($("#txtmfechaCf").val())).toISOString();
+        this.monto = parseFloat($("#txtmontoCf").val());
+        return this;
+    }
+
 	Salvar(){
 
         CargarAPI(Conn.URL + "recibo/crud" , "POST", this.Obtener());
 	}
+
+    SalvarF(){
+        console.log(this.ObtenerF())
+        CargarAPI(Conn.URL + "recibo/crud" , "POST", this.ObtenerF());
+    }
 }
 class Militar{
 	constructor(){
@@ -711,6 +760,15 @@ class CuentaBancaria{
 		this.tipocuenta = "";
 		this.numerocuenta = "";
 	}
+}
+
+class CondicionEspecial{
+    constructor(){
+        this.fecha = "";
+        this.tipodiscapacidad = 0;
+        this.diagnostico = "";
+        this.nombrehospitalmilitar="";
+    }
 }
 
 function ObtenerFamiliar(){

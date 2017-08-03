@@ -393,6 +393,7 @@ function Salvar() {
 function Actualizar() {
     if (Util.ValidarFormulario("_bxDatoBasico") == false) {
         Util.ModalValidar("Favor completar todos los campos");
+        Util.MensajeFormulario("_bxDatoBasico","msjVeriActualizar");
     } else {
         var militar = new Militar();
         militar.Actualizar();
@@ -760,8 +761,62 @@ function ContinuarTIM() {
     //$("#modCarnet").modal("show");
 }
 
+function ContinuarTIF() {
+
+    var recibo = new Recibo();
+    if (recibo.VerificarF() === true) {
+        recibo.SalvarF();
+        $('#modCarnetValidarf').modal('hide');
+
+    } else {
+        console.log(recibo);
+    }
+    //$("#modCarnet").modal("show");
+}
+
 function VisualizarCarnetFamiliar() {
-    $("#modCarnetFamiliar").modal("show");
+    $("#modCarnetValidarf").modal("show");
+    /*if (Util.ValidarFormulario("_frmDatoBasico") == false) {
+        Util.ModalValidar("Favor actualizar afiliado");
+    } else {
+        //alert(ObjMilitar.estatuscarnet);
+        if (ObjMilitar.estatuscarnet == undefined || ObjMilitar.estatuscarnet == 0) {
+            $("#modCarnetValidar").modal("show");
+        } else {
+            console.log(OqMilitar);
+            var militar = OqMilitar;
+            url = "images/grados/" + militar.Grado.abreviatura + ".png";
+
+            url = url.toLowerCase();
+            $("#imggradoCarnet").attr("src", url);
+            url = "http://192.168.12.161/imagenes/" + $("#txtcedula").val() + ".jpg";
+
+            $("#imgfotoCarnet").attr("src", url);
+            $("#lblgrado").html(militar.Grado.descripcion);
+            $("#lblnombre").html(militar.Persona.DatoBasico.nombreprimero);
+            $("#lblapellido").html(militar.Persona.DatoBasico.apellidoprimero);
+            $("#lblcedula").html(militar.Persona.DatoBasico.cedula);
+            url = "http://192.168.6.45/temp/" + $("#txtcedula").val() + "/huella.bmp";
+
+            $("#imghuellaCarnet").attr("src", url);
+            $("#divcategoria").html(militar.ObtenerCategoria());
+            $("#divsiglas").html(militar.Componente.abreviatura);
+            url = "images/firma.png";
+            $("#imgfirmaCarnet").attr("src", url);
+            $("#lblcodigo").html(militar.codigocomponente);
+            $("#lblhistoria").html(militar.numerohistoria);
+            $("#lblcabello").html(militar.Persona.DatoFisionomico.ObtenerCabello());
+            $("#lblgrupo").html(militar.Persona.DatoFisionomico.gruposanguineo);
+            $("#lblestatura").html(militar.Persona.DatoFisionomico.estatura);
+            $("#lblojos").html(militar.Persona.DatoFisionomico.ObtenerOjo());
+            $("#lblcolor").html(militar.Persona.DatoFisionomico.ObtenerPiel());
+
+            ImprimirCarnet("_objectPDF");
+
+        }
+
+        //$("#modCarnet").modal("show");
+    }*/
 }
 
 function ActivarCalendarios() {
@@ -1240,6 +1295,11 @@ function ValidarGenerarCarnet() {
     $("#txtmfecharesueltoC").val($("#txtmfecharesuelto").val());
     $("#txtposicionC").val($("#txtposicion").val());
     switch (cr) {
+        case "V":
+            $("#_cingreso").show();
+            $("#_cvencimiento").hide();
+            $("#_cdeterioro").hide();
+            break;
         case "I":
             $("#_cingreso").show();
             $("#_cvencimiento").hide();
@@ -1266,6 +1326,51 @@ function ValidarGenerarCarnet() {
             $("#_cdeterioro").show();
             break;
         default:
+    }
+}
+
+function ValidarGenerarCarnetF() {
+    cr = $("#cmbMotivoCarnetf option:selected").val();
+    $('#txtmfechaCf').datepicker({
+        autoclose: true,
+        format: "dd/mm/yyyy",
+        language: 'es'
+    });
+    $("#_reciboCf").show();
+
+    switch (cr) {
+        case "V":
+            $("#_cingresoF").show();
+            $("#_cvencimientoF").hide();
+            $("#_cdeterioroF").hide();
+            break;
+        case "I":
+            $("#_cingresoF").show();
+            $("#_cvencimientoF").hide();
+            $("#_cdeterioroF").hide();
+            break;
+        case "C":
+            $("#_cingresoF").show();
+            $("#_cvencimientoF").hide();
+            $("#_cdeterioroF").hide();
+            break;
+        case "D":
+            $("#_cingresoF").hide();
+            $("#_cvencimientoF").hide();
+            $("#_cdeterioroF").show();
+            break;
+        case "E":
+            $("#_cingresoF").hide();
+            $("#_cvencimientoF").hide();
+            $("#_cdeterioroF").show();
+            break;
+        case "CA":
+            $("#_cingresoF").hide();
+            $("#_cvencimientoF").hide();
+            $("#_cdeterioroF").show();
+            break;
+        default:
+            break;
     }
 }
 
@@ -1677,6 +1782,7 @@ function SalvarFamiliar() {
             familiar.Actualizar();
         }
         $("#modFamiliar").modal("hide");
+        VisualizarCarnetFamiliar();
     }
 }
 
