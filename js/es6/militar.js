@@ -307,6 +307,17 @@ class Familiar{
 		this.Persona.RedSocial.facebook = $("#txtfacebookf").val();
 		this.Persona.RedSocial.instagram = $("#txtinstagranf").val();
 		// this.Persona.RedSocial.linkedin = $("#txtlinkedinf").val();
+        var dir = new Direccion();
+        dir.tipo = 0;
+        dir.estado = $("#cmbestadof option:selected").val();
+        dir.municipio = $("#cmbmunicipiof option:selected").val();
+        dir.parroquia = $("#cmbparroquiaf option:selected").val();
+        dir.ciudad = $("#cmbciudadf").val();
+        dir.calleavenida = $("#txtcallef").val().toUpperCase();
+        dir.casa = $("#txtcasaf").val().toUpperCase();
+        dir.apartamento = $("#txtaptof").val().toUpperCase();
+        this.Persona.Direccion[0] = dir;
+
 		return this;
 	}
 	Salvar(){
