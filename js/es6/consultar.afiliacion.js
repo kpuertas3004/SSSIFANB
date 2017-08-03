@@ -620,6 +620,8 @@ function FrmFamiliar(valor) {
     $("#txtdiagnosticof").attr('disabled', valor);
     $("#cmbHospitalf").attr('disabled', valor);
     $("#btnnacionalidad").attr('disabled', valor);
+
+
     if (valor == false) {
         $("#imgIngFam").show();
         $("#_btnActeptarFamiliar").show();
@@ -787,6 +789,11 @@ function ActivarCalendarios() {
         format: "dd/mm/yyyy",
         language: 'es'
     });
+    $('#txtmfechaultimoascenso').datepicker({
+        autoclose: true,
+        format: "dd/mm/yyyy",
+        language: 'es'
+    });
 
 
     ////ACTIVAR MASK
@@ -943,6 +950,7 @@ function FrmDatosMilitar(valor) {
     $("#txtposicion").attr('disabled', valor);
     $("#txtcodigocomponente").attr('disabled', valor);
     $("#txtnumhistoriaclinica").attr('disabled', valor);
+    $("#txtmfechaultimoascenso").attr('disabled', valor);
 
 
 }
@@ -959,6 +967,7 @@ function LimpiarFrmDatosMilitar(valor) {
     $("#txtposicion").val("");
     $("#txtcodigocomponente").val("");
     $("#txtnumhistoriaclinica").val("");
+    $("#txtmfechaultimoascenso").val("");
 }
 
 function NacionalidadFamiliar(nac) {

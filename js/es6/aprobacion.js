@@ -44,7 +44,7 @@ class LstCarnet {
             var boton = `<div class="btn-group">
         <button type="button" class="btn btn-sm btn-primary" onclick="verCarnet('${v.serial}','${v.id}','${v.fechavencimiento}')">
         <i class="fa fa-print"></i></button>
-        
+
         </div>`;
         }
 
@@ -117,41 +117,49 @@ function verCarnet(serial, cedula,vence) {
     let OqMilitar = new Militar();
     var xhttp = new XMLHttpRequest();
     var url = Conn.URL + "militar/crud/" + cedula;
-    $.getJSON( url, function( data ) {
+    xhttp.open("GET", url);
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          OqMilitar.Cargar(JSON.parse(xhttp.responseText));
+          var militar = OqMilitar;
+          url = "images/grados/" + militar.Grado.abreviatura + ".png";
+          url = url.toLowerCase();
+          $("#imggradoCarnet").attr("src", url);
+          url = "http://192.168.12.161/imagenes/" + cedula + ".jpg";
 
-        OqMilitar.Cargar(data);
-        var militar = OqMilitar;
-        url = "images/grados/" + militar.Grado.abreviatura + ".png";
-        url = url.toLowerCase();
-        $("#imggradoCarnet").attr("src", url);
-        url = "http://192.168.12.161/imagenes/" + cedula + ".jpg";
+          $("#imgfotoCarnet").attr("src", url);
+          $("#lblgrado").html(militar.Grado.descripcion);
+          $("#lblnombre").html(militar.Persona.DatoBasico.nombreprimero);
+          $("#lblapellido").html(militar.Persona.DatoBasico.apellidoprimero);
+          $("#lblcedula").html(militar.Persona.DatoBasico.cedula);
+          $("#divserial").html(serial);
+          $("#divvencimiento").html(Util.ConvertirFechaHumana(vence));
 
-        $("#imgfotoCarnet").attr("src", url);
-        $("#lblgrado").html(militar.Grado.descripcion);
-        $("#lblnombre").html(militar.Persona.DatoBasico.nombreprimero);
-        $("#lblapellido").html(militar.Persona.DatoBasico.apellidoprimero);
-        $("#lblcedula").html(militar.Persona.DatoBasico.cedula);
-        $("#divserial").html(serial);
-        $("#divvencimiento").html(Util.ConvertirFechaHumana(vence));
+          url = "http://192.168.6.45/temp/" + cedula + "/huella.bmp";
 
-        url = "http://192.168.6.45/temp/" + cedula + "/huella.bmp";
+          $("#imghuellaCarnet").attr("src", url);
+          $("#divcategoria").html(militar.ObtenerCategoria());
+          $("#divsiglas").html(militar.Componente.abreviatura);
+          url = "images/firma.png";
+          $("#imgfirmaCarnet").attr("src", url);
+          $("#lblcodigo").html(militar.codigocomponente);
+          $("#lblhistoria").html(militar.numerohistoria);
+          $("#lblcabello").html(militar.Persona.DatoFisionomico.ObtenerCabello());
+          $("#lblgrupo").html(militar.Persona.DatoFisionomico.gruposanguineo);
+          $("#lblestatura").html(militar.Persona.DatoFisionomico.estatura);
+          $("#lblojos").html(militar.Persona.DatoFisionomico.ObtenerOjo());
+          $("#lblcolor").html(militar.Persona.DatoFisionomico.ObtenerPiel());
 
-        $("#imghuellaCarnet").attr("src", url);
-        $("#divcategoria").html(militar.ObtenerCategoria());
-        $("#divsiglas").html(militar.Componente.abreviatura);
-        url = "images/firma.png";
-        $("#imgfirmaCarnet").attr("src", url);
-        $("#lblcodigo").html(militar.codigocomponente);
-        $("#lblhistoria").html(militar.numerohistoria);
-        $("#lblcabello").html(militar.Persona.DatoFisionomico.ObtenerCabello());
-        $("#lblgrupo").html(militar.Persona.DatoFisionomico.gruposanguineo);
-        $("#lblestatura").html(militar.Persona.DatoFisionomico.estatura);
-        $("#lblojos").html(militar.Persona.DatoFisionomico.ObtenerOjo());
-        $("#lblcolor").html(militar.Persona.DatoFisionomico.ObtenerPiel());
-
-        ImprimirCarnet("_objectPDF");
-    });
-
+          ImprimirCarnet("_objectPDF");
+      }
+    }
+    xhttp.onerror = function () {
+        if (this.readyState == 4 && this.status == 0) {
+            $.notify("No se puede conectar al servidor");
+            $("#_cargando").hide();
+        }
+    };
+    xhttp.send();
 }
 
 function ImprimirCarnet2(nombre) {
