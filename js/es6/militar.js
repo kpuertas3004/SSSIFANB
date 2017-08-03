@@ -248,6 +248,9 @@ class Familiar{
 		this.beneficio = true;
 		this.documento = 0;
 		this.documentopadre = "";
+		this.historiamedica = "";
+        this.donante = "";
+        this.serial = "";
 	}
 	GenerarParentesco(){
 		var parentesco= "";
@@ -279,6 +282,8 @@ class Familiar{
 		this.parentesco = $("#cmbparentescof").val();
 		this.condicion = parseInt($("#cmbcondicionf").val());
 		this.estudia = parseInt($("#cmbestudiaf").val());
+        this.historiamedica = $("#hclinicaf").val();
+        this.donante = $("#donantef").val();
 		this.esmilitar = $("#cmbmilitarf option:selected").val()==0?false:true;
 
 		this.Persona.PartidaNacimiento.registro = $("#txtpregistrocivilf").val();
@@ -321,6 +326,9 @@ class Familiar{
         this.Persona.CondicionEspecial.tipodiscapacidad = $("#cmbDiscapacidadf").val();
         this.Persona.CondicionEspecial.diagnostico = $("#txtdiagnosticof").val();
         this.Persona.CondicionEspecial.nombrehospitalmilitar = $("#cmbHospitalf").text();
+
+        this.Persona.DatoFisionomico.gruposanguineo = $("#gsanguineof").val();
+
 
 		return this;
 	}

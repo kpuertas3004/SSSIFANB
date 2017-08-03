@@ -128,6 +128,7 @@ $(function () {
   CargarUrl("_contenidorpt", "rpt/constancia");
   CargarUrl("_contenidocps", "rpt/constanciapensionsobr");
   CargarUrl("_objectPDF", "rpt/carnet");
+  CargarUrl("_objectPDF2", "rpt/carnetfamiliar");
 
   CargarUrl("_bxContenedores", "afi/contenedores");
 

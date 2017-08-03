@@ -3,11 +3,20 @@ class Utilidad {
 
     }
 
-    SoloNumero(event) {
+    SoloNumero(event,elemento) {
+        var contenidocaja = $("#"+elemento.id).val();
+
+
         var key = event.keyCode || event.which;
         var tecla = String.fromCharCode(key).toLowerCase();
         var numeros = "0123456789";
         var especiales = [8, 37, 39, 46, 13, 9];
+
+        if(key == 46){
+            if(contenidocaja.indexOf(".") != -1 || contenidocaja == ""){
+                return false;
+            }
+        }
 
         var tecla_especial = false
         for (var i in especiales) {
@@ -143,6 +152,26 @@ class Utilidad {
         }
 
         return Ano;
+    }
+
+
+    ConvertirParentesco(cad,sexo){
+        var parent = "";
+        switch(cad) {
+            case "PD":
+                parent =(sexo=="F")?"MADRE":"PADRE";
+                break;
+            case "HJ":
+                parent = (sexo=="F")?"HIJA":"HIJO";
+                break;
+            case "EA":
+                parent = (sexo=="F")?"ESPOSA":"ESPOSO";
+                break;
+            default:
+                parent = "";
+                break;
+        }
+        return parent;
     }
 
 

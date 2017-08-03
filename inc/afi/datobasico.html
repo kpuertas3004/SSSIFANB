@@ -473,11 +473,11 @@
              <div class="form-group">
               <div class="col-md-3 col-sm-6">
                 <label>Estatura:</label>
-                <input  id="txtmestatura" class="form-control" disabled="disabled" type="text" required maxlength="3" data-inputmask='"mask": "999"' data-mask>
+                <input  id="txtmestatura" class="form-control" disabled="disabled" type="text" required maxlength="4" onkeypress="return Util.SoloNumero(event,this)">
               </div>
               <div class="col-md-3  col-sm-6">
                 <label>Peso:</label>
-                <input  id="txtmpeso" class="form-control" disabled="disabled" type="text" required maxlength="3" data-inputmask='"mask": "999"' data-mask>
+                <input  id="txtmpeso" class="form-control" disabled="disabled" type="text" required maxlength="6" onkeypress="return Util.SoloNumero(event,this)">
               </div>
               <div class="col-md-3  col-sm-6">
                 <label>Talla:</label>
