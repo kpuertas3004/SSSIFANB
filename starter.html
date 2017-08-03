@@ -63,22 +63,22 @@
         display: block;
     }
 
-.logo1{
-  -webkit-transition: width .3s ease-in-out;
--o-transition: width .3s ease-in-out;
-transition: width .3s ease-in-out;
-display: block;
-float: left;
-height: 50px;
-font-size: 16px;
-line-height: 50px;
-text-align: center;
-width: 580px;
-font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-padding: 0 15px;
-font-weight: 300;
-overflow: hidden;
-}
+    .logo1{
+      -webkit-transition: width .3s ease-in-out;
+      -o-transition: width .3s ease-in-out;
+      transition: width .3s ease-in-out;
+      display: block;
+      float: left;
+      height: 50px;
+      font-size: 16px;
+      line-height: 50px;
+      text-align: center;
+      width: 580px;
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      padding: 0 15px;
+      font-weight: 300;
+      overflow: hidden;
+    }
   </style>
 
   <!-- Activar Menu a traves de la API -->
@@ -108,7 +108,6 @@ overflow: hidden;
   <script src="bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js"></script>
 
   <script src="bower_components/fancy/dist/jquery.fancybox.min.js"></script>
-
 
 </head>
 <body class="hold-transition skin-yellow" style="display:none" id="_body">
@@ -339,36 +338,7 @@ overflow: hidden;
             <!-- box-footer -->
     </div>
 <!-- /.box -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">Cambia tu contraseña</h4>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="recipient-name" class="control-label">Contraseña actual:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="control-label">Nueva contraseña:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="control-label">Repita la contraseña:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
-      </div>
-    </div>
-  </div>
-</div>
+
   </section>
 
 
@@ -587,12 +557,36 @@ overflow: hidden;
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-
-
-
-
-
-
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="exampleModalLabel">Cambia tu contraseña</h4>
+          </div>
+          <div class="modal-body">
+            <form id="form">
+              <div class="form-group">
+                <label for="recipient-name"  class="control-label">Contraseña actual:</label>
+                <input type="text" name="contrasenaA" id="contrasenaA" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="control-label">Nueva contraseña:</label>
+                <input type="text" name="ncontrasena" id="ncontrasena" class="form-control" >
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="control-label">Repita la contraseña:</label>
+                <input type="text" name="rcontrasena" id="rcontrasena" class="form-control" >
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" onclick="obtener()">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
 </body>
 </html>
