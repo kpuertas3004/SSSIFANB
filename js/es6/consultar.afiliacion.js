@@ -1281,6 +1281,7 @@ function ModificarFamiliarPos(pos) {
         ActivarCalendariosFamiliar();
         var Familiar = ObjMilitar.Familiar[pos - 1];
         var DB = Familiar.Persona.DatoBasico;
+        $("#tipoModFam").val(1);
         $("#modFamiliar").modal('show');
         $('#txtcedulaf').val(DB.cedula);
         SeleccionarPorSexoFamiliar(DB.sexo);
@@ -1605,7 +1606,7 @@ function ValidarMilitar(valor) {
                 }
 
             } else { //if no existe el miliater
-
+                $("#tipoModFam").val(0);
                 $("#modFamiliar").modal('show');
             } //Fin del tipo
 
@@ -1626,7 +1627,12 @@ function SalvarFamiliar() {
     if (Util.ValidarFormulario("_frmDatoFamiliar") == false) {
         Util.MensajeFormulario("_frmDatoFamiliar","msj_modal_familiar");
     }else{
-        familiar.Salvar();
+        var tpo = $("#tipoModFam").val();
+        if(tpo == 0){
+            familiar.Salvar();
+        }else{
+            familiar.Actualizar();
+        }
         $("#modFamiliar").modal("hide");
     }
 }
