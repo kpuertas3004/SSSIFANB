@@ -95,6 +95,7 @@ function Buscar(id) {
                 $("#cmbgrado").html('<option value="' + militar.Grado.abreviatura + '">' + militar.Grado.descripcion + '</option>');
                 $("#txtnresuelto").val(militar.nresuelto);
 
+                $("#txtmfechaultimoascenso").val(Util.ConvertirFechaHumana(militar.fascenso));
                 $("#txtmfecharesuelto").val(Util.ConvertirFechaHumana(militar.fresuelto));
                 $("#txtposicion").val(militar.posicion);
                 $("#txtfechagraduacion").val(Util.ConvertirFechaHumana(militar.fingreso));
@@ -1280,7 +1281,9 @@ function ModificarFamiliarPos(pos) {
         FrmFamiliar(false);
         ActivarCalendariosFamiliar();
         var Familiar = ObjMilitar.Familiar[pos - 1];
-        var DB = Familiar.Persona.DatoBasico;
+        var Persona = Familiar.Persona;
+        var DB = Persona.DatoBasico;
+
         $("#tipoModFam").val(1);
         $("#modFamiliar").modal('show');
         $('#txtcedulaf').val(DB.cedula);
@@ -1294,6 +1297,30 @@ function ModificarFamiliarPos(pos) {
         $('#cmbsexof').val(DB.sexo);
         $('#cmbcondicionf').val(Familiar.condicion);
         $('#cmbestudiaf').val(Familiar.estudia);
+
+        
+        
+        $("#txtpregistrocivilf").val(Persona.PartidaNacimiento.registro);
+        $("#txtpanof").val(Persona.PartidaNacimiento.ano);
+        $("#txtpactaf").val(Persona.PartidaNacimiento.acta);
+        $("#txtpfoliof").val(Persona.PartidaNacimiento.folio);
+        $("#txtplibrof").val(Persona.PartidaNacimiento.libro);
+        $("#txtpesof").val(Persona.DatoFisico.peso);
+        $("#txttallaf").val(Persona.DatoFisico.talla);
+        $("#cmbpielf").val(Persona.DatoFisionomico.colorpiel);
+        $("#cmbojosf").val(Persona.DatoFisionomico.colorojos);
+        $("#cmbcolorcabellof").val(Persona.DatoFisionomico.colorcabello);
+        $("#txtestaturaf").val(Persona.DatoFisionomico.estatura);
+        $("#txtsenaparticularf").val(Persona.DatoFisionomico.senaParticular);
+        $("#txtgruposanguineof").val(Persona.DatoFisionomico.gruposanguineo);
+        $("#txttwitterf").val(Persona.RedSocial.twitter);
+        $("#txtfacebookf").val(Persona.RedSocial.facebook);
+        $("#txtinstagranf").val(Persona.RedSocial.instagram);
+
+        $("#txtcorreof").val(Persona.Correo.principal);
+        $("#txttelefonof").val(Persona.Telefono.domiciliario);
+        $("#txtcelularf").val(Persona.Telefono.movil);
+
         valor = 0;
         if (Familiar.beneficio == true) {
             valor = 1;
@@ -1304,6 +1331,22 @@ function ModificarFamiliarPos(pos) {
         $("#_estudiaf").hide();
         $("#_condicionfdoc").hide();
         $("#_estudiafdoc").hide();
+
+        if (Familiar.Persona.Direccion != undefined) {
+
+            var DIR = Familiar.Persona.Direccion[0];
+            
+            $("#cmbestadof").val(DIR.estado);
+            CiudadMunicipio(1);
+            $("#cmbmunicipiof").val(DIR.municipio);
+            SeleccionarParroquia(1);
+            $("#cmbparroquiaf").val(DIR.parroquia);
+            $("#cmbciudadf").val(DIR.ciudad);
+            $("#txtcallef").val(DIR.calleavenida);
+            $("#txtcasaf").val(DIR.casa);
+            $("#txtaptof").val(DIR.apartamento);
+
+        }
 
         if (Familiar.parentesco == "EA") {
             $("#cmbedocivilf").val("C");
