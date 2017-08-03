@@ -313,14 +313,14 @@ class Familiar{
         dir.apartamento = $("#txtaptof").val().toUpperCase();
         this.Persona.Direccion[0] = dir;
 		if($("#txtfechacondicionf").val() == ''){
-            this.Persona.Discapacidad.fecha == '';
+            this.Persona.CondicionEspecial.fecha == '';
 		}else{
-            this.Persona.Discapacidad.fecha = new Date(Util.ConvertirFechaUnix($("#txtfechacondicionf").val())).toISOString();
+            this.Persona.CondicionEspecial.fecha = new Date(Util.ConvertirFechaUnix($("#txtfechacondicionf").val())).toISOString();
 		}
 
-        this.Persona.Discapacidad.tipodiscapacidad = $("#cmbDiscapacidadf").val();
-        this.Persona.Discapacidad.diagnostico = $("#txtdiagnosticof").val();
-        this.Persona.Discapacidad.nombrehospitalmilitar = $("#cmbHospitalf").text();
+        this.Persona.CondicionEspecial.tipodiscapacidad = $("#cmbDiscapacidadf").val();
+        this.Persona.CondicionEspecial.diagnostico = $("#txtdiagnosticof").val();
+        this.Persona.CondicionEspecial.nombrehospitalmilitar = $("#cmbHospitalf").text();
 
 		return this;
 	}
@@ -418,7 +418,7 @@ class Persona{
 		this.urlHuella = "";
 		this.urlFirma = "";
 
-		this.Discapacidad = new CondicionEspecial();
+		this.CondicionEspecial = new CondicionEspecial();
 	}
 }
 
