@@ -245,20 +245,21 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
             url = "http://192.168.6.45/SSSIFANB/temp/" + cedula + "/firma" + idf+ ".jpg";
 
             $("#imgfirmaCarnetf").attr("src", url);
-            $("#divfechavencimiento").html(vence);
+            $("#divfechavencimiento").html(Util.ConvertirFechaHumana(vence));
             $("#lblnombref").html(militar.Familiar[pos].Persona.DatoBasico.nombreprimero);
             $("#lblapellidof").html(militar.Familiar[pos].Persona.DatoBasico.apellidoprimero);
             $("#lblcedulaf").html(idf);
             $("#lblparentescof").html(Util.ConvertirParentesco(militar.Familiar[pos].parentesco,militar.Familiar[pos].Persona.DatoBasico.sexo));
-            $("#lblafiliadof").html(militar.Persona.DatoBasico.apellidoprimero+" "+OqMilitar.Persona.DatoBasico.nombreprimero+" CI:"+OqMilitar.Persona.DatoBasico.cedula);
+            $("#lblafiliadof").html(militar.Persona.DatoBasico.apellidoprimero+" "+OqMilitar.Persona.DatoBasico.nombreprimero+" CI:"+cedula);
 
             url = "http://192.168.6.45/SSSIFANB/temp/" + cedula + "/huella" + idf+ ".bmp";
 
             $("#imghuellaCarnetf").attr("src", url);
 
-            $("#lblhistoriaf").html(militar.numerohistoria);
-            $("#lblgsanguineof").html(militar.Persona.DatoFisionomico.gruposanguineo);
-            $("#lblobsf").html(militar.Persona.DatoFisionomico.estatura);
+            $("#lblhistoriaf").html(militar.Familiar[pos].historiamedica);
+            $("#lblgsanguineof").html(militar.Familiar[pos].Persona.DatoFisionomico.gruposanguineo);
+            $("#lbldonantef").html(militar.Familiar[pos].donante);
+            $("#lblfechanacf").html(Util.ConvertirFechaHumana(militar.Familiar[pos].Persona.DatoBasico.fechanacimiento));
 
             if (estatus == 0) {
                 CargarAPI(Conn.URL + "carnet/apro/3/" + serial, "GET");

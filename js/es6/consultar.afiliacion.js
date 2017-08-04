@@ -1947,32 +1947,32 @@ function ImprimirCarnetFamiliar(nombre) {
     //console.log(html);
     var ventana = window.open("", "_blank");
     ventana.document.write(html);
-    ventana.document.head.innerHTML = '<style type="text/css">\n' +
-        '        @charset "utf-8";\n' +
-        '        @page {\n' +
-        '            margin: 0cm;\n' +
-        '            size: 8.5cm 5.4cm;\n' +
-        '        }\n' +
-        '        section {\n' +
-        '            page-break-before: always;\n' +
-        '        }\n' +
-        '\n' +
-        'body {margin: 0px;}\n' +
-        '.marco-carnet{border:0px #003399 solid;width:8.5cm;height:5.4cm;position:relative;}\n' +
-        '.css-foto{border:0px #0033CC solid;width:68px; height:90px; position:absolute; left: 236px; top: 51px;}\n' +
-        '.fecha-vencimiento{border:0px #0033FF solid; width:79px; height:auto; position:absolute; left: 230px; top: 146px;font-size:7px;text-align:center;font-weight:bold;}\n' +
-        '.firma-titular{border:0px #0033FF solid; width:84px; height:auto; position:absolute; left: 234px; top: 157px;font-size:7px;font-weight:bold;}\n' +
-        '.firma-titular-ii{border-top:0px #003300 solid;padding-top:2px;text-align:center;}\n' +
-        '.labels-dat-person{border:0px #0033FF solid; width:67px; height:auto; position:absolute; left: 5px; top: 128px;font-size:9px;font-weight:bold;}\n' +
-        '.labels-dat-person-resl{border:0px #0033FF solid; width:166px; height:auto; position:absolute; left: 70px; top: 128px;font-size:9px;font-weight:bold;}\n' +
-        '.letra-8{font-size:8px;}\n' +
-        '/**PARTE TRASERA */\n' +
-        '.css-huella{border:0px #0033CC solid;width:50px; height:50px; position:absolute; left: 8px; top: 44px;}\n' +
-        '.firma-presidente{border:0px #0033FF solid; width:96px; height:auto; position:absolute; left: 223px; top: 85px;font-size:8px;}\n' +
-        '.telefono-contacto{border:0px #0033FF solid; width:76px; height:14px; position:absolute; left: 186px; top: 185px;font-size:10px;font-weight:bold;}\n' +
-        '.datos-medicos-i{border:0px #0033FF solid; width:63px; height:auto; position:absolute; left: 149px; top: 45px;font-size:7px;font-weight:bold;}\n' +
-        '.datos-medicos-ii{border:0px #0033FF solid; width:63px; height:auto; position:absolute; left: 149px; top: 94px;font-size:7px;font-weight:bold;}\n' +
-        '</style>\n';
-    ventana.print();
-    ventana.close();
+    ventana.document.head.innerHTML = `<style>
+                @charset "utf-8";
+                @page {
+                    margin: 0cm;
+                    size: 8.5cm 5.4cm;
+                }
+                section {
+                    page-break-before: always;
+                }
+        
+        body {margin: 0px;}
+        .marco-carnetf{border:0px #003399 solid;width:8.5cm;height:5.4cm;position:relative;}
+        .css-fotof{border:0px #0033CC solid;width:68px; height:90px; position:absolute; left: 236px; top: 51px;}
+        .fecha-vencimientof{border:0px #0033FF solid; width:79px; height:auto; position:absolute; left: 230px; top: 146px;font-size:7px;text-align:center;font-weight:bold;}
+        .firma-titularf{border:0px #0033FF solid; width:84px; height:auto; position:absolute; left: 234px; top: 157px;font-size:7px;font-weight:bold;}
+        .firma-titular-iif{border-top:0px #003300 solid;padding-top:2px;text-align:center;}
+        .labels-dat-personf{border:0px #0033FF solid; width:67px; height:auto; position:absolute; left: 5px; top: 128px;font-size:9px;font-weight:bold;}
+        .labels-dat-person-reslf{border:0px #0033FF solid; width:166px; height:auto; position:absolute; left: 70px; top: 128px;font-size:9px;font-weight:bold;}
+        .letra-8{font-size:8px;}
+        /**PARTE TRASERA */
+        .css-huellaf{border:0px #0033CC solid;width:50px; height:50px; position:absolute; left: 8px; top: 44px;}
+        .firma-presidentef{border:0px #0033FF solid; width:96px; height:auto; position:absolute; left: 223px; top: 85px;font-size:8px;}
+        .telefono-contactof{border:0px #0033FF solid; width:76px; height:14px; position:absolute; left: 186px; top: 185px;font-size:10px;font-weight:bold;}
+        .datos-medicos-if{border:0px #0033FF solid; width:63px; height:auto; position:absolute; left: 149px; top: 45px;font-size:7px;font-weight:bold;}
+        .datos-medicos-iif{border:0px #0033FF solid; width:63px; height:auto; position:absolute; left: 149px; top: 94px;font-size:7px;font-weight:bold;}
+        </style>`;
+    //ventana.print();
+    //ventana.close();
 }
