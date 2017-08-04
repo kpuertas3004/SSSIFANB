@@ -720,8 +720,8 @@ function VisualizarCarnet() {
 
             url = url.toLowerCase();
             $("#imggradoCarnet").attr("src", url);
-            url = "http://192.168.12.161/imagenes/" + $("#txtcedula").val() + ".jpg";
-
+            // url = "http://192.168.12.161/imagenes/" + $("#txtcedula").val() + ".jpg";
+            url = "temp/" + $("#txtcedula").val() + "/foto.jpg";
             $("#imgfotoCarnet").attr("src", url);
             $("#lblgrado").html(militar.Grado.descripcion);
             $("#lblnombre").html(militar.Persona.DatoBasico.nombreprimero);

@@ -125,11 +125,13 @@ function verCarnet(serial, cedula,vence,estatus) {
           var militar = OqMilitar;
           url = "images/grados/" + militar.Grado.abreviatura + ".png";
           url = url.toLowerCase();
+          $("#imggradoCarnet").attr("src", url);
+          //url = "http://192.168.12.161/imagenes/" + cedula + ".jpg";
+
           url = "temp/" + cedula + "/huella.bmp";
           $("#imghuellaCarnet").attr("src", url);
-          $("#imggradoCarnet").attr("src", url);
-          url = "http://192.168.12.161/imagenes/" + cedula + ".jpg";
 
+          url = "temp/" + cedula + "/foto.jpg";
           $("#imgfotoCarnet").attr("src", url);
           $("#lblgrado").html(militar.Grado.descripcion);
           $("#lblnombre").html(militar.Persona.DatoBasico.nombreprimero);
