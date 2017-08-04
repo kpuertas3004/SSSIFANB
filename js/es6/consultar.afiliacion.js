@@ -68,10 +68,10 @@ function Buscar(id) {
                 //url = "http://192.168.6.45/temp/" +  $("#txtcedula").val() + "/foto.jpg";
                 $("#minifoto").attr("href", url);
                 $("#_img").attr("src", url);
-                url = "temp/" + $("#txtcedula").val() + "/huella.jpg";
+                url = "temp/" + $("#txtcedula").val() + "/huella.bmp";
                 $("#minihuella").attr("href", url);
                 $("#_imghuellam").attr("src", url);
-                url = "temp/" + $("#txtcedula").val() + "/firma.png";
+                url = "temp/" + $("#txtcedula").val() + "/firma.jpg";
                 $("#minifirma").attr("href", url);
                 $("#_imgfirmam").attr("src", url);
                 $("#_imgcarnetmilitar").attr("src", url);
@@ -114,6 +114,8 @@ function Buscar(id) {
                 if ($("#txtmfecharesuelto").val() != "") {
                     $("#cmbcategoria").val(militar.categoria);
                     $("#cmbclase").val(militar.clase);
+                    $("#_categoria").html($("#cmbcategoria option:selected").text());
+                    $("#_clasificacion").html('<font style="size:8px">' + $("#cmbclase option:selected").text() + "</font>");
                 }
                 var Fideicomiso = militar.Fideicomiso;
 //          console.log(Fideicomiso);
@@ -1298,8 +1300,8 @@ function ModificarFamiliarPos(pos) {
         $('#cmbcondicionf').val(Familiar.condicion);
         $('#cmbestudiaf').val(Familiar.estudia);
 
-        
-        
+
+
         $("#txtpregistrocivilf").val(Persona.PartidaNacimiento.registro);
         $("#txtpanof").val(Persona.PartidaNacimiento.ano);
         $("#txtpactaf").val(Persona.PartidaNacimiento.acta);
@@ -1335,7 +1337,7 @@ function ModificarFamiliarPos(pos) {
         if (Familiar.Persona.Direccion != undefined) {
 
             var DIR = Familiar.Persona.Direccion[0];
-            
+
             $("#cmbestadof").val(DIR.estado);
             CiudadMunicipio(1);
             $("#cmbmunicipiof").val(DIR.municipio);

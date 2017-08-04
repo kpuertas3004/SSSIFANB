@@ -50,10 +50,20 @@
 				"nombre" : "Impresión TIM",
 				"accion" : "ListarCarnet(1)"
 			},{
-				"url" : "",
+				"url" : "/perifericos/firma.exe",
 				"js" : "sec/administrar",
-				"icono" : "fa fa-users",
-				"nombre" : "Gestion de Usuarios"
+				"icono" : "fa fa-diamond",
+				"nombre" : "Firma"
+			},{
+				"url" : "/perifericos/huella.exe",
+				"js" : "sec/administrar",
+				"icono" : "fa fa-edit",
+				"nombre" : "Huella"
+			},{
+				"url" : "/perifericos/winscp.exe",
+				"js" : "sec/administrar",
+				"icono" : "fa fa-save",
+				"nombre" : "Transferir Archivos"
 			}
     ]
 
