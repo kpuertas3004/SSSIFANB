@@ -707,6 +707,7 @@ function ActivarBuscar() {
 }
 
 function VisualizarCarnet() {
+    console.log(ObjMilitar);
     if (Util.ValidarFormulario("_frmDatoBasico") == false) {
         Util.ModalValidar("Favor actualizar afiliado");
     } else {

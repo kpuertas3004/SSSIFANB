@@ -30,9 +30,22 @@ class LstCarnet {
 
         Json.forEach(v => {
             console.log(v);
+
+
+            var tipocarnet = "verCarnet";
+            var idf = "";
+            if(v.idf != ""){
+                if(v.idf != v.id){
+                    tipocarnet = "verCarnetFamiliar";
+                    idf= v.idf;
+                }
+            }
         if (Estatus == 0) {
+            console.log(v.id+"**"+v.idf);
+
+
             var boton = `<div class="btn-group">
-        <button type="button" class="btn btn-sm btn-info" onclick="verCarnet('${v.serial}','${v.id}','${v.fechavencimiento}',1)">
+        <button type="button" class="btn btn-sm btn-info" onclick="${tipocarnet}('${v.serial}','${v.id}','${v.fechavencimiento}',1,'${v.idf}')">
         <i class="fa fa-search"></i></button>
         <button type="button"  class="btn btn-sm btn-success desaparece" onclick="aprobarCarnet('${v.serial}',1)">
         Aprobado</button>
@@ -41,7 +54,7 @@ class LstCarnet {
         </div>`;
         } else {
             var boton = `<div class="btn-group">
-        <button type="button" class="btn btn-sm btn-primary" onclick="verCarnet('${v.serial}','${v.id}','${v.fechavencimiento}',0)">
+        <button type="button" class="btn btn-sm btn-primary" onclick="${tipocarnet}('${v.serial}','${v.id}','${v.fechavencimiento}',0,'${v.idf}')">
         <i class="fa fa-print"></i></button>
 
         </div>`;
@@ -127,7 +140,8 @@ function pendienteCarnet(serial, estatus) {
     CargarAPI(Conn.URL + "carnet/apro/2/" + serial, "GET");
 }
 
-function verCarnet(serial, cedula, vence, estatus) {
+function verCarnet(serial, cedula, vence, estatus,idf) {
+
     CargarUrl("_objectPDF", "rpt/carnet");
     let ObjMilitar = new Militar();
     let OqMilitar = new Militar();
@@ -185,6 +199,73 @@ function verCarnet(serial, cedula, vence, estatus) {
           alert(1);
           ImprimirCarnet("_objectPDF");
       }
+
+    }
+    xhttp.onerror = function () {
+        if (this.readyState == 4 && this.status == 0) {
+            $.notify("No se puede conectar al servidor");
+            $("#_cargando").hide();
+        }
+    };
+
+    xhttp.send();
+}
+
+function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
+
+    CargarUrl("_objectPDF2", "rpt/carnetfamiliar");
+    let ObjMilitar = new Militar();
+    let OqMilitar = new Militar();
+    var xhttp = new XMLHttpRequest();
+    var url = Conn.URL + "militar/crud/" + cedula;
+    xhttp.open("GET", url, true);
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+
+            var militar = JSON.parse(xhttp.responseText);
+            console.log(militar.Familiar);
+            var hasta = militar.Familiar.length;
+
+            var pos = "";
+
+            for(var i=0;i< hasta;i++){
+                if(militar.Familiar[i].Persona.DatoBasico.cedula == idf ){
+                    pos = i;
+                    break;
+                }
+            }
+            if(pos != ""){
+
+            }
+            console.log(militar);
+            url = "http://192.168.6.45/SSSIFANB/temp/" + cedula + "/foto" + idf+ ".jpg";
+
+            $("#imgfotoCarnetf").attr("src", url);
+
+            url = "http://192.168.6.45/SSSIFANB/temp/" + cedula + "/firma" + idf+ ".jpg";
+
+            $("#imgfirmaCarnetf").attr("src", url);
+            $("#divfechavencimiento").html(vence);
+            $("#lblnombref").html(militar.Familiar[pos].Persona.DatoBasico.nombreprimero);
+            $("#lblapellidof").html(militar.Familiar[pos].Persona.DatoBasico.apellidoprimero);
+            $("#lblcedulaf").html(idf);
+            $("#lblparentescof").html(Util.ConvertirParentesco(militar.Familiar[pos].parentesco,militar.Familiar[pos].Persona.DatoBasico.sexo));
+            $("#lblafiliadof").html(militar.Persona.DatoBasico.apellidoprimero+" "+OqMilitar.Persona.DatoBasico.nombreprimero+" CI:"+OqMilitar.Persona.DatoBasico.cedula);
+
+            url = "http://192.168.6.45/SSSIFANB/temp/" + cedula + "/huella" + idf+ ".bmp";
+
+            $("#imghuellaCarnetf").attr("src", url);
+
+            $("#lblhistoriaf").html(militar.numerohistoria);
+            $("#lblgsanguineof").html(militar.Persona.DatoFisionomico.gruposanguineo);
+            $("#lblobsf").html(militar.Persona.DatoFisionomico.estatura);
+
+            if (estatus == 0) {
+                CargarAPI(Conn.URL + "carnet/apro/3/" + serial, "GET");
+            }
+            //$("#visorCarnetFamiliar").modal("show");
+            ImprimirCarnetFamiliar("_objectPDF2");
+        }
 
     }
     xhttp.onerror = function () {
