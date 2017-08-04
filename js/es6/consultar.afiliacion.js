@@ -730,7 +730,6 @@ function VisualizarCarnet() {
             url = "temp/" + $("#txtcedula").val() + "/huella.bmp";
 
             $("#imghuellaCarnet").attr("src", url);
-            alert(url);
             $("#divcategoria").html(militar.ObtenerCategoria());
             $("#divsiglas").html(militar.Componente.abreviatura);
             url = "images/firma.png";
@@ -782,14 +781,13 @@ function VisualizarCarnetFamiliar() {
     url = "http://192.168.12.161/imagenes/" + ObjMilitar.Familiar[pos].Persona.DatoBasico.cedula + ".jpg";
 
     $("#imgfirmaCarnetf").attr("src", url);
-
     $("#divfechavencimiento").html("**********");
     $("#lblnombref").html(ObjMilitar.Familiar[pos].Persona.DatoBasico.nombreprimero);
     $("#lblapellidof").html(ObjMilitar.Familiar[pos].Persona.DatoBasico.apellidoprimero);
     $("#lblcedulaf").html(cedula);
     $("#lblparentescof").html(Util.ConvertirParentesco(ObjMilitar.Familiar[pos].parentesco,ObjMilitar.Familiar[pos].Persona.DatoBasico.sexo));
     $("#lblafiliadof").html(OqMilitar.Persona.DatoBasico.apellidoprimero+" "+OqMilitar.Persona.DatoBasico.nombreprimero+" CI:"+OqMilitar.Persona.DatoBasico.cedula);
-    url = "http://192.168.6.45/temp/" + cedula + "/huella.bmp";
+    url = "temp/" + cedula + "/huella.bmp";
     //url = "http://192.168.12.161/imagenes/" + cedula + ".jpg";
     $("#imghuellaCarnetf").attr("src", url);
 
