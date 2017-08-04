@@ -1,4 +1,3 @@
-
 class LstCarnet {
     constructor() {
 
@@ -31,7 +30,7 @@ class LstCarnet {
 
         Json.forEach(v => {
             console.log(v);
-            if(Estatus == 0 ){
+        if (Estatus == 0) {
             var boton = `<div class="btn-group">
         <button type="button" class="btn btn-sm btn-info" onclick="verCarnet('${v.serial}','${v.id}','${v.fechavencimiento}',1)">
         <i class="fa fa-search"></i></button>
@@ -40,7 +39,7 @@ class LstCarnet {
         <button type="button" class="btn btn-sm btn-danger" onclick="pendienteCarnet('${v.serial}','${Estatus}')">
         Pendiente</button>
         </div>`;
-        } else{
+        } else {
             var boton = `<div class="btn-group">
         <button type="button" class="btn btn-sm btn-primary" onclick="verCarnet('${v.serial}','${v.id}','${v.fechavencimiento}',0)">
         <i class="fa fa-print"></i></button>
@@ -56,7 +55,8 @@ class LstCarnet {
             this.ObtenerMotivo(v.motivo), //v.motivo, //
             boton //5
         ]).draw(false);
-    });
+    })
+        ;
 
     }
 
@@ -111,9 +111,8 @@ function pendienteCarnet(serial, estatus) {
     CargarAPI(Conn.URL + "carnet/apro/2/" + serial, "GET");
 }
 
-function verCarnet(serial, cedula,vence,estatus) {
-    CargarAPI(Conn.URL + "carnet/apro/0/" + serial, "GET");
-    CargarUrl("_objectPDF", "rpt/carnet");
+function verCarnet(serial, cedula, vence, estatus) {
+
     let ObjMilitar = new Militar();
     let OqMilitar = new Militar();
     var xhttp = new XMLHttpRequest();
@@ -121,44 +120,52 @@ function verCarnet(serial, cedula,vence,estatus) {
     xhttp.open("GET", url);
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-          OqMilitar.Cargar(JSON.parse(xhttp.responseText));
-          var militar = OqMilitar;
-          url = "images/grados/" + militar.Grado.abreviatura + ".png";
-          url = url.toLowerCase();
-          url = "temp/" + cedula + "/huella.bmp";
-          $("#imghuellaCarnet").attr("src", url);
-          $("#imggradoCarnet").attr("src", url);
-          url = "http://192.168.12.161/imagenes/" + cedula + ".jpg";
+            OqMilitar.Cargar(JSON.parse(xhttp.responseText));
+            var militar = OqMilitar;
+            url = "images/grados/" + militar.Grado.abreviatura + ".png";
 
-          $("#imgfotoCarnet").attr("src", url);
-          $("#lblgrado").html(militar.Grado.descripcion);
-          $("#lblnombre").html(militar.Persona.DatoBasico.nombreprimero);
-          $("#lblapellido").html(militar.Persona.DatoBasico.apellidoprimero);
-          $("#lblcedula").html("C.I. " + militar.Persona.DatoBasico.cedula);
-          $("#divserial").html(serial);
-          $("#divvencimiento").html("VENCE " + Util.ConvertirFechaHumana(vence));
+            url = url.toLowerCase();
+            $("#imggradoCarnet").attr("src", url);
+            url = "http://192.168.12.161/imagenes/" + cedula + ".jpg";
 
-          $("#divcategoria").html(militar.ObtenerCategoria());
-          $("#divsiglas").html(militar.Componente.abreviatura);
-          url = "images/firma.png";
-          $("#imgfirmaCarnet").attr("src", url);
+            $("#imgfotoCarnet").attr("src", url);
+            $("#lblgrado").html(militar.Grado.descripcion);
+            $("#lblnombre").html(militar.Persona.DatoBasico.nombreprimero);
+            $("#lblapellido").html(militar.Persona.DatoBasico.apellidoprimero);
+            $("#lblcedula").html("C.I. " + militar.Persona.DatoBasico.cedula);
+            url = "temp/" + cedula + "/huella.bmp";
 
-          if (militar.clase == "TPROF"){
-            $("#notapie").html('AUTORIZADO PARA PORTAR ARMAS DE FUEGO EN COMISIÓN DE SERVICIO, EN ACTOS DEL SERVICIO O EN OCASIÓN DE ESTE');
-          } else{
-            $("#notapie").html('AUTORIZADO PARA PORTAR ARMAS DE FUEGO ASIGNADAS POR LA FANB');
-          }
+            $("#imghuellaCarnet").attr("src", url);
+            //alert(url);
+            $("#divcategoria").html(militar.ObtenerCategoria());
+            $("#divsiglas").html(militar.Componente.abreviatura);
+            url = "images/firma.png";
+            $("#imgfirmaCarnet").attr("src", url);
+            if (militar.clase == "TPROF") {
+                $("#notapie").html('AUTORIZADO PARA PORTAR ARMAS DE FUEGO EN COMISIÓN DE SERVICIO, EN ACTOS DEL SERVICIO O EN OCASIÓN DE ESTE');
+            } else {
+                $("#notapie").html('AUTORIZADO PARA PORTAR ARMAS DE FUEGO ASIGNADAS POR LA FANB');
+            }
+            $("#lblcodigo").html(militar.codigocomponente);
+            $("#lblhistoria").html(militar.numerohistoria);
+            $("#lblcabello").html(militar.Persona.DatoFisionomico.ObtenerCabello());
+            $("#lblgrupo").html(militar.Persona.DatoFisionomico.gruposanguineo);
+            $("#lblestatura").html(militar.Persona.DatoFisionomico.estatura);
+            $("#lblojos").html(militar.Persona.DatoFisionomico.ObtenerOjo());
+            $("#lblcolor").html(militar.Persona.DatoFisionomico.ObtenerPiel());
 
-          $("#lblcodigo").html(militar.codigocomponente);
-          $("#lblhistoria").html(militar.numerohistoria);
-          $("#lblcabello").html(militar.Persona.DatoFisionomico.ObtenerCabello());
-          $("#lblgrupo").html(militar.Persona.DatoFisionomico.gruposanguineo);
-          $("#lblestatura").html(militar.Persona.DatoFisionomico.estatura);
-          $("#lblojos").html(militar.Persona.DatoFisionomico.ObtenerOjo());
-          $("#lblcolor").html(militar.Persona.DatoFisionomico.ObtenerPiel());
+            console.log("llega");
+            $("#divserial").html(serial);
+            $("#divvencimiento").html("VENCE " + Util.ConvertirFechaHumana(vence));
+            if (estatus == 0) {
+                CargarAPI(Conn.URL + "carnet/apro/0/" + serial, "GET");
+                ImprimirCarnet("_objectPDF");
+            } else {
+                $("#visorCarnet").modal("show");
+            }
 
-          ImprimirCarnet("_objectPDF");
-      }
+
+        }
     }
     xhttp.onerror = function () {
         if (this.readyState == 4 && this.status == 0) {
@@ -166,6 +173,7 @@ function verCarnet(serial, cedula,vence,estatus) {
             $("#_cargando").hide();
         }
     };
+
     xhttp.send();
 }
 

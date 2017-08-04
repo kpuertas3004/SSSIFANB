@@ -730,7 +730,7 @@ function VisualizarCarnet() {
             url = "temp/" + $("#txtcedula").val() + "/huella.bmp";
 
             $("#imghuellaCarnet").attr("src", url);
-            alert(url);
+            //alert(url);
             $("#divcategoria").html(militar.ObtenerCategoria());
             $("#divsiglas").html(militar.Componente.abreviatura);
             url = "images/firma.png";
@@ -747,8 +747,8 @@ function VisualizarCarnet() {
             $("#lblestatura").html(militar.Persona.DatoFisionomico.estatura);
             $("#lblojos").html(militar.Persona.DatoFisionomico.ObtenerOjo());
             $("#lblcolor").html(militar.Persona.DatoFisionomico.ObtenerPiel());
-
-            ImprimirCarnet("_objectPDF");
+            $("#visorCarnet").modal("show");
+            //ImprimirCarnet("_objectPDF");
 
         }
 
