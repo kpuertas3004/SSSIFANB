@@ -1,21 +1,50 @@
-<section>
-    <div class="marco-carnet">
+<style>
+    .marco-carnetf:after {
+        content: "No Valido";
+        font-size: 5em;
+        color: rgba(52, 166, 214, 0.4);
+        z-index: 9999;
 
-        <div class="css-foto"><img id="imgfotoCarnetf" style="width:68px; height:90px;" src="images/ndisponible.jpg"
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        right: 90;
+        bottom: 0;
+        left: 0;
+
+        -webkit-pointer-events: none;
+        -moz-pointer-events: none;
+        -ms-pointer-events: none;
+        -o-pointer-events: none;
+        pointer-events: none;
+
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+    }
+</style>
+<section>
+    <div class="marco-carnetf">
+
+        <div class="css-fotof"><img id="imgfotoCarnetf" style="width:68px; height:90px;" src="images/ndisponible.jpg"
                                    onerror="this.src='images/ndisponible.jpg'"/></div>
-        <div class="fecha-vencimiento" id="divfechavencimiento">
+        <div class="fecha-vencimientof" id="divfechavencimiento">
             VENCE 05/07/2025
         </div>
-        <div class="firma-titular">
+        <div class="firma-titularf">
 
             <img src="images/firma_digital.png" onerror="this.src='images/ndisponible.jpg'"
                  style="height:24px;width:70px; text-align:center;" id="imgfirmaCarnetf"/>
 
             <p>
-            <div class="firma-titular-ii">FIRMA DEL TITULAR</div>
+            <div class="firma-titular-iif">FIRMA DEL TITULAR</div>
             </p>
         </div>
-        <div class="labels-dat-person">
+        <div class="labels-dat-personf">
             <label>APELLIDOS</label>
             <br/>
             <label>NOMBRES</label>
@@ -31,7 +60,7 @@
             <label>&nbsp;</label>
 
         </div>
-        <div class="labels-dat-person-resl">
+        <div class="labels-dat-person-reslf">
             <label id="lblapellidof">Apellidos Familiar</label>
             <br/>
             <label id="lblnombref">Nombres Familiar</label>
@@ -49,31 +78,31 @@
 </section>
 
 <section>
-    <div class="marco-carnet">
+    <div class="marco-carnetf">
 
-        <div class="css-huella">
+        <div class="css-huellaf">
             <img id="imghuellaCarnetf" src="assets/huella/huella.bmp" onerror="this.src='images/ndisponible.jpg'"
                  style="height:70px;width:70px;">
         </div>
-        <div class="datos-medicos-i">
+        <div class="datos-medicos-if">
             <label>HISTORIA CLINICA:</label><label id="lblhistoriaf">54156154</label>
             <br/>
             <label>GRUPO SANGUINEO:</label><label id="lblgsanguineof">A+</label>
             <br/>
             <label>OBSERVACIONES:</label><label id="lblobsf">NINGUNA</label>
         </div>
-        <div class="firma-presidente">
+        <div class="firma-presidentef">
             <img src="images/firma_digital.png" onerror="this.src='images/ndisponible.jpg'"
                  style="height:24px;width:70px; text-align:center;" id="imgfirmaCarnetfp"/>
         </div>
 
-        <div class="datos-medicos-ii">
+        <div class="datos-medicos-iif">
             <label>DONANTE:</label><label id="lbldonantef">NO</label>
             <br/>
             <label>SERIAL:</label><label id="lblserialf">848944746454</label>
         </div>
 
-        <div class="telefono-contacto">
+        <div class="telefono-contactof">
             <label id="lbltelefonof">041213525154</label>
         </div>
     </div>

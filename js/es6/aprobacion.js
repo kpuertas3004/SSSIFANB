@@ -1,4 +1,3 @@
-
 class LstCarnet {
     constructor() {
 
@@ -31,16 +30,16 @@ class LstCarnet {
 
         Json.forEach(v => {
             console.log(v);
-            if(Estatus == 0 ){
+        if (Estatus == 0) {
             var boton = `<div class="btn-group">
         <button type="button" class="btn btn-sm btn-info" onclick="verCarnet('${v.serial}','${v.id}','${v.fechavencimiento}',1)">
         <i class="fa fa-search"></i></button>
-        <button type="button"  class="btn btn-sm btn-success" onclick="aprobarCarnet('${v.serial}',1)">
+        <button type="button"  class="btn btn-sm btn-success desaparece" onclick="aprobarCarnet('${v.serial}',1)">
         Aprobado</button>
-        <button type="button" class="btn btn-sm btn-danger" onclick="pendienteCarnet('${v.serial}','${Estatus}')">
+        <button type="button" class="btn btn-sm btn-danger desaparece" onclick="pendienteCarnet('${v.serial}','${Estatus}')">
         Pendiente</button>
         </div>`;
-        } else{
+        } else {
             var boton = `<div class="btn-group">
         <button type="button" class="btn btn-sm btn-primary" onclick="verCarnet('${v.serial}','${v.id}','${v.fechavencimiento}',0)">
         <i class="fa fa-print"></i></button>
@@ -56,7 +55,8 @@ class LstCarnet {
             this.ObtenerMotivo(v.motivo), //v.motivo, //
             boton //5
         ]).draw(false);
-    });
+    })
+        ;
 
     }
 
@@ -105,34 +105,53 @@ function ListarCarnet(estatus) {
 
 function aprobarCarnet(serial, estatus) {
     CargarAPI(Conn.URL + "carnet/apro/" + estatus + "/" + serial, "GET");
+    var tabla = "_tblPendiente";
+    var buzon = "tblPendientesBuzon";
+    if (Estatus != 0) {
+        tabla = "_tblPendienteImp";
+        buzon = "tblPendientesBuzonImp";
+    }
+    //alert(tabla);
+    //$("#"+tabla).html(PendienteHTML());
+    var table = $('#' + buzon).DataTable();
+
+    $("#"+buzon+" tbody").on( 'click', 'button.desaparece', function () {
+        table
+            .row( $(this).parents('tr') )
+            .remove()
+            .draw();
+    } );
 }
 
 function pendienteCarnet(serial, estatus) {
     CargarAPI(Conn.URL + "carnet/apro/2/" + serial, "GET");
 }
 
-function verCarnet(serial, cedula,vence,estatus) {
-    CargarAPI(Conn.URL + "carnet/apro/0/" + serial, "GET");
+function verCarnet(serial, cedula, vence, estatus) {
     CargarUrl("_objectPDF", "rpt/carnet");
     let ObjMilitar = new Militar();
     let OqMilitar = new Militar();
     var xhttp = new XMLHttpRequest();
     var url = Conn.URL + "militar/crud/" + cedula;
-    xhttp.open("GET", url);
+    xhttp.open("GET", url, true);
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           OqMilitar.Cargar(JSON.parse(xhttp.responseText));
           var militar = OqMilitar;
           url = "images/grados/" + militar.Grado.abreviatura + ".png";
           url = url.toLowerCase();
+          url = "http://192.168.6.45/SSSIFANB/" + url;
           $("#imggradoCarnet").attr("src", url);
+          //alert(url);
           //url = "http://192.168.12.161/imagenes/" + cedula + ".jpg";
 
-          url = "temp/" + cedula + "/huella.bmp";
+          url = "http://192.168.6.45/SSSIFANB/temp/" + cedula + "/huella.bmp";
           $("#imghuellaCarnet").attr("src", url);
+          // alert(url);
 
-          url = "temp/" + cedula + "/foto.jpg";
+          url = "http://192.168.6.45/SSSIFANB/temp/" + cedula + "/foto.jpg";
           $("#imgfotoCarnet").attr("src", url);
+          // alert(url);
           $("#lblgrado").html(militar.Grado.descripcion);
           $("#lblnombre").html(militar.Persona.DatoBasico.nombreprimero);
           $("#lblapellido").html(militar.Persona.DatoBasico.apellidoprimero);
@@ -158,9 +177,15 @@ function verCarnet(serial, cedula,vence,estatus) {
           $("#lblestatura").html(militar.Persona.DatoFisionomico.estatura);
           $("#lblojos").html(militar.Persona.DatoFisionomico.ObtenerOjo());
           $("#lblcolor").html(militar.Persona.DatoFisionomico.ObtenerPiel());
-
+          $("#divserial").html(serial);
+          $("#divvencimiento").html("VENCE " + Util.ConvertirFechaHumana(vence));
+          if (estatus == 0) {
+              CargarAPI(Conn.URL + "carnet/apro/3/" + serial, "GET");
+          }
+          alert(1);
           ImprimirCarnet("_objectPDF");
       }
+
     }
     xhttp.onerror = function () {
         if (this.readyState == 4 && this.status == 0) {
@@ -168,6 +193,7 @@ function verCarnet(serial, cedula,vence,estatus) {
             $("#_cargando").hide();
         }
     };
+
     xhttp.send();
 }
 

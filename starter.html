@@ -362,16 +362,14 @@
 
   <!-- Carnet Afiliado Dentro del Box -->
 
-  <div class="modal fade" tabindex="-1" role="dialog" id="modCarnet">
+  <div class="modal fade" tabindex="-1" role="dialog" id="visorCarnetFamiliar">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
+      <div class="modal-content" style="width: 65%">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title">Modelo de Carnet</h4>
         </div>
         <div class="modal-body">
-
-          <div clas="row" id="_objectPDF"></div>
           <div clas="row" id="_objectPDF2"></div>
         </div>
         <div class="modal-footer" id="_botonescarnet">
@@ -380,6 +378,27 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+
+
+  <!--Modal para mostrar el carnet-->
+  <div class="modal fade" tabindex="-1" role="dialog" id="visorCarnet">
+    <div class="modal-dialog" role="document" >
+      <div class="modal-content" style="width: 65%">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Modelo de Carnet Pendiente De Impresión</h4>
+        </div>
+        <div class="modal-body" >
+
+          <div clas="row" id="_objectPDF"></div>
+
+        </div>
+        <div class="modal-footer" id="_botonescarnetvisor">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
 
   <!-- Fin modal Carnet Afiliado -->
 
