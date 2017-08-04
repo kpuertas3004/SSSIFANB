@@ -726,14 +726,20 @@ function VisualizarCarnet() {
             $("#lblgrado").html(militar.Grado.descripcion);
             $("#lblnombre").html(militar.Persona.DatoBasico.nombreprimero);
             $("#lblapellido").html(militar.Persona.DatoBasico.apellidoprimero);
-            $("#lblcedula").html(militar.Persona.DatoBasico.cedula);
-            url = "http://192.168.6.45/temp/" + $("#txtcedula").val() + "/huella.bmp";
+            $("#lblcedula").html("C.I. " + militar.Persona.DatoBasico.cedula);
+            url = "temp/" + $("#txtcedula").val() + "/huella.bmp";
 
             $("#imghuellaCarnet").attr("src", url);
+            alert(url);
             $("#divcategoria").html(militar.ObtenerCategoria());
             $("#divsiglas").html(militar.Componente.abreviatura);
             url = "images/firma.png";
             $("#imgfirmaCarnet").attr("src", url);
+            if (militar.clase == "TPROF"){
+              $("#notapie").html('AUTORIZADO PARA PORTAR ARMAS DE FUEGO EN COMISIÓN DE SERVICIO, EN ACTOS DEL SERVICIO O EN OCASIÓN DE ESTE');
+            } else{
+              $("#notapie").html('AUTORIZADO PARA PORTAR ARMAS DE FUEGO ASIGNADAS POR LA FANB');
+            }
             $("#lblcodigo").html(militar.codigocomponente);
             $("#lblhistoria").html(militar.numerohistoria);
             $("#lblcabello").html(militar.Persona.DatoFisionomico.ObtenerCabello());

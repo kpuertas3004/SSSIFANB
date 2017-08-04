@@ -124,6 +124,8 @@ function verCarnet(serial, cedula,vence) {
           var militar = OqMilitar;
           url = "images/grados/" + militar.Grado.abreviatura + ".png";
           url = url.toLowerCase();
+          url = "temp/" + cedula + "/huella.bmp";
+          $("#imghuellaCarnet").attr("src", url);
           $("#imggradoCarnet").attr("src", url);
           url = "http://192.168.12.161/imagenes/" + cedula + ".jpg";
 
@@ -131,17 +133,21 @@ function verCarnet(serial, cedula,vence) {
           $("#lblgrado").html(militar.Grado.descripcion);
           $("#lblnombre").html(militar.Persona.DatoBasico.nombreprimero);
           $("#lblapellido").html(militar.Persona.DatoBasico.apellidoprimero);
-          $("#lblcedula").html(militar.Persona.DatoBasico.cedula);
+          $("#lblcedula").html("C.I. " + militar.Persona.DatoBasico.cedula);
           $("#divserial").html(serial);
-          $("#divvencimiento").html(Util.ConvertirFechaHumana(vence));
+          $("#divvencimiento").html("VENCE " + Util.ConvertirFechaHumana(vence));
 
-          url = "http://192.168.6.45/temp/" + cedula + "/huella.bmp";
-
-          $("#imghuellaCarnet").attr("src", url);
           $("#divcategoria").html(militar.ObtenerCategoria());
           $("#divsiglas").html(militar.Componente.abreviatura);
           url = "images/firma.png";
           $("#imgfirmaCarnet").attr("src", url);
+
+          if (militar.clase == "TPROF"){
+            $("#notapie").html('AUTORIZADO PARA PORTAR ARMAS DE FUEGO EN COMISIÓN DE SERVICIO, EN ACTOS DEL SERVICIO O EN OCASIÓN DE ESTE');
+          } else{
+            $("#notapie").html('AUTORIZADO PARA PORTAR ARMAS DE FUEGO ASIGNADAS POR LA FANB');
+          }
+
           $("#lblcodigo").html(militar.codigocomponente);
           $("#lblhistoria").html(militar.numerohistoria);
           $("#lblcabello").html(militar.Persona.DatoFisionomico.ObtenerCabello());
