@@ -585,7 +585,7 @@ class Militar{
     Cargar(militar){
 
         this.id = militar.id;
-        this.tipodato = militar.tipodatoo;
+        this.tipodato = militar.tipodato;
 
         this.Persona.DatoBasico = militar.Persona.DatoBasico;
         var DFis = militar.Persona.DatoFisionomico;
