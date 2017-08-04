@@ -272,7 +272,7 @@ class Familiar{
 	}
 	Obtener(){
 		this.documentopadre = $("#txtcedula").val();
-        this.Persona.DatoBasico.nacionalidad = $("#btnnacionalidad").html();
+    this.Persona.DatoBasico.nacionalidad = $("#btnnacionalidad").html();
 		this.Persona.DatoBasico.cedula = $("#txtcedulaf").val();
 		this.Persona.DatoBasico.fechanacimiento =  new Date(Util.ConvertirFechaUnix($("#txtnacimientof").val())).toISOString();
 		this.Persona.DatoBasico.sexo = $("#cmbsexof").val();
@@ -281,9 +281,10 @@ class Familiar{
 		this.Persona.DatoBasico.estadocivil = $("#cmbedocivilf  option:selected").val();
 		this.parentesco = $("#cmbparentescof").val();
 		this.condicion = parseInt($("#cmbcondicionf").val());
+		this.beneficio = $("#cmbsituacionf").val()==0?false:true;
 		this.estudia = parseInt($("#cmbestudiaf").val());
-        this.historiamedica = $("#hclinicaf").val();
-        this.donante = $("#donantef").val();
+    this.historiamedica = $("#hclinicaf").val();
+    this.donante = $("#donantef").val();
 		this.esmilitar = $("#cmbmilitarf option:selected").val()==0?false:true;
 
 		this.Persona.PartidaNacimiento.registro = $("#txtpregistrocivilf").val();
@@ -298,7 +299,8 @@ class Familiar{
 		this.Persona.DatoFisionomico.colorcabello = $("#cmbcolorcabellof").val();
 		this.Persona.DatoFisionomico.estatura = parseFloat($("#txtestaturaf").val());
 		this.Persona.DatoFisionomico.senaParticular = $("#txtsenaparticularf").val();
-		this.Persona.DatoFisionomico.gruposanguineo = $("#txtgruposanguineof").val();
+		// this.Persona.DatoFisionomico.gruposanguineo = $("#txtgruposanguineof").val();
+		this.Persona.DatoFisionomico.gruposanguineo = $("#gsanguineof").val();
 		this.Persona.RedSocial.twitter = $("#txttwitterf").val();
 		this.Persona.RedSocial.facebook = $("#txtfacebookf").val();
 		this.Persona.RedSocial.instagram = $("#txtinstagranf").val();
@@ -327,7 +329,7 @@ class Familiar{
         this.Persona.CondicionEspecial.diagnostico = $("#txtdiagnosticof").val();
         this.Persona.CondicionEspecial.nombrehospitalmilitar = $("#cmbHospitalf").text();
 
-        this.Persona.DatoFisionomico.gruposanguineo = $("#gsanguineof").val();
+
 
 
 		return this;
@@ -628,7 +630,7 @@ class Militar{
 		var fnacimiento = new Date(Util.ConvertirFechaUnix($("#txtnacimiento").val())).toISOString();
 		var fresuelto = new Date(Util.ConvertirFechaUnix($("#txtmfecharesuelto").val())).toISOString();
 		var fascenso = new Date(Util.ConvertirFechaUnix($("#txtmfechaultimoascenso").val())).toISOString();
-		
+
 		this.id = $("#txtcedula").val();
 		this.Persona.DatoBasico.nacionalidad = "V";
 

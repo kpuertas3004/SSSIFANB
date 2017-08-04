@@ -204,6 +204,7 @@ function Buscar(id) {
                 }
 
                 $("#txtcodigocomponente").val(militar.codigocomponente);
+                $("#_codigocomponente").html(militar.codigocomponente);
                 $("#txtnumhistoriaclinica").val(militar.numerohistoria);
 
                 let j = 1, x = 1;
@@ -712,7 +713,7 @@ function VisualizarCarnet() {
         Util.ModalValidar("Favor actualizar afiliado");
     } else {
         //alert(ObjMilitar.estatuscarnet);
-        if (ObjMilitar.estatuscarnet == undefined || ObjMilitar.estatuscarnet == 3) {
+        if (ObjMilitar.estatuscarnet == undefined || ObjMilitar.estatuscarnet == 3 || ObjMilitar.estatuscarnet == 0) {
             $("#modCarnetValidar").modal("show");
         } else {
             console.log(OqMilitar);
@@ -1436,7 +1437,9 @@ function ModificarFamiliarPos(pos) {
         $("#txtcorreof").val(Persona.Correo.principal);
         $("#txttelefonof").val(Persona.Telefono.domiciliario);
         $("#txtcelularf").val(Persona.Telefono.movil);
-
+        $("#hclinicaf").val(Familiar.historiamedica);
+        $("#donantef").val(Familiar.donante);
+        $("#gsanguineof").val(Persona.DatoFisionomico.gruposanguineo);
         valor = 0;
         if (Familiar.beneficio == true) {
             valor = 1;
@@ -1956,7 +1959,7 @@ function ImprimirCarnetFamiliar(nombre) {
                 section {
                     page-break-before: always;
                 }
-        
+
         body {margin: 0px;}
         .marco-carnetf{border:0px #003399 solid;width:8.5cm;height:5.4cm;position:relative;}
         .css-fotof{border:0px #0033CC solid;width:68px; height:90px; position:absolute; left: 236px; top: 51px;}
