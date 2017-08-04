@@ -33,7 +33,7 @@ class LstCarnet {
             console.log(v);
             if(Estatus == 0 ){
             var boton = `<div class="btn-group">
-        <button type="button" class="btn btn-sm btn-info" onclick="verCarnet('${v.serial}','${v.id}','${v.fechavencimiento}')">
+        <button type="button" class="btn btn-sm btn-info" onclick="verCarnet('${v.serial}','${v.id}','${v.fechavencimiento}',1)">
         <i class="fa fa-search"></i></button>
         <button type="button"  class="btn btn-sm btn-success" onclick="aprobarCarnet('${v.serial}',1)">
         Aprobado</button>
@@ -42,7 +42,7 @@ class LstCarnet {
         </div>`;
         } else{
             var boton = `<div class="btn-group">
-        <button type="button" class="btn btn-sm btn-primary" onclick="verCarnet('${v.serial}','${v.id}','${v.fechavencimiento}')">
+        <button type="button" class="btn btn-sm btn-primary" onclick="verCarnet('${v.serial}','${v.id}','${v.fechavencimiento}',0)">
         <i class="fa fa-print"></i></button>
 
         </div>`;
@@ -111,7 +111,8 @@ function pendienteCarnet(serial, estatus) {
     CargarAPI(Conn.URL + "carnet/apro/2/" + serial, "GET");
 }
 
-function verCarnet(serial, cedula,vence) {
+function verCarnet(serial, cedula,vence,estatus) {
+    CargarAPI(Conn.URL + "carnet/apro/0/" + serial, "GET");
     CargarUrl("_objectPDF", "rpt/carnet");
     let ObjMilitar = new Militar();
     let OqMilitar = new Militar();
