@@ -792,9 +792,9 @@ function VisualizarCarnetFamiliar() {
     //url = "http://192.168.12.161/imagenes/" + cedula + ".jpg";
     $("#imghuellaCarnetf").attr("src", url);
 
-    $("#lblhistoriaf").html(OqMilitar.numerohistoria);
-    $("#lblgsanguineof").html(OqMilitar.Persona.DatoFisionomico.gruposanguineo);
-    $("#lblobsf").html(OqMilitar.Persona.DatoFisionomico.estatura);
+    $("#lblhistoriaf").html(ObjMilitar.Familiar[pos].numerohistoria);
+    $("#lblgsanguineof").html(ObjMilitar.Familiar[pos].Persona.DatoFisionomico.gruposanguineo);
+    $("#lbldonantef").html(ObjMilitar.Familiar[pos].donante);
 
     $("#visorCarnetFamiliar").modal("show");
     //ImprimirCarnetFamiliar("_objectPDF2");
@@ -1485,7 +1485,10 @@ function ModificarFamiliarPos(pos) {
 
         urlf = "temp/" + ObjMilitar.id + "/cestudio" + DB.cedula + ".jpg";
         $("#_imgEstudiaf").attr("src", urlf);
-
+        console.log(Familiar);
+        $("#hclinicaf").val(Familiar.historiamedica);
+        $("#gsanguineof").val(Familiar.Persona.DatoFisionomico.gruposanguineo);
+        $("#donantef").val(Familiar.donante);
     }
 }
 
@@ -1973,6 +1976,6 @@ function ImprimirCarnetFamiliar(nombre) {
         .datos-medicos-if{border:0px #0033FF solid; width:63px; height:auto; position:absolute; left: 149px; top: 45px;font-size:7px;font-weight:bold;}
         .datos-medicos-iif{border:0px #0033FF solid; width:63px; height:auto; position:absolute; left: 149px; top: 94px;font-size:7px;font-weight:bold;}
         </style>`;
-    //ventana.print();
+    ventana.print();
     //ventana.close();
 }

@@ -223,7 +223,7 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
         if (this.readyState == 4 && this.status == 200) {
 
             var militar = JSON.parse(xhttp.responseText);
-            console.log(militar.Familiar);
+            //console.log(militar.Familiar);
             var hasta = militar.Familiar.length;
 
             var pos = "";
@@ -237,7 +237,7 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
             if(pos != ""){
 
             }
-            console.log(militar);
+            //console.log(militar);
             url = "http://192.168.6.45/SSSIFANB/temp/" + cedula + "/foto" + idf+ ".jpg";
 
             $("#imgfotoCarnetf").attr("src", url);
@@ -250,7 +250,7 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
             $("#lblapellidof").html(militar.Familiar[pos].Persona.DatoBasico.apellidoprimero);
             $("#lblcedulaf").html(idf);
             $("#lblparentescof").html(Util.ConvertirParentesco(militar.Familiar[pos].parentesco,militar.Familiar[pos].Persona.DatoBasico.sexo));
-            $("#lblafiliadof").html(militar.Persona.DatoBasico.apellidoprimero+" "+OqMilitar.Persona.DatoBasico.nombreprimero+" CI:"+cedula);
+            $("#lblafiliadof").html(militar.Persona.DatoBasico.apellidoprimero+" "+militar.Persona.DatoBasico.nombreprimero+" CI:"+cedula);
 
             url = "http://192.168.6.45/SSSIFANB/temp/" + cedula + "/huella" + idf+ ".bmp";
 
