@@ -51,9 +51,9 @@
 				"accion" : "ListarCarnet(1)"
 			},{
 				"url" : "",
-				"js" : "sec/administrar",
-				"icono" : "fa fa-users",
-				"nombre" : "Gestion de Usuarios"
+				"js" : "afi/instaladores",
+				"icono" : "fa fa-save",
+				"nombre" : "Instaladores"
 			}
     ]
 
