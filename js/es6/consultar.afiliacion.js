@@ -797,8 +797,8 @@ function VisualizarCarnetFamiliar() {
     $("#lblgsanguineof").html(OqMilitar.Persona.DatoFisionomico.gruposanguineo);
     $("#lblobsf").html(OqMilitar.Persona.DatoFisionomico.estatura);
 
-
-    ImprimirCarnetFamiliar("_objectPDF2");
+    $("#visorCarnetFamiliar").modal("show");
+    //ImprimirCarnetFamiliar("_objectPDF2");
 }
 
 function ContinuarTIM() {
@@ -829,47 +829,6 @@ function ContinuarTIF() {
 
 function enviarCarnetFamiliar() {
     $("#modCarnetValidarf").modal("show");
-    /*if (Util.ValidarFormulario("_frmDatoBasico") == false) {
-        Util.ModalValidar("Favor actualizar afiliado");
-    } else {
-        //alert(ObjMilitar.estatuscarnet);
-        if (ObjMilitar.estatuscarnet == undefined || ObjMilitar.estatuscarnet == 0) {
-            $("#modCarnetValidar").modal("show");
-        } else {
-            console.log(OqMilitar);
-            var militar = OqMilitar;
-            url = "images/grados/" + militar.Grado.abreviatura + ".png";
-
-            url = url.toLowerCase();
-            $("#imggradoCarnet").attr("src", url);
-            url = "http://192.168.12.161/imagenes/" + $("#txtcedula").val() + ".jpg";
-
-            $("#imgfotoCarnet").attr("src", url);
-            $("#lblgrado").html(militar.Grado.descripcion);
-            $("#lblnombre").html(militar.Persona.DatoBasico.nombreprimero);
-            $("#lblapellido").html(militar.Persona.DatoBasico.apellidoprimero);
-            $("#lblcedula").html(militar.Persona.DatoBasico.cedula);
-            url = "http://192.168.6.45/temp/" + $("#txtcedula").val() + "/huella.bmp";
-
-            $("#imghuellaCarnet").attr("src", url);
-            $("#divcategoria").html(militar.ObtenerCategoria());
-            $("#divsiglas").html(militar.Componente.abreviatura);
-            url = "images/firma.png";
-            $("#imgfirmaCarnet").attr("src", url);
-            $("#lblcodigo").html(militar.codigocomponente);
-            $("#lblhistoria").html(militar.numerohistoria);
-            $("#lblcabello").html(militar.Persona.DatoFisionomico.ObtenerCabello());
-            $("#lblgrupo").html(militar.Persona.DatoFisionomico.gruposanguineo);
-            $("#lblestatura").html(militar.Persona.DatoFisionomico.estatura);
-            $("#lblojos").html(militar.Persona.DatoFisionomico.ObtenerOjo());
-            $("#lblcolor").html(militar.Persona.DatoFisionomico.ObtenerPiel());
-
-            ImprimirCarnet("_objectPDF");
-
-        }
-
-        //$("#modCarnet").modal("show");
-    }*/
 }
 
 function ActivarCalendarios() {
