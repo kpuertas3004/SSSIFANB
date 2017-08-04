@@ -720,8 +720,8 @@ function VisualizarCarnet() {
 
             url = url.toLowerCase();
             $("#imggradoCarnet").attr("src", url);
-            url = "http://192.168.12.161/imagenes/" + $("#txtcedula").val() + ".jpg";
-
+            // url = "http://192.168.12.161/imagenes/" + $("#txtcedula").val() + ".jpg";
+            url = "temp/" + $("#txtcedula").val() + "/foto.jpg";
             $("#imgfotoCarnet").attr("src", url);
             $("#lblgrado").html(militar.Grado.descripcion);
             $("#lblnombre").html(militar.Persona.DatoBasico.nombreprimero);
@@ -730,7 +730,6 @@ function VisualizarCarnet() {
             url = "temp/" + $("#txtcedula").val() + "/huella.bmp";
 
             $("#imghuellaCarnet").attr("src", url);
-            //alert(url);
             $("#divcategoria").html(militar.ObtenerCategoria());
             $("#divsiglas").html(militar.Componente.abreviatura);
             url = "images/firma.png";
@@ -782,14 +781,13 @@ function VisualizarCarnetFamiliar() {
     url = "http://192.168.12.161/imagenes/" + ObjMilitar.Familiar[pos].Persona.DatoBasico.cedula + ".jpg";
 
     $("#imgfirmaCarnetf").attr("src", url);
-
     $("#divfechavencimiento").html("**********");
     $("#lblnombref").html(ObjMilitar.Familiar[pos].Persona.DatoBasico.nombreprimero);
     $("#lblapellidof").html(ObjMilitar.Familiar[pos].Persona.DatoBasico.apellidoprimero);
     $("#lblcedulaf").html(cedula);
     $("#lblparentescof").html(Util.ConvertirParentesco(ObjMilitar.Familiar[pos].parentesco,ObjMilitar.Familiar[pos].Persona.DatoBasico.sexo));
     $("#lblafiliadof").html(OqMilitar.Persona.DatoBasico.apellidoprimero+" "+OqMilitar.Persona.DatoBasico.nombreprimero+" CI:"+OqMilitar.Persona.DatoBasico.cedula);
-    url = "http://192.168.6.45/temp/" + cedula + "/huella.bmp";
+    url = "temp/" + cedula + "/huella.bmp";
     //url = "http://192.168.12.161/imagenes/" + cedula + ".jpg";
     $("#imghuellaCarnetf").attr("src", url);
 
@@ -1810,134 +1808,137 @@ function GenerarCarnet() {
 function ImprimirCarnet(nombre) {
     var html = $("#" + nombre).html();
     //console.log(html);
+
     var ventana = window.open("", "_blank");
-    ventana.document.write(html);
-    ventana.document.head.innerHTML = '<style>\n' +
-        '        @charset "utf-8";\n' +
-        '        @page {\n' +
-        '            margin: 0cm;\n' +
-        '            size: 8.5cm 5.4cm;\n' +
-        '        }\n' +
-        '        section {\n' +
-        '            page-break-before: always;\n' +
-        '        }\n' +
-        '        <!--\n' +
-        '        body {margin: 0px;}\n' +
-        '\n' +
-        '        .marco-carnet{border:0px #003399 solid;width:8.5cm;height:5.4cm;position:relative;}\n' +
-        '\n' +
-        '        /**PARTE DELANTERA */\n' +
-        '        .css-foto{\n' +
-        '            border: 0px #0033CC solid;\n' +
-        '            width: 68px;\n' +
-        '            height: 90px;\n' +
-        '            position: absolute;\n' +
-        '            left: 231px;\n' +
-        '            top: 69px;\n' +
-        '        }\n' +
-        '        .css-insignia{\n' +
-        '            border: 0px #0033CC solid;\n' +
-        '            width: 70px;\n' +
-        '            height: 60px;\n' +
-        '            position: absolute;\n' +
-        '            left: 95px;\n' +
-        '            top: 65px;\n' +
-        '        }\n' +
-        '        .componente{border:0px #0033FF solid; width:250px; height:14px; position:absolute; left: 50px; top: 44px; font-size:10px;font-weight:bold; font-color:# EFEFEF; text-align:center;}\n' +
-        '        .fecha-vencimiento{\n' +
-        '            border: 0px #0033FF solid;\n' +
-        '            width: 70px;\n' +
-        '            height: 8px;\n' +
-        '            position: absolute;\n' +
-        '            left: 233px;\n' +
-        '            top: 161px;\n' +
-        '            font-size: 7px;\n' +
-        '            text-align: center;\n' +
-        '            font-weight: bold;\n' +
-        '            -webkit-transform: rotate(-0deg);\n' +
-        '            -moz-transform: rotate(-0deg);\n' +
-        '        }\n' +
-        '        .firma-titular{border:0px #0033FF solid; width:84px; height:auto; position:absolute; left: 234px; top: 157px;font-size:7px;font-weight:bold;}\n' +
-        '        .firma-titular-ii{border-top:0px #003300 solid;padding-top:2px;text-align:center;}\n' +
-        '        .labels-dat-person{border:0px #0033FF solid; width:67px; height:auto; position:absolute; left: 5px; top: 128px;font-size:8px;font-weight:bold;}\n' +
-        '        .labels-dat-person-resl{\n' +
-        '            border: 0px #0033FF solid;\n' +
-        '            width: 150px;\n' +
-        '            height: auto;\n' +
-        '            position: absolute;\n' +
-        '            left: 75px;\n' +
-        '            top: 120px;\n' +
-        '            font-size: 11px;\n' +
-        '            font-weight: bold;\n' +
-        '            font-color: #000;\n' +
-        '            text-align: center\n' +
-        '        }\n' +
-        '        .letra-8{font-size:12px;}\n' +
-        '        .nota-pie-i-anverso{border:0px #0033FF solid; width:180px; height:8px; position:absolute; left: 140px; top: 177px; font-size:7px;text-align:left;font-style:normal;}\n' +
-        '        .nota-pie-ii-anverso{border:0px #0033FF solid; width:180px; height:8px; position:absolute; left: 140px; top: 187px; font-size:7px;text-align:left;font-style:normal;}\n' +
-        '\n' +
-        '        /**PARTE TRASERA */\n' +
-        '        .css-huella{border:0px #0033CC solid;width:70px; height:70px; position:absolute; left: 8px; top: 44px;}\n' +
-        '        .firma-presidente{border:0px #0033FF solid; width:96px; height:auto; position:absolute; left: 110px; top: 120px}\n' +
-        '        .firma-ministro{\n' +
-        '            border: 0px #0033FF solid;\n' +
-        '            width: 96px;\n' +
-        '            height: auto;\n' +
-        '            position: absolute;\n' +
-        '            left: 127px;\n' +
-        '            top: 130px\n' +
-        '        }\n' +
-        '        .telefono-contacto{border:0px #0033FF solid; width:76px; height:14px; position:absolute; left: 186px; top: 185px;font-size:10px;font-weight:bold;}\n' +
-        '        .datos-medicos-i{border:0px #0033FF solid; width:150px; height:auto; position:absolute; left: 170px; top: 45px;font-size:10px;font-weight:bold;}\n' +
-        '        .datos-medicos-ii{border:2px #0033FF solid; width:63px; height:auto; position:absolute; left: 500px; top: 94px;font-size:9px;font-weight:bold;font-color:#000;}\n' +
-        '        .serial-numero{border:0px #0033FF solid; width:70px; height:14px; position:absolute; left: 11px; top: 15px;font-size:7px;text-align:center; font-weight:bold;}\n' +
-        '        .serial{border:0px #0033FF solid; width:70px; height:14px; position:absolute; left: 11px; top: 25px;font-size:10px; text-align:center}\n' +
-        '        .categoria{\n' +
-        '            border: 0px #0033FF solid;\n' +
-        '            width: 76px;\n' +
-        '            height: 14px;\n' +
-        '            position: absolute;\n' +
-        '            left: 128px;\n' +
-        '            top: 15px;\n' +
-        '            font-size: 16px;\n' +
-        '            font-weight: bold;\n' +
-        '        }\n' +
-        '        .categoria1{\n' +
-        '            border: 0px #0033FF solid;\n' +
-        '            width: 100px;\n' +
-        '            height: 14px;\n' +
-        '            position: absolute;\n' +
-        '            left: 128px;\n' +
-        '            top: 15px;\n' +
-        '            font-size: 11px;\n' +
-        '            font-weight: bold;\n' +
-        '        }\n' +
-        '        .estatus {border:0px #0033FF solid; width:60px; height:60px; top:60px; left:95px; position:absolute;font-size:40px;font-weight:bold;}\n' +
-        '        .siglas-componente{border:0px #0033FF solid; width:30px; height:14px; position:absolute; left: 258px; top: 17px; font-size:18px;font-weight:bold;}\n' +
-        '        .labels-dat-medicos{\n' +
-        '            border: 0px #0033FF solid;\n' +
-        '            width: 200px;\n' +
-        '            height: auto;\n' +
-        '            position: absolute;\n' +
-        '            left: 123px;\n' +
-        '            top: 48px;\n' +
-        '            font-size: 8px;\n' +
-        '        }\n' +
-        '        .labels-dat-medicos-resl{\n' +
-        '            border: 0px #0033FF solid;\n' +
-        '            width: 60px;\n' +
-        '            height: auto;\n' +
-        '            position: absolute;\n' +
-        '            left: 216px;\n' +
-        '            top: 48px;\n' +
-        '            font-size: 8px;\n' +
-        '        }\n' +
-        '        .nota-pie-i-reverso{border:0px #0033FF solid; width:297px; height:12px;  left:14px; position:absolute; top: 173px;font-weight:bold; font-size:9px; text-align:center}\n' +
-        '        .nota-pie-ii-reverso{border:0px #0033FF solid; width:300px; height:14px; left:12px; position:absolute; top: 182px; font-weight:bold; font-size:8px; text-align:center;}\n' +
-        '        -->\n' +
-        '    </style>';
-    ventana.print();
-    ventana.close();
+    ventana.document.write(html + '');
+    ventana.document.head.innerHTML = `<style>
+    @charset "utf-8";
+    @page {
+        margin: 0cm;
+        size: 8.5cm 5.4cm;
+    }
+    section {
+        page-break-before: always;
+    }
+    @media screen,print {
+    body {margin: 0px;}
+
+    .marco-carnet{border:0px #003399 solid;width:8.5cm;height:5.4cm;position:relative;}
+
+    /**PARTE DELANTERA */
+    .css-foto{
+        border: 0px #0033CC solid;
+        width: 68px;
+        height: 90px;
+        position: absolute;
+        left: 231px;
+        top: 69px;
+    }
+    .css-insignia{
+        border: 0px #0033CC solid;
+        width: 70px;
+        height: 60px;
+        position: absolute;
+        left: 95px;
+        top: 65px;
+    }
+    .componente{border:0px #0033FF solid; width:250px; height:14px; position:absolute; left: 50px; top: 44px; font-size:10px;font-weight:bold; font-color:# EFEFEF; text-align:center;}
+    .fecha-vencimiento{
+        border: 0px #0033FF solid;
+        width: 70px;
+        height: 8px;
+        position: absolute;
+        left: 233px;
+        top: 161px;
+        font-size: 7px;
+        text-align: center;
+        font-weight: bold;
+        -webkit-transform: rotate(-0deg);
+        -moz-transform: rotate(-0deg);
+    }
+    .firma-titular{border:0px #0033FF solid; width:84px; height:auto; position:absolute; left: 234px; top: 157px;font-size:7px;font-weight:bold;}
+    .firma-titular-ii{border-top:0px #003300 solid;padding-top:2px;text-align:center;}
+    .labels-dat-person{border:0px #0033FF solid; width:67px; height:auto; position:absolute; left: 5px; top: 128px;font-size:8px;font-weight:bold;}
+    .labels-dat-person-resl{
+        border: 0px #0033FF solid;
+        width: 150px;
+        height: auto;
+        position: absolute;
+        left: 75px;
+        top: 120px;
+        font-size: 11px;
+        font-weight: bold;
+        font-color: #000;
+        text-align: center
+    }
+    .letra-8{font-size:12px;}
+    .nota-pie-i-anverso{border:0px #0033FF solid; width:180px; height:8px; position:absolute; left: 140px; top: 177px; font-size:7px;text-align:left;font-style:normal;}
+    .nota-pie-ii-anverso{border:0px #0033FF solid; width:180px; height:8px; position:absolute; left: 140px; top: 187px; font-size:7px;text-align:left;font-style:normal;}
+
+    /**PARTE TRASERA */
+    .css-huella{border:0px #0033CC solid;width:70px; height:70px; position:absolute; left: 8px; top: 44px;}
+    .firma-presidente{border:0px #0033FF solid; width:96px; height:auto; position:absolute; left: 110px; top: 120px}
+    .firma-ministro{
+        border: 0px #0033FF solid;
+        width: 96px;
+        height: auto;
+        position: absolute;
+        left: 127px;
+        top: 130px
+    }
+    .telefono-contacto{border:0px #0033FF solid; width:76px; height:14px; position:absolute; left: 186px; top: 185px;font-size:10px;font-weight:bold;}
+    .datos-medicos-i{border:0px #0033FF solid; width:150px; height:auto; position:absolute; left: 170px; top: 45px;font-size:10px;font-weight:bold;}
+    .datos-medicos-ii{border:2px #0033FF solid; width:63px; height:auto; position:absolute; left: 500px; top: 94px;font-size:9px;font-weight:bold;font-color:#000;}
+    .serial-numero{border:0px #0033FF solid; width:70px; height:14px; position:absolute; left: 11px; top: 15px;font-size:7px;text-align:center; font-weight:bold;}
+    .serial{border:0px #0033FF solid; width:70px; height:14px; position:absolute; left: 11px; top: 25px;font-size:10px; text-align:center}
+    .categoria{
+        border: 0px #0033FF solid;
+        width: 76px;
+        height: 14px;
+        position: absolute;
+        left: 128px;
+        top: 15px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .categoria1{
+        border: 0px #0033FF solid;
+        width: 100px;
+        height: 14px;
+        position: absolute;
+        left: 128px;
+        top: 15px;
+        font-size: 11px;
+        font-weight: bold;
+    }
+    .estatus {border:0px #0033FF solid; width:60px; height:60px; top:60px; left:95px; position:absolute;font-size:40px;font-weight:bold;}
+    .siglas-componente{border:0px #0033FF solid; width:30px; height:14px; position:absolute; left: 258px; top: 17px; font-size:18px;font-weight:bold;}
+    .labels-dat-medicos{
+        border: 0px #0033FF solid;
+        width: 200px;
+        height: auto;
+        position: absolute;
+        left: 123px;
+        top: 48px;
+        font-size: 8px;
+    }
+    .labels-dat-medicos-resl{
+        border: 0px #0033FF solid;
+        width: 60px;
+        height: auto;
+        position: absolute;
+        left: 216px;
+        top: 48px;
+        font-size: 8px;
+    }
+    .nota-pie-i-reverso{border:0px #0033FF solid; width:297px; height:12px;  left:14px; position:absolute; top: 173px;font-weight:bold; font-size:9px; text-align:center}
+    .nota-pie-ii-reverso{border:0px #0033FF solid; width:300px; height:14px; left:12px; position:absolute; top: 182px; font-weight:bold; font-size:8px; text-align:center;}
+  }
+  </style>̣
+  `;
+
+    //ventana.print();
+    // ventana.close();
 }
 
 function ImprimirCarnetFamiliar(nombre) {
