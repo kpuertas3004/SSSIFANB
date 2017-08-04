@@ -711,7 +711,7 @@ function VisualizarCarnet() {
         Util.ModalValidar("Favor actualizar afiliado");
     } else {
         //alert(ObjMilitar.estatuscarnet);
-        if (ObjMilitar.estatuscarnet == undefined || ObjMilitar.estatuscarnet == 0) {
+        if (ObjMilitar.estatuscarnet == undefined || ObjMilitar.estatuscarnet == 3) {
             $("#modCarnetValidar").modal("show");
         } else {
             console.log(OqMilitar);

@@ -34,9 +34,9 @@ class LstCarnet {
             var boton = `<div class="btn-group">
         <button type="button" class="btn btn-sm btn-info" onclick="verCarnet('${v.serial}','${v.id}','${v.fechavencimiento}',1)">
         <i class="fa fa-search"></i></button>
-        <button type="button"  class="btn btn-sm btn-success" onclick="aprobarCarnet('${v.serial}',1)">
+        <button type="button"  class="btn btn-sm btn-success desaparece" onclick="aprobarCarnet('${v.serial}',1)">
         Aprobado</button>
-        <button type="button" class="btn btn-sm btn-danger" onclick="pendienteCarnet('${v.serial}','${Estatus}')">
+        <button type="button" class="btn btn-sm btn-danger desaparece" onclick="pendienteCarnet('${v.serial}','${Estatus}')">
         Pendiente</button>
         </div>`;
         } else {
@@ -105,6 +105,22 @@ function ListarCarnet(estatus) {
 
 function aprobarCarnet(serial, estatus) {
     CargarAPI(Conn.URL + "carnet/apro/" + estatus + "/" + serial, "GET");
+    var tabla = "_tblPendiente";
+    var buzon = "tblPendientesBuzon";
+    if (Estatus != 0) {
+        tabla = "_tblPendienteImp";
+        buzon = "tblPendientesBuzonImp";
+    }
+    //alert(tabla);
+    //$("#"+tabla).html(PendienteHTML());
+    var table = $('#' + buzon).DataTable();
+
+    $("#"+buzon+" tbody").on( 'click', 'button.desaparece', function () {
+        table
+            .row( $(this).parents('tr') )
+            .remove()
+            .draw();
+    } );
 }
 
 function pendienteCarnet(serial, estatus) {
@@ -112,7 +128,7 @@ function pendienteCarnet(serial, estatus) {
 }
 
 function verCarnet(serial, cedula, vence, estatus) {
-
+    CargarUrl("_objectPDF", "rpt/carnet");
     let ObjMilitar = new Militar();
     let OqMilitar = new Militar();
     var xhttp = new XMLHttpRequest();
@@ -158,11 +174,9 @@ function verCarnet(serial, cedula, vence, estatus) {
             $("#divserial").html(serial);
             $("#divvencimiento").html("VENCE " + Util.ConvertirFechaHumana(vence));
             if (estatus == 0) {
-                CargarAPI(Conn.URL + "carnet/apro/0/" + serial, "GET");
-                ImprimirCarnet("_objectPDF");
-            } else {
-                $("#visorCarnet").modal("show");
+                CargarAPI(Conn.URL + "carnet/apro/3/" + serial, "GET");
             }
+            ImprimirCarnet("_objectPDF");
 
 
         }
