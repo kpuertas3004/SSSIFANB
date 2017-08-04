@@ -56,6 +56,8 @@ class LstCarnet {
             var boton = `<div class="btn-group">
         <button type="button" class="btn btn-sm btn-primary" onclick="${tipocarnet}('${v.serial}','${v.id}','${v.fechavencimiento}',0,'${v.idf}')">
         <i class="fa fa-print"></i></button>
+        <button type="button" class="btn btn-sm btn-success desaparece" onclick="cerrarCarnet('$\{v.serial}')">
+        <i class="fa fa-check"></i></button>
 
         </div>`;
         }
@@ -140,6 +142,10 @@ function pendienteCarnet(serial, estatus) {
     CargarAPI(Conn.URL + "carnet/apro/2/" + serial, "GET");
 }
 
+function cerrarCarnet(serial) {
+    CargarAPI(Conn.URL + "carnet/apro/3/" + serial, "GET");
+}
+
 function verCarnet(serial, cedula, vence, estatus,idf) {
 
     CargarUrl("_objectPDF", "rpt/carnet");
@@ -193,10 +199,6 @@ function verCarnet(serial, cedula, vence, estatus,idf) {
           $("#lblcolor").html(militar.Persona.DatoFisionomico.ObtenerPiel());
           $("#divserial").html(serial);
           $("#divvencimiento").html("VENCE " + Util.ConvertirFechaHumana(vence));
-          if (estatus == 0) {
-              CargarAPI(Conn.URL + "carnet/apro/3/" + serial, "GET");
-          }
-          alert(1);
           ImprimirCarnet("_objectPDF");
       }
 
@@ -223,7 +225,7 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
         if (this.readyState == 4 && this.status == 200) {
 
             var militar = JSON.parse(xhttp.responseText);
-            console.log(militar.Familiar);
+            //console.log(militar.Familiar);
             var hasta = militar.Familiar.length;
 
             var pos = "";
@@ -237,7 +239,7 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
             if(pos != ""){
 
             }
-            console.log(militar);
+            //console.log(militar);
             url = "http://192.168.6.45/SSSIFANB/temp/" + cedula + "/foto" + idf+ ".jpg";
 
             $("#imgfotoCarnetf").attr("src", url);
@@ -250,7 +252,7 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
             $("#lblapellidof").html(militar.Familiar[pos].Persona.DatoBasico.apellidoprimero);
             $("#lblcedulaf").html(idf);
             $("#lblparentescof").html(Util.ConvertirParentesco(militar.Familiar[pos].parentesco,militar.Familiar[pos].Persona.DatoBasico.sexo));
-            $("#lblafiliadof").html(militar.Persona.DatoBasico.apellidoprimero+" "+OqMilitar.Persona.DatoBasico.nombreprimero+" CI:"+cedula);
+            $("#lblafiliadof").html(militar.Persona.DatoBasico.apellidoprimero+" "+militar.Persona.DatoBasico.nombreprimero+" CI:"+cedula);
 
             url = "http://192.168.6.45/SSSIFANB/temp/" + cedula + "/huella" + idf+ ".bmp";
 
@@ -261,10 +263,6 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
             $("#lbldonantef").html(militar.Familiar[pos].donante);
             $("#lblfechanacf").html(Util.ConvertirFechaHumana(militar.Familiar[pos].Persona.DatoBasico.fechanacimiento));
 
-            if (estatus == 0) {
-                CargarAPI(Conn.URL + "carnet/apro/3/" + serial, "GET");
-            }
-            //$("#visorCarnetFamiliar").modal("show");
             ImprimirCarnetFamiliar("_objectPDF2");
         }
 
