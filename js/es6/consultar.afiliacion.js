@@ -1966,21 +1966,26 @@ function ImprimirCarnetFamiliar(nombre) {
   body {margin: 0px;}
   .marco-carnetf{border:0px #003399
     solid;width:8.5cm;
-    height:4.4cm;position:relative;}
+    height:4.4cm;
+    position:relative;}
 
   .css-fotof{
     border:0px #0033CC solid;width:68px;
-    height:90px; position:absolute;
+    height:90px;
+    position:absolute;
     left: 236px;
     top: 51px;}
+
   .fecha-vencimientof{
     border:0px #0033FF solid;
-    width:79px; height:auto; position:absolute;
+    width:79px; height:auto;
+    position:absolute;
     left: 230px;
     top: 146px;
     font-size:7px;
     text-align:center;
     font-weight:bold;}
+
   .firma-titularf{
     border:0px #0033FF solid;
     width:84px; height:auto;
@@ -1989,11 +1994,12 @@ function ImprimirCarnetFamiliar(nombre) {
     top: 157px;
     font-size:7px;
     font-weight:bold;}
+
   .firma-titular-iif{
     border-top:0px #003300 solid;
     /*padding-top:2px;*/
-    /*text-align:center;*/
-  }
+    /*text-align:center;*/}
+
   .labels-dat-personf{
     border:0px #0033FF solid;
     width:67px; height:auto;
@@ -2002,6 +2008,7 @@ function ImprimirCarnetFamiliar(nombre) {
     top: 128px;
     font-size:9px;
     font-weight:bold;}
+
   .labels-dat-person-reslf{
     border:0px #0033FF solid;
     width:166px; height:auto;
@@ -2010,7 +2017,8 @@ function ImprimirCarnetFamiliar(nombre) {
     top: 128px;
     font-size:9px;
     font-weight:bold;}
-  .letra-8{font-size:7px;}
+
+  .letra-8{font-size:8px;}
   /**PARTE TRASERA */
   .css-huellaf{border:0px #0033CC solid;width:50px; height:50px; position:absolute; left: 8px; top: 44px;}
   .firma-presidentef{border:0px #0033FF solid; width:96px; height:auto; position:absolute; left: 223px; top: 85px;font-size:8px;}
