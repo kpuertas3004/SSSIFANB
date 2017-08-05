@@ -8,7 +8,7 @@ let FrmValidar = false;
 
 class Conexion{
   constructor(){
-      this.IP = "192.168.6.45";
+      this.IP = "192.168.12.150";
       this.Puerto = ":8080";
       this.PuertoSSL = ":2608";
       this.API = "/ipsfa/api/";
