@@ -139,10 +139,16 @@ class DatoFisionomico{
     ObtenerCabello(){
         var cad = "";
         switch (this.colorcabello){
-            case "NE":cad = "NEGRO";break;
-            case "BA":cad = "BLANCO";break;
-            case "CA":cad = "CASTAÑO";break;
-			default: cad = "********";break;
+		case "NE":cad = "NEGRO";break;
+            	case "BA":cad = "BLANCO";break;
+            	case "CA":cad = "CASTAÑO";break;
+		case "MA":cad = "MARRON";break;
+		case "AM":cad = "AMARILLO";break;
+		case "AZ":cad = "AZUL";break;
+		case "VI":cad = "VIOLETA";break;
+		case "CV":cad = "CALVO";break;
+		case "GR":cad = "GRIS";break;
+		default: cad = "********";break;
         }
         return cad;
     }

@@ -160,16 +160,16 @@ function verCarnet(serial, cedula, vence, estatus,idf) {
           var militar = OqMilitar;
           url = "images/grados/" + militar.Grado.abreviatura + ".png";
           url = url.toLowerCase();
-          url = "http://192.168.6.45/SSSIFANB/" + url;
+          url = "http://192.168.12.150/SSSIFANB/" + url;
           $("#imggradoCarnet").attr("src", url);
           //alert(url);
-          //url = "http://192.168.12.161/imagenes/" + cedula + ".jpg";
+          //url = "http://192.168.12.150/imagenes/" + cedula + ".jpg";
 
-          url = "http://192.168.6.45/SSSIFANB/temp/" + cedula + "/huella.bmp";
+          url = "http://192.168.12.150/SSSIFANB/temp/" + cedula + "/huella.bmp";
           $("#imghuellaCarnet").attr("src", url);
           // alert(url);
 
-          url = "http://192.168.6.45/SSSIFANB/temp/" + cedula + "/foto.jpg";
+          url = "http://192.168.12.150/SSSIFANB/temp/" + cedula + "/foto.jpg";
           $("#imgfotoCarnet").attr("src", url);
           // alert(url);
           $("#lblgrado").html(militar.Grado.descripcion);
@@ -197,7 +197,7 @@ function verCarnet(serial, cedula, vence, estatus,idf) {
           $("#lblestatura").html(militar.Persona.DatoFisionomico.estatura);
           $("#lblojos").html(militar.Persona.DatoFisionomico.ObtenerOjo());
           $("#lblcolor").html(militar.Persona.DatoFisionomico.ObtenerPiel());
-          $("#divserial").html(serial);
+          $("#divserial").html('CCS' + serial);
           $("#divvencimiento").html("VENCE " + Util.ConvertirFechaHumana(vence));
           ImprimirCarnet("_objectPDF");
       }
@@ -240,11 +240,11 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
 
             }
             //console.log(militar);
-            url = "http://192.168.6.45/SSSIFANB/temp/" + cedula + "/foto" + idf+ ".jpg";
+            url = "http://192.168.12.150/SSSIFANB/temp/" + cedula + "/foto" + idf+ ".jpg";
 
             $("#imgfotoCarnetf").attr("src", url);
 
-            url = "http://192.168.6.45/SSSIFANB/temp/" + cedula + "/firma" + idf+ ".jpg";
+            url = "http://192.168.12.150/SSSIFANB/temp/" + cedula + "/firma" + idf+ ".jpg";
 
             $("#imgfirmaCarnetf").attr("src", url);
             $("#divfechavencimiento").html(Util.ConvertirFechaHumana(vence));
@@ -254,7 +254,7 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
             $("#lblparentescof").html(Util.ConvertirParentesco(militar.Familiar[pos].parentesco,militar.Familiar[pos].Persona.DatoBasico.sexo));
             $("#lblafiliadof").html(militar.Persona.DatoBasico.apellidoprimero+" "+militar.Persona.DatoBasico.nombreprimero+" CI:"+cedula);
 
-            url = "http://192.168.6.45/SSSIFANB/temp/" + cedula + "/huella" + idf+ ".bmp";
+            url = "http://192.168.12.150/SSSIFANB/temp/" + cedula + "/huella" + idf+ ".bmp";
 
             $("#imghuellaCarnetf").attr("src", url);
 

@@ -5,6 +5,18 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SSSIFANB</title>
+  <link rel="stylesheet" href="plugins/pace/pace-theme-center-atom.css" />
+  <link rel="stylesheet" href="plugins/pace/pace-theme-center-atom.tmpl.css" />
+  <script>
+      paceOptions = {
+          ajax: true, // disabled
+          document: false, // disabled
+          eventLag: false, // disabled
+          restartOnPushState: false
+      };
+  </script>
+  <script src="plugins/pace/pace.js"></script>
+
 
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -79,6 +91,11 @@
       font-weight: 300;
       overflow: hidden;
     }
+
+    .pace-running{
+      opacity: .67;
+      background-color: #000080;
+    }
   </style>
 
   <!-- Activar Menu a traves de la API -->
@@ -92,6 +109,7 @@
   <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
   <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
+  <script type="text/javascript" src="js/es6/config.js"></script>
   <script type="text/javascript" src="js/es6/utilidad.js"></script>
   <script type="text/javascript" src="js/es6/controlador.js"></script>
   <script type="text/javascript" src="js/es6/militar.js"></script>
@@ -108,7 +126,14 @@
   <script src="bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js"></script>
 
   <script src="bower_components/fancy/dist/jquery.fancybox.min.js"></script>
-
+  <script>
+      /*$.ajaxSetup({
+          beforeSend: function(xhr) {
+              xhr.setRequestHeader('Authorization', 'Bearer ' + sessionStorage.getItem("ipsfaToken"));
+              xhr.setRequestHeader('Access-Control-Request-Headers',"GET");
+          }
+      });*/
+  </script>
 </head>
 <body class="hold-transition skin-yellow" style="display:none" id="_body">
 <header class="header" style="background-color:#3c8dbc">

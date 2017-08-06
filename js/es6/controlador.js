@@ -6,17 +6,6 @@
 
 let FrmValidar = false;
 
-class Conexion{
-  constructor(){
-      this.IP = "192.168.12.150";
-      this.Puerto = ":8080";
-      this.PuertoSSL = ":2608";
-      this.API = "/ipsfa/api/";
-      this.URL = "http://" + this.IP + this.Puerto + this.API;
-      this.URLS = "http://" + this.IP + this.PuertoSSL + this.API;
-  }
-}
-
 class Estado{
   constructor() {
 
@@ -201,8 +190,14 @@ function HistoriaClinica(){
 
 
 function CargarAPI(sURL, metodo, valores, Objeto){
+    //Pace.restart();
+    //Pace.start();
+    //Pace.bar.render();
   var xhttp = new XMLHttpRequest();
-  xhttp.open(metodo, sURL);
+
+
+    xhttp.open(metodo, sURL);
+    //xhttp.setRequestHeader('Authorization', 'Bearer '+sessionStorage.getItem("ipsfaToken"));
   xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         if(Objeto != undefined){
@@ -215,12 +210,14 @@ function CargarAPI(sURL, metodo, valores, Objeto){
               alert(xhttp.responseText)
           }
         }
+          //Pace.stop();
       }
   }
   xhttp.onerror = function() {
       if (this.readyState == 4 && this.status == 0) {
         $.notify("No se puede conectar al servidor");
         $("#_cargando").hide();
+          //Pace.stop();
       }
 
   };
