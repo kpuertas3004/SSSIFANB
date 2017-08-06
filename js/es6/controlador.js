@@ -104,7 +104,6 @@ var Util = new Utilidad();
 var Estados = new Estado();
 
 $(function () {
-  //CargarAPI("js/es6/esquema.menu.json", "GET","",Mnu);
   CargarAPI(Conn.URL + "estado", "GET", "", Estados);
   CargarUrl("_bxBuscar", "afi/buscar");
   CargarUrl("_bxTarjeta", "afi/tarjeta");
@@ -250,45 +249,4 @@ function IniciarSesion(){
     $("#_NombreUsuario").html(usr.nombre);
 
   }
-}
-
-
-function CargarAPI(sURL, metodo, valores, Objeto){
-  console.log(sURL);
-  var xhttp = new XMLHttpRequest();
-  xhttp.open(metodo, sURL);
-  xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('ipsfaToken'));
-
-  xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        if(Objeto != undefined){
-          console.log(xhttp.responseText);
-          Objeto.Crear(JSON.parse(xhttp.responseText));
-        }else{
-          respuesta = JSON.parse(xhttp.responseText);
-          if (respuesta.tipo != 0){
-            $.notify("Se ha Insertado correctamente", "success");
-          }else{
-              alert(xhttp.responseText)
-          }
-        }
-      }
-  }
-  xhttp.onerror = function() {
-      if (this.readyState == 4 && this.status == 0) {
-        $.notify("No se puede conectar al servidor");
-        $("#_cargando").hide();
-          //Pace.stop();
-      }
-
-  };
-
-
-  if(valores != undefined){
-    xhttp.send(JSON.stringify(valores));
-  }else{
-    xhttp.send();
-  }
-
-
 }
