@@ -18,7 +18,8 @@ function Buscar(id) {
 
     var url = Conn.URL + "militar/crud/" + $("#_cedula").val();
     CargarAPI(url, "GET", "", ObjMilitar);
-    OqMilitar = ObjMilitar;
+
+
 
 }
 
@@ -1064,6 +1065,7 @@ function ModificarFamiliarPos(pos) {
     } else {
         FrmFamiliar(false);
         ActivarCalendariosFamiliar();
+        console.log(ObjMilitar);
         var Familiar = ObjMilitar.Familiar[pos - 1];
         var Persona = Familiar.Persona;
         var DB = Persona.DatoBasico;

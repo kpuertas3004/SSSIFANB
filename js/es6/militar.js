@@ -246,6 +246,7 @@ class Carnet{
 
 class Familiar{
 	constructor(){
+		this.id = "";
 		this.Persona = new Persona();
 		this.parentesco = "";
 		this.esmilitar = "";
@@ -255,8 +256,8 @@ class Familiar{
 		this.documento = 0;
 		this.documentopadre = "";
 		this.historiamedica = "";
-        this.donante = "";
-        this.serial = "";
+    this.donante = "";
+    this.serial = "";
 	}
 	GenerarParentesco(){
 		var parentesco= "";
@@ -608,7 +609,8 @@ class Militar{
 				$("#_aceptar").focus();
 				$("#_cargando").hide();
 		} else {
-				this.Cargar(militar);
+				OqMilitar.Cargar(militar);
+				ObjMilitar = militar;
 				ActivarFormulario(true);
 				$("#_btnModificar").show();
 				$("#_btnConstancia").show();
