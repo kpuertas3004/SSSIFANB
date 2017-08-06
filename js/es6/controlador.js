@@ -103,7 +103,7 @@ var Util = new Utilidad();
 var Estados = new Estado();
 
 $(function () {
-  CargarAPI("js/es6/esquema.menu.json", "GET","",Mnu);
+  //CargarAPI("js/es6/esquema.menu.json", "GET","",Mnu);
   CargarAPI(Conn.URL + "estado", "GET", "", Estados);
   CargarUrl("_bxBuscar", "afi/buscar");
   CargarUrl("_bxTarjeta", "afi/tarjeta");
@@ -127,7 +127,7 @@ $(function () {
   });
 
   IniciarSesion();
-
+  Menu.Crearr("Cargar...");
 });
 function Principal(){
     $(location).attr("href","starter.html");
