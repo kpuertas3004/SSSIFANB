@@ -278,6 +278,7 @@ class Familiar{
 		return parentesco;
 	}
 	Obtener(){
+		this.id = $("#txtidf").val();
 		this.documentopadre = $("#txtcedula").val();
     this.Persona.DatoBasico.nacionalidad = $("#btnnacionalidad").html();
 		this.Persona.DatoBasico.cedula = $("#txtcedulaf").val();

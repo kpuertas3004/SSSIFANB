@@ -1073,6 +1073,7 @@ function ModificarFamiliarPos(pos) {
         $("#tipoModFam").val(1);
         $("#modFamiliar").modal('show');
         $('#txtcedulaf').val(DB.cedula);
+        $('#txtidf').val(DB.cedula);
         SeleccionarPorSexoFamiliar(DB.sexo);
         $('#btnnacionalidad').val(NacionalidadFamiliar(DB.nacionalidad));
 
