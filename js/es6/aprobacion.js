@@ -154,17 +154,16 @@ function verCarnet(serial, cedula, vence, estatus,idf) {
     var xhttp = new XMLHttpRequest();
     var url = Conn.URL + "militar/crud/" + cedula;
     xhttp.open("GET", url, true);
+    xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('ipsfaToken'));
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           OqMilitar.Cargar(JSON.parse(xhttp.responseText));
           var militar = OqMilitar;
           url = "images/grados/" + militar.Grado.abreviatura + ".png";
           url = url.toLowerCase();
-            var rutaimg = Conn.URLIMG;
-            if (militar.Persona.foto  != undefined){
-                rutaimg = Conn.URLTEMP;
-            }
-          url = rutaimg + url;
+
+          rutaimg = Conn.URLTEMP;
+
           $("#imggradoCarnet").attr("src", url);
           //alert(url);
           //url = "http://192.168.12.150/imagenes/" + cedula + ".jpg";
@@ -175,7 +174,7 @@ function verCarnet(serial, cedula, vence, estatus,idf) {
 
           url = rutaimg + cedula + "/foto.jpg";
           $("#imgfotoCarnet").attr("src", url);
-          // alert(url);
+          alert(url);
           $("#lblgrado").html(militar.Grado.descripcion);
           $("#lblnombre").html(militar.Persona.DatoBasico.nombreprimero);
           $("#lblapellido").html(militar.Persona.DatoBasico.apellidoprimero);
@@ -225,6 +224,7 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
     var xhttp = new XMLHttpRequest();
     var url = Conn.URL + "militar/crud/" + cedula;
     xhttp.open("GET", url, true);
+    xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('ipsfaToken'));
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
 
@@ -244,15 +244,10 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
 
             }
 
-            var rutaimgfamiliar = Conn.URLIMG;
-            if (militar.Familiar[i].Persona.foto  != undefined){
-                rutaimgfamiliar = Conn.URLTEMP;
-            }
+            var rutaimgfamiliar = Conn.URLTEMP;
             //console.log(militar);
-            url = rutaimgfamiliar + cedula + "/foto" + idf+ ".jpg";
-
+            var url = rutaimgfamiliar + cedula + "/foto" + idf + ".jpg";
             $("#imgfotoCarnetf").attr("src", url);
-
             url = rutaimgfamiliar + cedula + "/firma" + idf+ ".jpg";
 
             $("#imgfirmaCarnetf").attr("src", url);
@@ -263,7 +258,7 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
             $("#lblparentescof").html(Util.ConvertirParentesco(militar.Familiar[pos].parentesco,militar.Familiar[pos].Persona.DatoBasico.sexo));
             $("#lblafiliadof").html(militar.Persona.DatoBasico.apellidoprimero+" "+militar.Persona.DatoBasico.nombreprimero+" CI:"+cedula);
 
-            url = rutaimgfamiliar + cedula + "/huella" + idf+ ".bmp";
+            url = rutaimgfamiliar + cedula + "/huella" + idf + ".bmp";
 
             $("#imghuellaCarnetf").attr("src", url);
 

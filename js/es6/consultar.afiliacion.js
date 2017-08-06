@@ -1695,6 +1695,6 @@ function ImprimirCarnetFamiliar(nombre) {
   .datos-medicos-if{border:0px #0033FF solid; width:63px; height:auto; position:absolute; left: 119px; top: 45px;font-size:7px;font-weight:bold; line-height: 1.4em;}
   .datos-medicos-iif{border:0px #0033FF solid; width:63px; height:auto; position:absolute; left: 119px; top: 90px;font-size:7px;font-weight:bold; }
   </style>`;
-    ventana.print();
+    //ventana.print();
     //ventana.close();
 }

@@ -83,7 +83,8 @@ class Menu {
       var e = sessionStorage.getItem("ipsfaToken");
       var s = e.split(".");
       var MenuJS = JSON.parse(atob(s[1]));
-      console.log(MenuJS);
+
+
       var Menu = MenuJS.Usuario.Perfil.Menu;
       var cadena = "<li class='header'>Menu</li>";
       Menu.forEach(v => {
@@ -253,7 +254,7 @@ function IniciarSesion(){
 
 
 function CargarAPI(sURL, metodo, valores, Objeto){
-
+  console.log(sURL);
   var xhttp = new XMLHttpRequest();
   xhttp.open(metodo, sURL);
   xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('ipsfaToken'));
