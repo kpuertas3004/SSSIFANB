@@ -3,6 +3,37 @@ class Utilidad {
 
     }
 
+    Especiales(e,elemento) {
+        var key = e.keyCode || e.which;
+        var tecla = String.fromCharCode(key).toLowerCase();
+        var letras = " áéíóúabcdefghijklmnñopqrstuvwxyz0123456789*";
+        var especiales = [8, 37, 39, 46, 9, 17];
+
+        var tecla_especial = false
+        for (var i in especiales) {
+            if (key == especiales[i]) {
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+            $.notify("("+tecla+") Caracter no permitido", "warning");
+            return false;
+        }
+    }
+
+    cmbField(obj,foco){
+        var id = obj.id;
+        if(foco){
+            $("#"+id).attr("type","text");
+            $("#"+id).val("");
+        }else{
+            $("#"+id).attr("type","password");
+        }
+
+    }
+
     SoloNumero(event,elemento) {
         var contenidocaja = $("#"+elemento.id).val();
 
