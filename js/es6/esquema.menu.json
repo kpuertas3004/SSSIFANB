@@ -1,9 +1,8 @@
 {
-	"_id" : "59627ed9639f7506c88e35db",
 	"nombre" : "Root",
 	"login" : "root",
 	"correo" : "",
-	"clave" : "4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2",
+	"clave" : "",
 	"sucursal" : "Principal",
 	"sistema" : "",
 	"rol" : {

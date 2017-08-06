@@ -1,15 +1,3 @@
-class Conexion{
-  constructor(){
-      this.IP = "192.168.6.45";
-      this.Puerto = ":8080";
-      this.PuertoSSL = ":2608";
-      this.URL = "http://" + this.IP + this.Puerto;
-      this.URLS = "http://" + this.IP + this.PuertoSSL;
-      this.CDN = "http://192.168.12.161/imagenes";
-  }
-}
-
-
 var Conn = new Conexion();
 class Login {
   constructor(usr, clv) {
@@ -47,7 +35,7 @@ function Ingresar(){
   var xhttp = new XMLHttpRequest();
   $("#_cargando").show();
 
-  xhttp.open("POST", Conn.URL + "/ipsfa/app/api/wusuario/login", true);
+  xhttp.open("POST", Conn.URLS + "/ipsfa/app/api/wusuario/login", true);
   xhttp.onreadystatechange = function() {
     console.log(this.readyState);
     if (this.readyState === 4 && this.status === 200) {

@@ -6,16 +6,7 @@
 
 let FrmValidar = false;
 
-class Conexion{
-  constructor(){
-      this.IP = "192.168.6.45";
-      this.Puerto = ":8080";
-      this.PuertoSSL = ":2608";
-      this.API = "/ipsfa/api/";
-      this.URL = "http://" + this.IP + this.Puerto + this.API;
-      this.URLS = "http://" + this.IP + this.PuertoSSL + this.API;
-  }
-}
+
 
 class Estado{
   constructor() {
@@ -202,7 +193,10 @@ function HistoriaClinica(){
 
 function CargarAPI(sURL, metodo, valores, Objeto){
   var xhttp = new XMLHttpRequest();
-  xhttp.open(metodo, sURL);
+  xhttp.open(metodo, sURL, true);
+  xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('ipsfaEstado'));
+  xhttp.withCredentials = false;
+  console.log("Hola");
   xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         if(Objeto != undefined){
