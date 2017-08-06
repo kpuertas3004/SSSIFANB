@@ -5,9 +5,6 @@
 
 
 let FrmValidar = false;
-
-
-
 class Estado{
   constructor() {
 
@@ -192,11 +189,21 @@ function HistoriaClinica(){
 
 
 function CargarAPI(sURL, metodo, valores, Objeto){
+    //Pace.restart();
+    //Pace.start();
+    //Pace.bar.render();
   var xhttp = new XMLHttpRequest();
+<<<<<<< HEAD
   xhttp.open(metodo, sURL, true);
   xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('ipsfaEstado'));
   xhttp.withCredentials = false;
   console.log("Hola");
+=======
+
+
+    xhttp.open(metodo, sURL);
+    //xhttp.setRequestHeader('Authorization', 'Bearer '+sessionStorage.getItem("ipsfaToken"));
+>>>>>>> 3996a0420b1f65faffce7b5c5dc780a698deb628
   xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         if(Objeto != undefined){
@@ -209,12 +216,14 @@ function CargarAPI(sURL, metodo, valores, Objeto){
               alert(xhttp.responseText)
           }
         }
+          //Pace.stop();
       }
   }
   xhttp.onerror = function() {
       if (this.readyState == 4 && this.status == 0) {
         $.notify("No se puede conectar al servidor");
         $("#_cargando").hide();
+          //Pace.stop();
       }
 
   };
