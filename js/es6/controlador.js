@@ -127,7 +127,7 @@ $(function () {
   });
 
   IniciarSesion();
-  Menu.Crear("Cargar...");
+  Mnu.Crear("Cargar...");
 });
 function Principal(){
     $(location).attr("href","starter.html");
