@@ -1147,17 +1147,15 @@ class CondicionEspecial{
         this.nombrehospitalmilitar="";
     }
 }
+class Clave {
+	constructor(){
+			this.login = "";
+			this.clave = "";
+			this.nueva = "";
+			this.repetir = "";
+	}
 
-function ObtenerFamiliar(){
-
-	let familiar = new Familiar();
-
-	//familiar.Carnet.huella = $('#_imghuellaf').val();
-	//familiar.Carnet.firma = $('#_imgfirmaf').val();
-
-	console.log(familiar);
 }
-
 $(function (){
   if (sessionStorage.getItem('ipsfaToken') == undefined ){
 		$(location).attr("href","index.html");

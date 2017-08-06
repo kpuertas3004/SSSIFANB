@@ -5,6 +5,7 @@
 
 
 let FrmValidar = false;
+let Usuario = {};
 class Menu {
   constructor() {}
   ValidarPrivilegio(Json){
@@ -16,8 +17,6 @@ class Menu {
       var e = sessionStorage.getItem("ipsfaToken");
       var s = e.split(".");
       var MenuJS = JSON.parse(atob(s[1]));
-
-
       var Menu = MenuJS.Usuario.Perfil.Menu;
       var cadena = "<li class='header'>Menu</li>";
       Menu.forEach(v => {
@@ -241,10 +240,11 @@ function IniciarSesion(){
     var e = sessionStorage.getItem("ipsfaToken");
     var s = e.split(".");
     var json = JSON.parse(atob(s[1]));
-    var usr = json.Usuario;
+    Usuario = json.Usuario;
 
-    $("#_PerfilUsuario").html(usr.Perfil.descripcion);
-    $("#_NombreUsuario").html(usr.nombre);
+
+    $("#_PerfilUsuario").html(Usuario.Perfil.descripcion);
+    $("#_NombreUsuario").html(Usuario.nombre);
 
   }
 }
