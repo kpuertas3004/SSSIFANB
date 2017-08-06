@@ -79,14 +79,15 @@ class Menu {
   }
   //Crear Menu Dinamicamente
   Crear(Json) {
+
       var e = sessionStorage.getItem("ipsfaToken");
       var s = e.split(".");
-      // var b = JSON.parse(atob(s[1]));
-      // console.log(b);
-      var Menu = Json.perfil.menu;
+      var MenuJS = JSON.parse(atob(s[1]));
+      console.log(MenuJS);
+      var Menu = MenuJS.Usuario.Perfil.Menu;
       var cadena = "<li class='header'>Menu</li>";
       Menu.forEach(v => {
-        if(v.url != ''){
+        if(v.url != undefined){
           cadena += `<li><a href="${v.url}"><i class="${v.icono}"></i><span>${v.nombre}</span></a></li>`;
         }else{
           cadena += `<li><a href="#" onclick="CargarUrl('_cuerpo','${v.js}');${v.accion}"><i class="${v.icono}"></i><span>${v.nombre}</span></a></li>`;
@@ -189,21 +190,9 @@ function HistoriaClinica(){
 
 
 function CargarAPI(sURL, metodo, valores, Objeto){
-    //Pace.restart();
-    //Pace.start();
-    //Pace.bar.render();
+  console.log(valores);
   var xhttp = new XMLHttpRequest();
-<<<<<<< HEAD
-  xhttp.open(metodo, sURL, true);
-  xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('ipsfaEstado'));
-  xhttp.withCredentials = false;
-  console.log("Hola");
-=======
-
-
-    xhttp.open(metodo, sURL);
-    //xhttp.setRequestHeader('Authorization', 'Bearer '+sessionStorage.getItem("ipsfaToken"));
->>>>>>> 3996a0420b1f65faffce7b5c5dc780a698deb628
+  xhttp.open(metodo, sURL);
   xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         if(Objeto != undefined){
@@ -216,7 +205,6 @@ function CargarAPI(sURL, metodo, valores, Objeto){
               alert(xhttp.responseText)
           }
         }
-          //Pace.stop();
       }
   }
   xhttp.onerror = function() {
