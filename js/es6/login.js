@@ -35,7 +35,7 @@ function Ingresar(){
   var xhttp = new XMLHttpRequest();
   $("#_cargando").show();
 
-  xhttp.open("POST", Conn.URLS + "/ipsfa/app/api/wusuario/login", true);
+  xhttp.open("POST", Conn.URLSEC + "/ipsfa/app/api/wusuario/login", true);
   xhttp.onreadystatechange = function() {
     console.log(this.readyState);
     if (this.readyState === 4 && this.status === 200) {
