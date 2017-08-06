@@ -1,15 +1,3 @@
-class Conexion{
-  constructor(){
-      this.IP = "192.168.12.150";
-      this.Puerto = ":8080";
-      this.PuertoSSL = ":2608";
-      this.URL = "http://" + this.IP + this.Puerto;
-      this.URLS = "http://" + this.IP + this.PuertoSSL;
-      this.CDN = "http://192.168.12.161/imagenes";
-  }
-}
-
-
 var Conn = new Conexion();
 class Login {
   constructor(usr, clv) {
