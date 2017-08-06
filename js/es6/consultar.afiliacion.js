@@ -1,4 +1,4 @@
-
+let ObjMilitar = new Militar();
 let OqMilitar = new Militar();
 
 function Buscar(id) {
@@ -15,7 +15,7 @@ function Buscar(id) {
     $("#_lblConstanciaPension").hide();
     $("#_imgfamiliar").attr("src", "images/ndisponible.jpg");
 
-    let ObjMilitar = new Militar();
+    ObjMilitar = new Militar();
     var url = Conn.URL + "militar/crud/" + $("#_cedula").val();
     CargarAPI(url, "GET", "", ObjMilitar);
 
