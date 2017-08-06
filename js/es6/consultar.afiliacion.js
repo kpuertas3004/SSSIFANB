@@ -1506,7 +1506,7 @@ function ImprimirCarnet(nombre) {
         height: 90px;
         position: absolute;
         left: 231px;
-        top: 69px;
+        top: 65px;
     }
     .css-insignia{
         border: 0px #0033CC solid;
@@ -1546,8 +1546,8 @@ function ImprimirCarnet(nombre) {
         text-align: center
     }
     .letra-8{font-size:12px;}
-    .nota-pie-i-anverso{border:0px #0033FF solid; width:180px; height:8px; position:absolute; left: 140px; top: 177px; font-size:7px;text-align:left;font-style:normal;}
-    .nota-pie-ii-anverso{border:0px #0033FF solid; width:180px; height:8px; position:absolute; left: 140px; top: 187px; font-size:7px;text-align:left;font-style:normal;}
+    .nota-pie-i-anverso{border:0px #0033FF solid; width:190px; height:8px; position:absolute; left: 132px; top: 177px; font-size:8px;text-align:left;font-style:normal;}
+    .nota-pie-ii-anverso{border:0px #0033FF solid; width:190px; height:8px; position:absolute; left: 132px; top: 187px; font-size:8px;text-align:left;font-style:normal;}
 
     /**PARTE TRASERA */
     .css-huella{border:0px #0033CC solid;width:70px; height:70px; position:absolute; left: 8px; top: 44px;}
@@ -1563,8 +1563,8 @@ function ImprimirCarnet(nombre) {
     .telefono-contacto{border:0px #0033FF solid; width:76px; height:14px; position:absolute; left: 186px; top: 185px;font-size:10px;font-weight:bold;}
     .datos-medicos-i{border:0px #0033FF solid; width:150px; height:auto; position:absolute; left: 170px; top: 45px;font-size:10px;font-weight:bold;}
     .datos-medicos-ii{border:2px #0033FF solid; width:63px; height:auto; position:absolute; left: 500px; top: 94px;font-size:9px;font-weight:bold;font-color:#000;}
-    .serial-numero{border:0px #0033FF solid; width:70px; height:14px; position:absolute; left: 11px; top: 15px;font-size:7px;text-align:center; font-weight:bold;}
-    .serial{border:0px #0033FF solid; width:70px; height:14px; position:absolute; left: 11px; top: 25px;font-size:10px; text-align:center}
+    .serial-numero{border:0px #0033FF solid; width:70px; height:14px; position:absolute; left: 11px; top: 15px;font-size:9px;text-align:center; font-weight:bold;}
+    .serial{border:0px #0033FF solid; width:70px; height:14px; position:absolute; left: 11px; top: 25px;font-size:11px; text-align:center; font-weight: bold;}
     .categoria{
         border: 0px #0033FF solid;
         width: 76px;
@@ -1582,7 +1582,7 @@ function ImprimirCarnet(nombre) {
         position: absolute;
         left: 128px;
         top: 15px;
-        font-size: 11px;
+        font-size: 14px;
         font-weight: bold;
     }
     .estatus {border:0px #0033FF solid; width:60px; height:60px; top:60px; left:95px; position:absolute;font-size:40px;font-weight:bold;}
@@ -1594,20 +1594,22 @@ function ImprimirCarnet(nombre) {
         position: absolute;
         left: 123px;
         top: 48px;
-        font-size: 8px;
+        font-size: 10px;
+        font-weight: 600;
     }
     .labels-dat-medicos-resl{
         border: 0px #0033FF solid;
         width: 60px;
         height: auto;
         position: absolute;
-        left: 216px;
+        left: 235px;
         top: 48px;
-        font-size: 8px;
+        font-size: 10px;
+        font-weight: 600;
     }
     .nota-pie-i-reverso{border:0px #0033FF solid; width:297px; height:12px;  left:14px; position:absolute; top: 173px;font-weight:bold; font-size:9px; text-align:center}
     .nota-pie-ii-reverso{border:0px #0033FF solid; width:300px; height:14px; left:12px; position:absolute; top: 182px; font-weight:bold; font-size:8px; text-align:center;}
-  }
+    }
   </style>̣
   `;
 
@@ -1633,26 +1635,21 @@ function ImprimirCarnetFamiliar(nombre) {
   body {margin: 0px;}
   .marco-carnetf{border:0px #003399
     solid;width:8.5cm;
-    height:4.4cm;
-    position:relative;}
+    height:4.4cm;position:relative;}
 
   .css-fotof{
     border:0px #0033CC solid;width:68px;
-    height:90px;
-    position:absolute;
+    height:90px; position:absolute;
     left: 236px;
     top: 51px;}
-
   .fecha-vencimientof{
     border:0px #0033FF solid;
-    width:79px; height:auto;
-    position:absolute;
+    width:79px; height:auto; position:absolute;
     left: 230px;
     top: 146px;
     font-size:7px;
     text-align:center;
     font-weight:bold;}
-
   .firma-titularf{
     border:0px #0033FF solid;
     width:84px; height:auto;
@@ -1661,12 +1658,11 @@ function ImprimirCarnetFamiliar(nombre) {
     top: 157px;
     font-size:7px;
     font-weight:bold;}
-
   .firma-titular-iif{
     border-top:0px #003300 solid;
     /*padding-top:2px;*/
-    /*text-align:center;*/}
-
+    /*text-align:center;*/
+  }
   .labels-dat-personf{
     border:0px #0033FF solid;
     width:67px; height:auto;
@@ -1675,7 +1671,6 @@ function ImprimirCarnetFamiliar(nombre) {
     top: 128px;
     font-size:9px;
     font-weight:bold;}
-
   .labels-dat-person-reslf{
     border:0px #0033FF solid;
     width:166px; height:auto;
@@ -1684,15 +1679,19 @@ function ImprimirCarnetFamiliar(nombre) {
     top: 128px;
     font-size:9px;
     font-weight:bold;}
-
-  .letra-8{font-size:8px;}
+  .letra-8{font-size:7px;}
+  #lblhistoriaf{margin-left:4px;}
+  #lblgsanguineof{margin-left:1px;}
+  #lblobsf{margin-left:10px;}
+  #lbldonantef{margin-left: 35px}
+  #lblserialf{margin-left: 43px}
   /**PARTE TRASERA */
   .css-huellaf{border:0px #0033CC solid;width:50px; height:50px; position:absolute; left: 8px; top: 44px;}
   .firma-presidentef{border:0px #0033FF solid; width:96px; height:auto; position:absolute; left: 223px; top: 85px;font-size:8px;}
-  .telefono-contactof{border:0px #0033FF solid; width:76px; height:14px; position:absolute; left: 186px; top: 185px;font-size:10px;font-weight:bold;}
-  .datos-medicos-if{border:0px #0033FF solid; width:63px; height:auto; position:absolute; left: 149px; top: 45px;font-size:7px;font-weight:bold;}
-  .datos-medicos-iif{border:0px #0033FF solid; width:63px; height:auto; position:absolute; left: 149px; top: 94px;font-size:7px;font-weight:bold;}
-</style>`;
+  .telefono-contactof{border:0px #0033FF solid; width:76px; height:14px; position:absolute; left: 186px; top: 185px;font-size:10px;font-weight:bold; margin-top: 55px;}
+  .datos-medicos-if{border:0px #0033FF solid; width:63px; height:auto; position:absolute; left: 119px; top: 45px;font-size:7px;font-weight:bold; line-height: 1.4em;}
+  .datos-medicos-iif{border:0px #0033FF solid; width:63px; height:auto; position:absolute; left: 119px; top: 90px;font-size:7px;font-weight:bold; }
+  </style>`;
     ventana.print();
     //ventana.close();
 }
