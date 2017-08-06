@@ -1672,29 +1672,33 @@ function ImprimirCarnetFamiliar(nombre) {
     position:absolute;
     left: 5px;
     top: 128px;
-    font-size:9px;
-    font-weight:bold;}
+    font-size:8px;
+    font-weight:bold;
+    line-height: 1.4em;
+  }
   .labels-dat-person-reslf{
     border:0px #0033FF solid;
     width:166px; height:auto;
     position:absolute;
     left: 70px;
     top: 128px;
-    font-size:9px;
-    font-weight:bold;}
+    font-size:8px;
+    font-weight:bold;
+    line-height: 1.4em;
+  }
   .letra-8{font-size:7px;}
-  #lblhistoriaf{margin-left:4px;}
-  #lblgsanguineof{margin-left:1px;}
-  #lblobsf{margin-left:10px;}
-  #lbldonantef{margin-left: 35px}
-  #lblserialf{margin-left: 43px}
+  #lblhistoriaf{margin-left:3px;}
+
+  #lblobsf{margin-left:9px;}
+  #lbldonantef{margin-left: 34px}
+  #lblserialf{margin-left: 42px}
   /**PARTE TRASERA */
   .css-huellaf{border:0px #0033CC solid;width:50px; height:50px; position:absolute; left: 8px; top: 44px;}
-  .firma-presidentef{border:0px #0033FF solid; width:96px; height:auto; position:absolute; left: 223px; top: 85px;font-size:8px;}
+  .firma-presidentef{border:0px #0033FF solid; width:96px; height:auto; position:absolute; left: 223px; top: 85px;font-size:5px;}
   .telefono-contactof{border:0px #0033FF solid; width:76px; height:14px; position:absolute; left: 186px; top: 185px;font-size:10px;font-weight:bold; margin-top: 55px;}
   .datos-medicos-if{border:0px #0033FF solid; width:63px; height:auto; position:absolute; left: 119px; top: 45px;font-size:7px;font-weight:bold; line-height: 1.4em;}
   .datos-medicos-iif{border:0px #0033FF solid; width:63px; height:auto; position:absolute; left: 119px; top: 90px;font-size:7px;font-weight:bold; }
-  </style>`;
+</style>`;
     //ventana.print();
     //ventana.close();
 }
