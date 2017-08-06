@@ -5,6 +5,31 @@
 
 
 let FrmValidar = false;
+class Menu {
+  constructor() {}
+  ValidarPrivilegio(Json){
+    var Menu = Json.perfil.privilegio;
+  }
+  //Crear Menu Dinamicamente
+  Crear(Json) {
+
+      var e = sessionStorage.getItem("ipsfaToken");
+      var s = e.split(".");
+      var MenuJS = JSON.parse(atob(s[1]));
+
+
+      var Menu = MenuJS.Usuario.Perfil.Menu;
+      var cadena = "<li class='header'>Menu</li>";
+      Menu.forEach(v => {
+        if(v.url != undefined){
+          cadena += `<li><a href="${v.url}"><i class="${v.icono}"></i><span>${v.nombre}</span></a></li>`;
+        }else{
+          cadena += `<li><a href="#" onclick="CargarUrl('_cuerpo','${v.js}');${v.accion}"><i class="${v.icono}"></i><span>${v.nombre}</span></a></li>`;
+        }
+      });
+			$('#_menu').html(cadena);
+  }
+}
 class Estado{
   constructor() {
 
@@ -68,33 +93,6 @@ class Estado{
         });
       }
     });
-  }
-}
-
-
-class Menu {
-  constructor() {}
-  ValidarPrivilegio(Json){
-    var Menu = Json.perfil.privilegio;
-  }
-  //Crear Menu Dinamicamente
-  Crear(Json) {
-
-      var e = sessionStorage.getItem("ipsfaToken");
-      var s = e.split(".");
-      var MenuJS = JSON.parse(atob(s[1]));
-
-
-      var Menu = MenuJS.Usuario.Perfil.Menu;
-      var cadena = "<li class='header'>Menu</li>";
-      Menu.forEach(v => {
-        if(v.url != undefined){
-          cadena += `<li><a href="${v.url}"><i class="${v.icono}"></i><span>${v.nombre}</span></a></li>`;
-        }else{
-          cadena += `<li><a href="#" onclick="CargarUrl('_cuerpo','${v.js}');${v.accion}"><i class="${v.icono}"></i><span>${v.nombre}</span></a></li>`;
-        }
-      });
-			$('#_menu').html(cadena);
   }
 }
 

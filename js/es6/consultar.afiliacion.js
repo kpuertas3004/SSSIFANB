@@ -887,24 +887,15 @@ function seleccionarActas() {
     edo = $("#cmbedocivil option:selected").val();
     switch (edo) {
         case "C":
-            // $("#_titulod").html("Cargar Acta de Matrimonio");
-            // CargarUrl("_contenidod", "afi/actamatrimonio");
             $('#modDocumentCasado').modal('show');
             break;
         case "D":
-            // $("#_titulod").html("Cargar Acta de Divorcio");
-            // CargarUrl("_contenidod", "afi/actadivorcio");
             $('#modDocumentDivorcio').modal('show');
             break;
         case "V":
-            // $("#_titulod").html("Cargar Constancia de Viudez");
-            // CargarUrl("_contenidod", "afi/constanciaviudez");
             $('#modDocumentViudez').modal('show');
             break;
         case "S":
-            // $("#_titulod").html("Cargar Carta de Solteria");
-            // CargarUrl("_contenidod", "afi/cartasolteria");
-            //$('#modDocumentSoltero').modal('show');
             break;
         default:
     }
@@ -928,31 +919,9 @@ function seleccionarDefuncion() {
 
 
 function cambiarGrado() {
-    var grado = $("#cmbgrado").val();
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", Conn.URL + "componente/" + $("#cmbcomponente option:selected").val());
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            componente = JSON.parse(xhttp.responseText);
-            $("#cmbgrado").html('<option selected="selected" value="S"></option>');
-            $.each(componente.Grado, function (c, v) {
-                $("#cmbgrado").append('<option selected="selected" value="' + v.codigo + '">' + v.descripcion + '</option>')
-            });
-            $("#cmbgrado").val('S');
-            if (grado != "" || grado != "S"){
-              $("#cmbgrado").val(grado);
-            }
-
-        }
-    }
-    xhttp.onerror = function () {
-        if (this.readyState == 4 && this.status == 0) {
-            $.notify("No se puede conectar al servidor");
-            $("#_cargando").hide();
-        }
-
-    };
-    xhttp.send();
+    var url = Conn.URL + "componente/" + $("#cmbcomponente option:selected").val();
+    var comp = new Componente();
+    CargarAPI(url, "GET", "", comp);
 }
 
 function ValidarCampos() {

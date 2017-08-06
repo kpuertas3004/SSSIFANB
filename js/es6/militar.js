@@ -368,6 +368,18 @@ class Componente{
 		this.descripcion = "";
 		this.abreviatura = "";
 	}
+	Crear(componente){
+		var grado = $("#cmbgrado").val();
+		$("#cmbgrado").html('<option selected="selected" value="S"></option>');
+		componente.Grado.forEach( v => {
+			$("#cmbgrado").append('<option selected="selected" value="' + v.codigo + '">' + v.descripcion + '</option>')
+		});
+
+		$("#cmbgrado").val('S');
+		if (grado != "" || grado != "S"){
+			$("#cmbgrado").val(grado);
+		}
+	}
  GenerarComponente(){
 		let abreviatura= "";
 		 switch(this.abreviatura) {
