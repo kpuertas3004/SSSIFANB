@@ -178,6 +178,7 @@ class DatoFisionomico{
             case "GR":cad = "GRIS";break;
             case "NE":cad = "NEGRO";break;
             case "MA":cad = "MARRON";break;
+						case "PA":cad = "PARDO";break;
 
             default: cad = "********";break;
         }
