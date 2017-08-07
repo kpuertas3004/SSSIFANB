@@ -1880,8 +1880,8 @@ function ImprimirCarnetFamiliar(nombre) {
   .lblhistoriaf{margin-left:60px;}
   .lblgsanguineof{margin-left:60px;}
   .lblobsf{margin-left:60px;}
-  .lbldonantef{margin-left: 45px}
-  .lblserialf{margin-left: 45px}
+  .lbldonantef{margin-left: 50px}
+  .lblserialf{margin-left: 50px}
   /**PARTE TRASERA */
   .css-huellaf{border:0px #0033CC solid;width:50px; height:50px; position:absolute; left: 8px; top: 44px;}
   .firma-presidentef{border:0px #0033FF solid; width:96px; height:auto; position:absolute; left: 223px; top: 85px;font-size:5px;}
