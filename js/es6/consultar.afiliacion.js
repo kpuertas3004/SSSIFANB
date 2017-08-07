@@ -1871,16 +1871,16 @@ function ImprimirCarnetFamiliar(nombre) {
     width:166px; height:auto;
     position:absolute;
     left: 70px;
-    top: 128px;
+    top: 130px;
     font-size:8px;
     font-weight:bold;
     line-height: 1.4em;
   }
   .letra-8{font-size:7px;}
-  .lblhistoriaf{margin-left:9px;}
-  .lblgsanguineof{margin-left:9px;}
-  .lblobsf{margin-left:9px;}
-  .lbldonantef{margin-left: 34px}
+  .lblhistoriaf{margin-left:40px;}
+  .lblgsanguineof{margin-left:40px;}
+  .lblobsf{margin-left:34px;}
+  .lbldonantef{margin-left: 42px}
   .lblserialf{margin-left: 42px}
   /**PARTE TRASERA */
   .css-huellaf{border:0px #0033CC solid;width:50px; height:50px; position:absolute; left: 8px; top: 44px;}
