@@ -583,14 +583,17 @@ function ActivarCalendariosFamiliar() {
 
 }
 
-function incluirAfiliado() {
+function incluirAfiliado(ced) {
 
     ActivarCalendarios();
-
+    if ( ObjMilitar.id != "" ){
+       $('#txtcedula').val("");
+    }
+    ObjMilitar = new Militar();
     $('#txtcedula').keyup(function () {
         this.value = (this.value + '').replace(/[^0-9]/g, '');
     });
-
+    var cedula = $('#txtcedula').val();
     $("#_divfechanacimiento").hide();
     $("#_divfechadefuncion").hide();
     $("#_cedula").val("");
@@ -616,6 +619,11 @@ function incluirAfiliado() {
     LimpiarFrmTarjeta();
 
     Estados.ObtenerEstados();
+    console.log("Entrando... " + ObjMilitar.id);
+    if ( cedula != "" ){
+       $('#txtcedula').val(cedula);
+    }
+
     //LimpiarModDocumentoCivil();
 
 }
