@@ -1313,7 +1313,7 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
             $("#lblgsanguineof").html(militar.Familiar[pos].Persona.DatoFisionomico.gruposanguineo);
             $("#lbldonantef").html(militar.Familiar[pos].donante);
             $("#lblfechanacf").html(Util.ConvertirFechaHumana(militar.Familiar[pos].Persona.DatoBasico.fechanacimiento));
-
+            $("#lblserialf").html(serial);
             ImprimirCarnetFamiliar("_objectPDF2");
         }
 
