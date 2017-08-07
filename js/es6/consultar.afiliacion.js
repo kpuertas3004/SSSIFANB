@@ -374,9 +374,10 @@ function LimpiarFrmFamiliar() {
 
 
 function ActivarBuscar() {
-    $("#_ficha").hide();
-    $("#_consultarbox").show();
-    $("#_search").hide();
+    $(location).attr("href","starter.html");
+    // $("#_ficha").hide();
+    // $("#_consultarbox").show();
+    // $("#_search").hide();
 }
 
 function VisualizarCarnet() {
