@@ -1807,7 +1807,6 @@ function ImprimirCarnetFamiliar(nombre) {
   .marco-carnetf{border:0px #003399
     solid;width:8.5cm;
     height:4.4cm;position:relative;}
-
   .css-fotof{
     border:0px #0033CC solid;width:68px;
     height:90px; position:absolute;
@@ -1855,7 +1854,7 @@ function ImprimirCarnetFamiliar(nombre) {
     line-height: 1.4em;
   }
   .letra-8{font-size:7px;}
-  .lblhistoriaf{margin-left:3px;}
+  .lblhistoriaf{margin-left:9px;}
   .lblgsanguineof{margin-left:9px;}
   .lblobsf{margin-left:9px;}
   .lbldonantef{margin-left: 34px}
