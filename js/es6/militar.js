@@ -1191,9 +1191,8 @@ function CerrarSession(){
 
 class LstCarnet {
     constructor() {
-
+			console.log("Cargando la clase de Aprobacion...");
     }
-
     Crear(Json) {
         if (Json == null) {
             return false
@@ -1221,8 +1220,6 @@ class LstCarnet {
 
         Json.forEach(v => {
             console.log(v);
-
-
             var tipocarnet = "verCarnet";
             var idf = "";
             if(v.idf != ""){
@@ -1232,25 +1229,21 @@ class LstCarnet {
                 }
             }
         if (Estatus == 0) {
-            console.log(v.id+"**"+v.idf);
-
-
             var boton = `<div class="btn-group">
-        <button type="button" class="btn btn-sm btn-info" onclick="${tipocarnet}('${v.serial}','${v.id}','${v.fechavencimiento}',1,'${v.idf}')">
-        <i class="fa fa-search"></i></button>
-        <button type="button"  class="btn btn-sm btn-success desaparece" onclick="aprobarCarnet('${v.serial}',1)">
-        Aprobado</button>
-        <button type="button" class="btn btn-sm btn-danger desaparece" onclick="pendienteCarnet('${v.serial}','${Estatus}')">
-        Pendiente</button>
-        </div>`;
+		        <button type="button" class="btn btn-sm btn-info" onclick="${tipocarnet}('${v.serial}','${v.id}','${v.fechavencimiento}',1,'${v.idf}')">
+		        <i class="fa fa-search"></i></button>
+		        <button type="button"  class="btn btn-sm btn-success desaparece" onclick="aprobarCarnet('${v.serial}',1)">
+		        Aprobado</button>
+		        <button type="button" class="btn btn-sm btn-danger desaparece" onclick="pendienteCarnet('${v.serial}','${Estatus}')">
+		        Pendiente</button>
+		        </div>`;
         } else {
             var boton = `<div class="btn-group">
-        <button type="button" class="btn btn-sm btn-primary" onclick="${tipocarnet}('${v.serial}','${v.id}','${v.fechavencimiento}',0,'${v.idf}')">
-        <i class="fa fa-print"></i></button>
-        <button type="button" class="btn btn-sm btn-success desaparece" onclick="cerrarCarnet('$\{v.serial}')">
-        <i class="fa fa-check"></i></button>
-
-        </div>`;
+		        <button type="button" class="btn btn-sm btn-primary" onclick="${tipocarnet}('${v.serial}','${v.id}','${v.fechavencimiento}',0,'${v.idf}')">
+		        <i class="fa fa-print"></i></button>
+		        <button type="button" class="btn btn-sm btn-success desaparece" onclick="cerrarCarnet('$\{v.serial}')">
+		        <i class="fa fa-check"></i></button>
+		        </div>`;
         }
 
         t.row.add([
@@ -1261,9 +1254,7 @@ class LstCarnet {
             this.ObtenerMotivo(v.motivo), //v.motivo, //
             boton //5
         ]).draw(false);
-    })
-        ;
-
+    	});
     }
 
     ObtenerMotivo(motivo) {

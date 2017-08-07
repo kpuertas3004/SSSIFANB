@@ -258,6 +258,7 @@ function ListarCarnet(estatus) {
     listaCarnet = new LstCarnet();
     Estatus = estatus;
     var ruta = Conn.URL + "carnet/listar/" + estatus;
-    alert(ruta);
-    CargarAPI(ruta, "GET", "", listaCarnet);
+    // alert(ruta);
+    console.log(listaCarnet);
+    // CargarAPI(ruta, "GET", "", listaCarnet);
 }
