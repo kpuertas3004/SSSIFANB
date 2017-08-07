@@ -1451,6 +1451,16 @@ function GenerarCarnet() {
     }
 }
 
+function cambiarClave(){
+    var clave = new Clave();
+    if (Util.ValidarFormulario("formcusuario") == false) {
+        Util.MensajeFormulario("_frmDatoFamiliar","msjcambio");
+    }else{
+        clave.Salvar();
+        $("#modFamiliar").modal("hide");
+    }
+}
+
 function ImprimirCarnet(nombre) {
     var html = $("#" + nombre).html();
     //console.log(html);
@@ -1603,7 +1613,6 @@ function ImprimirCarnetFamiliar(nombre) {
     section {
         page-break-before: always;
     }
-
   body {margin: 0px;}
   .marco-carnetf{border:0px #003399
     solid;width:8.5cm;
