@@ -1202,7 +1202,7 @@ function verCarnet(serial, cedula, vence, estatus,idf) {
           var ISODate = new Date(vence).toISOString();
           var fe = ISODate.substr(0, 10);
           var fa = fe.split("-");
-          $("#divvencimiento").html("VENCE 05/07" + fa[0]);
+          $("#divvencimiento").html("VENCE 05/07/" + fa[0]);
 
           $("#divcategoria").html(militar.ObtenerCategoria());
           var comp = militar.Componente.abreviatura;
