@@ -1267,7 +1267,64 @@ function aprobarCarnet(serial, estatus) {
 
 
 
+function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
 
+    CargarUrl("_objectPDF2", "rpt/carnetfamiliar");
+    var ObjMilitar = new Militar();
+    var OqMilitar = new Militar();
+    var xhttp = new XMLHttpRequest();
+    var url = Conn.URL + "militar/crud/" + cedula;
+    xhttp.open("GET", url, true);
+    xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('ipsfaToken'));
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var militar = JSON.parse(xhttp.responseText);
+            var hasta = militar.Familiar.length;
+            var pos = "";
+            for(var i=0;i< hasta;i++){
+                if(militar.Familiar[i].Persona.DatoBasico.cedula == idf ){
+                    pos = i;
+                    break;
+                }
+            }
+            var rutaimgfamiliar = Conn.URLTEMP;
+            //console.log(militar);
+            var url = rutaimgfamiliar + cedula + "/foto" + idf + ".jpg";
+            $("#imgfotoCarnetf").attr("src", url);
+            url = rutaimgfamiliar + cedula + "/firma" + idf+ ".jpg";
+
+            $("#imgfirmaCarnetf").attr("src", url);
+            // var fecha vence = Util.ConvertirFechaHumana(vence).split("/");
+            $("#divfechavencimiento").html(Util.ConvertirFechaHumana(vence));
+            var nombre = militar.Grado.abreviatura + " - " + militar.Familiar[pos].Persona.DatoBasico.nombreprimero;
+            $("#lblnombref").html(nombre);
+            $("#lblapellidof").html(militar.Familiar[pos].Persona.DatoBasico.apellidoprimero);
+            $("#lblcedulaf").html(idf);
+            $("#lblparentescof").html(Util.ConvertirParentesco(militar.Familiar[pos].parentesco,militar.Familiar[pos].Persona.DatoBasico.sexo));
+            $("#lblafiliadof").html(militar.Persona.DatoBasico.apellidoprimero+" "+militar.Persona.DatoBasico.nombreprimero+" CI:"+cedula);
+
+            url = rutaimgfamiliar + cedula + "/huella" + idf + ".bmp";
+
+            $("#imghuellaCarnetf").attr("src", url);
+
+            $("#lblhistoriaf").html(militar.Familiar[pos].historiamedica);
+            $("#lblgsanguineof").html(militar.Familiar[pos].Persona.DatoFisionomico.gruposanguineo);
+            $("#lbldonantef").html(militar.Familiar[pos].donante);
+            $("#lblfechanacf").html(Util.ConvertirFechaHumana(militar.Familiar[pos].Persona.DatoBasico.fechanacimiento));
+
+            ImprimirCarnetFamiliar("_objectPDF2");
+        }
+
+    }
+    xhttp.onerror = function () {
+        if (this.readyState == 4 && this.status == 0) {
+            $.notify("No se puede conectar al servidor");
+            $("#_cargando").hide();
+        }
+    };
+
+    xhttp.send();
+}
 
 
 
