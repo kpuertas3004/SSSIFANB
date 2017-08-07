@@ -1518,6 +1518,7 @@ function ValidarMilitar(valor) {
 
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", Conn.URL + "militar/crud/" + $("#txtcedulam").val());
+    xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('ipsfaToken'));
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
 
@@ -1685,6 +1686,7 @@ function ImprimirCarnet(nombre) {
     @page {
         margin: 0cm;
         size: 8.5cm 5.4cm;
+        font: sans-serif;
     }
     section {
         page-break-before: always;
@@ -1711,7 +1713,7 @@ function ImprimirCarnet(nombre) {
         left: 95px;
         top: 65px;
     }
-    .componente{border:0px #0033FF solid; width:280px; height:14px; position:absolute; left: 50px; top: 44px; font-size:10px;font-weight:bold; font-color:# EFEFEF; text-align:center;}
+    .componente{border:0px #0033FF solid; width:280px; height:14px; position:absolute; left: 50px; top: 44px; font-size:10px;font-weight:bold;font-color:#EFEFEF; text-align:center;}
     .fecha-vencimiento{
         border: 0px #0033FF solid;
         width: 70px;
