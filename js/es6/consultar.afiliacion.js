@@ -1356,7 +1356,7 @@ function CConstanciaAfiliacion() {
         ' ' + $("#cmbmmunicipio option:selected").text() + ' ' + $("#cmbmciudad option:selected").text() +
         ' ' + $("#cmbmestado option:selected").text());
     $("#lblfchIngresoFANB").text($("#txtfechagraduacion").val());
-    $("#lblfchUltAscenso").text($("#_fascenso").val());
+    $("#lblfchUltAscenso").text($("#_fascenso").html());
     $("#lblaServicio").text(tiempo);
     $("#lblcomponente").text($("#cmbcomponente option:selected").text());
     $("#lblsituacionMil").text($("#cmbsituacion option:selected").text());
