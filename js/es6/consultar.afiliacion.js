@@ -1686,16 +1686,18 @@ function ImprimirCarnet(nombre) {
     @page {
         margin: 0cm;
         size: 8.5cm 5.4cm;
-        font: sans-serif;
+
     }
     section {
         page-break-before: always;
     }
     @media screen,print {
-    body {margin: 0px;}
-
+    body {
+      margin: 0px;
+      font-family: Calibri;
+      font-weight: bold;
+    }
     .marco-carnet{border:0px #003399 solid;width:8.5cm;height:5.4cm;position:relative;}
-
     /**PARTE DELANTERA */
     .css-foto{
         border: 0px #0033CC solid;
@@ -1828,7 +1830,11 @@ function ImprimirCarnetFamiliar(nombre) {
     section {
         page-break-before: always;
     }
-  body {margin: 0px;}
+  body {
+    margin: 0px;
+    font-family: Calibri;
+    font-weight: bold;
+  }
   .marco-carnetf{border:0px #003399
     solid;width:8.5cm;
     height:4.4cm;position:relative;}
