@@ -1451,6 +1451,10 @@ function GenerarCarnet() {
     }
 }
 
+function VerCambiarClave(){
+    $("#modCambiarClaveUsuario").modal("show");
+}
+
 function cambiarClave(){
     var clave = new Clave();
     if (Util.ValidarFormulario("formcusuario") == false) {
