@@ -1172,7 +1172,6 @@ function verCarnet(serial, cedula, vence, estatus,idf) {
     var OqMilitar = new Militar();
     var xhttp = new XMLHttpRequest();
     var url = Conn.URL + "militar/crud/" + cedula;
-    alert("HOLA");
     xhttp.open("GET", url, true);
     xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('ipsfaToken'));
     xhttp.onreadystatechange = function () {
@@ -1185,7 +1184,7 @@ function verCarnet(serial, cedula, vence, estatus,idf) {
           rutaimg = Conn.URLTEMP;
 
           $("#imggradoCarnet").attr("src", url);
-          alert(url);
+
           //url = "http://192.168.12.150/imagenes/" + cedula + ".jpg";
 
           url = rutaimg + cedula + "/huella.bmp";
@@ -1200,7 +1199,10 @@ function verCarnet(serial, cedula, vence, estatus,idf) {
           $("#lblapellido").html(militar.Persona.DatoBasico.apellidoprimero);
           $("#lblcedula").html("C.I. " + militar.Persona.DatoBasico.cedula);
           $("#divserial").html(serial);
-          $("#divvencimiento").html("VENCE " + Util.ConvertirFechaHumana(vence));
+          var ISODate = new Date(vence).toISOString();
+          var fe = ISODate.substr(0, 10);
+          var fa = fe.split("-");
+          $("#divvencimiento").html("VENCE 05/07" + fa[0]);
 
           $("#divcategoria").html(militar.ObtenerCategoria());
           var comp = militar.Componente.abreviatura;
