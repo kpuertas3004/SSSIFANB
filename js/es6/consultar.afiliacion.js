@@ -1313,7 +1313,7 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
             $("#lblgsanguineof").html(militar.Familiar[pos].Persona.DatoFisionomico.gruposanguineo);
             $("#lbldonantef").html(militar.Familiar[pos].donante);
             $("#lblfechanacf").html(Util.ConvertirFechaHumana(militar.Familiar[pos].Persona.DatoBasico.fechanacimiento));
-            $("#lblserialf").html(serial);
+            $("#lblserialf").html( "CCS" + serial);
             ImprimirCarnetFamiliar("_objectPDF2");
         }
 
@@ -1855,11 +1855,11 @@ function ImprimirCarnetFamiliar(nombre) {
     line-height: 1.4em;
   }
   .letra-8{font-size:7px;}
-  #lblhistoriaf{margin-left:3px;}
-
-  #lblobsf{margin-left:9px;}
-  #lbldonantef{margin-left: 34px}
-  #lblserialf{margin-left: 42px}
+  .lblhistoriaf{margin-left:3px;}
+  .lblgsanguineof{margin-left:9px;}
+  .lblobsf{margin-left:9px;}
+  .lbldonantef{margin-left: 34px}
+  .lblserialf{margin-left: 42px}
   /**PARTE TRASERA */
   .css-huellaf{border:0px #0033CC solid;width:50px; height:50px; position:absolute; left: 8px; top: 44px;}
   .firma-presidentef{border:0px #0033FF solid; width:96px; height:auto; position:absolute; left: 223px; top: 85px;font-size:5px;}
