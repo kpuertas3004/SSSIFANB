@@ -1207,7 +1207,7 @@ function verCarnet(serial, cedula, vence, estatus,idf) {
           $("#divcategoria").html(militar.ObtenerCategoria());
           var comp = militar.Componente.abreviatura;
           if(militar.Componente.abreviatura == "AV"){
-              comp = "AN"
+              comp = "AM"
           }
           $("#divsiglas").html(comp+"B");
           url = "images/firma.png";
