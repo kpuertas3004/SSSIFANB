@@ -7,10 +7,10 @@ let Estatus = 0;
 function verCarnet(serial, cedula, vence, estatus,idf) {
 
     CargarUrl("_objectPDF", "rpt/carnet");
-    let ObjMilitar = new Militar();
-    let OqMilitar = new Militar();
-    var xhttp = new XMLHttpRequest();
-    var url = Conn.URL + "militar/crud/" + cedula;
+    var ObjMilitar = new Militar();
+    var OqMilitar = new Militar();
+    // var xhttp = new XMLHttpRequest();
+    // var url = Conn.URL + "militar/crud/" + cedula;
     alert("HOLA");
     // xhttp.open("GET", url, true);
     // xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('ipsfaToken'));
