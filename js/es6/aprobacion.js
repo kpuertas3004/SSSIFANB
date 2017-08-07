@@ -4,35 +4,6 @@ let listaCarnet = new LstCarnet();
 let Estatus = 0;
 
 
-
-function aprobarCarnet(serial, estatus) {
-    CargarAPI(Conn.URL + "carnet/apro/" + estatus + "/" + serial, "GET");
-    var tabla = "_tblPendiente";
-    var buzon = "tblPendientesBuzon";
-    if (Estatus != 0) {
-        tabla = "_tblPendienteImp";
-        buzon = "tblPendientesBuzonImp";
-    }
-    //alert(tabla);
-    //$("#"+tabla).html(PendienteHTML());
-    var table = $('#' + buzon).DataTable();
-
-    $("#"+buzon+" tbody").on( 'click', 'button.desaparece', function () {
-        table
-            .row( $(this).parents('tr') )
-            .remove()
-            .draw();
-    } );
-}
-
-function pendienteCarnet(serial, estatus) {
-    CargarAPI(Conn.URL + "carnet/apro/2/" + serial, "GET");
-}
-
-function cerrarCarnet(serial) {
-    CargarAPI(Conn.URL + "carnet/apro/3/" + serial, "GET");
-}
-
 function verCarnet(serial, cedula, vence, estatus,idf) {
 
     CargarUrl("_objectPDF", "rpt/carnet");
@@ -106,6 +77,36 @@ function verCarnet(serial, cedula, vence, estatus,idf) {
 
     xhttp.send();
 }
+
+
+function aprobarCarnet(serial, estatus) {
+    CargarAPI(Conn.URL + "carnet/apro/" + estatus + "/" + serial, "GET");
+    var tabla = "_tblPendiente";
+    var buzon = "tblPendientesBuzon";
+    if (Estatus != 0) {
+        tabla = "_tblPendienteImp";
+        buzon = "tblPendientesBuzonImp";
+    }
+    //alert(tabla);
+    //$("#"+tabla).html(PendienteHTML());
+    var table = $('#' + buzon).DataTable();
+
+    $("#"+buzon+" tbody").on( 'click', 'button.desaparece', function () {
+        table
+            .row( $(this).parents('tr') )
+            .remove()
+            .draw();
+    } );
+}
+
+function pendienteCarnet(serial, estatus) {
+    CargarAPI(Conn.URL + "carnet/apro/2/" + serial, "GET");
+}
+
+function cerrarCarnet(serial) {
+    CargarAPI(Conn.URL + "carnet/apro/3/" + serial, "GET");
+}
+
 
 function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
 
