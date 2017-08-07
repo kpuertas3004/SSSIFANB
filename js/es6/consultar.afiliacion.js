@@ -1629,6 +1629,26 @@ function SalvarFamiliar() {
     }
 }
 
+function pendienteCarnet(serial, estatus) {
+    CargarAPI(Conn.URL + "carnet/apro/2/" + serial, "GET");
+}
+
+function cerrarCarnet(serial) {
+    CargarAPI(Conn.URL + "carnet/apro/3/" + serial, "GET");
+}
+
+
+
+
+function ImprimirCarnet2(nombre) {
+    var html = $("#" + nombre).html();
+    console.log(html);
+    var ventana = window.open("", "_blank");
+    ventana.document.write(html);
+    //ventana.document.head.innerHTML = ;
+    ventana.print();
+    ventana.close();
+}
 
 function GenerarCarnet() {
     var xhttp = new XMLHttpRequest();
@@ -1650,6 +1670,9 @@ function cambiarClave(){
         clave.Salvar();
     }
 }
+
+
+
 
 function ImprimirCarnet(nombre) {
     var html = $("#" + nombre).html();
