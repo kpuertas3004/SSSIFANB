@@ -160,7 +160,9 @@ class DatoFisionomico{
             case "BL":cad = "BLANCA";break;
             case "CA":cad = "CANELA";break;
             case "MO":cad = "MORENA";break;
-
+						case "TR":cad = "TRIGUEÑA";break;
+						case "MO":cad = "MORENA";break;
+						case "RO":cad = "ROSADA";break;
             default: cad = "********";break;
         }
         return cad;
