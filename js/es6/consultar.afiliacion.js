@@ -1457,7 +1457,6 @@ function cambiarClave(){
         Util.MensajeFormulario("_frmDatoFamiliar","msjcambio");
     }else{
         clave.Salvar();
-        $("#modFamiliar").modal("hide");
     }
 }
 
