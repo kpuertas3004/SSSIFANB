@@ -866,9 +866,9 @@ class Militar{
 								DBF.fechanacimiento, //5
 								v.esmilitar, //6
 								mod, //7
-								nombres, //8
+								nombres.toUpperCase(), //8
 								DBF.sexo, //9
-								apellidos, //10
+								apellidos.toUpperCase(), //10
 								v.condicion, //11
 								v.estudia, //12
 								fechavencimiento, //13

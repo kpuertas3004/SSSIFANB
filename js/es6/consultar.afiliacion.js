@@ -1297,8 +1297,9 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
             // var fecha vence = Util.ConvertirFechaHumana(vence).split("/");
             $("#divfechavencimiento").html(Util.ConvertirFechaHumana(vence));
             var nombre = militar.Familiar[pos].Persona.DatoBasico.nombreprimero;
-            $("#lblnombref").html(nombre);
-            $("#lblapellidof").html(militar.Familiar[pos].Persona.DatoBasico.apellidoprimero);
+            $("#lblnombref").html(nombre.toUpperCase());
+            var apellido = militar.Familiar[pos].Persona.DatoBasico.apellidoprimero;
+            $("#lblapellidof").html(apellido.toUpperCase());
             $("#lblcedulaf").html(idf);
             $("#lblparentescof").html(Util.ConvertirParentesco(militar.Familiar[pos].parentesco,militar.Familiar[pos].Persona.DatoBasico.sexo));
             var amilitar = militar.Persona.DatoBasico.apellidoprimero.split(" ");
@@ -1306,10 +1307,12 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
             $("#lblafiliadof").html(militar.Grado.abreviatura + " - " + amilitar[0] + " " + nmilitar[0] + " CI:"+cedula);
 
             url = rutaimgfamiliar + cedula + "/huella" + idf + ".bmp";
-
             $("#imghuellaCarnetf").attr("src", url);
-
-            $("#lblhistoriaf").html(militar.Familiar[pos].historiamedica);
+            var historia = militar.Familiar[pos].historiamedica;
+            if (militar.Familiar[pos].historiamedica == ""){
+              historia = "0";
+            }
+            $("#lblhistoriaf").html(historia);
             $("#lblgsanguineof").html(militar.Familiar[pos].Persona.DatoFisionomico.gruposanguineo);
             $("#lbldonantef").html(militar.Familiar[pos].donante);
             $("#lblfechanacf").html(Util.ConvertirFechaHumana(militar.Familiar[pos].Persona.DatoBasico.fechanacimiento));
@@ -1869,7 +1872,7 @@ function ImprimirCarnetFamiliar(nombre) {
     width:67px; height:auto;
     position:absolute;
     left: 5px;
-    top: 128px;
+    top: 126px;
     font-size:9px;
     font-weight:bold;
     line-height: 1.4em;
@@ -1879,7 +1882,7 @@ function ImprimirCarnetFamiliar(nombre) {
     width:166px; height:auto;
     position:absolute;
     left: 70px;
-    top: 128px;
+    top: 126px;
     font-size:9px;
     font-weight:bold;
     line-height: 1.4em;
