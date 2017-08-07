@@ -1871,7 +1871,7 @@ function ImprimirCarnetFamiliar(nombre) {
     width:166px; height:auto;
     position:absolute;
     left: 70px;
-    top: 130px;
+    top: 128px;
     font-size:8px;
     font-weight:bold;
     line-height: 1.4em;
