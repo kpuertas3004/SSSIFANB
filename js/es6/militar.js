@@ -444,9 +444,9 @@ class Persona{
 		this.Defuncion = new Defuncion();
 		this.DocumentoCivil = new DocumentoCivil();
 		this.RedSocial = new RedSocial();
-		this.urlFoto = "";
-		this.urlHuella = "";
-		this.urlFirma = "";
+		this.foto = "";
+		this.huella = "";
+		this.firma = "";
 
 		this.CondicionEspecial = new CondicionEspecial();
 	}
@@ -602,7 +602,7 @@ class Militar{
 		this.urlfirma = "";
 		this.urlcedula = "";
 		this.codigocomponente = "";
-        this.numerohistoria = "";
+    this.numerohistoria = "";
 	}
 	Crear(militar){
 
@@ -654,13 +654,16 @@ class Militar{
 				$("#_imggrado").attr("src", url);
 
 				var rutaimg = Conn.URLIMG;
+				url = rutaimg + $("#txtcedula").val() + ".jpg";
 				if (militar.Persona.foto  != undefined){
 					rutaimg = Conn.URLTEMP;
+					url = rutaimg + $("#txtcedula").val() + "/foto.jpg";
 				}
-
-				url = rutaimg + $("#txtcedula").val() + ".jpg";
 				$("#minifoto").attr("href", url);
 				$("#_img").attr("src", url);
+
+
+
 				url = rutaimg + $("#txtcedula").val() + "/huella.bmp";
 				$("#minihuella").attr("href", url);
 				$("#_imghuellam").attr("src", url);
