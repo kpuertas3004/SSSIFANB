@@ -1870,7 +1870,7 @@ function ImprimirCarnetFamiliar(nombre) {
     position:absolute;
     left: 5px;
     top: 128px;
-    font-size:8px;
+    font-size:9px;
     font-weight:bold;
     line-height: 1.4em;
   }
@@ -1884,7 +1884,7 @@ function ImprimirCarnetFamiliar(nombre) {
     font-weight:bold;
     line-height: 1.4em;
   }
-  .letra-8{font-size:7px;}
+  .letra-8{font-size:9px;}
   .lblhistoriaf{margin-left:60px;}
   .lblgsanguineof{margin-left:60px;}
   .lblobsf{margin-left:60px;}
