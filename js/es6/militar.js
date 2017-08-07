@@ -1103,9 +1103,12 @@ class Militar{
         switch (this.categoria){
             case "EFE":cad = "EFECTIVO";break;
             case "ASI":cad = "ASIMILADO";break;
-
             default: cad = "********";break;
         }
+
+        if(this.situacion != "ACT"){
+        	cad = "RESERVA ACTIVA";
+		}
         return cad;
     }
 
