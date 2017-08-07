@@ -248,3 +248,15 @@ function IniciarSesion(){
 
   }
 }
+
+
+/**
+ * Listar Carnet's
+ *
+ **/
+function ListarCarnet(estatus) {
+    Estatus = estatus;
+    var ruta = Conn.URL + "carnet/listar/" + estatus;
+    alert(ruta);
+    CargarAPI(ruta, "GET", "", listaCarnet);
+}

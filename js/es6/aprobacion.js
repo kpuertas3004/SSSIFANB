@@ -108,16 +108,6 @@ let listaCarnet = new LstCarnet();
 let Estatus = 0;
 
 
-/**
- * Listar Carnet's
- *
- **/
-function ListarCarnet(estatus) {
-    Estatus = estatus;
-    var ruta = Conn.URL + "carnet/listar/" + estatus;
-    alert(ruta);
-    CargarAPI(ruta, "GET", "", listaCarnet);
-}
 
 function aprobarCarnet(serial, estatus) {
     CargarAPI(Conn.URL + "carnet/apro/" + estatus + "/" + serial, "GET");
