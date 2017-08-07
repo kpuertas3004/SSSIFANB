@@ -1454,7 +1454,7 @@ function GenerarCarnet() {
 function cambiarClave(){
     var clave = new Clave();
     if (Util.ValidarFormulario("formcusuario") == false) {
-        Util.MensajeFormulario("_frmDatoFamiliar","msjcambio");
+        Util.MensajeFormulario("formcusuario","msjcambio");
     }else{
         clave.Salvar();
     }
