@@ -1,7 +1,5 @@
 
 
-let listaCarnet = new LstCarnet();
-let Estatus = 0;
 
 
 function verCarnet(serial, cedula, vence, estatus,idf) {
@@ -80,6 +78,8 @@ function verCarnet(serial, cedula, vence, estatus,idf) {
 }
 
 
+let listaCarnet = new LstCarnet();
+let Estatus = 0;
 function aprobarCarnet(serial, estatus) {
     CargarAPI(Conn.URL + "carnet/apro/" + estatus + "/" + serial, "GET");
     var tabla = "_tblPendiente";
