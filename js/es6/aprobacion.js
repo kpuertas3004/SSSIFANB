@@ -174,7 +174,7 @@ function verCarnet(serial, cedula, vence, estatus,idf) {
 
           url = rutaimg + cedula + "/foto.jpg";
           $("#imgfotoCarnet").attr("src", url);
-          alert(url);
+          //alert(url);
           $("#lblgrado").html(militar.Grado.descripcion);
           $("#lblnombre").html(militar.Persona.DatoBasico.nombreprimero);
           $("#lblapellido").html(militar.Persona.DatoBasico.apellidoprimero);
