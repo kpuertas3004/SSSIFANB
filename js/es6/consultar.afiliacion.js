@@ -53,7 +53,16 @@ function activarActualizar() {
 }
 
 function Salvar() {
-    Frm = "S";
+  if (Util.ValidarFormulario("_bxDatoBasico") == false) {
+      Util.ModalValidar("Favor completar todos los campos");
+      Util.MensajeFormulario("_bxDatoBasico","msjVeriActualizar");
+  } else {
+      var militar = new Militar();
+      militar.Salvar();
+      $("#_btnModificar").show();
+      $("#_btnActualizar").hide();
+      ActivarFormulario(true);
+  }
 }
 
 function Actualizar() {
