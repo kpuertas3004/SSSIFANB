@@ -183,7 +183,11 @@ function verCarnet(serial, cedula, vence, estatus,idf) {
           $("#divvencimiento").html("VENCE " + Util.ConvertirFechaHumana(vence));
 
           $("#divcategoria").html(militar.ObtenerCategoria());
-          $("#divsiglas").html(militar.Componente.abreviatura+"B");
+          var comp = militar.Componente.abreviatura;
+          if(militar.Componente.abreviatura == "AV"){
+              comp = "AN"
+          }
+          $("#divsiglas").html(comp+"B");
           url = "images/firma.png";
           $("#imgfirmaCarnet").attr("src", url);
 
@@ -251,7 +255,8 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
             url = rutaimgfamiliar + cedula + "/firma" + idf+ ".jpg";
 
             $("#imgfirmaCarnetf").attr("src", url);
-            $("#divfechavencimiento").html(Util.ConvertirFechaHumana(vence));
+            var fecha vence = Util.ConvertirFechaHumana(vence).split("/");
+            $("#divfechavencimiento").html("05/07/"+fecha_vence[2]);
             $("#lblnombref").html(militar.Familiar[pos].Persona.DatoBasico.nombreprimero);
             $("#lblapellidof").html(militar.Familiar[pos].Persona.DatoBasico.apellidoprimero);
             $("#lblcedulaf").html(idf);
