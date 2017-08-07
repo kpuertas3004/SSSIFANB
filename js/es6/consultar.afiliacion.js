@@ -1296,12 +1296,14 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
             $("#imgfirmaCarnetf").attr("src", url);
             // var fecha vence = Util.ConvertirFechaHumana(vence).split("/");
             $("#divfechavencimiento").html(Util.ConvertirFechaHumana(vence));
-            var nombre = militar.Grado.abreviatura + " - " + militar.Familiar[pos].Persona.DatoBasico.nombreprimero;
+            var nombre = militar.Familiar[pos].Persona.DatoBasico.nombreprimero;
             $("#lblnombref").html(nombre);
             $("#lblapellidof").html(militar.Familiar[pos].Persona.DatoBasico.apellidoprimero);
             $("#lblcedulaf").html(idf);
             $("#lblparentescof").html(Util.ConvertirParentesco(militar.Familiar[pos].parentesco,militar.Familiar[pos].Persona.DatoBasico.sexo));
-            $("#lblafiliadof").html(militar.Persona.DatoBasico.apellidoprimero+" "+militar.Persona.DatoBasico.nombreprimero+" CI:"+cedula);
+            var amilitar = militar.Persona.DatoBasico.apellidoprimero.split(" ");
+            var nmilitar = militar.Persona.DatoBasico.nombreprimero.split(" ");
+            $("#lblafiliadof").html(militar.Grado.abreviatura + " - " + amilitar[0] + " " + nmilitar[0] + " CI:"+cedula);
 
             url = rutaimgfamiliar + cedula + "/huella" + idf + ".bmp";
 
