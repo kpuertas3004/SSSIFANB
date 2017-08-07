@@ -255,6 +255,7 @@ function IniciarSesion(){
  *
  **/
 function ListarCarnet(estatus) {
+    listaCarnet = new LstCarnet();
     Estatus = estatus;
     var ruta = Conn.URL + "carnet/listar/" + estatus;
     alert(ruta);

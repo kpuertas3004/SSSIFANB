@@ -590,7 +590,7 @@ function incluirAfiliado(ced) {
     if ( ObjMilitar.id != "" ){
        $('#txtcedula').val("");
     }
-    ObjMilitar = new Militar();
+    //ObjMilitar = new Militar();
     $('#txtcedula').keyup(function () {
         this.value = (this.value + '').replace(/[^0-9]/g, '');
     });
