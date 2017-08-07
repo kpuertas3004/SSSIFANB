@@ -1227,7 +1227,7 @@ function verCarnet(serial, cedula, vence, estatus,idf) {
           $("#lblojos").html(militar.Persona.DatoFisionomico.ObtenerOjo());
           $("#lblcolor").html(militar.Persona.DatoFisionomico.ObtenerPiel());
           $("#divserial").html('CCS' + serial);
-          $("#divvencimiento").html("VENCE " + Util.ConvertirFechaHumana(vence));
+          //$("#divvencimiento").html("VENCE " + Util.ConvertirFechaHumana(vence));
           ImprimirCarnet("_objectPDF");
       }
 
@@ -1629,7 +1629,7 @@ function ImprimirCarnet(nombre) {
         left: 95px;
         top: 65px;
     }
-    .componente{border:0px #0033FF solid; width:250px; height:14px; position:absolute; left: 50px; top: 44px; font-size:10px;font-weight:bold; font-color:# EFEFEF; text-align:center;}
+    .componente{border:0px #0033FF solid; width:280px; height:14px; position:absolute; left: 50px; top: 44px; font-size:10px;font-weight:bold; font-color:# EFEFEF; text-align:center;}
     .fecha-vencimiento{
         border: 0px #0033FF solid;
         width: 70px;
