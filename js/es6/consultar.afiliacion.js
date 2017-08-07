@@ -1877,9 +1877,9 @@ function ImprimirCarnetFamiliar(nombre) {
     line-height: 1.4em;
   }
   .letra-8{font-size:7px;}
-  .lblhistoriaf{margin-left:40px;}
-  .lblgsanguineof{margin-left:40px;}
-  .lblobsf{margin-left:34px;}
+  .lblhistoriaf{margin-left:60px;}
+  .lblgsanguineof{margin-left:60px;}
+  .lblobsf{margin-left:42px;}
   .lbldonantef{margin-left: 42px}
   .lblserialf{margin-left: 42px}
   /**PARTE TRASERA */
