@@ -1242,7 +1242,7 @@ class LstCarnet {
             var boton = `<div class="btn-group">
 		        <button type="button" class="btn btn-sm btn-primary" onclick="${tipocarnet}('${v.serial}','${v.id}','${v.fechavencimiento}',0,'${v.idf}')">
 		        <i class="fa fa-print"></i></button>
-		        <button type="button" class="btn btn-sm btn-success desaparece" onclick="cerrarCarnet('$\{v.serial}')">
+		        <button type="button" class="btn btn-sm btn-success desaparece" onclick="cerrarCarnet('${v.serial}')">
 		        <i class="fa fa-check"></i></button>
 		        </div>`;
         }
