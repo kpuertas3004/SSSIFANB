@@ -4,9 +4,9 @@
 
 function verCarnet(serial, cedula, vence, estatus,idf) {
 
-    CargarUrl("_objectPDF", "rpt/carnet");
-    var ObjMilitar = new Militar();
-    var OqMilitar = new Militar();
+    // CargarUrl("_objectPDF", "rpt/carnet");
+    // var ObjMilitar = new Militar();
+    // var OqMilitar = new Militar();
     // var xhttp = new XMLHttpRequest();
     // var url = Conn.URL + "militar/crud/" + cedula;
     alert("HOLA");
