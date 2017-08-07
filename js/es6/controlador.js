@@ -260,5 +260,5 @@ function ListarCarnet(estatus) {
     var ruta = Conn.URL + "carnet/listar/" + estatus;
     // alert(ruta);
     console.log(listaCarnet);
-    // CargarAPI(ruta, "GET", "", listaCarnet);
+    CargarAPI(ruta, "GET", "", listaCarnet);
 }
