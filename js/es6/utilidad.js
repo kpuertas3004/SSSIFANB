@@ -21,6 +21,29 @@ class Utilidad {
             $.notify("("+tecla+") Caracter no permitido", "warning");
             return false;
         }
+        var cond1 = 0;var cond2=0;
+        if($("#claveN").val().length < 8){
+            $("#lblalert1").show();
+        }else{
+            $("#lblalert1").hide();
+            cond1 = 1;
+        }
+
+        if($("#claveN").val() != $("#claveN2").val()){
+            $("#lblalert2").show();
+        }else{
+            if($("#claveN").val() != ""){
+                $("#lblalert2").hide();
+                cond2 = 1;
+            }
+
+        }
+
+        if(cond1 == 1 && cond2 == 1){
+            $("#btnmodclave").attr("disabled",false);
+        }else{
+            $("#btnmodclave").attr("disabled",true);
+        }
     }
 
     cmbField(obj,foco){

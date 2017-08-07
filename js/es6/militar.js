@@ -1160,6 +1160,7 @@ class Clave {
         this.clave = $("#claveA").val();
         this.nueva = $("#claveN").val();
         this.repetir = $("#claveN2").val();
+        console.log(this);
         return this;
     }
 
