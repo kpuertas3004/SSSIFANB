@@ -1149,10 +1149,10 @@ function ModificarFamiliar() {
 function CConstanciaAfiliacion() {
 
     var urlMil = "http://192.168.12.161/imagenes/" + $("#txtcedula").val() + ".jpg";
-    var urlGra = "images/grados/" + militar.Grado.abreviatura + ".png";
+    var urlGra = "images/grados/" + ObjMilitar.Grado.abreviatura + ".png";
     urlGra = urlGra.toLowerCase();
     var fechaActual = ConvertirFechaActual();
-    var ts = militar.tiemposervicio.split(" ");
+    var ts = ObjMilitar.tiemposervicio.split(" ");
     var tiempo = ts[0] + "ÑOS  " + ts[1] + "ESES " + ts[2] + "ÍAS"
     var gradoPI = 'GENERAL DE DIVISIÓN';
     var clascat = $("#cmbcategoria option:selected").text() + ' / ' + $("#cmbclase option:selected").text();
