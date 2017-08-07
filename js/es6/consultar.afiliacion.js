@@ -1733,7 +1733,7 @@ function cerrarCarnet(serial) {
 }
 
 function verCarnet(serial, cedula, vence, estatus,idf) {
-
+    alert("Aprobar... ");
     CargarUrl("_objectPDF", "rpt/carnet");
     let ObjMilitar = new Militar();
     let OqMilitar = new Militar();
