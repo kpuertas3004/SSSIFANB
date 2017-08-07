@@ -1155,6 +1155,18 @@ class Clave {
 			this.repetir = "";
 	}
 
+    Obtener(){
+        this.login = Usuario.usuario;
+        this.clave = $("#claveA").val();
+        this.nueva = $("#claveN").val();
+        this.repetir = $("#claveN2").val();
+        return this;
+    }
+
+    Salvar(){
+        CargarAPI(Conn.URL + "wusuario" , "PUT", this.Obtener());
+    }
+
 }
 $(function (){
   if (sessionStorage.getItem('ipsfaToken') == undefined ){
