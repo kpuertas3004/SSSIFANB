@@ -1805,12 +1805,12 @@ function ImprimirCarnet(nombre) {
     }
     .categoria1{
         border: 0px #0033FF solid;
-        width: 100px;
+        width: 115px;
         height: 14px;
         position: absolute;
         left: 128px;
         top: 15px;
-        font-size: 20px;
+        font-size: 16px;
         font-weight: bold;
     }
     .estatus {border:0px #0033FF solid; width:60px; height:60px; top:60px; left:95px; position:absolute;font-size:40px;font-weight:bold;}
