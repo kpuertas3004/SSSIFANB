@@ -723,6 +723,17 @@ function NacionalidadFamiliar(nac) {
     $("#btnnacionalidad").html(nac);
 }
 
+function NacionalidadFamiliar2(nac) {
+    if(nac == "M"){
+        $("#txtcedulam").val("10"+$("#txtcedula").val());
+        $("#txtcedulam").attr("disabled",true);
+    }else{
+        $("#txtcedulam").attr("disabled",false);
+    }
+    $("#btnnacionalidadm").html(nac);
+    NacionalidadFamiliar(nac);
+}
+
 function FrmCuentaBancaria(valor) {
     $("#cmbminstfinanciera").attr('disabled', valor);
     $("#cmbmtipofinanciera").attr('disabled', valor);
@@ -1295,7 +1306,7 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
 
             $("#imgfirmaCarnetf").attr("src", url);
             // var fecha vence = Util.ConvertirFechaHumana(vence).split("/");
-            $("#divfechavencimiento").html(Util.ConvertirFechaHumana(vence));
+            $("#divfechavencimiento").html("VENCE "+Util.ConvertirFechaHumana(vence));
             var nombre = militar.Familiar[pos].Persona.DatoBasico.nombreprimero;
             $("#lblnombref").html(nombre.toUpperCase());
             var apellido = militar.Familiar[pos].Persona.DatoBasico.apellidoprimero;
@@ -1521,7 +1532,7 @@ function ValidarMilitar(valor) {
 
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", Conn.URL + "militar/crud/" + $("#txtcedulam").val());
-    xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('ipsfaToken'));
+    //xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('ipsfaToken'));
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
 
@@ -1602,6 +1613,8 @@ function ValidarMilitar(valor) {
 
             } else { //if no existe el miliater
                 $("#tipoModFam").val(0);
+                //$("#txtnacimientof").val($("#txtnacimientom")).val();
+                //$("#txtedadf").val($("#txtedadmm")).val();
                 $("#modFamiliar").modal('show');
             } //Fin del tipo
 

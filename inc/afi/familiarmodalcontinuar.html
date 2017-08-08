@@ -4,11 +4,11 @@
     <label>Cédula:</label>
     <div class="input-group">
       <span class="input-group-btn">
-          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id="btnnacionalidadm">V</button>
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id="btnnacionalidadm" >V</button>
             <ul class="dropdown-menu" id="liNacionalidad">
-              <li><a href="#" onclick="NacionalidadFamiliar('V');">V</a></li>
-              <li><a href="#" onclick="NacionalidadFamiliar('M');">M</a></li>
-              <li><a href="#" onclick="NacionalidadFamiliar('E');">E</a></li>
+              <li><a href="#" onclick="NacionalidadFamiliar2('V');">V</a></li>
+              <li><a href="#" onclick="NacionalidadFamiliar2('M');">M</a></li>
+              <li><a href="#" onclick="NacionalidadFamiliar2('E');">E</a></li>
             </ul>
       </span>
       <input class="form-control" id="txtcedulam" type="text" required >
@@ -21,7 +21,7 @@
       <div class="input-group-addon">
         <i class="fa fa-calendar"></i>
       </div>
-      <input id="txtnacimientom" class="form-control" type="text" onblur="CalcularEdadFamiliar('txtedadmm','txtnacimientom')" required >
+      <input id="txtnacimientom" class="form-control" type="text" onchange="CalcularEdadFamiliar('txtedadmm','txtnacimientom')" required >
     </div>
   </div>
   <div class="col-md-4 col-sm-4 col-xs-4" >
