@@ -1495,6 +1495,19 @@ function CalcularEdadFamiliar(id, vl) {
     $('#' + id).val(Util.CalcularEdad($('#' + vl).val()));
 }
 
+function verificarCedulamenor(){
+    var edad = $("#txtedadmm").val();
+    var nac = $("#btnnacionalidadm").html();
+    if(edad >=9 &&  nac == 'M' ){
+        $("#modMsjfamiliar").modal('hide');
+        NacionalidadFamiliar2("V");
+        $("#txtcedulam").val("");
+        Util.ModalValidarFamiliar("El menor ya debe poseer cedula. Por favor ingrese un numero de cedula valido.");
+        return false;
+
+    }
+}
+
 function ActivarModalFamiliar() {
     $("#modFamiliar").modal('show');
 }
@@ -1532,7 +1545,7 @@ function ValidarMilitar(valor) {
 
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", Conn.URL + "militar/crud/" + $("#txtcedulam").val());
-    //xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('ipsfaToken'));
+    xhttp.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem('ipsfaToken'));
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
 
@@ -1613,8 +1626,8 @@ function ValidarMilitar(valor) {
 
             } else { //if no existe el miliater
                 $("#tipoModFam").val(0);
-                //$("#txtnacimientof").val($("#txtnacimientom")).val();
-                //$("#txtedadf").val($("#txtedadmm")).val();
+                $("#txtnacimientof").val($("#txtnacimientom").val());
+                $("#txtedadf").val($("#txtedadmm").val());
                 $("#modFamiliar").modal('show');
             } //Fin del tipo
 
