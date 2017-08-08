@@ -1742,12 +1742,12 @@ function ImprimirCarnet(nombre) {
         position: absolute;
         left: 75px;
         top: 120px;
-        font-size: 11px;
+        font-size: 10px;
         font-weight: bold;
         font-color: #000;
         text-align: center
     }
-    .letra-8{font-size:12px;}
+    .letra-8{font-size:10px;}
     .nota-pie-i-anverso{border:0px #0033FF solid; width:190px; height:8px; position:absolute; left: 132px; top: 177px; font-size:8px;text-align:left;font-style:normal;}
     .nota-pie-ii-anverso{border:0px #0033FF solid; width:190px; height:8px; position:absolute; left: 132px; top: 187px; font-size:8px;text-align:left;font-style:normal;}
 
@@ -1784,11 +1784,11 @@ function ImprimirCarnet(nombre) {
         position: absolute;
         left: 128px;
         top: 15px;
-        font-size: 14px;
+        font-size: 20px;
         font-weight: bold;
     }
     .estatus {border:0px #0033FF solid; width:60px; height:60px; top:60px; left:95px; position:absolute;font-size:40px;font-weight:bold;}
-    .siglas-componente{border:0px #0033FF solid; width:30px; height:14px; position:absolute; left: 258px; top: 17px; font-size:18px;font-weight:bold;}
+    .siglas-componente{border:0px #0033FF solid; width:30px; height:14px; position:absolute; left: 258px; top: 17px; font-size:20px;font-weight:bold;}
     .labels-dat-medicos{
         border: 0px #0033FF solid;
         width: 200px;
