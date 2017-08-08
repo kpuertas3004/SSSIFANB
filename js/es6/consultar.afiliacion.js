@@ -226,7 +226,7 @@ function ConvertirFechaActual() {
         "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
     var f = new Date();
 
-    return f.getDate() + " del mes de " + meses[f.getMonth()] + " de " + f.getFullYear();
+    return f.getDate() + " días " +" del mes de " + meses[f.getMonth()] + " de " + f.getFullYear();
 }
 
 function IncluirFamiliar() {
