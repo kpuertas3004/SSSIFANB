@@ -2,7 +2,34 @@
   var ret = "" + this.valueOf();
   return ret.length == 1 ? "0" + ret : ret;
 };
+function verificarPrivilegioUsuario(){
+    $.each(Usuario.Perfil.Privilegios,function (privilegio) {
+        console.log(this);
+        switch (this.nombre){
+            case "afiliacion.salvar":
+                console.log("Entro por salvar");
+                $(".prvsalvar").attr("disabled",false);
+                $(".prvsalvar").toggleClass('hide');
+                break;
+            case "afiliacion.modificar":
+                console.log("Entro por modificar");
+                $(".prvmodificar").attr("disabled",false);
+                $(".prvmodificar").toggleClass('hide');
+                break;
+            case "afiliacion.carnet":
+                console.log("Entro por carnet");
+                $(".prvcarnet").attr("disabled",false);
+                $(".prvcarnet").toggleClass('hide');
+                break;
+            case "afiliacion.constancia":
+                console.log("Entro por carnet");
+                $(".prvcontancia").attr("disabled",false);
+                $(".prvcontancia").toggleClass('hide');
+                break;
 
+        }
+    })
+}
 
 let FrmValidar = false;
 let Usuario = {};
@@ -27,6 +54,12 @@ class Menu {
         }
       });
 			$('#_menu').html(cadena);
+        verificarPrivilegioUsuario();
+      /*if(Usuario.Roles.descripcion == "Root"){
+          alert("ENTRA:");
+          $("button").attr("disabled",true);
+          $("button").hide();
+      }*/
   }
 }
 class Estado{

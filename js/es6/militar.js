@@ -613,8 +613,10 @@ class Militar{
 
 		if (militar.tipo != undefined) {
 				$("#_cedula").val("");
+
+
 				$("#_contenido").html("La cédula no existe en el sistema. ¿Desea Realizar un nuevo ingreso?");
-				var botones = '<button type="button" class="btn btn-success" data-dismiss="modal" id="_aceptar" onClick="incluirAfiliado()">Si</button>\
+				var botones = '<button type="button" class="btn btn-success hide" data-dismiss="modal" id="_aceptar" onClick="incluirAfiliado()">Si</button>\
 											 <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>';
 				$("#_botonesmsj").html(botones);
 
@@ -818,7 +820,7 @@ class Militar{
 						var fnac = Util.ConvertirFechaHumana(DBF.fechanacimiento);
 
 						var modificar = '<button type="button" id="btnModFamiliar' + j + '" \
-		class="btn btn-sm btn-info" onclick="ModificarFamiliarPos(' + j + ')">\
+		class="btn btn-sm btn-info prvmodificar hide" onclick="ModificarFamiliarPos(' + j + ')">\
 			<i class="fa fa-pencil"></i></button>'
 						var mil = nombre;
 						if (v.esmilitar == true) {
@@ -917,7 +919,7 @@ class Militar{
 								FrmFamiliar(true);
 						}
 				});
-
+				verificarPrivilegioUsuario();
 				$("#_tblHistorialMilitar").html(HistoricoMilitarHTML());
 				var th = $('#tblhistoricomilitar').DataTable({
 						'paging': false,
