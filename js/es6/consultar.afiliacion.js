@@ -1263,10 +1263,7 @@ function aprobarCarnet(serial, estatus) {
         tabla = "_tblPendienteImp";
         buzon = "tblPendientesBuzonImp";
     }
-    //alert(tabla);
-    //$("#"+tabla).html(PendienteHTML());
     var table = $('#' + buzon).DataTable();
-
     $("#"+buzon+" tbody").on( 'click', 'button.desaparece', function () {
         table
             .row( $(this).parents('tr') )

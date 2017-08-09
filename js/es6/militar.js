@@ -291,6 +291,7 @@ class Familiar{
 		this.Persona.DatoBasico.apellidoprimero = $("#txtapellidof").val();
 		this.Persona.DatoBasico.estadocivil = $("#cmbedocivilf  option:selected").val();
 		this.parentesco = $("#cmbparentescof").val();
+		alert(this.parentesco);
 		this.condicion = parseInt($("#cmbcondicionf").val());
 		this.beneficio = $("#cmbsituacionf").val()==0?false:true;
 		this.estudia = parseInt($("#cmbestudiaf").val());
@@ -310,38 +311,34 @@ class Familiar{
 		this.Persona.DatoFisionomico.colorcabello = $("#cmbcolorcabellof").val();
 		this.Persona.DatoFisionomico.estatura = parseFloat($("#txtestaturaf").val());
 		this.Persona.DatoFisionomico.senaParticular = $("#txtsenaparticularf").val();
-		// this.Persona.DatoFisionomico.gruposanguineo = $("#txtgruposanguineof").val();
+
 		this.Persona.DatoFisionomico.gruposanguineo = $("#gsanguineof").val();
 		this.Persona.RedSocial.twitter = $("#txttwitterf").val();
 		this.Persona.RedSocial.facebook = $("#txtfacebookf").val();
 		this.Persona.RedSocial.instagram = $("#txtinstagranf").val();
-
 		this.Persona.Correo.principal = $("#txtcorreof").val().toUpperCase();
 		this.Persona.Telefono.domiciliario = $("#txttelefonof").val();
 		this.Persona.Telefono.movil = $("#txtcelularf").val();
-		// this.Persona.RedSocial.linkedin = $("#txtlinkedinf").val();
-        var dir = new Direccion();
-        dir.tipo = 0;
-        dir.estado = $("#cmbestadof option:selected").val();
-        dir.municipio = $("#cmbmunicipiof option:selected").val();
-        dir.parroquia = $("#cmbparroquiaf option:selected").val();
-        dir.ciudad = $("#cmbciudadf").val();
-        dir.calleavenida = $("#txtcallef").val().toUpperCase();
-        dir.casa = $("#txtcasaf").val().toUpperCase();
-        dir.apartamento = $("#txtaptof").val().toUpperCase();
-        this.Persona.Direccion[0] = dir;
+
+    var dir = new Direccion();
+    dir.tipo = 0;
+    dir.estado = $("#cmbestadof option:selected").val();
+    dir.municipio = $("#cmbmunicipiof option:selected").val();
+    dir.parroquia = $("#cmbparroquiaf option:selected").val();
+    dir.ciudad = $("#cmbciudadf").val();
+    dir.calleavenida = $("#txtcallef").val().toUpperCase();
+    dir.casa = $("#txtcasaf").val().toUpperCase();
+    dir.apartamento = $("#txtaptof").val().toUpperCase();
+    this.Persona.Direccion[0] = dir;
 		if($("#txtfechacondicionf").val() == ''){
-            this.Persona.CondicionEspecial.fecha == '';
+      this.Persona.CondicionEspecial.fecha == '';
 		}else{
-            this.Persona.CondicionEspecial.fecha = new Date(Util.ConvertirFechaUnix($("#txtfechacondicionf").val())).toISOString();
+      this.Persona.CondicionEspecial.fecha = new Date(Util.ConvertirFechaUnix($("#txtfechacondicionf").val())).toISOString();
 		}
 
-        this.Persona.CondicionEspecial.tipodiscapacidad = $("#cmbDiscapacidadf").val();
-        this.Persona.CondicionEspecial.diagnostico = $("#txtdiagnosticof").val();
-        this.Persona.CondicionEspecial.nombrehospitalmilitar = $("#cmbHospitalf").text();
-
-
-
+    this.Persona.CondicionEspecial.tipodiscapacidad = $("#cmbDiscapacidadf").val();
+    this.Persona.CondicionEspecial.diagnostico = $("#txtdiagnosticof").val();
+    this.Persona.CondicionEspecial.nombrehospitalmilitar = $("#cmbHospitalf").text();
 
 		return this;
 	}
