@@ -1661,10 +1661,42 @@ function SalvarFamiliar() {
 
 function pendienteCarnet(serial, estatus) {
     CargarAPI(Conn.URL + "carnet/apro/2/" + serial, "GET");
+    var tabla = "_tblPendiente";
+    var buzon = "tblPendientesBuzon";
+    if (Estatus != 0) {
+        tabla = "_tblPendienteImp";
+        buzon = "tblPendientesBuzonImp";
+    }
+    //alert(tabla);
+    //$("#"+tabla).html(PendienteHTML());
+    var table = $('#' + buzon).DataTable();
+
+    $("#"+buzon+" tbody").on( 'click', 'button.desaparece', function () {
+        table
+            .row( $(this).parents('tr') )
+            .remove()
+            .draw();
+    } );
 }
 
 function cerrarCarnet(serial) {
     CargarAPI(Conn.URL + "carnet/apro/3/" + serial, "GET");
+    var tabla = "_tblPendiente";
+    var buzon = "tblPendientesBuzon";
+    if (Estatus != 0) {
+        tabla = "_tblPendienteImp";
+        buzon = "tblPendientesBuzonImp";
+    }
+    //alert(tabla);
+    //$("#"+tabla).html(PendienteHTML());
+    var table = $('#' + buzon).DataTable();
+
+    $("#"+buzon+" tbody").on( 'click', 'button.desaparece', function () {
+        table
+            .row( $(this).parents('tr') )
+            .remove()
+            .draw();
+    } );
 }
 
 
