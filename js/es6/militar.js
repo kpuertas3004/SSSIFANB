@@ -291,7 +291,6 @@ class Familiar{
 		this.Persona.DatoBasico.apellidoprimero = $("#txtapellidof").val();
 		this.Persona.DatoBasico.estadocivil = $("#cmbedocivilf  option:selected").val();
 		this.parentesco = $("#cmbparentescof").val();
-		alert(this.parentesco);
 		this.condicion = parseInt($("#cmbcondicionf").val());
 		this.beneficio = $("#cmbsituacionf").val()==0?false:true;
 		this.estudia = parseInt($("#cmbestudiaf").val());
@@ -616,10 +615,10 @@ class Militar{
 
 
 				$("#_contenido").html("La cédula no existe en el sistema. ¿Desea Realizar un nuevo ingreso?");
-				var botones = '<button type="button" class="btn btn-success hide" data-dismiss="modal" id="_aceptar" onClick="incluirAfiliado()">Si</button>\
+				var botones = '<button type="button" class="btn btn-success prvsalvar hide" data-dismiss="modal" id="_aceptar" onClick="incluirAfiliado()">Si</button>\
 											 <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>';
 				$("#_botonesmsj").html(botones);
-
+				verificarPrivilegioUsuario();
 				$("#modMsj").modal("show");
 				$("#_aceptar").focus();
 				$("#_cargando").hide();

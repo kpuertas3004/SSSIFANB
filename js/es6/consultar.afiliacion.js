@@ -1525,17 +1525,37 @@ function ValidarMilitar(valor) {
         Util.ModalValidarFamiliar("El hijo que intenta ingresar es mayor a 26 años");
         return false;
     }
-    let esCasado = false;
+    var esCasado = false;
+    var tMadre = false;
+    var tPadre = false;
     $.each(ObjMilitar.Familiar, function (c, v) {
         if (v.parentesco == "EA" && v.beneficio == true) {
             esCasado = true;
         }
-
+        if (v.parentesco == "PD" && v.Persona.DatoBasico.sexo == "M") {
+            tPadre = true;
+        }
+        if (v.parentesco == "PD" && v.Persona.DatoBasico.sexo == "F") {
+            tMadre = true;
+        }
     });
+
 
     if ($("#cmbparentescom").val() == "EA" && esCasado == true) {
         $("#modMsjfamiliar").modal('hide');
         Util.ModalValidarFamiliar("El afiliado ya posee una esposa");
+        return false;
+    }
+
+    if ($("#cmbparentescom").val() == "PD" && tPadre == true) {
+        $("#modMsjfamiliar").modal('hide');
+        Util.ModalValidarFamiliar("El afiliado ya posee un padre");
+        return false;
+    }
+
+    if ($("#cmbparentescom").val() == "PD" && tMadre == true) {
+        $("#modMsjfamiliar").modal('hide');
+        Util.ModalValidarFamiliar("El afiliado ya posee una madre");
         return false;
     }
 
@@ -1574,52 +1594,20 @@ function ValidarMilitar(valor) {
                 $("#_estudiaf").hide();
                 $("#_condicionfdoc").hide();
                 $("#_estudiafdoc").hide();
-                var madre = false;
-                var padre = false;
                 var casado = false;
                 var sexo = DB.sexo;
                 var hijo = false;
+                var sparentesco = 'ESPOSO';
                 $.each(militar.Familiar, function (c, v) {
                     var familiar = v.Persona.DatoBasico;
-                    if (v.parentesco == "PD" && familiar.sexo == "M") {
-                        padre = true;
-                    } else if (v.parentesco == "PD" && familiar.sexo == "F") {
-                        madre = true;
-                    }
                     if (v.parentesco == "EA") {
                         casado = true;
                     }
                 }); //Fin de For each
                 var activar = false;
-                var sparentesco = 'ESPOSO';
                 var spadre = 'PADRE';
-                $("#cmbparentescof").html('');
-                if ($("#cmbsexo").val() == "F") {
-                    sparentesco = 'ESPOSA';
-                    spadre = 'MADRE';
-                    if (madre == false) {
-                        $("#cmbparentescof").append('<option value="HJ">HIJA</option>');
-                        activar = true;
-                    }
-                } else {
-                    if (padre == false) {
-                        $("#cmbparentescof").append('<option value="HJ">HIJO</option>');
-                        activar = true;
-                    }
-                }
-
-                var estadocivil = $("#cmbedocivil").val();
-                if (casado == false && estadocivil != "C") {
-                    $("#cmbparentescof").append('<option value="EA">' + sparentesco + '</option>');
-                    activar = true;
-                }
-                if (activar != true) {
-                    $("#modMsjfamiliar").modal('hide');
-                    Util.ModalValidarFamiliar("El afiliado no presenta parentesco");
-                    return false;
-                } else {
-                    $("#modFamiliar").modal('show');
-                }
+                $("#cmbparentescof").val($("#cmbparentescom").val());
+                $("#modFamiliar").modal('show');
 
             } else { //if no existe el miliater
                 $("#tipoModFam").val(0);
