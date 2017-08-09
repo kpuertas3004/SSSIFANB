@@ -1540,24 +1540,26 @@ function ValidarMilitar(valor) {
         }
     });
 
-
-    if ($("#cmbparentescom").val() == "EA" && esCasado == true) {
-        $("#modMsjfamiliar").modal('hide');
-        Util.ModalValidarFamiliar("El afiliado ya posee una esposa");
-        return false;
-    }
-
-    if ($("#cmbparentescom").val() == "PD" && tPadre == true) {
-        $("#modMsjfamiliar").modal('hide');
-        Util.ModalValidarFamiliar("El afiliado ya posee un padre");
-        return false;
-    }
-
-    if ($("#cmbparentescom").val() == "PD" && tMadre == true) {
-        $("#modMsjfamiliar").modal('hide');
-        Util.ModalValidarFamiliar("El afiliado ya posee una madre");
-        return false;
-    }
+    // console.log( esCasado);
+    // console.log(tPadre + " " + tMadre);
+    //
+    // if ($("#cmbparentescom").val() == "EA" && esCasado == true) {
+    //     $("#modMsjfamiliar").modal('hide');
+    //     Util.ModalValidarFamiliar("El afiliado ya posee una esposa");
+    //     return false;
+    // }
+    //
+    // if ($("#cmbparentescom").val() == "PD" && tPadre == true) {
+    //     $("#modMsjfamiliar").modal('hide');
+    //     Util.ModalValidarFamiliar("El afiliado ya posee un padre");
+    //     return false;
+    // }
+    //
+    // if ($("#cmbparentescom").val() == "PD" && tMadre == true) {
+    //     $("#modMsjfamiliar").modal('hide');
+    //     Util.ModalValidarFamiliar("El afiliado ya posee una madre");
+    //     return false;
+    // }
 
 
     var xhttp = new XMLHttpRequest();
