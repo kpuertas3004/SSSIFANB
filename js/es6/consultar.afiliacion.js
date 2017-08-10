@@ -725,6 +725,7 @@ function NacionalidadFamiliar(nac) {
 
 function NacionalidadFamiliar2(nac) {
     if(nac == "M"){
+      // console.log($("#tblFamiliares tr").length);
         $("#txtcedulam").val("10"+$("#txtcedula").val());
         $("#txtcedulam").attr("disabled",true);
     }else{
@@ -1309,10 +1310,14 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
             var apellido = militar.Familiar[pos].Persona.DatoBasico.apellidoprimero;
             $("#lblapellidof").html(apellido.toUpperCase());
             $("#lblcedulaf").html(idf);
-            if (militar.situacion != "FCP" && militar.Familiar[pos].parentesco != "EA"){
+            if (militar.situacion != "FCP"){
               $("#lblparentescof").html(Util.ConvertirParentesco(militar.Familiar[pos].parentesco,militar.Familiar[pos].Persona.DatoBasico.sexo));
             }else{
-              $("#lblparentescof").html(Util.ConvertirParentesco("VI",militar.Familiar[pos].Persona.DatoBasico.sexo));
+              if(militar.Familiar[pos].parentesco != "EA"){
+                $("#lblparentescof").html(Util.ConvertirParentesco("VI",militar.Familiar[pos].Persona.DatoBasico.sexo));
+              }else{
+                $("#lblparentescof").html(Util.ConvertirParentesco(militar.Familiar[pos].parentescog,militar.Familiar[pos].Persona.DatoBasico.sexo));
+              }
             }
             var amilitar = militar.Persona.DatoBasico.apellidoprimero.split(" ");
             var nmilitar = militar.Persona.DatoBasico.nombreprimero.split(" ");
