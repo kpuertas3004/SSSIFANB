@@ -1313,7 +1313,7 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
             if (militar.situacion != "FCP"){
               $("#lblparentescof").html(Util.ConvertirParentesco(militar.Familiar[pos].parentesco,militar.Familiar[pos].Persona.DatoBasico.sexo));
             }else{
-              if(militar.Familiar[pos].parentesco != "EA"){
+              if(militar.Familiar[pos].parentesco == "EA"){
                 $("#lblparentescof").html(Util.ConvertirParentesco("VI",militar.Familiar[pos].Persona.DatoBasico.sexo));
               }else{
                 $("#lblparentescof").html(Util.ConvertirParentesco(militar.Familiar[pos].parentescog,militar.Familiar[pos].Persona.DatoBasico.sexo));
