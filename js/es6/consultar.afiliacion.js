@@ -1309,7 +1309,11 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
             var apellido = militar.Familiar[pos].Persona.DatoBasico.apellidoprimero;
             $("#lblapellidof").html(apellido.toUpperCase());
             $("#lblcedulaf").html(idf);
-            $("#lblparentescof").html(Util.ConvertirParentesco(militar.Familiar[pos].parentesco,militar.Familiar[pos].Persona.DatoBasico.sexo));
+            if (militar.situacion != "FCP"){
+              $("#lblparentescof").html(Util.ConvertirParentesco(militar.Familiar[pos].parentesco,militar.Familiar[pos].Persona.DatoBasico.sexo));
+            }else{
+              $("#lblparentescof").html(Util.ConvertirParentesco("VI",militar.Familiar[pos].Persona.DatoBasico.sexo));
+            }
             var amilitar = militar.Persona.DatoBasico.apellidoprimero.split(" ");
             var nmilitar = militar.Persona.DatoBasico.nombreprimero.split(" ");
             $("#lblafiliadof").html(militar.Grado.abreviatura + " - " + amilitar[0] + " " + nmilitar[0] + " CI:"+cedula);
