@@ -1316,7 +1316,7 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
               if(militar.Familiar[pos].parentesco == "EA"){
                 $("#lblparentescof").html(Util.ConvertirParentesco("VI",militar.Familiar[pos].Persona.DatoBasico.sexo));
               }else{
-                $("#lblparentescof").html(Util.ConvertirParentesco(militar.Familiar[pos].parentescog,militar.Familiar[pos].Persona.DatoBasico.sexo));
+                $("#lblparentescof").html(Util.ConvertirParentesco(militar.Familiar[pos].parentesco,militar.Familiar[pos].Persona.DatoBasico.sexo));
               }
             }
             var amilitar = militar.Persona.DatoBasico.apellidoprimero.split(" ");
