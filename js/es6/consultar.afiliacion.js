@@ -725,8 +725,8 @@ function NacionalidadFamiliar(nac) {
 
 function NacionalidadFamiliar2(nac) {
     if(nac == "M"){
-      // console.log($("#tblFamiliares tr").length);
-        $("#txtcedulam").val("10"+$("#txtcedula").val());
+        var posiF = ObjMilitar.Familiar.length;
+        $("#txtcedulam").val("10"+$("#txtcedula").val()+posiF);
         $("#txtcedulam").attr("disabled",true);
     }else{
         $("#txtcedulam").attr("disabled",false);
