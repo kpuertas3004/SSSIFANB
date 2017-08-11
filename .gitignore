@@ -1,2 +1,5 @@
 /js/es6/config.js
-
+/temp/*
+/perifericos
+*.exe
+*.zip
