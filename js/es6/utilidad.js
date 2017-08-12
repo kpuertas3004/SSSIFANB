@@ -111,7 +111,6 @@ class Utilidad {
     //Recibe  Fecha Formato: DD/MM/AAAA
     //Retorna Fecha Formato: AAAA-MM-DD
     ConvertirFechaUnix(f) {
-        console.log(f);
         f = f.split("/");
         return f[2] + "-" + f[1] + "-" + f[0];
     }
@@ -121,14 +120,11 @@ class Utilidad {
 
         let respuesta = true;
         $("#" + _frm + " :input").each(function (i) {
-            //console.log(_frm);
             var valor = $(this).val();
             var dis = $(this).attr('required');
             var id = $(this).attr('id');
-            //console.log("ID: " + id + " VALOR: " + valor ) ;
             if (dis == "required") {
                 if (valor == "") {
-                    console.log(id);
                     respuesta = false;
                     return respuesta;
                 }
@@ -141,7 +137,6 @@ class Utilidad {
     MensajeFormulario(_frm,ele) {
 
         $("#" + _frm + " :input").each(function (i) {
-            //console.log(_frm);
             var valor = $(this).val();
             var dis = $(this).attr('required');
             var id = $(this).attr('id');
