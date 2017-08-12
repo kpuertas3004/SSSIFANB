@@ -283,6 +283,7 @@ class Familiar{
 	Obtener(){
 		this.id = $("#txtidf").val();
 		this.documentopadre = $("#txtcedula").val();
+		this.Persona.DatoBasico.nropersona =  parseInt($("#txtnropersonaf").val());
     this.Persona.DatoBasico.nacionalidad = $("#btnnacionalidad").html();
 		this.Persona.DatoBasico.cedula = $("#txtcedulaf").val();
 		this.Persona.DatoBasico.fechanacimiento =  new Date(Util.ConvertirFechaUnix($("#txtnacimientof").val())).toISOString();
@@ -513,7 +514,6 @@ class Recibo{
 	}
 
     VerificarF(){
-        //alert($("#cmbMotivoCarnet").val());
         if($("#cmbMotivoCarnetf").val() == 'S'){
             $("#cmbMotivoCarnetf").notify("Indique El motivo");
             return false;
@@ -544,7 +544,7 @@ class Recibo{
 
     Obtener(){
     	this.id = $("#txtcedula").val();
-        this.idf = $("#txtcedula").val();
+      this.idf = $("#txtcedula").val();
     	this.motivo = $("#cmbMotivoCarnet").val();
     	this.numero = $("#txtnumeroC").val();
     	this.canal = $("#cmbminstfinancieraC").val();
@@ -565,14 +565,12 @@ class Recibo{
     }
 
 	Salvar(){
-
-        CargarAPI(Conn.URL + "recibo/crud" , "POST", this.Obtener());
+    CargarAPI(Conn.URL + "recibo/crud" , "POST", this.Obtener());
 	}
 
-    SalvarF(){
-        console.log(this.ObtenerF())
-        CargarAPI(Conn.URL + "recibo/crud" , "POST", this.ObtenerF());
-    }
+  SalvarF(){
+    CargarAPI(Conn.URL + "recibo/crud" , "POST", this.ObtenerF());
+  }
 }
 class Militar{
 	constructor(){
@@ -647,8 +645,10 @@ class Militar{
 				});
 				t.clear().draw();
 				var DB = militar.Persona.DatoBasico;
+
 				$("#_divfechanacimiento").show();
 				$("#_divfechadefuncion").show();
+				$("#txtnropersona").val(DB.nropersona);
 				$("#txtcedula").val(DB.cedula);
 				url = "images/grados/" + militar.Grado.abreviatura + ".png";
 				url = url.toLowerCase();
@@ -697,10 +697,8 @@ class Militar{
 				$("#_fingreso").html(Util.ConvertirFechaHumana(militar.fingreso));
 				$("#_fascenso").html(Util.ConvertirFechaHumana(militar.fascenso));
 
-				//$("#cmbcategoria").val(militar.categoria);
 				$("#cmbcategoria").val("S");
 				$("#cmbsituacion").val(militar.situacion);
-				//$("#cmbclase").val(militar.clase);
 				$("#cmbclase").val("S");
 				$("#_categoria").html($("#cmbcategoria option:selected").text());
 				$("#_situacion").html($("#cmbsituacion option:selected").text());
@@ -713,7 +711,6 @@ class Militar{
 						$("#_clasificacion").html('<font style="size:8px">' + $("#cmbclase option:selected").text() + "</font>");
 				}
 				var Fideicomiso = militar.Fideicomiso;
-//          console.log(Fideicomiso);
 				if (militar.Fideicomiso.areconocido != undefined) {
 						$("#_reconocidos").show();
 						$("#txtareconocido").val(Fideicomiso.areconocido);
@@ -733,7 +730,6 @@ class Militar{
 						'searching': false,
 						'ordering': false,
 						'info': false,
-						//'autoWidth'   : false
 						'autoWidth': false
 				});
 				if (militar.Persona.DatoFinanciero != undefined) {
@@ -773,7 +769,6 @@ class Militar{
 						$("#txtmtelefono").val(militar.Persona.Telefono.domiciliario);
 						$("#txtmcelular").val(militar.Persona.Telefono.movil);
 						$("#txtmcorreo").val(militar.Persona.Correo.principal);
-						//$("#txtmcorreo").html(CorreoValido(militar.Persona.Correo.principal));
 				}
 
 				if (militar.Persona.PartidaNacimiento != undefined) {
@@ -821,9 +816,9 @@ class Militar{
 						var modificar = '<button type="button" id="btnModFamiliar' + j + '" \
 		class="btn btn-sm btn-info prvmodificar hide" onclick="ModificarFamiliarPos(' + j + ')">\
 			<i class="fa fa-pencil"></i></button>'
-						var mil = nombre;
+						var mil = nombre.toUpperCase();
 						if (v.esmilitar == true) {
-								mil = nombre + '<font color="#0E6626"><i class="fa fa-fw fa-male"></i></font>&nbsp;';
+								mil = nombre.toUpperCase() + '<font color="#0E6626"><i class="fa fa-fw fa-male"></i></font>&nbsp;';
 						}
 
 						//ok = '<font color="#blue"><i class="fa fa-fw fa-close"></i></font>';
@@ -958,7 +953,7 @@ class Militar{
 
         this.id = militar.id;
         this.tipodato = militar.tipodato;
-
+				this.Persona.DatoBasico.nropersona =  parseInt($("#txtnropersona").val());
         this.Persona.DatoBasico = militar.Persona.DatoBasico;
         var DFis = militar.Persona.DatoFisionomico;
 
@@ -1059,41 +1054,13 @@ class Militar{
 		this.Persona.DatoFisionomico.estatura = parseFloat($("#txtmestatura").val());
 		this.Persona.DatoFisionomico.senaParticular = $("#txtmsenaparticular").val().toUpperCase();
 		this.Persona.DatoFisionomico.gruposanguineo = $("#cmbmgruposanguineo").val().toUpperCase();
-		//this.Grado.abreviatura = $("#cmbgrado option:selected").val();
-
-
 		this.Persona.RedSocial.twitter = $("#txtmtwitter").val().toUpperCase();
 		this.Persona.RedSocial.facebook = $("#txtmfacebook").val().toUpperCase();
 		this.Persona.RedSocial.instagram = $("#txtminstagran").val().toUpperCase();
 
-        this.codigocomponente = $("#txtcodigocomponente").val();
-        this.numerohistoria =   $("#txtnumhistoriaclinica").val();
+    this.codigocomponente = $("#txtcodigocomponente").val();
+    this.numerohistoria =   $("#txtnumhistoriaclinica").val();
 
-		//this.Persona.RedSocial.linkedin = $("#txtmlinkedin").val().toUpperCase();
-		//this.Tim.huella = $('#_imghuella').val();
-		//this.Tim.firma = $('#_imgfirma').val();
-		/*this.Persona.DocumentoCivil.ActaMatrimonio.archivo = $('#_imgmatrimonio').val();
-		this.Persona.DocumentoCivil.ActaMatrimonio.registrocivil = $('#txtRegistroCivilM').val();
-		this.Persona.DocumentoCivil.ActaMatrimonio.ano = $('#txtAnoM').val();
-		this.Persona.DocumentoCivil.ActaMatrimonio.acta = $('#txtNumeroActaM').val();
-		this.Persona.DocumentoCivil.ActaMatrimonio.folio = $('#txtNumeroFolioM').val();
-		this.Persona.DocumentoCivil.ActaMatrimonio.libro = $('#txtLibroM').val();
-		//this.Persona.DocumentoCivil.libro = $('#txtRegistroCivilD').val();
-		this.Persona.DocumentoCivil.ActaDivorcio.archivo = $('#_imgdivorcio').val();
-		this.Persona.DocumentoCivil.ActaDivorcio.tribunal = $('#txttribunalD').val();
-		this.Persona.DocumentoCivil.ActaDivorcio.numerosentencia = $('#txtnumerosentenciaD').val();
-		this.Persona.DocumentoCivil.ActaDivorcio.fechasentencia = $('#txtfechasentenciaD').val();
-		this.Persona.DocumentoCivil.CartaSolteria.archivo = $('#_imgsolteria').val();
-		this.Persona.DocumentoCivil.CartaSolteria.registrocivil = $('#txtRegistroCivilS').val();
-		this.Persona.DocumentoCivil.CartaSolteria.fecha = $('#txtFechaS').val();
-		this.Persona.DocumentoCivil.ConstanciaViudez.archivo = $('#_imgviudez').val();
-		this.Persona.DocumentoCivil.ConstanciaViudez.registrocivil = $('#txtRegistroCivilV').val();
-		this.Persona.DocumentoCivil.ConstanciaViudez.fecha = $('#txtFechaV').val();
-		this.Persona.PartidaNacimiento.registrocivil= $("#txtpregistrocivil").val();
-		this.Persona.PartidaNacimiento.ano = $("#txtpano").val();
-		this.Persona.PartidaNacimiento.acta = $("#txtpacta").val();
-		this.Persona.PartidaNacimiento.folio = $("#txtpfolio").val();
-		this.Persona.PartidaNacimiento.libro = $("#txtplibro").val();*/
 
 		return this;
 
@@ -1132,8 +1099,6 @@ class Militar{
     $("#_btnTIM").show();
     $("#_btnModificar").show();
     $("#_btnSavlvar").hide();
-		console.log(this.Obtener());
-		console.log(Conn.URL + "militar/crud");
 		CargarAPI(Conn.URL + "militar/crud" , "PUT", this.Obtener());
 	}
 }
@@ -1167,7 +1132,6 @@ class Clave {
         this.clave = $("#claveA").val();
         this.nueva = $("#claveN").val();
         this.repetir = $("#claveN2").val();
-        console.log(this);
         return this;
     }
 
@@ -1192,7 +1156,7 @@ function CerrarSession(){
 
 class LstCarnet {
     constructor() {
-			console.log("Cargando la clase de Aprobacion...");
+			// console.log("Cargando la clase de Aprobacion...");
     }
     Crear(Json) {
         if (Json == null) {
@@ -1205,8 +1169,6 @@ class LstCarnet {
             tabla = "_tblPendienteImp";
             buzon = "tblPendientesBuzonImp";
         }
-        //alert(tabla);
-        //$("#"+tabla).html(PendienteHTML());
         var t = $('#' + buzon).DataTable({
             'paging': false,
             'lengthChange': false,
@@ -1220,7 +1182,6 @@ class LstCarnet {
         var j = 0;
 
         Json.forEach(v => {
-            console.log(v);
             var tipocarnet = "verCarnet";
             var idf = "";
             if(v.idf != ""){
@@ -1235,8 +1196,8 @@ class LstCarnet {
 		        <i class="fa fa-search"></i></button>
 		        <button type="button"  class="btn btn-sm btn-success desaparece" onclick="aprobarCarnet('${v.serial}',1)">
 		        Aprobado</button>
-		        <button type="button" class="btn btn-sm btn-danger desaparece" onclick="pendienteCarnet('${v.serial}','${Estatus}')">
-		        Pendiente</button>
+		        <button type="button" class="btn btn-sm btn-danger desaparece" onclick="pendienteCarnet('${v.serial}',2)">
+		        Eliminar</button>
 		        </div>`;
         } else {
             var boton = `<div class="btn-group">
@@ -1246,12 +1207,12 @@ class LstCarnet {
 		        <i class="fa fa-check"></i></button>
 		        </div>`;
         }
-
+				var nombre = v.nombre + " " + v.apellido;
         t.row.add([
             j++, //0
             v.id, //1
             v.Grado.descripcion, //2
-            v.nombre + " " + v.apellido, //3
+            nombre.toUpperCase(), //3
             this.ObtenerMotivo(v.motivo), //v.motivo, //
             boton //5
         ]).draw(false);

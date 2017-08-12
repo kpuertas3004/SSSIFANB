@@ -4,25 +4,20 @@
 };
 function verificarPrivilegioUsuario(){
     $.each(Usuario.Perfil.Privilegios,function (privilegio) {
-        console.log(this);
         switch (this.nombre){
             case "afiliacion.salvar":
-                console.log("Entro por salvar");
                 $(".prvsalvar").attr("disabled",false);
                 $(".prvsalvar").removeClass('hide');
                 break;
             case "afiliacion.modificar":
-                console.log("Entro por modificar");
                 $(".prvmodificar").attr("disabled",false);
                 $(".prvmodificar").removeClass('hide');
                 break;
             case "afiliacion.carnet":
-                console.log("Entro por carnet");
                 $(".prvcarnet").attr("disabled",false);
                 $(".prvcarnet").removeClass('hide');
                 break;
             case "afiliacion.constancia":
-                console.log("Entro por carnet");
                 $(".prvcontancia").attr("disabled",false);
                 $(".prvcontancia").removeClass('hide');
                 break;
@@ -55,11 +50,6 @@ class Menu {
       });
 			$('#_menu').html(cadena);
         verificarPrivilegioUsuario();
-      /*if(Usuario.Roles.descripcion == "Root"){
-          alert("ENTRA:");
-          $("button").attr("disabled",true);
-          $("button").hide();
-      }*/
   }
 }
 class Estado{
@@ -291,7 +281,5 @@ function ListarCarnet(estatus) {
     listaCarnet = new LstCarnet();
     Estatus = estatus;
     var ruta = Conn.URL + "carnet/listar/" + estatus;
-    // alert(ruta);
-    console.log(listaCarnet);
     CargarAPI(ruta, "GET", "", listaCarnet);
 }
