@@ -1180,7 +1180,7 @@ class LstCarnet {
         if (Json == null) {
             return false
         }
-
+				console.log(Json);
         var tabla = "_tblPendiente";
         var buzon = "tblPendientesBuzon";
         if (Estatus != 0) {
@@ -1200,6 +1200,10 @@ class LstCarnet {
         var j = 0;
 
         Json.forEach(v => {
+						var paseR = "";
+						if(v.condicion){
+							paseR = "<p style='color:red'>(En proceso de retiro)</p>"
+						}
             var tipocarnet = "verCarnet";
             var idf = "";
             if(v.idf != ""){
@@ -1230,7 +1234,7 @@ class LstCarnet {
         t.row.add([
             j++, //0
             v.id, //1
-            v.Grado.descripcion, //2
+            v.Grado.descripcion+paseR, //2
             nombre.toUpperCase(), //3
             this.ObtenerMotivo(v.motivo), //v.motivo, //
             boton //5
