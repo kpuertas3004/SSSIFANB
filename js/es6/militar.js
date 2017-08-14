@@ -815,22 +815,16 @@ class Militar{
 						var fnac = Util.ConvertirFechaHumana(DBF.fechanacimiento);
 
 						var modificar = '<button type="button" id="btnModFamiliar' + j + '" \
-		class="btn btn-sm btn-info prvmodificar hide" onclick="ModificarFamiliarPos(' + j + ')">\
-			<i class="fa fa-pencil"></i></button>'
+							class="btn btn-sm btn-info prvmodificar hide" onclick="ModificarFamiliarPos(' + j + ')">\
+							<i class="fa fa-pencil"></i></button>'
 						var mil = nombre.toUpperCase();
 						if (v.esmilitar == true) {
 								mil = nombre.toUpperCase() + '<font color="#0E6626"><i class="fa fa-fw fa-male"></i></font>&nbsp;';
 						}
 
-						//ok = '<font color="#blue"><i class="fa fa-fw fa-close"></i></font>';
+
 						var fechavencimiento = "";
-						// if (v.fechavencimiento != undefined){
-						//   fechavencimiento = v.fechavencimiento;
-						// }
-						var situacion = "ACTIVO";
-						if (v.beneficio != true) {
-								situacion = "INACTIVO"
-						}
+
 						var mod = '<font color="#red"><i class="fa fa-fw fa-pencil"></i></font>';
 						var edocivil = "";
 						if (DBF.estadocivil != undefined) {
@@ -840,16 +834,21 @@ class Militar{
 						if (v.Persona.foto  != undefined){
 							rutaimgfamiliar = Conn.URLTEMP;
 						}
-
-
-
-						$("#_contenidoFamiliares").append('<tr><td>' + nombreCompleto + '</td>\
-						<td class="alinear_tddatos">' + cedula + '</td>\
-						<td class="alinear_tddatos">' + familiar.GenerarParentesco() + '</td>\
-						<td class="alinear_tddatos">' + fnac + '</td>\
-						<td class="alinear_tddatos">' + edocivil + '</td>\
-						<td class="alinear_tddatos">' + situacion + '</td>\
-						<td class="alinear_tddatos">' + fechavencimiento + '</td></tr>');
+						var situacion = "ACTIVO";
+						if (v.beneficio != true) {
+							situacion = "INACTIVO"
+						}
+						if (v.beneficio == false && v.parentesco == "EA"){
+							//Evaluar a esposa inactiva
+						}else{
+							$("#_contenidoFamiliares").append('<tr><td>' + nombreCompleto + '</td>\
+							<td class="alinear_tddatos">' + cedula + '</td>\
+							<td class="alinear_tddatos">' + familiar.GenerarParentesco() + '</td>\
+							<td class="alinear_tddatos">' + fnac + '</td>\
+							<td class="alinear_tddatos">' + edocivil + '</td>\
+							<td class="alinear_tddatos">' + situacion + '</td>\
+							<td class="alinear_tddatos">' + fechavencimiento + '</td></tr>');
+						}
 
 						t.row.add([
 								j++, //0
