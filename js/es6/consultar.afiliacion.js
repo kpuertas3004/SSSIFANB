@@ -632,6 +632,7 @@ function FrmDatosBasicos(valor) {
     $("#txtareconocido").attr('disabled', valor);
     $("#txtmreconocido").attr('disabled', valor);
     $("#txtdreconocido").attr('disabled', valor);
+    $("#cmbpbaja").attr('disabled', valor);
 
     //$("#btnnacimiento").attr('disabled', valor);
     if (valor == false) {

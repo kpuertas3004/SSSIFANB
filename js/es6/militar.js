@@ -599,7 +599,8 @@ class Militar{
 		this.urlfirma = "";
 		this.urlcedula = "";
 		this.codigocomponente = "";
-    this.numerohistoria = "";
+    	this.numerohistoria = "";
+    	this.pasearetiro = false;
 	}
 	Crear(militar){
 
@@ -939,7 +940,15 @@ class Militar{
 
 
 				});
+				var valpase = 0;
+				if(militar.pasearetiro){
+					valpase = 1;
+				}
+				$("#cmbpbaja").val(valpase);
 
+				if(valpase == 1){
+					$("#mdlPaseretiro").modal('show')
+				}
 
 				$("#_cedula").val("");
 				$("#_ficha").show();
@@ -989,6 +998,7 @@ class Militar{
         this.urlcedula = "";
         this.codigocomponente = militar.codigocomponente;
         this.numerohistoria = militar.numerohistoria;
+        this.pasearetiro = militar.pasearetiro;
     }
 	Obtener(){
 		var fingreso = new Date(Util.ConvertirFechaUnix($("#txtfechagraduacion").val())).toISOString();
@@ -1058,9 +1068,17 @@ class Militar{
 		this.Persona.RedSocial.facebook = $("#txtmfacebook").val().toUpperCase();
 		this.Persona.RedSocial.instagram = $("#txtminstagran").val().toUpperCase();
 
-    this.codigocomponente = $("#txtcodigocomponente").val();
-    this.numerohistoria =   $("#txtnumhistoriaclinica").val();
+    	this.codigocomponente = $("#txtcodigocomponente").val();
+    	this.numerohistoria =   $("#txtnumhistoriaclinica").val();
 
+
+    	var valpase = false;
+    	//alert($("#cmbpbaja option:selected").val());
+    	if($("#cmbpbaja option:selected").val() == 1){
+    		valpase = true;
+		}
+		//alert(valpase);
+    	this.pasearetiro =valpase;
 
 		return this;
 
@@ -1208,6 +1226,7 @@ class LstCarnet {
 		        </div>`;
         }
 				var nombre = v.nombre + " " + v.apellido;
+
         t.row.add([
             j++, //0
             v.id, //1
