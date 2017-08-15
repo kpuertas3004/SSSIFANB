@@ -274,6 +274,9 @@ class Familiar{
 		    case "EA":
 		    	parentesco = (this.Persona.DatoBasico.sexo=="F")?"ESPOSA":"ESPOSO";
 		        break;
+				case "HO":
+		    	parentesco = (this.Persona.DatoBasico.sexo=="F")?"HERMANA":"HERMANO";
+		        break;
 		    default:
 		        parentesco = "";
 		        break;
@@ -847,7 +850,8 @@ class Militar{
 							<td class="alinear_tddatos">' + fnac + '</td>\
 							<td class="alinear_tddatos">' + edocivil + '</td>\
 							<td class="alinear_tddatos">' + situacion + '</td>\
-							<td class="alinear_tddatos">' + fechavencimiento + '</td></tr>');
+							</tr>');
+							//<td class="alinear_tddatos">' + fechavencimiento + '</td>
 						}
 
 						t.row.add([

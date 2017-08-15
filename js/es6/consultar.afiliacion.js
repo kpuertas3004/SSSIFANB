@@ -113,20 +113,21 @@ function SeleccionarPorSexoFamiliar(sexo) {
         gen = (sexo == 'F') ? "A" : "O";
     }
     $("#cmbedocivilf").html('<option value=""></option><option value="S">SOLTER' + gen + '</option>\
-  <option value="C">CASAD' + gen + '</option> \
-  <option value="D">DIVORCIAD' + gen + '</option>\
-  <option value="V">VIUD' + gen + '</option>');
+    <option value="C">CASAD' + gen + '</option> \
+    <option value="D">DIVORCIAD' + gen + '</option>\
+    <option value="V">VIUD' + gen + '</option>');
 
     if (gen == "A") {
         $("#cmbparentescof").html('<option value="HJ">HIJ' + gen + '</option>\
-    <option value="PD">MADRE</option>\
-    <option value="EA">ESPOSA</option>\
-    <option value="HN">HERMANA</option>\
+        <option value="PD">MADRE</option>\
+        <option value="EA">ESPOSA</option>\
+        <option value="HO">HERMANA</option>\
     ');
     } else {
         $("#cmbparentescof").html('<option value="HJ">HIJ' + gen + '</option>\
-    <option value="PD">PADRE</option>\
-    <option value="EA">ESPOSO</option>');
+      <option value="PD">PADRE</option>\
+      <option value="EA">ESPOSO</option>\
+      <option value="HO">HERMANO</option>');
     }
 
 }
@@ -186,7 +187,6 @@ function ConstanciaFamiliaresHTML() {
         <th class="alinear_tddatos">FECHA NAC.</th>\
         <th class="alinear_tddatos">EDO CIVIL</th>\
         <th class="alinear_tddatos">SITUACIÓN</th>\
-        <th class="alinear_tddatos">FECHA VCTO. CARNET</th>\
       </tr>\
     </thead >\
     <tbody id="_contenidoFamiliares">\

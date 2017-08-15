@@ -216,8 +216,11 @@ class Utilidad {
             case "EA":
                 parent = (sexo=="F")?"ESPOSA":"ESPOSO";
                 break;
-          case "VI":
+            case "VI":
               parent = (sexo=="F")?"VIUDA":"VIUDO";
+              break;
+            case "HO":
+              parent = (sexo=="F")?"HERMANA":"HERMANO";
               break;
             default:
                 parent = "";
