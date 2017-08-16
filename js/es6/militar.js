@@ -488,7 +488,6 @@ class Recibo{
 
 
 	Verificar(){
-        //alert($("#cmbMotivoCarnet").val());
         if($("#cmbMotivoCarnet").val() == 'S'){
             $("#cmbMotivoCarnet").notify("Indique El motivo");
             return false;
@@ -610,7 +609,7 @@ class Militar{
 		var url = "";
 		var i = 0;
 		var j = 0;
-
+		console.log(militar);
 
 		if (militar.tipo != undefined) {
 				$("#_cedula").val("");
@@ -965,10 +964,9 @@ class Militar{
 
         this.id = militar.id;
         this.tipodato = militar.tipodato;
-				this.Persona.DatoBasico.nropersona =  parseInt($("#txtnropersona").val());
+				this.Persona.DatoBasico.nropersona =  militar.Persona.DatoBasico.nropersona;
         this.Persona.DatoBasico = militar.Persona.DatoBasico;
         var DFis = militar.Persona.DatoFisionomico;
-
 
         this.Persona.DatoFisionomico.colorojos = DFis.colorojos;
         this.Persona.DatoFisionomico.colorpiel = DFis.colorpiel;
@@ -1013,6 +1011,7 @@ class Militar{
 		this.Persona.DatoBasico.nacionalidad = "V";
 
 		this.Persona.DatoBasico.cedula = $("#txtcedula").val();
+		this.Persona.DatoBasico.nropersona =  parseInt($("#txtnropersona").val());
 		this.Persona.DatoBasico.nombreprimero = $("#txtnombre").val().toUpperCase();
 		this.Persona.DatoBasico.apellidoprimero = $("#txtapellido").val().toUpperCase();
 		this.Persona.DatoBasico.fechanacimiento = fnacimiento;
@@ -1076,11 +1075,9 @@ class Militar{
 
 
     	var valpase = false;
-    	//alert($("#cmbpbaja option:selected").val());
     	if($("#cmbpbaja option:selected").val() == 1){
     		valpase = true;
 		}
-		//alert(valpase);
     	this.pasearetiro =valpase;
 
 		return this;
