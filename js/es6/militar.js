@@ -1204,6 +1204,7 @@ class LstCarnet {
 						if(v.condicion){
 							paseR = "<p style='color:red'>(En proceso de retiro)</p>"
 						}
+						console.log(v.fechacreacion);
             var tipocarnet = "verCarnet";
             var idf = "";
             if(v.idf != ""){
@@ -1212,23 +1213,23 @@ class LstCarnet {
                     idf= v.idf;
                 }
             }
-        if (Estatus == 0) {
-            var boton = `<div class="btn-group">
-		        <button type="button" class="btn btn-sm btn-info" onclick="${tipocarnet}('${v.serial}','${v.id}','${v.fechavencimiento}',1,'${v.idf}')">
-		        <i class="fa fa-search"></i></button>
-		        <button type="button"  class="btn btn-sm btn-success desaparece" onclick="aprobarCarnet('${v.serial}',1)">
-		        Aprobado</button>
-		        <button type="button" class="btn btn-sm btn-danger desaparece" onclick="pendienteCarnet('${v.serial}',2)">
-		        Eliminar</button>
-		        </div>`;
-        } else {
-            var boton = `<div class="btn-group">
-		        <button type="button" class="btn btn-sm btn-primary" onclick="${tipocarnet}('${v.serial}','${v.id}','${v.fechavencimiento}',0,'${v.idf}')">
-		        <i class="fa fa-print"></i></button>
-		        <button type="button" class="btn btn-sm btn-success desaparece" onclick="cerrarCarnet('${v.serial}')">
-		        <i class="fa fa-check"></i></button>
-		        </div>`;
-        }
+		        if (Estatus == 0) {
+		            var boton = `<div class="btn-group">
+				        <button type="button" class="btn btn-sm btn-info" onclick="${tipocarnet}('${v.serial}','${v.id}','${v.fechavencimiento}',1,'${v.idf}')">
+				        <i class="fa fa-search"></i></button>
+				        <button type="button"  class="btn btn-sm btn-success desaparece" onclick="aprobarCarnet('${v.serial}',1)">
+				        Aprobado</button>
+				        <button type="button" class="btn btn-sm btn-danger desaparece" onclick="pendienteCarnet('${v.serial}',2)">
+				        Eliminar</button>
+				        </div>`;
+		        } else {
+		            var boton = `<div class="btn-group">
+				        <button type="button" class="btn btn-sm btn-primary" onclick="${tipocarnet}('${v.serial}','${v.id}','${v.fechavencimiento}',0,'${v.idf}')">
+				        <i class="fa fa-print"></i></button>
+				        <button type="button" class="btn btn-sm btn-success desaparece" onclick="cerrarCarnet('${v.serial}')">
+				        <i class="fa fa-check"></i></button>
+				        </div>`;
+		        }
 				var nombre = v.nombre + " " + v.apellido;
 
         t.row.add([
