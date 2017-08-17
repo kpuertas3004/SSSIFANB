@@ -1818,7 +1818,7 @@ function ImprimirCarnet(nombre) {
     }
     .labels-dat-medicos-resl{
         border: 0px #0033FF solid;
-        width: 60px;
+        width: 80px;
         height: auto;
         position: absolute;
         left: 235px;
