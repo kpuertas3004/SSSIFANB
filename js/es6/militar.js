@@ -1094,7 +1094,11 @@ class Militar{
 
         if(this.situacion != "ACT"){
         	cad = "RESERVA ACTIVA";
-		}
+				}
+				if(this.situacion != "I"){
+					cad = "PENSION DE GRACIA";
+				}
+
         return cad;
     }
 
