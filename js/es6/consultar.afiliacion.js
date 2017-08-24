@@ -259,6 +259,7 @@ function FrmFamiliar(valor) {
     $("#cmbparentescof").attr('disabled', valor);
     $("#cmbcondicionf").attr('disabled', valor);
     $("#cmbsituacionf").attr('disabled', valor);
+    $("#txtdefuncionf").attr('disabled', valor);
 
     $("#cmbestudiaf").attr('disabled', valor);
     $("#cmbestadof").attr('disabled', valor);

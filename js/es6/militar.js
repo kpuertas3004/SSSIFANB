@@ -448,7 +448,7 @@ class Persona{
 		this.DocumentoCivil = new DocumentoCivil();
 		this.RedSocial = new RedSocial();
 		this.foto = "";
-		this.huella = "";
+		this.huella = "";https://lintut.com/how-to-configure-static-ip-address-on-centos-7/
 		this.firma = "";
 
 		this.CondicionEspecial = new CondicionEspecial();
@@ -1096,7 +1096,7 @@ class Militar{
         	cad = "RESERVA ACTIVA";
 				}
 				if(this.situacion == "I"){
-					cad = "PENSION DE GRACIA";
+					cad = "PENSION DE INVALIDEZ";
 				}
 
         return cad;
