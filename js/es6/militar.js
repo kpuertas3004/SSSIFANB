@@ -262,7 +262,8 @@ class Familiar{
     this.donante = "";
     this.serial = "";
 	}
-	GenerarParentesco(){
+	GenerarParentesco(edo){
+
 		var parentesco= "";
 		 switch(this.parentesco) {
 		    case "PD":
@@ -272,7 +273,12 @@ class Familiar{
 		    	parentesco = (this.Persona.DatoBasico.sexo=="F")?"HIJA":"HIJO";
 		        break;
 		    case "EA":
-		    	parentesco = (this.Persona.DatoBasico.sexo=="F")?"ESPOSA":"ESPOSO";
+						parentesco = (this.Persona.DatoBasico.sexo=="F")?"ESPOSA":"ESPOSO";
+						if (edo != undefined){
+							if (edo == "M"){
+								parentesco = (this.Persona.DatoBasico.sexo=="F")?"VIUDA":"VIUDO";
+							}
+						}
 		        break;
 				case "HO":
 		    	parentesco = (this.Persona.DatoBasico.sexo=="F")?"HERMANA":"HERMANO";
@@ -843,9 +849,13 @@ class Militar{
 						if (v.beneficio == false && v.parentesco == "EA"){
 							//Evaluar a esposa inactiva
 						}else{
+							var strEdo = "F";
+							if(militar.situacion == "FCP"){
+								strEdo = "M";
+							}
 							$("#_contenidoFamiliares").append('<tr><td>' + nombreCompleto + '</td>\
 							<td class="alinear_tddatos">' + cedula + '</td>\
-							<td class="alinear_tddatos">' + familiar.GenerarParentesco() + '</td>\
+							<td class="alinear_tddatos">' + familiar.GenerarParentesco(strEdo) + '</td>\
 							<td class="alinear_tddatos">' + fnac + '</td>\
 							<td class="alinear_tddatos">' + edocivil + '</td>\
 							<td class="alinear_tddatos">' + situacion + '</td>\
