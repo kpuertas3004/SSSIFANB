@@ -1917,3 +1917,17 @@ function ImprimirCarnetFamiliar(nombre) {
 function Validar(){
   alert("Test");
 }
+
+function traeDireccion(){
+    $("#cmbestadof").val($("#cmbmestado").val());
+    CiudadMunicipio(1);
+    $("#cmbciudad").attr("disabled",false)
+    $("#cmbciudadf").val($("#cmbmciudad option:selected").val());
+    $("#cmbmunicipiof").val($("#cmbmmunicipio").val());
+    SeleccionarParroquia(1);
+    $("#cmbparroquiaf").val($("#cmbmparroquia").val());
+    $("#txtcallef").val($("#txtmcalle").val());
+    $("#txtcasaf").val($("#txtmcasa").val());
+    $("#txtaptof").val($("#txtmapto").val());
+    $("#txttelefonof").val($("#txtmtelefono").val());
+}
