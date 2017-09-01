@@ -203,6 +203,49 @@ class Utilidad {
         return Ano;
     }
 
+    CalcularTServicio(fecha,fecharet, sit) {
+        var FechaActual = new Date(Date.now());
+        
+        var ISODate = new Date(fecha).toISOString();
+        var fe = ISODate.substr(0, 10);
+
+        var AnnoA = parseInt(FechaActual.getFullYear());
+        var MesA = parseInt(FechaActual.getMonth()) + 1;
+        var DiaA = parseInt(FechaActual.getDate());
+
+        if(sit!= "ACTIVO"){
+             ISODate = new Date(fecharet).toISOString();
+             var fr = ISODate.substr(0, 10);
+             var fret = fr.split("-");
+             AnnoA = parseInt(fret[0]);
+             MesA = parseInt(fret[1]) ;
+             DiaA = parseInt(fret[2]);
+        }
+console.log(MesA);
+        var f = fe.split("-");
+        
+        var AnoN = parseInt(f[0]);
+        var MesN = parseInt(f[1]);
+        var DiaM = parseInt(f[2]);
+
+        var Ano = AnnoA - AnoN;
+
+        var Mes = MesA - MesN;
+        var Dia = DiaA - DiaM;
+        if (Dia < 0) {
+            Dia = 30 + Dia;
+            Mes--;
+        }
+        if (Mes <= 0) {
+            Mes = 12 + Mes;
+            Ano--;
+        } else {
+            Ano;
+        }
+
+        return Ano + " Años " + Mes + " Meses " + Dia + " Dias";
+    }
+
 
     ConvertirParentesco(cad,sexo){
         var parent = "";

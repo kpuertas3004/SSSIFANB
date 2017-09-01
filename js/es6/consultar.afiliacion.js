@@ -1327,13 +1327,17 @@ function verCarnetFamiliar(serial, cedula, vence, estatus,idf) {
 
 
 function CConstanciaAfiliacion() {
-
+    var Util = new Utilidad();
     var urlMil = Conn.URLIMG + $("#txtcedula").val() + ".jpg";
     var urlGra = "images/grados/" + ObjMilitar.Grado.abreviatura + ".png";
     urlGra = urlGra.toLowerCase();
     var fechaActual = ConvertirFechaActual();
-    var ts = ObjMilitar.tiemposervicio.split(" ");
-    var tiempo = ts[0] + "ÑOS  " + ts[1] + "ESES " + ts[2] + "ÍAS"
+    console.log(ObjMilitar.fingreso);
+
+    var tiempo = Util.CalcularTServicio(ObjMilitar.fingreso,ObjMilitar.fretiro, $("#cmbsituacion option:selected").text())
+ 
+    
+
     var gradoPI = 'GENERAL DE DIVISIÓN';
     var clascat = $("#cmbcategoria option:selected").text() + ' / ' + $("#cmbclase option:selected").text();
     var nombrePI = 'JESÚS RAFAEL SALAZAR VELÁSQUEZ';
