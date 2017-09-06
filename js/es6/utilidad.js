@@ -221,7 +221,7 @@ class Utilidad {
              MesA = parseInt(fret[1]) ;
              DiaA = parseInt(fret[2]);
         }
-console.log(MesA);
+
         var f = fe.split("-");
         
         var AnoN = parseInt(f[0]);
